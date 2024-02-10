@@ -1,5 +1,5 @@
-package GUI;
-import Model.Utente;
+package main.java.GUI;
+import main.java.Model.Utente;
 
 public class Main {
     public static void main(String[] args) {
