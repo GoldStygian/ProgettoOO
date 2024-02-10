@@ -16,6 +16,6 @@ public class Utente {
     }
 
     public void print(){
-        System.printf("%s", Email);
+        System.out.println(Email);
     }
 }

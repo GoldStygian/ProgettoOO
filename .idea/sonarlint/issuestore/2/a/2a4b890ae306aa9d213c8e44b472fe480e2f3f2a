@@ -10,6 +10,7 @@ j	java:S116"ORename this field "Nome" to match the regular expression '^[a-z]
 m	java:S116"RRename this field "Cognome" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÍÜP8ƒñ‹—Ù1
 H
 java:S1172"+Remove this unused method parameter "Nome".(²·‰÷8…ñ‹—Ù1
+L	java:S106"+Replace this use of System.out by a logger.(ºÉ„Øÿÿÿÿÿ8æ˜—Ù1
 N
 java:S1068",Remove this unused "Password" private field.(¬›™Âûÿÿÿÿ8†ñ‹—Ù1
 D
