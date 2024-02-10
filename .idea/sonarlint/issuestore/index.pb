@@ -67,3 +67,13 @@ w
 G.idea/sonarlint/issuestore/b/b/bbf202272a96de5cd6b6828ffdc55fb3ce45289c,8\4\84e95bd0ea795e5307464eb72e7bd95d9f673c00
 A
 src/GUI/main.java,b\0\b085c67a9042c5629a1a9907aa3de00b44508887
+>
+src/Controller,c\6\c64f5d0ee30e8a55af723398fe0b7013c7dd5154
+H
+src/Controller/main.java,d\3\d39d1cb9508acad9564f9a895609e8a823552788
+A
+src/DAO/main.java,3\5\35627e26429f3c94d1424c6f77cc5f8f010304ea
+X
+(src/ImplementazionePostgresDAO/main.java,2\1\21b2085f7d124b01a76755373cda00033a86a284
+C
+src/Model/main.java,6\6\66d985e6da51ac1c7694788a104d24b57cc3481b
