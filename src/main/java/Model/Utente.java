@@ -9,6 +9,7 @@ public class Utente {
     private char genere;
 
     public Utente(String Email, String Password, String Nome, String Cognome, char genere){
+        this.Nome=Nome;
         this.Email=Email;
         this.Password=Password;
         this.Cognome=Cognome;
