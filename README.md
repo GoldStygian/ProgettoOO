@@ -1,11 +1,5 @@
 # main/ProgettoOO
 
-porco dio e modifico qui
-aggiungo qualcosa qui
-
-4765289383gh43cfhuvt9vuw4èxdou4jtcu34tcnu90ùv
-rvreverververv
-htrthrhrthrthr
 ## Getting Started
 
 Download links:
