@@ -6,6 +6,6 @@ public class Main {
         System.out.println("[] start");
 
         Utente u1 = new Utente();
-        u1.
+        u1.print();
     }
 }

@@ -1,3 +1,5 @@
+package main.java.Model;
+
 public class Utente {
 
     private String Email;
