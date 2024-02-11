@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Link extends Frase{
 
-    private ArrayList<Pagina> Pagine_linkate = new ArrayList<Pagina>();
+    private Pagina Pagine_linkate;
 
     public  Link(String testo, int posizione){
         super(testo,posizione);
