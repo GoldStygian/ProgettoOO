@@ -1,30 +1,31 @@
 package main.java.GUI;
 
-
-import main.java.Database.Connessione;
-
 import javax.swing.*;
 
 public class Main {
-    private JPanel panel1;
-    private JButton registerButton;
-    private JButton loginButton;
+
+    private static MainJFrame frame;
+
 
     public static void main(String[] args){
+       frame = new MainJFrame("Home");
 
-        System.out.println("[ ] start");
+       JPanel HomePanel = new Home();
 
-        JFrame frame = new JFrame("Wiki");
-        frame.setContentPane(new Main().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        ImageIcon logo = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\static\\logo4.png"); //aggiustare
-        frame.setIconImage(logo.getImage());
-        frame.setSize(400, 300); // sempre dopo frame.pack()
-        frame.setVisible(true);
+       HomePanel.setVisible(true);
+       frame.setContentPane(HomePanel);
 
-        Connessione c = new Connessione();
+       HomePanel.setVisible(false);
+       JPanel loginpage = new LoginPage();
+
+       loginpage.setVisible(true);
+       frame.setContentPane(loginpage);
+
+
+
 
     }
+
+
 
 }
