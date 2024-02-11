@@ -8,20 +8,12 @@ public class Main {
 
 
     public static void main(String[] args){
+
        frame = new MainJFrame("Home");
 
-       JPanel loginpage = new LoginPage();
-
-
-       frame.setContentPane(loginpage);
-
-
-
-
+        frame.SetPanel(new Home(frame).getPanel());
 
 
     }
-
-
 
 }
