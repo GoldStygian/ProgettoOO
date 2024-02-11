@@ -1,20 +1,23 @@
 
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8€ñ‹—Ù1
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ñ‹—Ù1
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ñ‹—Ù1
-m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ñ‹—Ù1
-l	java:S116"PRename this field "Email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áï»‚8ƒñ‹—Ù1
-t	java:S116"SRename this field "Password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬›™Âûÿÿÿÿ8ƒñ‹—Ù1
-j	java:S116"ORename this field "Nome" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï’8ƒñ‹—Ù1
-m	java:S116"RRename this field "Cognome" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÍÜP8ƒñ‹—Ù1
-H
-java:S1172"+Remove this unused method parameter "Nome".(²·‰÷8…ñ‹—Ù1
-L	java:S106"+Replace this use of System.out by a logger.(ºÉ„Øÿÿÿÿÿ8æ˜—Ù1
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(öÉÕáıÿÿÿÿ8ÇÉ©ŸÙ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ÇÉ©ŸÙ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ÇÉ©ŸÙ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ÇÉ©ŸÙ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²·‰÷8ÇÉ©ŸÙ1
+l	java:S116"PRename this field "Email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áï»‚8ÍÉ©ŸÙ1
+t	java:S116"SRename this field "Password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬›™Âûÿÿÿÿ8ÎÉ©ŸÙ1
+j	java:S116	"ORename this field "Nome" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï’8ÎÉ©ŸÙ1
+m	java:S116
+"RRename this field "Cognome" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œÍÜP8ÎÉ©ŸÙ1
+}	java:S116"\Rename this field "Operazioni_Utente" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öÉÕáıÿÿÿÿ8ÎÉ©ŸÙ1
+L	java:S106"+Replace this use of System.out by a logger.(ºÉ„Øÿÿÿÿÿ8æ˜—Ù1
 N
-java:S1068",Remove this unused "Password" private field.(¬›™Âûÿÿÿÿ8†ñ‹—Ù1
+java:S1068",Remove this unused "Password" private field.(¬›™Âûÿÿÿÿ8ØÉ©ŸÙ1
 D
-java:S1068"(Remove this unused "Nome" private field.(ï’8†ñ‹—Ù1
+java:S1068	"(Remove this unused "Nome" private field.(ï’8ØÉ©ŸÙ1
 G
-java:S1068"+Remove this unused "Cognome" private field.(œÍÜP8†ñ‹—Ù1
+java:S1068
+"+Remove this unused "Cognome" private field.(œÍÜP8ØÉ©ŸÙ1
 G
-java:S1068	"*Remove this unused "genere" private field.(Âˆ“Œ8†ñ‹—Ù1
+java:S1068"*Remove this unused "genere" private field.(Âˆ“Œ8ÙÉ©ŸÙ1
