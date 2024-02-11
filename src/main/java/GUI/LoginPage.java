@@ -2,16 +2,29 @@ package main.java.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginPage extends JPanel {
 
     private JPanel MainPanel;
     private JButton button1;
 
+
+
     public LoginPage() {
+        this.add(MainPanel);
+        this.setVisible(true);
+        MainPanel.setVisible(true);
 
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        });
     }
+
 
 
 
