@@ -17,8 +17,6 @@ O
 src/main/java/Model/Pagina.java,7\e\7eb27db5b67b0817fbc64501d8c55cdab609d1b8
 W
 'src/main/java/Database/Connessione.java,2\3\23895eb755e48109bd361adcd1840c3ac880be75
-K
-src/main/java/GUI/Main.form,3\4\340c96aaf01b6a3fe73773d38698beee068011a9
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 S
@@ -27,3 +25,26 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 E
 src/test/java/empty.c,e\0\e0b455e5842258ddf8347bbd4914f927926b4b89
+Y
+)src/main/java/Model/OperazioneAutore.java,5\c\5c01aa7f9a7f5ee6962e384313101f7a8aa48b0a
+Z
+*src/main/java/Model/InserimentoAutore.java,7\8\78d5ee7c89718fd8c6a5adc75c9ea5048f8caadf
+W
+'src/main/java/Model/ModificaAutore.java,1\8\18764493f11298dfa1d100fa31c415c2165fcf0d
+Z
+*src/main/java/Model/InserimentoUtente.java,d\1\d18dde8ba195372ca62c172da1c56b636e17585d
+W
+'src/main/java/Model/ModificaUtente.java,1\f\1f222851d80d265faa1f612202a25dbc28570599
+K
+src/main/java/GUI/Home.java,3\c\3cdbf704492b54ced45c9ce2d236deccb04af514
+P
+ src/main/java/GUI/LoginPage.java,c\3\c3228f458f9de991f95e0d266d2168e72aaecbf8
+P
+ src/main/java/GUI/LoginPage.form,2\5\255e151102b4c25922641bee730d0a246c87bdfb
+K
+src/main/java/GUI/Home.form,7\d\7dcdd7a9bdb225cf74b15d4425ef6e1139aaa09c
+Q
+!src/main/java/GUI/MainJFrame.java,4\d\4dda53bd3758e00a2e93332b778b5db38ab65162
+:
+
+CODEOWNERS,a\b\abe895765c4ce08c5dfbc95e5e3c5db67ff92ded
