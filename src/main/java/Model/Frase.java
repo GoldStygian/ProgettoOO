@@ -7,6 +7,8 @@ public class Frase {
     private String Testo = new String();
     int posizione;
 
+    private InserimentoAutore inserimentoAutore = null;
+    private ArrayList<ModificaAutore> Modifiche = new ArrayList<ModificaAutore>();
     private InserimentoUtente inserimentoUtente = null;
     private ArrayList<ModificaUtente> Modifiche = new ArrayList<ModificaUtente>();
 
