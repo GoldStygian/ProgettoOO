@@ -11,7 +11,7 @@ public class OperazioneUtente {
     private Pagina link_pagina;
 
 
-    public void OperazioneUtente(Date DataA, Date DataR, String Testo, boolean accettata, boolean visionata, boolean link, Pagina link_pagina){
+    public OperazioneUtente(Date DataA, Date DataR, String Testo, boolean accettata, boolean visionata, boolean link, Pagina link_pagina){
         this.DataA = DataA;
         this.DataR = DataR;
         this.Testo = Testo;
