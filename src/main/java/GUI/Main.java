@@ -4,6 +4,7 @@ import main.java.Database.Connessione;
 
 import javax.swing.*;
 
+
 public class Main {
     private JPanel panel1;
     private JButton accountButton;
@@ -17,10 +18,11 @@ public class Main {
         frame.setContentPane(new Main().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        ImageIcon logo = new ImageIcon("C:\\Users\\prora\\Desktop\\ProgettoOO\\ProgettoOO\\src\\static\\logo.png"); //aggiustare
+        ImageIcon logo = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\static\\logo (1).png"); //aggiustare
         frame.setIconImage(logo.getImage());
-        frame.setSize(400, 300); // sempre dopo frame.pack()
+        frame.setSize(600, 700); // sempre dopo frame.pack()
         frame.setVisible(true);
+
 
         Connessione c = new Connessione();
 

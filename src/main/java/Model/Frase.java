@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Frase {
 
     private String Testo = new String();
-    int posizione;
+    private int posizione;
 
     private InserimentoAutore inserimentoAutore = null;
     private ArrayList<ModificaAutore> ModificheAutore = new ArrayList<ModificaAutore>();
