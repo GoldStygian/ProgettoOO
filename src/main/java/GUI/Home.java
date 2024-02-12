@@ -85,8 +85,7 @@ public class Home {
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-                SerchBar.setText(" ".repeat(120));
-                bool = true;
+
 
             }
         });
@@ -130,16 +129,7 @@ public class Home {
         });
 
 
-        frame.addWindowStateListener(new WindowAdapter() {
-            @Override
-            public void windowStateChanged(WindowEvent e) {
-                super.windowStateChanged(e);
-                if(!bool){
-                    SerchBar.setText(" ".repeat(120));
-                    bool = true;
-                }
-            }
-        });
+
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override

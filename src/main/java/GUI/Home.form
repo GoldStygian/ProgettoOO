@@ -68,6 +68,7 @@
                     <properties>
                       <editable value="true"/>
                       <enabled value="true"/>
+                      <font/>
                       <foreground color="-16777216"/>
                       <horizontalAlignment value="2"/>
                       <text value="                                                                                                                                          "/>
