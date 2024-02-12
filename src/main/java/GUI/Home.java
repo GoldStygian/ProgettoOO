@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -20,6 +21,8 @@ public class Home {
     private JTextField SerchBar;
     private JLabel IconaLente;
     private JLabel NameApp;
+    private JPanel BarIcon;
+    private JPanel SerchBorder;
 
     public Home(MainJFrame frame, Controller controller) {
 
@@ -59,11 +62,22 @@ public class Home {
 
         MainPanel.setBackground(new Color(255, 211, 206));
 
-        SerchBar.setText(" ".repeat(120));
+        //SerchBar.setText(" ".repeat(120));
 
         NameApp.setFont(frame.getFontToolBar());
 
         NameApp.setForeground(Color.BLACK);
+
+        //SerchBar.setBorder(new LineBorder(Color.BLACK,1));
+        SerchBar.setBorder(null);
+
+        SerchBar.setPreferredSize(new Dimension(500,25));
+
+        SerchBar.setBackground(new Color(199, 111, 91));
+
+        SerchBorder.setBorder(new LineBorder(Color.BLACK,2));
+
+
 
         loginbutton.addActionListener(new ActionListener() {
             @Override
@@ -125,6 +139,7 @@ public class Home {
                 }
             }
         });
+
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
