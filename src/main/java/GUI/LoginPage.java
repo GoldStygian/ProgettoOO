@@ -16,10 +16,12 @@ public class LoginPage {
     private JPasswordField passwordField;
     private JLabel Logo;
     private JButton loginButton;
+    private JLabel errorMessage;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
         ImageIcon Logo_img = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
+        errorMessage.setVisible(false);
 
         Logo.setIcon(Logo_img);
         Backbutton.addActionListener(new ActionListener() {
@@ -33,11 +35,11 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (controller.Login(emailField.getText(), passwordField.getText())){
 
-                }
-                else{
-                    //metti la scritta
+                if(controller.Login(emailField.getText(), passwordField.getText())) {
+                    frame.SetNewPanel(OldPanel, MainPanel);
+                }else {
+                    errorMessage.setVisible(true);
                 }
             }
         });

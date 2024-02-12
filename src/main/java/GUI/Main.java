@@ -13,8 +13,6 @@ public class Main {
        frame.SetPanel(new Home(frame, controller).getPanel());
 
        //eliminare il metoto chiudi connessione
-        // tornare indietro dopo login true
-        //mostrare messaggio se login false
 
     }
 
