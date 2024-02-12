@@ -1,12 +1,8 @@
 package main.java.GUI;
 
 import main.java.Controller.Controller;
-import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
-import org.w3c.dom.css.RGBColor;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -29,13 +25,12 @@ public class Home {
         loginbutton.setBackground(frame.getColorToolBar());
 
         loginbutton.setBorderPainted(false);
-        
+
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-
             }
         });
 
@@ -44,7 +39,6 @@ public class Home {
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 loginbutton.setBackground(new Color(199, 111, 91));
-
             }
 
             @Override
