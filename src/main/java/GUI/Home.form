@@ -22,7 +22,10 @@
         <children>
           <grid id="f0572" binding="ButtonPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints/>
-            <properties/>
+            <properties>
+              <enabled value="true"/>
+              <font name="JetBrains Mono ExtraBold"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="82927" class="javax.swing.JButton" binding="registerbutton">

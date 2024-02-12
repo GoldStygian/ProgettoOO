@@ -17,8 +17,10 @@ public class Home {
     private JPanel ButtonPanel;
 
 
+
     public Home(MainJFrame frame) {
 
+        loginbutton.setFont(frame.getFont());
         ButtonPanel.setBackground(new Color(128,71,57));
 
         ToolBar.setBackground(new Color(128,71,57));
@@ -32,6 +34,7 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel).getPanel(), MainPanel);
+                loginbutton.setBackground(new Color(128,71,57));
 
             }
         });
