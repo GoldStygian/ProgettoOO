@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
+
 public class Main {
 
     private static MainJFrame frame;

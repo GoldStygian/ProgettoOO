@@ -60,3 +60,11 @@ U
 %src/main/java/DAO/ConnessioneDAO.java,4\b\4ba3cf7040b437533fd02e82a298a777ead47584
 s
 Csrc/main/java/ImplementazionePostgresDAO/ConnessionePostgesDAO.java,9\b\9bb3d8cde7298f2b30d555046d223285554ca892
+O
+src/main/java/DAO/LoginDao.java,f\e\fe8e020f1a680ca7f569bc31c9b6be0c6228e878
+O
+src/main/java/DAO/LoginDAO.java,e\b\ebdcf0b5da485c414f635e7d19704b1131067e23
+n
+>src/main/java/ImplementazionePostgresDAO/LoginPostgresDao.java,9\3\93cf51232aa1918cba1d48b18c72de5e2292cdcd
+n
+>src/main/java/ImplementazionePostgresDAO/LoginPostgresDAO.java,a\6\a6a24ca4c9ce3b84025bd6582cc81ecd755829ac
