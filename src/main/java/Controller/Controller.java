@@ -8,11 +8,12 @@ public class Controller {
 
 
         try {
-            return LoginPostgresDAO.Login("email", "password");
+            new LoginPostgresDAO().Login("email", "password");
         } catch (Exception ex) {
             System.out.println("ciao\n");
         }
 
+        return false;
     }
 
 

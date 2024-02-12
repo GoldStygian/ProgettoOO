@@ -29,8 +29,7 @@ public class Home {
         loginbutton.setBackground(frame.getColorToolBar());
 
         loginbutton.setBorderPainted(false);
-
-
+        
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

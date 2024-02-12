@@ -48,14 +48,8 @@ Q
 :
 
 CODEOWNERS,a\b\abe895765c4ce08c5dfbc95e5e3c5db67ff92ded
-R
-"src/main/java/Controller/main.java,2\b\2bc7ae266f631bbccdbe9ac14daefcb364bafbe3
 X
 (src/main/java/Controller/Controller.java,0\7\078546e943e5b71a5a13778784b81fa2a5095cd8
-K
-src/main/java/DAO/main.java,1\e\1e4535708245eae264cdfe5fb989d2ff2511dc82
-J
-src/main/java/DAO/DAO.java,9\f\9f39ec83ce0fb6186446d4cafb50dca6191a0c88
 U
 %src/main/java/DAO/ConnessioneDAO.java,4\b\4ba3cf7040b437533fd02e82a298a777ead47584
 s

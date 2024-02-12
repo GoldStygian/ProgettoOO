@@ -6,7 +6,6 @@ import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
 public class Main {
 
     private static MainJFrame frame;
-
     private static Controller controller;
 
     public static void main(String[] args){
