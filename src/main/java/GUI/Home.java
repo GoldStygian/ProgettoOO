@@ -17,6 +17,8 @@ public class Home {
     private JButton loginbutton;
     private JPanel ToolBar;
     private JPanel ButtonPanel;
+    private JTextField textField1;
+    private JLabel Icon;
 
     public Home(MainJFrame frame, Controller controller) {
 
@@ -29,6 +31,8 @@ public class Home {
         loginbutton.setBackground(frame.getColorToolBar());
 
         loginbutton.setBorderPainted(false);
+
+        Icon.setIcon(frame.getIcon());
         
         loginbutton.addActionListener(new ActionListener() {
             @Override

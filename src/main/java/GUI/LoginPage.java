@@ -20,9 +20,9 @@ public class LoginPage {
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
-        ImageIcon Logo_img = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
 
-        Logo.setIcon(Logo_img);
+
+        Logo.setIcon(frame.getIcon());
         Backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -11,6 +11,8 @@ public class MainJFrame extends JFrame {
 
     private Color ColorToolBar = new Color(128,71,57);
 
+    private ImageIcon Icon = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
+
     public MainJFrame(String Nome){
         super(Nome);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -18,7 +20,7 @@ public class MainJFrame extends JFrame {
         this.setVisible(true);
         this.setSize(400, 200);
 
-        File is = new File("C:\\Users\\prora\\Desktop\\ProgettoOO\\ProgettoOO\\src\\main\\resources\\Flipahaus-V2.ttf");
+        File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Flipahaus-V2.ttf");
         try {
             FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(44f);
         } catch (FontFormatException e) {
@@ -46,5 +48,9 @@ public class MainJFrame extends JFrame {
 
     public Font getFontToolBar(){
         return FontToolBar;
+    }
+
+    public ImageIcon getIcon(){
+        return Icon;
     }
 }
