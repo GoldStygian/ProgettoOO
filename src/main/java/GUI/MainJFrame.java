@@ -24,7 +24,7 @@ public class MainJFrame extends JFrame {
 
         File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Roman SD.ttf");
         try {
-            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(35f);
+            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(25f);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
