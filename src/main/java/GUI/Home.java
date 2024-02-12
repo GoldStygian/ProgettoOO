@@ -1,5 +1,6 @@
 package main.java.GUI;
 
+import main.java.Controller.Controller;
 import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
 import org.w3c.dom.css.RGBColor;
 
@@ -17,7 +18,7 @@ public class Home {
     private JPanel ToolBar;
     private JPanel ButtonPanel;
 
-    public Home(MainJFrame frame) {
+    public Home(MainJFrame frame, Controller controller) {
 
         loginbutton.setFont(frame.getFontToolBar());
 
@@ -33,7 +34,7 @@ public class Home {
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.SetNewPanel(new LoginPage(frame, MainPanel).getPanel(), MainPanel);
+                frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
 
             }

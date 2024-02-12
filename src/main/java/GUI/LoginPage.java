@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.Controller.Controller;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +18,7 @@ public class LoginPage {
     private JButton loginButton;
 
 
-    public LoginPage(MainJFrame frame, JPanel OldPanel) {
+    public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
         ImageIcon Logo_img = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
 
