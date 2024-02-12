@@ -11,7 +11,7 @@ public class SearchPage {
     private JList list1;
 
     public SearchPage() {
-        JFrame frame = new JFrame("Lista Dinamica");
+        /*§JFrame frame = new JFrame("Lista Dinamica");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Creazione di una lista dinamica di elementi
@@ -48,5 +48,6 @@ public class SearchPage {
         frame.add(panel);
         frame.setSize(300, 200);
         frame.setVisible(true);
+    }*/
     }
 }
