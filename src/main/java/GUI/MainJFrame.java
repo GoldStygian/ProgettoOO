@@ -22,7 +22,7 @@ public class MainJFrame extends JFrame {
         this.setIconImage(Icon.getImage());
         this.setResizable(false);
 
-        File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\London History.ttf");
+        File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Roman SD.ttf");
         try {
             FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(35f);
         } catch (FontFormatException e) {

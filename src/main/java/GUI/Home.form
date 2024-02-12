@@ -39,7 +39,7 @@
               <component id="7851d" class="javax.swing.JLabel" binding="NameApp">
                 <constraints/>
                 <properties>
-                  <text value="Wiki"/>
+                  <text value="FandomWiki"/>
                 </properties>
               </component>
             </children>
