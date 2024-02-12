@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class LoginPage {
 
-    protected JPanel MainPanel;
+    private JPanel MainPanel;
     private JButton Backbutton;
 
     //private final MainJFrame frame;
@@ -20,6 +20,7 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(OldPanel, MainPanel);
+
             }
         });
 

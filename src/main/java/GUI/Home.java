@@ -1,22 +1,53 @@
 package main.java.GUI;
 
-import javax.swing.*;
+import org.w3c.dom.css.RGBColor;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.border.Border;
+
+import java.awt.*;
+import java.awt.event.*;
 
 public class Home {
 
-    protected JPanel MainPanel;
-    private JButton button1;
+    private JPanel MainPanel;
+    private JButton registerbutton;
+    private JButton loginbutton;
+    private JPanel ToolBar;
+    private JPanel ButtonPanel;
+
 
     public Home(MainJFrame frame) {
 
-        button1.addActionListener(new ActionListener() {
+        ButtonPanel.setBackground(new Color(128,71,57));
+
+        ToolBar.setBackground(new Color(128,71,57));
+
+        loginbutton.setBackground(new Color(128,71,57));
+
+        loginbutton.setBorderPainted(false);
+
+
+        loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel).getPanel(), MainPanel);
 
+            }
+        });
+
+        loginbutton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                loginbutton.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                loginbutton.setBackground(new Color(128,71,57));
             }
         });
     }

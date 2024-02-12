@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class MainJFrame extends JFrame {
 
+
     public MainJFrame(String Nome){
         super(Nome);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

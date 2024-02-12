@@ -9,7 +9,6 @@ public class Main {
        frame = new MainJFrame("Home");
        frame.SetPanel(new Home(frame).getPanel());
 
-        //togliere getPanel e mettere protected il pannello
         //deallocare i panel
 
     }
