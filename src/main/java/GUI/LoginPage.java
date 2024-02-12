@@ -8,10 +8,18 @@ public class LoginPage {
 
     private JPanel MainPanel;
     private JButton Backbutton;
+    private JPanel ToolBar;
+    private JPanel LoginBox;
+    private JTextField textField1;
+    private JPasswordField passwordField1;
+    private JLabel Logo;
 
 
     public LoginPage(MainJFrame frame, JPanel OldPanel) {
 
+        ImageIcon Logo_img = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
+
+        Logo.setIcon(Logo_img);
         Backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

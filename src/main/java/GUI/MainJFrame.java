@@ -15,6 +15,7 @@ public class MainJFrame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setSize(400, 200);
+
         File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Flipahaus-V2.ttf");
         try {
             FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(44f);
