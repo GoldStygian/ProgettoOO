@@ -33,7 +33,9 @@
             <children>
               <grid id="ea08f" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <background color="-8370375"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="82927" class="javax.swing.JButton" binding="registerbutton">
@@ -53,16 +55,20 @@
               </grid>
             </children>
           </grid>
-          <grid id="71b46" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <grid id="71b46" binding="BarraDiRicerca" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-8370375"/>
+            </properties>
             <border type="none"/>
             <children>
               <grid id="fb2b1" layout-manager="FlowLayout" hgap="100" vgap="5" flow-align="1">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <background color="-8370375"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="82c2" class="javax.swing.JTextField" binding="textField1" default-binding="true">
@@ -73,7 +79,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="91890" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="91890" binding="Icona" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -86,7 +92,9 @@
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-8370375"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="56b30" class="javax.swing.JLabel" binding="Icon">

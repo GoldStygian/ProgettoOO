@@ -1,11 +1,8 @@
 package main.java.GUI;
 
 import main.java.Controller.Controller;
-import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
-import org.w3c.dom.css.RGBColor;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -19,6 +16,8 @@ public class Home {
     private JPanel ButtonPanel;
     private JTextField textField1;
     private JLabel Icon;
+    private JPanel BarraDiRicerca;
+    private JPanel Icona;
 
     public Home(MainJFrame frame, Controller controller) {
 
@@ -33,6 +32,12 @@ public class Home {
         loginbutton.setBorderPainted(false);
 
         Icon.setIcon(frame.getIcon());
+
+        BarraDiRicerca.setBackground(frame.getColorToolBar());
+
+        Icona.setBackground(frame.getColorToolBar());
+
+
 
         loginbutton.addActionListener(new ActionListener() {
             @Override
