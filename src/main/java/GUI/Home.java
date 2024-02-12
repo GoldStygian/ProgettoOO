@@ -77,6 +77,7 @@ public class Home {
 
         SerchBorder.setBorder(new LineBorder(Color.BLACK,2));
 
+        SerchBorder.setFont();
 
 
         loginbutton.addActionListener(new ActionListener() {
