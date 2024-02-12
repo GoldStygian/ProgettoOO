@@ -12,11 +12,10 @@ public class LoginPage {
     private JButton Backbutton;
     private JPanel ToolBar;
     private JPanel LoginBox;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
+    private JTextField emailField;
+    private JPasswordField passwordField;
     private JLabel Logo;
     private JButton loginButton;
-
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
@@ -27,11 +26,21 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(OldPanel, MainPanel);
-
             }
         });
 
-        //controller.login(email, passowrd) //dalla gui
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (controller.Login(emailField.getText(), passwordField.getText())){
+
+                }
+                else{
+                    //metti la scritta
+                }
+            }
+        });
 
 
     }

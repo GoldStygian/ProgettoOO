@@ -9,27 +9,30 @@ import java.sql.Statement;
 
 public class LoginPostgresDAO implements LoginDAO {
 
-    //@Override
+    @Override
     public boolean Login(String email, String password) throws SQLException {
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="SELECT email, password FROM utente WHERE email = '%s' AND password = '%s'".formatted(email, password);
-        System.out.println(query);
+        String query="SELECT email, password_utente FROM utente WHERE email = '%s' AND password_utente = '%s'".formatted(email, password);
         ResultSet resultSet = statement.executeQuery(query);
 
-        while (resultSet.next()) {
-            // Esempio: stampa dei valori delle colonne
-            System.out.println("Colonna1: " + resultSet.getString("colonna1"));
-            System.out.println("Colonna2: " + resultSet.getString("colonna2"));
-            // E così via per le altre colonne
-        }
+        /*while (resultSet.next()) {
+            System.out.println(resultSet.getString("email"));
+        }*/
 
         // Chiusura delle risorse
-        resultSet.close();
-        statement.close();
         con.close();
-        return false;
+        if (resultSet.next()){//se contiene qualcosa allora email e password combaciano
+            resultSet.close();
+            statement.close();
+            return true;
+        }else{
+            resultSet.close();
+            statement.close();
+            return false;
+        }
+
     }
 }
