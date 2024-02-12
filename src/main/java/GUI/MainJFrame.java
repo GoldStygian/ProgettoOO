@@ -9,6 +9,8 @@ import java.io.IOException;
 public class MainJFrame extends JFrame {
     private Font FontToolBar;
 
+    private Color ColorToolBar = new Color(128,71,57);
+
     public MainJFrame(String Nome){
         super(Nome);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,7 +40,11 @@ public class MainJFrame extends JFrame {
     }
 
 
-    public Font getFont(){
+    public Color getColorToolBar() {
+        return ColorToolBar;
+    }
+
+    public Font getFontToolBar(){
         return FontToolBar;
     }
 }

@@ -20,12 +20,13 @@ public class Home {
 
     public Home(MainJFrame frame) {
 
-        loginbutton.setFont(frame.getFont());
-        ButtonPanel.setBackground(new Color(128,71,57));
+        loginbutton.setFont(frame.getFontToolBar());
 
-        ToolBar.setBackground(new Color(128,71,57));
+        ButtonPanel.setBackground(frame.getColorToolBar());
 
-        loginbutton.setBackground(new Color(128,71,57));
+        ToolBar.setBackground(frame.getColorToolBar());
+
+        loginbutton.setBackground(frame.getColorToolBar());
 
         loginbutton.setBorderPainted(false);
 
@@ -34,7 +35,7 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel).getPanel(), MainPanel);
-                loginbutton.setBackground(new Color(128,71,57));
+                loginbutton.setBackground(frame.getColorToolBar());
 
             }
         });
@@ -50,7 +51,7 @@ public class Home {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                loginbutton.setBackground(new Color(128,71,57));
+                loginbutton.setBackground(frame.getColorToolBar());
             }
         });
     }
