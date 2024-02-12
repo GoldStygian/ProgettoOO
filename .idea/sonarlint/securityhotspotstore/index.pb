@@ -62,3 +62,11 @@ n
 >src/main/java/ImplementazionePostgresDAO/LoginPostgresDao.java,9\3\93cf51232aa1918cba1d48b18c72de5e2292cdcd
 n
 >src/main/java/ImplementazionePostgresDAO/LoginPostgresDAO.java,a\6\a6a24ca4c9ce3b84025bd6582cc81ecd755829ac
+S
+#src/main/java/GUI/RegisterPage.java,6\1\612116fb48545881a2c89b8badc65f8294eb873e
+S
+#src/main/java/GUI/RegisterPage.form,b\d\bd6304a9f058305ed790b737f791d97036d9cdcf
+Q
+!src/main/java/GUI/SearchPage.java,8\5\85dbfb3338c0c1fee057f9e6649c4e82f5284c35
+Q
+!src/main/java/GUI/SearchPage.form,c\a\cad6150005e2ca737d0c296c48fc368499e1af71
