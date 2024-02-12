@@ -9,7 +9,6 @@ public class Main {
        frame = new MainJFrame("Home");
        frame.SetPanel(new Home(frame).getPanel());
 
-        //deallocare i panel
 
     }
 

@@ -27,14 +27,12 @@ public class MainJFrame extends JFrame {
 
     public void SetNewPanel(JPanel NewMainPanel, JPanel OldMainPanel){
         this.remove(OldMainPanel);
-        //this.add(NewMainPanel);
         this.setContentPane(NewMainPanel);
         this.revalidate();
         this.repaint();
     }
 
     public void SetPanel(JPanel NewMainPanel){
-        //this.add(NewMainPanel);
         this.setContentPane(NewMainPanel);
     }
 
