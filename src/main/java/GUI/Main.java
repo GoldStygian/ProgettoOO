@@ -9,8 +9,9 @@ public class Main {
 
     public static void main(String[] args){
 
-       frame = new MainJFrame("Wikipedia");
+       frame = new MainJFrame("Wikipedia", 1500,700);
        frame.SetPanel(new Home(frame, controller).getPanel());
+       frame.Resize(1400,700);
 
        //eliminare il metoto chiudi connessione
 

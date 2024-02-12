@@ -13,16 +13,18 @@ public class MainJFrame extends JFrame {
 
     private ImageIcon Icon = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
 
-    public MainJFrame(String Nome){
+    public MainJFrame(String Nome, int W, int H){
         super(Nome);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
-        this.setSize(400, 200);
+        this.setSize(W, H);
+        this.setIconImage(Icon.getImage());
+        this.setResizable(false);
 
-        File is = new File("C:\\Users\\prora\\Desktop\\ProgettoOO\\ProgettoOO\\src\\main\\resources\\Flipahaus-V2.ttf");
+        File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\London History.ttf");
         try {
-            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(44f);
+            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(35f);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -52,5 +54,9 @@ public class MainJFrame extends JFrame {
 
     public ImageIcon getIcon(){
         return Icon;
+    }
+
+    public void Resize(int W, int H){
+        this.setSize(W, H);
     }
 }
