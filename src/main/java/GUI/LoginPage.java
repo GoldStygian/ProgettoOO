@@ -20,6 +20,9 @@ public class LoginPage {
             }
         });
 
+        //controller.login(email, passowrd) //dalla gui
+
+
     }
 
     public JPanel getPanel() {
