@@ -16,12 +16,14 @@ public class LoginPage {
     private JPasswordField passwordField;
     private JLabel Logo;
     private JButton loginButton;
+    private JLabel errorMessage;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
+        ImageIcon Logo_img = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
+        errorMessage.setVisible(false);
 
-
-        Logo.setIcon(frame.getIcon());
+        Logo.setIcon(Logo_img);
         Backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
