@@ -35,11 +35,11 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (controller.Login(emailField.getText(), passwordField.getText())){
 
-                if(controller.Login(emailField.getText(), passwordField.getText())) {
-                    frame.SetNewPanel(OldPanel, MainPanel);
-                }else {
-                    errorMessage.setVisible(true);
+                }
+                else{
+                    //metti la scritta
                 }
             }
         });

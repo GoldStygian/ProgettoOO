@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -13,6 +14,10 @@ public class Home {
     private JButton loginbutton;
     private JPanel ToolBar;
     private JPanel ButtonPanel;
+    private JLabel Icon;
+    private JPanel BarraDiRicerca;
+    private JPanel Icona;
+    private JTextField textField1;
 
     public Home(MainJFrame frame, Controller controller) {
 
@@ -26,11 +31,22 @@ public class Home {
 
         loginbutton.setBorderPainted(false);
 
+        Image ResizeImage = frame.getIcon().getImage().getScaledInstance(75,75, java.awt.Image.SCALE_SMOOTH);
+
+        Icon.setIcon(new ImageIcon(ResizeImage));
+
+        BarraDiRicerca.setBackground(frame.getColorToolBar());
+
+        Icona.setBackground(frame.getColorToolBar());
+
+
+
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
+
             }
         });
 
@@ -39,6 +55,7 @@ public class Home {
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 loginbutton.setBackground(new Color(199, 111, 91));
+
             }
 
             @Override
