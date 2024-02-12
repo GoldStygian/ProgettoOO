@@ -14,10 +14,10 @@ public class Home {
     private JButton loginbutton;
     private JPanel ToolBar;
     private JPanel ButtonPanel;
-    private JTextField textField1;
     private JLabel Icon;
     private JPanel BarraDiRicerca;
     private JPanel Icona;
+    private JTextField textField1;
 
     public Home(MainJFrame frame, Controller controller) {
 
@@ -31,7 +31,9 @@ public class Home {
 
         loginbutton.setBorderPainted(false);
 
-        Icon.setIcon(frame.getIcon());
+        Image ResizeImage = frame.getIcon().getImage().getScaledInstance(75,75, java.awt.Image.SCALE_SMOOTH);
+
+        Icon.setIcon(new ImageIcon(ResizeImage));
 
         BarraDiRicerca.setBackground(frame.getColorToolBar());
 
