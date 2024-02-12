@@ -36,10 +36,10 @@ public class LoginPage {
             public void actionPerformed(ActionEvent e) {
 
                 if (controller.Login(emailField.getText(), passwordField.getText())){
-
+                    frame.SetNewPanel(OldPanel, MainPanel);
                 }
                 else{
-                    //metti la scritta
+                    errorMessage.setVisible(true);
                 }
             }
         });
