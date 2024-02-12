@@ -9,12 +9,8 @@ public class LoginPage {
     private JPanel MainPanel;
     private JButton Backbutton;
 
-    //private final MainJFrame frame;
-    //private JPanel OldPanel;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel) {
-        //this.frame = frame;
-        //this.OldPanel=OldPanel;
 
         Backbutton.addActionListener(new ActionListener() {
             @Override
