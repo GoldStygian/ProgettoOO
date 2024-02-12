@@ -13,6 +13,7 @@ public class LoginPage {
     private JTextField textField1;
     private JPasswordField passwordField1;
     private JLabel Logo;
+    private JButton loginButton;
 
 
     public LoginPage(MainJFrame frame, JPanel OldPanel) {
