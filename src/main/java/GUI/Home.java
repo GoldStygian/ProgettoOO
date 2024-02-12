@@ -1,5 +1,6 @@
 package main.java.GUI;
 
+import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
 import org.w3c.dom.css.RGBColor;
 
 import javax.swing.*;
@@ -15,8 +16,6 @@ public class Home {
     private JButton loginbutton;
     private JPanel ToolBar;
     private JPanel ButtonPanel;
-
-
 
     public Home(MainJFrame frame) {
 
