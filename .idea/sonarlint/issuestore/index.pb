@@ -45,9 +45,6 @@ K
 src/main/java/GUI/Home.form,7\d\7dcdd7a9bdb225cf74b15d4425ef6e1139aaa09c
 Q
 !src/main/java/GUI/MainJFrame.java,4\d\4dda53bd3758e00a2e93332b778b5db38ab65162
-:
-
-CODEOWNERS,a\b\abe895765c4ce08c5dfbc95e5e3c5db67ff92ded
 X
 (src/main/java/Controller/Controller.java,0\7\078546e943e5b71a5a13778784b81fa2a5095cd8
 U
@@ -66,6 +63,9 @@ S
 #src/main/java/GUI/RegisterPage.java,6\1\612116fb48545881a2c89b8badc65f8294eb873e
 S
 #src/main/java/GUI/RegisterPage.form,b\d\bd6304a9f058305ed790b737f791d97036d9cdcf
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Q
 !src/main/java/GUI/SearchPage.java,8\5\85dbfb3338c0c1fee057f9e6649c4e82f5284c35
 Q

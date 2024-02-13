@@ -13,7 +13,7 @@ public class MainJFrame extends JFrame {
 
     private  Color ColorBack = new Color(253, 233, 229);
 
-    private ImageIcon Icon = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
+    private ImageIcon Icon = new ImageIcon("src\\main\\resources\\logo2.png");
 
     public MainJFrame(String Nome, int W, int H){
         super(Nome);
@@ -22,9 +22,9 @@ public class MainJFrame extends JFrame {
         this.setVisible(true);
         this.setSize(W, H);
         this.setIconImage(Icon.getImage());
-        this.setResizable(false);
+        this.setResizable(true);
 
-        File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Roman SD.ttf");
+        File is = new File("src\\main\\resources\\Roman SD.ttf");
         try {
             FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(22f);
         } catch (FontFormatException e) {
