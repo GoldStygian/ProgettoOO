@@ -18,7 +18,7 @@ public class Main {
 
         //test
         JFrame frame2 = new JFrame("Sfondo del Panel");
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setDefaultCloseOperation();
         frame2.setSize(300, 200);
 
         JPanel panel = new JPanel();
