@@ -70,3 +70,11 @@ Q
 !src/main/java/GUI/SearchPage.java,8\5\85dbfb3338c0c1fee057f9e6649c4e82f5284c35
 Q
 !src/main/java/GUI/SearchPage.form,c\a\cad6150005e2ca737d0c296c48fc368499e1af71
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+V
+&src/main/java/DAO/FunzionalitaDAO.java,2\4\24812db88e95f20268b457dbd8ffd18ff9026c27
+t
+Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAo.java,0\8\0818f8d9f81a869f5e88ff8905c8eede3409d2c9
+t
+Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAO.java,4\f\4f8d3783f049f93369df73b674d09b5ce802de7e

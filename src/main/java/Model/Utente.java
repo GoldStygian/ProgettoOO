@@ -12,7 +12,6 @@ public class Utente {
 
     ArrayList<OperazioneUtente> Operazioni_Utente = new ArrayList<OperazioneUtente>();
 
-
     public Utente(String Email, String Password, String Nome, String Cognome, char genere){
         this.Nome=Nome;
         this.Email=Email;

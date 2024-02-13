@@ -1,9 +1,11 @@
 package main.java.Controller;
 
-import main.java.ImplementazionePostgresDAO.LoginPostgresDAO;
+import main.java.ImplementazionePostgresDAO.*;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -19,11 +21,15 @@ public class Controller {
 
     }
 
-    public ResultSet FindPages(String stringaRicerca){
+    public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
-        ResultSet pagine = null;
-        return pagine;
+        try {
+            ArrayList<ArrayList<String>> DataPages = new FunzionalitPostgresDAO().SearchPage(ricerca);
+            return DataPages;
+        } catch (SQLException e) {
+            return null;
+        }
+
     }
-
 
 }
