@@ -33,7 +33,7 @@ public class LoginPage {
     private JPanel EmailBox;
     private JPanel PassBox;
     private JPanel LoginButtonBox;
-    private JLabel IconLoock;
+    private JLabel IconLock;
     private JPanel EmailLine;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
@@ -51,6 +51,11 @@ public class LoginPage {
         t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
 
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\back.png"))));
+
+        Image lockchiuso =  t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\padlock.png"));
+        Image lockaperto =  t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\open-padlock.png"));
+
+        t.SetIcon(lo);
 
         errorMessage.setVisible(false);
 
