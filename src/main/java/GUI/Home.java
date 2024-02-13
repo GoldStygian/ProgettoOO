@@ -26,39 +26,22 @@ public class Home {
 
     public Home(MainJFrame frame, Controller controller) {
 
+        GuiPresetComponet t = new GuiPresetComponet(frame);
 
+        t.ToolBarButton(loginbutton);
 
-        loginbutton.setFont(frame.getFontToolBar());
-
-        loginbutton.setBackground(frame.getColorToolBar());
-
-        loginbutton.setBorderPainted(false);
-
-        loginbutton.setForeground(Color.BLACK);
+        t.ToolBarButton(registerbutton);
 
         ButtonPanel.setBackground(frame.getColorToolBar());
 
         ToolBar.setBackground(frame.getColorToolBar());
 
-        Image ResizeImage = frame.getIcon().getImage().getScaledInstance(65,65, java.awt.Image.SCALE_SMOOTH);
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
 
-        Icon.setIcon(new ImageIcon(ResizeImage));
+
+        t.SetIcon(IconaLente, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\magnifying-glass.png"))));
 
         BarraDiRicerca.setBackground(frame.getColorToolBar());
-
-        registerbutton.setFont(frame.getFontToolBar());
-
-        registerbutton.setBackground(frame.getColorToolBar());
-
-        registerbutton.setBorderPainted(false);
-
-        registerbutton.setForeground(Color.BLACK);
-
-        ImageIcon IconLente = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\magnifying-glass.png");
-
-        Image ResizeImage2 = IconLente.getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
-
-        IconaLente.setIcon(new ImageIcon(ResizeImage2));
 
         MainPanel.setBackground(frame.getColorBack());
 
@@ -137,6 +120,14 @@ public class Home {
                     bool = false;
                     SerchBar.setText("");
                 }
+
+            }
+        });
+
+        IconaLente.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
 
             }
         });
