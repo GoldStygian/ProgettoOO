@@ -26,8 +26,6 @@ public class Home {
 
     public Home(MainJFrame frame, Controller controller) {
 
-
-
         loginbutton.setFont(frame.getFontToolBar());
 
         loginbutton.setBackground(frame.getColorToolBar());
@@ -54,7 +52,7 @@ public class Home {
 
         registerbutton.setForeground(Color.BLACK);
 
-        ImageIcon IconLente = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\magnifying-glass.png");
+        ImageIcon IconLente = new ImageIcon("src\\main\\resources\\magnifying-glass.png");
 
         Image ResizeImage2 = IconLente.getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
 
@@ -78,7 +76,6 @@ public class Home {
         SerchBorder.setBorder(new LineBorder(Color.BLACK,2));
 
         SerchBorder.setFont(frame.getFontToolBar());
-
 
         loginbutton.addActionListener(new ActionListener() {
             @Override

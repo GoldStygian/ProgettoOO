@@ -64,7 +64,7 @@ public class LoginPage {
 
         NameApp.setForeground(Color.BLACK);
 
-        ResizeImage  = (new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\back.png")).getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
+        ResizeImage  = (new ImageIcon("src\\main\\resources\\back.png")).getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
 
         IconBack.setIcon(new ImageIcon(ResizeImage));
 
