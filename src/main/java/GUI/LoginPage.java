@@ -5,10 +5,7 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class LoginPage {
 
@@ -35,6 +32,8 @@ public class LoginPage {
     private JPanel LoginButtonBox;
     private JLabel IconLock;
     private JLabel IconName;
+    private JLabel TextEmail;
+    private JLabel TextPass;
     private JPanel EmailLine;
     private boolean bool = true;
 
@@ -91,7 +90,13 @@ public class LoginPage {
         PassBox.setBorder(new LineBorder(Color.BLACK,2));
         passwordField.setBorder(null);
         t.SetIcon(IconName, new ImageIcon( t.ResizeIcon(50,50,new ImageIcon("src/main/resources/email2.png"))));
-
+        t.ToolBarButton(loginButton);
+        loginButton.setBorderPainted(true);
+        loginButton.setBorder(new LineBorder(Color.BLACK,2));
+        TextEmail.setFont(frame.getFontToolBar());
+        TextPass.setFont(frame.getFontToolBar());
+        TextEmail.setForeground(Color.BLACK);
+        TextPass.setForeground(Color.BLACK);
 
 
 
@@ -113,6 +118,20 @@ public class LoginPage {
                 else{
                     errorMessage.setVisible(true);
                 }
+            }
+        });
+
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                loginButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                loginButton.setBackground(frame.getColorToolBar());
             }
         });
 
@@ -193,8 +212,6 @@ public class LoginPage {
 
             }
         });
-
-
 
     }
 

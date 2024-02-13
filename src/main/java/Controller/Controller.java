@@ -34,4 +34,12 @@ public class Controller {
 
     }
 
+    public void getWikiPage(String titolo) {//da finire
+        try{
+            new RicercaPagineDAO().getWikiPage(titolo);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
