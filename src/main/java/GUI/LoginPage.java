@@ -27,13 +27,17 @@ public class LoginPage {
     private JLabel IconBack;
     private JPanel DivisioreToolBar;
     private JPanel InternalBox;
+    private JPanel LogoBox;
+    private JPanel DivisoreImgEmail;
+    private JPanel EmailBox;
+    private JPanel PassBox;
+    private JPanel LoginButtonBox;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
         t.ToolBarButton(Backbutton);
-
 
         ToolBar.setBackground(frame.getColorToolBar());
 
@@ -55,6 +59,15 @@ public class LoginPage {
 
         NameApp.setForeground(Color.BLACK);
 
+        LogoBox.setBackground(frame.getColorBack());
+
+        DivisoreImgEmail.setBackground(frame.getColorBack());
+
+        //emailField.setPreferredSize(new Dimension(1000,200));
+
+        LoginButtonBox.setBackground(frame.getColorBack());
+        EmailBox.setBackground(frame.getColorBack());
+        PassBox.setBackground(frame.getColorBack());
 
         Backbutton.addActionListener(new ActionListener() {
             @Override

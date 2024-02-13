@@ -22,7 +22,7 @@ public class MainJFrame extends JFrame {
         this.setVisible(true);
         this.setSize(W, H);
         this.setIconImage(Icon.getImage());
-        this.setResizable(true);
+        this.setResizable(false);
 
         File is = new File("src\\main\\resources\\Roman SD.ttf");
         try {

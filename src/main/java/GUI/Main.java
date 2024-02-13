@@ -16,9 +16,10 @@ public class Main {
        frame.SetPanel(new Home(frame, controller).getPanel());
        frame.Resize(1400,700); //perche 2 volte?
 
+        /*
         //test
         JFrame frame2 = new JFrame("Sfondo del Panel");
-        frame2.setDefaultCloseOperation();
+        //frame2.setDefaultCloseOperation();
         frame2.setSize(300, 200);
 
         JPanel panel = new JPanel();
@@ -39,6 +40,8 @@ public class Main {
 
         //controller.SearchPages("");
         //
+
+         */
     }
 
 }
