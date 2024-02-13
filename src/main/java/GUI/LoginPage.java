@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,8 @@ public class LoginPage {
     private JPanel EmailBox;
     private JPanel PassBox;
     private JPanel LoginButtonBox;
+    private JLabel IconLoock;
+    private JPanel EmailLine;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
@@ -68,6 +71,9 @@ public class LoginPage {
         LoginButtonBox.setBackground(frame.getColorBack());
         EmailBox.setBackground(frame.getColorBack());
         PassBox.setBackground(frame.getColorBack());
+        EmailBox.setBorder(new LineBorder(Color.BLACK,2));
+        //emailField.setBorder(null);
+
 
 
         Backbutton.addActionListener(new ActionListener() {
