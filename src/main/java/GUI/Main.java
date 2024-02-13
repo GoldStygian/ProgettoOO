@@ -4,6 +4,7 @@ import main.java.Controller.Controller;
 
 import java.sql.SQLException;
 
+
 public class Main {
 
     private static MainJFrame frame;
@@ -19,3 +20,4 @@ public class Main {
 
 }
 //eliminare il metoto chiudi connessione
+//mettere stderr nel log

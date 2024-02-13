@@ -78,3 +78,7 @@ t
 Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAo.java,0\8\0818f8d9f81a869f5e88ff8905c8eede3409d2c9
 t
 Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAO.java,4\f\4f8d3783f049f93369df73b674d09b5ce802de7e
+X
+(src/main/java/GUI/GuiPresetComponet.java,3\a\3abd207439cda3a81ed8970fd3182014938f0415
+h
+8src/main/java/ImplementazionePostgresDAO/credenziali.txt,9\0\9066b35682f90d36cc87996f3dd3b624c34d90cd
