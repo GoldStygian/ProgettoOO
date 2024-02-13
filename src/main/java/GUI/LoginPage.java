@@ -66,13 +66,15 @@ public class LoginPage {
 
         DivisoreImgEmail.setBackground(frame.getColorBack());
 
+
+
         //emailField.setPreferredSize(new Dimension(1000,200));
 
         LoginButtonBox.setBackground(frame.getColorBack());
         EmailBox.setBackground(frame.getColorBack());
         PassBox.setBackground(frame.getColorBack());
         EmailBox.setBorder(new LineBorder(Color.BLACK,2));
-        //emailField.setBorder(null);
+        emailField.setBorder(null);
 
 
 
