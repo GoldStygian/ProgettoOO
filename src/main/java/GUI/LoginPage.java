@@ -135,7 +135,6 @@ public class LoginPage {
             }
         });
 
-
     }
 
     public JPanel getPanel() {
