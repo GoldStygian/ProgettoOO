@@ -30,29 +30,21 @@ public class LoginPage {
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
-        ImageIcon Logo_img = frame.getIcon();
+        GuiPresetComponet t = new GuiPresetComponet(frame);
 
-        Image ResizeImage2 = Logo_img.getImage().getScaledInstance(150,150, java.awt.Image.SCALE_SMOOTH);
+        t.ToolBarButton(Backbutton);
 
-        Logo.setIcon(new ImageIcon(ResizeImage2));
+
 
         ToolBar.setBackground(frame.getColorToolBar());
 
         MainPanel.setBackground(frame.getColorBack());
 
-        Backbutton.setFont(frame.getFontToolBar());
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(150,150,frame.getIcon())));
 
-        Backbutton.setBackground(frame.getColorToolBar());
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
 
-        Backbutton.setBorderPainted(false);
-
-        Backbutton.setForeground(Color.BLACK);
-
-        Backbutton.setBorder(null);
-
-        Image ResizeImage = frame.getIcon().getImage().getScaledInstance(65,65, java.awt.Image.SCALE_SMOOTH);
-
-        Icon.setIcon(new ImageIcon(ResizeImage));
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\back.png"))));
 
         errorMessage.setVisible(false);
 
@@ -64,9 +56,6 @@ public class LoginPage {
 
         NameApp.setForeground(Color.BLACK);
 
-        ResizeImage  = (new ImageIcon("src\\main\\resources\\back.png")).getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
-
-        IconBack.setIcon(new ImageIcon(ResizeImage));
 
         Backbutton.addActionListener(new ActionListener() {
             @Override
