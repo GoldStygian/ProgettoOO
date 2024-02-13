@@ -54,13 +54,13 @@ public class Home {
         //SerchBar.setBorder(new LineBorder(Color.BLACK,1));
         SerchBar.setBorder(null);
 
-        SerchBar.setPreferredSize(new Dimension(500,25));
+        SerchBar.setPreferredSize(new Dimension(500,30));
 
         SerchBar.setBackground(new Color(199, 111, 91));
 
         SerchBorder.setBorder(new LineBorder(Color.BLACK,2));
 
-        SerchBorder.setFont(frame.getFontToolBar());
+        SerchBar.setFont(frame.getFontToolBar());
 
 
         loginbutton.addActionListener(new ActionListener() {

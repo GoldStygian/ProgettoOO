@@ -34,6 +34,7 @@ public class LoginPage {
     private JPanel PassBox;
     private JPanel LoginButtonBox;
     private JLabel IconLock;
+    private JLabel IconName;
     private JPanel EmailLine;
     private boolean bool = true;
 
@@ -53,8 +54,8 @@ public class LoginPage {
 
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\back.png"))));
 
-        Image lockchiuso =  t.ResizeIcon(35,35,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\padlock.png"));
-        Image lockaperto =  t.ResizeIcon(35,35,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\open-padlock.png"));
+        Image lockchiuso =  t.ResizeIcon(50,50,new ImageIcon("src/main/resources/padlock2.png"));
+        Image lockaperto =  t.ResizeIcon(50,50,new ImageIcon("src/main/resources/open-padlock2.png"));
 
         t.SetIcon(IconLock, new ImageIcon(lockchiuso));
 
@@ -79,10 +80,17 @@ public class LoginPage {
         PassBox.setBackground(new Color(199, 111, 91));
         passwordField.setBackground(new Color(199, 111, 91));
         passwordField.setForeground(Color.BLACK);
+        passwordField.setFont(frame.getFontToolBar());
+        emailField.setFont(frame.getFontToolBar());
+        emailField.setForeground(Color.BLACK);
+        emailField.setBackground(new Color(199, 111, 91));
+        EmailBox.setBackground(new Color(199, 111, 91));
+        emailField.setFont(frame.getFontToolBar());
         EmailBox.setBorder(new LineBorder(Color.BLACK,2));
         emailField.setBorder(null);
         PassBox.setBorder(new LineBorder(Color.BLACK,2));
         passwordField.setBorder(null);
+        t.SetIcon(IconName, new ImageIcon( t.ResizeIcon(50,50,new ImageIcon("src/main/resources/email2.png"))));
 
 
 
@@ -141,6 +149,13 @@ public class LoginPage {
                 super.mouseExited(e);
                 InternalBox.setBackground(frame.getColorToolBar());
                 Backbutton.setBackground(frame.getColorToolBar());
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.SetNewPanel(OldPanel, MainPanel);
+                frame.Resize(1400,700);
             }
         });
 
