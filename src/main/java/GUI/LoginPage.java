@@ -69,6 +69,7 @@ public class LoginPage {
         EmailBox.setBackground(frame.getColorBack());
         PassBox.setBackground(frame.getColorBack());
 
+
         Backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
