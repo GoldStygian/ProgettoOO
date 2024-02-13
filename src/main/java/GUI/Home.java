@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 
 public class Home {
 
@@ -24,7 +25,7 @@ public class Home {
     private JPanel BarIcon;
     private JPanel SerchBorder;
 
-    public Home(MainJFrame frame, Controller controller) {
+    public Home(MainJFrame frame, Controller controller) throws SQLException {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -38,8 +39,7 @@ public class Home {
 
         t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
 
-
-        t.SetIcon(IconaLente, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\magnifying-glass.png"))));
+        t.SetIcon(IconaLente, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\magnifying-glass.png"))));
 
         BarraDiRicerca.setBackground(frame.getColorToolBar());
 
@@ -132,16 +132,15 @@ public class Home {
             }
         });
 
-        /*
+
         IconaLente.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-
+                frame.SetNewPanel(new SearchPage(frame, MainPanel,controller, SerchBar.getText()).getPanel(), MainPanel);
             }
         });
 
-         */
     }
 
     public JPanel getPanel() {

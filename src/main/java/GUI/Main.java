@@ -4,13 +4,14 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class Main {
 
     private static MainJFrame frame;
     private static Controller controller = new Controller();
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException {
 
        frame = new MainJFrame("Wikipedia", 1500,700);
        frame.SetPanel(new Home(frame, controller).getPanel());
@@ -38,7 +39,6 @@ public class Main {
         frame2.setContentPane(sp);
         frame2.setVisible(true);
 
-        //controller.SearchPages("");
         //
 
          */
