@@ -60,7 +60,7 @@ public class Home {
 
         IconaLente.setIcon(new ImageIcon(ResizeImage2));
 
-        MainPanel.setBackground(new Color(255, 211, 206));
+        MainPanel.setBackground(frame.getColorBack());
 
         //SerchBar.setText(" ".repeat(120));
 
@@ -85,7 +85,7 @@ public class Home {
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-
+                frame.Resize(500,650);
 
             }
         });
@@ -95,6 +95,7 @@ public class Home {
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 loginbutton.setBackground(new Color(199, 111, 91));
+
 
             }
 
@@ -128,9 +129,6 @@ public class Home {
             }
         });
 
-
-
-
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -142,6 +140,17 @@ public class Home {
 
             }
         });
+
+        /*
+        IconaLente.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+
+            }
+        });
+
+         */
     }
 
     public JPanel getPanel() {

@@ -11,6 +11,8 @@ public class MainJFrame extends JFrame {
 
     private Color ColorToolBar = new Color(128,71,57);
 
+    private  Color ColorBack = new Color(253, 233, 229);
+
     private ImageIcon Icon = new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\logo2.png");
 
     public MainJFrame(String Nome, int W, int H){
@@ -24,7 +26,7 @@ public class MainJFrame extends JFrame {
 
         File is = new File("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\Roman SD.ttf");
         try {
-            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(25f);
+            FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(22f);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -59,4 +61,6 @@ public class MainJFrame extends JFrame {
     public void Resize(int W, int H){
         this.setSize(W, H);
     }
+
+    public Color getColorBack(){return ColorBack;}
 }
