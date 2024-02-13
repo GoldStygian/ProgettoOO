@@ -2,8 +2,6 @@ package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
 
-import java.sql.Array;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
