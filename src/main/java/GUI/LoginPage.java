@@ -35,7 +35,6 @@ public class LoginPage {
         t.ToolBarButton(Backbutton);
 
 
-
         ToolBar.setBackground(frame.getColorToolBar());
 
         MainPanel.setBackground(frame.getColorBack());
