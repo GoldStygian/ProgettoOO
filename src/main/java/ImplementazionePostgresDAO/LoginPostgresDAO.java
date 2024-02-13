@@ -18,10 +18,6 @@ public class LoginPostgresDAO implements LoginDAO {
         String query="SELECT email, password_utente FROM utente WHERE email = '%s' AND password_utente = '%s'".formatted(email, password);
         ResultSet resultSet = statement.executeQuery(query);
 
-        /*while (resultSet.next()) {
-            System.out.println(resultSet.getString("email"));
-        }*/
-
         // Chiusura delle risorse
         con.close();
         if (resultSet.next()){//se contiene qualcosa allora email e password combaciano
