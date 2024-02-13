@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class LoginPage {
 
@@ -24,6 +26,7 @@ public class LoginPage {
     private JLabel NameApp;
     private JLabel IconBack;
     private JPanel DivisioreToolBar;
+    private JPanel InternalBox;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
@@ -45,11 +48,25 @@ public class LoginPage {
 
         Backbutton.setForeground(Color.BLACK);
 
+        Backbutton.setBorder(null);
+
+        Image ResizeImage = frame.getIcon().getImage().getScaledInstance(65,65, java.awt.Image.SCALE_SMOOTH);
+
+        Icon.setIcon(new ImageIcon(ResizeImage));
+
         errorMessage.setVisible(false);
 
         LoginBox.setBackground(frame.getColorBack());
 
         DivisioreToolBar.setBackground(frame.getColorBack());
+
+        NameApp.setFont(frame.getFontToolBar());
+
+        NameApp.setForeground(Color.BLACK);
+
+        ResizeImage  = (new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\back.png")).getImage().getScaledInstance(20,20, java.awt.Image.SCALE_SMOOTH);
+
+        IconBack.setIcon(new ImageIcon(ResizeImage));
 
         Backbutton.addActionListener(new ActionListener() {
             @Override
@@ -69,6 +86,42 @@ public class LoginPage {
                 else{
                     errorMessage.setVisible(true);
                 }
+            }
+        });
+
+        Backbutton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                Backbutton.setBackground(new Color(199, 111, 91));
+                InternalBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                Backbutton.setBackground(frame.getColorToolBar());
+                InternalBox.setBackground(frame.getColorToolBar());
+
+            }
+        });
+
+
+        InternalBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                InternalBox.setBackground(new Color(199, 111, 91));
+                Backbutton.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                InternalBox.setBackground(frame.getColorToolBar());
+                Backbutton.setBackground(frame.getColorToolBar());
             }
         });
 

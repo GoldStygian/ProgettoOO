@@ -85,7 +85,7 @@ public class Home {
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-                frame.Resize(500,650);
+                frame.Resize(700,850);
 
             }
         });
