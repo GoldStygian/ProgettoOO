@@ -1,7 +1,6 @@
 package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
-import main.java.Model.Utente;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class Controller {
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
         try {
-            ArrayList<ArrayList<String>> DataPages = new FunzionalitPostgresDAO().SearchPage(ricerca);
+            ArrayList<ArrayList<String>> DataPages = new RicercaPagineDAO().SearchPage(ricerca);
             return DataPages;
         } catch (SQLException e) {
             return null;

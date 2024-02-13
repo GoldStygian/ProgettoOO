@@ -1,11 +1,9 @@
 package main.java.ImplementazionePostgresDAO;
 
-import main.java.DAO.FunzionalitaDAO;
-
 import java.sql.*;
 import java.util.ArrayList;
 
-public class FunzionalitPostgresDAO implements FunzionalitaDAO{
+public class RicercaPagineDAO implements main.java.DAO.RicercaPagineDAO {
 
     public ArrayList<ArrayList<String>> SearchPage(String ricerca) throws SQLException {
 
