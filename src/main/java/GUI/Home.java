@@ -128,11 +128,13 @@ public class Home {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-
+                super.mouseEntered(e);
+                frame.SetNewPanel(new SearchPage(frame, MainPanel,controller, SerchBar.getText()).getPanel(), MainPanel);
             }
         });
 
 
+        /*
         IconaLente.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -140,7 +142,7 @@ public class Home {
                 frame.SetNewPanel(new SearchPage(frame, MainPanel,controller, SerchBar.getText()).getPanel(), MainPanel);
             }
         });
-
+        */
     }
 
     public JPanel getPanel() {

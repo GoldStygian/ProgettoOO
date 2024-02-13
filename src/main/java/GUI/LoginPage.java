@@ -35,6 +35,7 @@ public class LoginPage {
     private JPanel LoginButtonBox;
     private JLabel IconLock;
     private JPanel EmailLine;
+    private boolean bool = true;
 
     public LoginPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
@@ -52,10 +53,10 @@ public class LoginPage {
 
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\back.png"))));
 
-        Image lockchiuso =  t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\padlock.png"));
-        Image lockaperto =  t.ResizeIcon(20,20,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\open-padlock.png"));
+        Image lockchiuso =  t.ResizeIcon(35,35,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\padlock.png"));
+        Image lockaperto =  t.ResizeIcon(35,35,new ImageIcon("C:\\Users\\filix\\IdeaProjects\\ProgettoOO\\src\\main\\resources\\open-padlock.png"));
 
-        t.SetIcon(lo);
+        t.SetIcon(IconLock, new ImageIcon(lockchiuso));
 
         errorMessage.setVisible(false);
 
@@ -71,15 +72,18 @@ public class LoginPage {
 
         DivisoreImgEmail.setBackground(frame.getColorBack());
 
-
-
         //emailField.setPreferredSize(new Dimension(1000,200));
 
-        LoginButtonBox.setBackground(frame.getColorBack());
+        LoginButtonBox.setBackground(frame.getBackground());
         EmailBox.setBackground(frame.getColorBack());
-        PassBox.setBackground(frame.getColorBack());
+        PassBox.setBackground(new Color(199, 111, 91));
+        passwordField.setBackground(new Color(199, 111, 91));
+        passwordField.setForeground(Color.BLACK);
         EmailBox.setBorder(new LineBorder(Color.BLACK,2));
         emailField.setBorder(null);
+        PassBox.setBorder(new LineBorder(Color.BLACK,2));
+        passwordField.setBorder(null);
+
 
 
 
@@ -139,6 +143,43 @@ public class LoginPage {
                 Backbutton.setBackground(frame.getColorToolBar());
             }
         });
+
+        IconLock.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                if(bool){
+                    t.SetIcon(IconLock, new ImageIcon(lockaperto));
+                }else{
+                    t.SetIcon(IconLock, new ImageIcon(lockchiuso));
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                if(bool){
+                    t.SetIcon(IconLock, new ImageIcon(lockchiuso));
+                }else{
+                    t.SetIcon(IconLock, new ImageIcon(lockaperto));
+                }
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(bool){
+                    bool = false;
+                    passwordField.setEchoChar((char)0);
+                }else{
+                    bool = true;
+                    passwordField.setEchoChar('•');
+                }
+
+            }
+        });
+
+
 
     }
 
