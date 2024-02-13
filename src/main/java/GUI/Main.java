@@ -21,20 +21,21 @@ public class Main {
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setSize(300, 200);
 
-        // Creazione di un pannello
         JPanel panel = new JPanel();
         panel.setBackground(Color.BLUE);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        for (int i=1; i<=4; i++){
-            JLabel label = new JLabel("Esempio di aggiunta di elementi a un pannello");
+
+
+        JScrollPane sp = new JScrollPane(panel);
+        for (int i=1; i<=10; i++){
+            JLabel label = new JLabel("Esempio di aggiunta di elementi a un pannello"+i);
             JButton button = new JButton("Clicca qui!");
             panel.add(label);
             panel.add(button);
         }
 
-        frame2.add(panel);
+        frame2.setContentPane(sp);
         frame2.setVisible(true);
-
 
         //controller.SearchPages("");
         //
