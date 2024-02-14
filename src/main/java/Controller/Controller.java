@@ -42,12 +42,33 @@ public class Controller {
         }
     }
 
-    public void register(String Nome, String Cognome, Object Genere, String Email, String Password) {
-        System.out.println("Nome: " + Nome);
-        System.out.println("Cognome: " + Cognome);
+    public int register(String Nome, String Cognome, Object Genere, String Email, String Password) {
+        System.out.println("Nome:" + Nome+"'"); //-1
+        System.out.println("Cognome: " + Cognome); //-2
         System.out.println("Genere: " + Genere.toString());
-        System.out.println("Email: " + Email);
-        System.out.println("Password: " + Password);
-
+        System.out.println("Email: " + Email); //-4 gia esiste //-6 non valida
+        System.out.println("Password: " + Password); //-3
+        //0 OK
+        //-5 generale
+        if (Nome.isBlank()){
+            System.out.println("nome non valido");
+            return -1;
+        }
+        if (Cognome.isBlank()){
+            System.out.println("cognome non valida");
+            return -2;
+        }
+        if (Password.isBlank()){
+            System.out.println("password non valido");
+            return -3;
+        }
+        //email controllata dal DB
+        //genere è pre-impostato
+        try{
+            return new RegisterPostgerDAO().RegisterUser(Nome, Cognome, Genere.toString(), Email, Password);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return -6;
+        }
     }
 }
