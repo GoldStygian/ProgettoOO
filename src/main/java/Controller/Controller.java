@@ -8,9 +8,6 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    String login; // gestire meglio
-    String password;
-
     Utente utenteLoggato = null;
 
     public boolean Login(String email, String password) {
@@ -18,13 +15,13 @@ public class Controller {
         try {
             this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
             if(utenteLoggato!=null) {
-                utenteLoggato.print();
+                utenteLoggato.print(); //debug
                 return true;
             }else{
                 return false;
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return false;
         }
 
