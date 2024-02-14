@@ -64,9 +64,10 @@ public class HomeAutore {
         SerchBar.setFont(frame.getFontToolBar());
 
         MenuBox = new Menu(frame,Menu ,oldPanel,MainPanel);
-
+        t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
         MenuButton.add(MenuBox);
+        MenuButton.setBackground(frame.getColorToolBar());
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
