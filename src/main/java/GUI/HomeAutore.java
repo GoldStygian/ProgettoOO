@@ -5,8 +5,6 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -23,6 +21,9 @@ public class HomeAutore {
     private JPanel ButtonPanel;
     private JPanel MenuButton;
     private JLabel IconMenu;
+    private JButton NotificheButton;
+    private JLabel IconNotifiche;
+    private JPanel NotificheBox;
 
     private JMenuBar MenuBox;
     private JMenu Menu;
@@ -68,6 +69,44 @@ public class HomeAutore {
 
         MenuButton.add(MenuBox);
         MenuButton.setBackground(frame.getColorToolBar());
+
+        t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
+
+        NotificheBox.setBackground(frame.getColorToolBar());
+
+        NotificheBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                NotificheBox.setBackground(new Color(199, 111, 91));
+                NotificheButton.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                NotificheBox.setBackground(frame.getColorToolBar());
+                NotificheButton.setBackground(frame.getColorToolBar());
+            }
+        });
+
+        NotificheButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                NotificheButton.setBackground(new Color(199, 111, 91));
+                NotificheBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                NotificheButton.setBackground(frame.getColorToolBar());
+                NotificheBox.setBackground(frame.getColorToolBar());
+            }
+        });
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
