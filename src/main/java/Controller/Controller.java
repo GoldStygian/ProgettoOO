@@ -1,6 +1,7 @@
 package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
+import main.java.Model.Utente;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,24 @@ public class Controller {
     String login; // gestire meglio
     String password;
 
+    Utente utenteLoggato = null;
+
+    public boolean Login(String email, String password) {
+
+        try {
+            this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
+            if(utenteLoggato!=null) {
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+
+    }
+    /*
     public boolean Login(String email, String password) {
 
         try {
@@ -21,7 +40,7 @@ public class Controller {
             return false;
         }
 
-    }
+    }*/
 
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
