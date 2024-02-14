@@ -7,6 +7,5 @@ public interface RicercaPagineDAO {
 
     public ArrayList<ArrayList<String>> SearchPage(String ricerca) throws SQLException;
 
-    void getWikiPage(String titolo) throws SQLException;
 
 }
