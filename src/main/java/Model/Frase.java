@@ -17,6 +17,10 @@ public class Frase {
         this.posizione = posizione;
     }
 
+    public String getText(){
+        return this.Testo;
+    }
+
     public void AddModifica(){}
 
     public void AddInserimento(){}

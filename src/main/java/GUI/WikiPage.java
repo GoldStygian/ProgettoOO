@@ -1,17 +1,34 @@
 package main.java.GUI;
 
 import main.java.Controller.Controller;
+import main.java.Model.Frase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WikiPage {
 
     private JPanel MainPanel;
+    private final MainJFrame frame;
+    private final JPanel OldPanel;
+    private JScrollPane ScrollPanel;
+    private JPanel ContentContentPane;
+    private final Controller controller;
+    private String titolo;
+    HashMap<Integer, Frase> Frasi;
+    private ActionListener listener;
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, String titolo) {
 
-        controller.getWikiPage(titolo);
+        this.controller = controller;
+        this.frame = frame;
+        this.OldPanel = OldPanel;
+        this.titolo=titolo;
 
     }
 
@@ -19,4 +36,40 @@ public class WikiPage {
         return MainPanel;
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
+        this.Frasi =  controller.getWikiPage(titolo);
+
+        ContentContentPane = new JPanel();
+        ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
+        ScrollPanel = new JScrollPane(ContentContentPane);
+
+        if (Frasi != null) {
+            this.listener = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    String buttonText = ((JButton) e.getSource()).getText();
+                    System.out.println("Hai premuto la frase: " + buttonText);
+                }
+            };
+
+            for (Map.Entry<Integer, Frase> entry : Frasi.entrySet()) {
+
+                JButton button = new JButton(String.valueOf(entry.getKey()));
+                JLabel label = new JLabel(entry.getValue().getText());
+
+                button.addActionListener(listener);
+
+                ContentContentPane.add(button);
+                ContentContentPane.add(label);
+
+            }
+        } else {
+            JLabel label = new JLabel("Nessuna pagina trovata");
+
+            ContentContentPane.add(label);
+        }
+    }
 }

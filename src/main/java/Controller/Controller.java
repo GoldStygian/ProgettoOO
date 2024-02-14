@@ -2,10 +2,12 @@ package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.Autore;
+import main.java.Model.Frase;
 import main.java.Model.Utente;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Controller {
 
@@ -57,11 +59,13 @@ public class Controller {
 
     }
 
-    public void getWikiPage(String titolo) {//da finire
+    public HashMap<Integer, Frase> getWikiPage(String titolo) {//da finire
         try{
-            new GetWikiDAO().getWikiPage(titolo);
+            return new GetWikiDAO().getWikiPage(titolo);
+
         }catch (Exception e){
             System.out.println(e.getMessage());
+            return null;
         }
     }
 
