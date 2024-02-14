@@ -24,10 +24,13 @@ public class HomeAutore {
     private JPanel MenuButton;
     private JLabel IconMenu;
 
+    private JMenuBar MenuBox;
+    private JMenu Menu;
+
     private MainJFrame frame;
     private Boolean bool = true;
 
-    public HomeAutore(MainJFrame frame, Controller controller) {
+    public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
 
@@ -60,6 +63,11 @@ public class HomeAutore {
 
         SerchBar.setFont(frame.getFontToolBar());
 
+        MenuBox = new Menu(frame,Menu ,oldPanel,MainPanel);
+        t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
+
+        MenuButton.add(MenuBox);
+        MenuButton.setBackground(frame.getColorToolBar());
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override

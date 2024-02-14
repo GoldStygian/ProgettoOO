@@ -112,7 +112,9 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new RegisterPage(frame, MainPanel,controller).getPanel(), MainPanel);
-                loginbutton.setBackground(frame.getColorToolBar());
+                registerbutton.setBackground(frame.getColorToolBar());
+                frame.SetNewPanel(new HomeAutore(frame,controller,MainPanel).getPanel(), MainPanel);
+
             }
         });
 

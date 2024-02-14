@@ -114,7 +114,7 @@ public class LoginPage {
             public void actionPerformed(ActionEvent e) {
 
                 if (controller.Login(emailField.getText(), passwordField.getText())) {
-                    frame.SetNewPanel(new HomeAutore(frame, controller).getPanel(), MainPanel);
+                    frame.SetNewPanel(new HomeAutore(frame, controller, OldPanel).getPanel(), MainPanel);
                     frame.Resize(1400, 700);
                 } else {
                     errorMessage.setVisible(true);
