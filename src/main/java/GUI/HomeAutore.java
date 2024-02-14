@@ -70,7 +70,8 @@ public class HomeAutore {
         MenuButton.add(MenuBox);
         MenuButton.setBackground(frame.getColorToolBar());
 
-        t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
+        t.SetIcon(IconNotifiche,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
+        t.ToolBarButton(NotificheButton);
 
         NotificheBox.setBackground(frame.getColorToolBar());
 

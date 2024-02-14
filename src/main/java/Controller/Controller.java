@@ -18,13 +18,10 @@ public class Controller {
             if(utenteLoggato!=null) {
                 utenteLoggato.print(); //debug
                 if (utenteLoggato instanceof Utente) {
-                    System.out.println("[+] l'utente è un utente seplice");
-                }
-
-                if (utenteLoggato instanceof Autore) {
+                    System.out.println("[+] l'utente è un utente semplice");
+                }else{
                     System.out.println("[+] l'utente è un autore");
                 }
-
                 return true;
             }else{
                 return false;
@@ -85,5 +82,9 @@ public class Controller {
         }
 
         return messageError+"</html>";
+    }
+
+    public boolean GetAutoreLog(){
+        return utenteLoggato instanceof Autore;
     }
 }
