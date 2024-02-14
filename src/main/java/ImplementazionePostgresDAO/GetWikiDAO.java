@@ -6,15 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-
-
-        capitalCities.put("England", "London");
-        capitalCities.put("Germany", "Berlin");
-        capitalCities.put("Norway", "Oslo");
-        capitalCities.put("USA", "Washington DC");
-        System.out.println(capitalCities);
-
-
 public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
 
     public HashMap<Integer, String> getWikiPage(String titolo) throws SQLException {
