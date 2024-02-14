@@ -21,7 +21,7 @@ public class RegisterPage {
     private JLabel MessageError;
 
     public RegisterPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
-        MessageError.setVisible(false);
+        //MessageError.setVisible(false);
         GenereBox.addItem("M");
         GenereBox.addItem("F");
 
@@ -36,7 +36,11 @@ public class RegisterPage {
         RegisterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("code" + controller.register(NomeField.getText(), CognomeField.getText(), GenereBox.getSelectedItem(), EmailField.getText(), passwordField.getText()));
+                String Message = controller.register(NomeField.getText(), CognomeField.getText(), GenereBox.getSelectedItem(), EmailField.getText(), passwordField.getText());
+                //MessageError.(true);
+                MessageError.setText(Message);
+                System.out.println(Message);
+
             }
         });
 

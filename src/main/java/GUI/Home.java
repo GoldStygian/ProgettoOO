@@ -111,10 +111,8 @@ public class Home {
         registerbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.SetNewPanel(new RegisterPage(frame, MainPanel, controller).getPanel(), MainPanel);
+                frame.SetNewPanel(new RegisterPage(frame, MainPanel,controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-                frame.SetNewPanel(new HomeAutore(frame, controller).getPanel(), MainPanel);
-                frame.Resize(1400, 700);
             }
         });
 
