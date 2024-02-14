@@ -23,3 +23,4 @@ public class Main {
 //eliminare il metoto chiudi connessione
 //mettere stderr nel log
 //aggiornare RegisterDAO
+//creare l'oggetto utente loggato
