@@ -5,10 +5,7 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class HomeAutore {
     private JPanel MainPanel;
@@ -24,6 +21,8 @@ public class HomeAutore {
     private JPanel MenuButton;
     private JLabel IconMenu;
 
+    private JMenu Menu;
+    private JMenuBar MenuBar;
     private MainJFrame frame;
     private Boolean bool = true;
 
@@ -60,7 +59,13 @@ public class HomeAutore {
 
         SerchBar.setFont(frame.getFontToolBar());
 
+        t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
+
+        MenuBar = new Menu(frame, Menu);
+        ButtonPanel.setBackground(frame.getColorToolBar());
+        MenuButton.setBackground(frame.getColorToolBar());
+        MenuButton.add(MenuBar);
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
