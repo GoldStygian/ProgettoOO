@@ -5,7 +5,10 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class HomeAutore {
     private JPanel MainPanel;
@@ -20,15 +23,14 @@ public class HomeAutore {
     private JPanel ButtonPanel;
     private JPanel MenuButton;
     private JLabel IconMenu;
-    private JButton NotificheButton;
-    private JLabel IconNotfiche;
-    private JPanel NotificheBox;
+
+    private JMenuBar MenuBox;
     private JMenu Menu;
-    private JMenuBar MenuBar;
-    //private MainJFrame frame;
+
+    private MainJFrame frame;
     private Boolean bool = true;
 
-    public HomeAutore(MainJFrame frame, Controller controller, JPanel HomePanel) {
+    public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
 
@@ -61,35 +63,10 @@ public class HomeAutore {
 
         SerchBar.setFont(frame.getFontToolBar());
 
-        t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
-
-        NotificheBox.setBackground(frame.getColorToolBar());
+        MenuBox = new Menu(frame,Menu ,oldPanel,MainPanel);
 
 
-        MenuBar = new Menu(frame, Menu, HomePanel, MainPanel);
-        ButtonPanel.setBackground(frame.getColorToolBar());
-        MenuButton.setBackground(frame.getColorToolBar());
-        MenuButton.add(MenuBar);
-
-        t.ToolBarButton(NotificheButton);
-        t.SetIcon(IconNotfiche,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
-
-        NotificheButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                NotificheBox.setBackground(new Color(199, 111, 91));
-                NotificheButton.setBackground(new Color(199, 111, 91));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                NotificheBox.setBackground(frame.getColorToolBar());
-                NotificheButton.setBackground(frame.getColorToolBar());
-            }
-
-        });
+        MenuButton.add(MenuBox);
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -112,22 +89,6 @@ public class HomeAutore {
             }
         });
 
-        NotificheBox.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                NotificheBox.setBackground(new Color(199, 111, 91));
-                NotificheButton.setBackground(new Color(199, 111, 91));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                NotificheBox.setBackground(frame.getColorToolBar());
-                NotificheButton.setBackground(frame.getColorToolBar());
-            }
-
-        });
 
         /*
         IconaLente.addMouseListener(new MouseAdapter() {
