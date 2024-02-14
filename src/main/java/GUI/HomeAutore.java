@@ -20,10 +20,9 @@ public class HomeAutore {
     private JPanel ButtonPanel;
     private JPanel MenuButton;
     private JLabel IconMenu;
-
     private JMenu Menu;
     private JMenuBar MenuBar;
-    private MainJFrame frame;
+    //private MainJFrame frame;
     private Boolean bool = true;
 
     public HomeAutore(MainJFrame frame, Controller controller, JPanel HomePanel) {
