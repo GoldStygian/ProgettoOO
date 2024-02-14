@@ -5,17 +5,16 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SearchPage {
     private JPanel MainPanel;
-    private MainJFrame frame;
-    private JPanel OldPanel;
+    private final MainJFrame frame;
+    private final JPanel OldPanel;
     private JScrollPane ScrollPanel;
     private JPanel ContentContentPane;
-    private Controller controller;
-    private String ricerca;
+    private final Controller controller;
+    private final String ricerca;
     private ArrayList<ArrayList<String>> DataPages;
     private ActionListener listener;
 

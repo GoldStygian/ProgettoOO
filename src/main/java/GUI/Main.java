@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Main {
 
     private static MainJFrame frame;
-    private static Controller controller = new Controller();
+    private static final Controller controller = new Controller();
 
     public static void main(String[] args) throws SQLException {
 

@@ -54,8 +54,8 @@ public class LoginPage {
 
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\back.png"))));
 
-        Image lockchiuso =  t.ResizeIcon(50,50,new ImageIcon("src/main/resources/padlock2.png"));
-        Image lockaperto =  t.ResizeIcon(50,50,new ImageIcon("src/main/resources/open-padlock2.png"));
+        Image lockchiuso =  t.ResizeIcon(50,50,new ImageIcon("src\\main\\resources\\padlock2.png"));
+        Image lockaperto =  t.ResizeIcon(50,50,new ImageIcon("src\\main\\resources\\open-padlock2.png"));
 
         t.SetIcon(IconLock, new ImageIcon(lockchiuso));
 

@@ -42,4 +42,12 @@ public class Controller {
         }
     }
 
+    public void register(String Nome, String Cognome, Object Genere, String Email, String Password) {
+        System.out.println("Nome: " + Nome);
+        System.out.println("Cognome: " + Cognome);
+        System.out.println("Genere: " + Genere.toString());
+        System.out.println("Email: " + Email);
+        System.out.println("Password: " + Password);
+
+    }
 }
