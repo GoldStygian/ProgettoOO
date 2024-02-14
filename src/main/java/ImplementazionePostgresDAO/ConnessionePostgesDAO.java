@@ -39,7 +39,7 @@ public class ConnessionePostgesDAO implements ConnessioneDAO {
 
         try {
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://"+Credenziali.get(0), Credenziali.get(1), Credenziali.get(2));
+            Connection con = DriverManager.getConnection("jdbc:postgresql://"+ Credenziali.get(0), Credenziali.get(1), Credenziali.get(2));
             System.out.println("[ ] Connessione aperta");
             return con;
         } catch (ClassNotFoundException e) {
@@ -53,8 +53,13 @@ public class ConnessionePostgesDAO implements ConnessioneDAO {
     }
 
     @Override
-    public void closeConnection(Connection con) throws SQLException {
-        con.close();
+    public void closeConnection(Connection con) {
+        try {
+            con.close();
+        }catch (SQLException e) {
+            System.out.println("[-] Connessione Fallita \n");
+            System.out.println(e);
+        }
     }
 
 }
