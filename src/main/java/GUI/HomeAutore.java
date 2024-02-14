@@ -26,7 +26,7 @@ public class HomeAutore {
     private MainJFrame frame;
     private Boolean bool = true;
 
-    public HomeAutore(MainJFrame frame, Controller controller) {
+    public HomeAutore(MainJFrame frame, Controller controller, JPanel HomePanel) {
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
 
@@ -62,7 +62,7 @@ public class HomeAutore {
         t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
 
-        MenuBar = new Menu(frame, Menu);
+        MenuBar = new Menu(frame, Menu, HomePanel, MainPanel);
         ButtonPanel.setBackground(frame.getColorToolBar());
         MenuButton.setBackground(frame.getColorToolBar());
         MenuButton.add(MenuBar);

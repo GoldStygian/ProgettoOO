@@ -5,13 +5,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class Menu extends JMenuBar {
 
-    public Menu(MainJFrame frame, JMenu menu){
+    public Menu(MainJFrame frame, JMenu menu, JPanel HomePanel, JPanel Oldpanel){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -19,10 +17,23 @@ public class Menu extends JMenuBar {
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
 
-        JMenuItem menuItem = new MenuItem(frame,"Impostazioni", new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\gear.png"))));
+        JMenuItem menuItem = new MenuItem(frame,"Impostazioni", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\gear.png"))));
         menu.add(menuItem);
-        menuItem = new MenuItem(frame,"ciao2", null);
+
+        menuItem = new MenuItem(frame,"Esci", new ImageIcon(t.ResizeIcon(63, 63, new ImageIcon("src\\main\\resources\\logout.png"))));
+
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.SetNewPanel(HomePanel, Oldpanel);
+            }
+
+        });
+
         menu.add(menuItem);
+
+
+
         menu.setOpaque(true);
         menu.setForeground(Color.BLACK);
 
