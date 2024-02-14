@@ -4,6 +4,7 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -48,14 +49,14 @@ public class LoginPage {
 
         MainPanel.setBackground(frame.getColorBack());
 
-        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(150,150,frame.getIcon())));
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(150, 150, frame.getIcon())));
 
-        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
 
-        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\back.png"))));
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
 
-        Image lockchiuso =  t.ResizeIcon(50,50,new ImageIcon("src\\main\\resources\\padlock2.png"));
-        Image lockaperto =  t.ResizeIcon(50,50,new ImageIcon("src\\main\\resources\\open-padlock2.png"));
+        Image lockchiuso = t.ResizeIcon(50, 50, new ImageIcon("src\\main\\resources\\padlock2.png"));
+        Image lockaperto = t.ResizeIcon(50, 50, new ImageIcon("src\\main\\resources\\open-padlock2.png"));
 
         t.SetIcon(IconLock, new ImageIcon(lockchiuso));
 
@@ -86,14 +87,14 @@ public class LoginPage {
         emailField.setBackground(new Color(199, 111, 91));
         EmailBox.setBackground(new Color(199, 111, 91));
         emailField.setFont(frame.getFontToolBar());
-        EmailBox.setBorder(new LineBorder(Color.BLACK,2));
+        EmailBox.setBorder(new LineBorder(Color.BLACK, 2));
         emailField.setBorder(null);
-        PassBox.setBorder(new LineBorder(Color.BLACK,2));
+        PassBox.setBorder(new LineBorder(Color.BLACK, 2));
         passwordField.setBorder(null);
-        t.SetIcon(IconName, new ImageIcon( t.ResizeIcon(50,50,new ImageIcon("src/main/resources/email2.png"))));
+        t.SetIcon(IconName, new ImageIcon(t.ResizeIcon(50, 50, new ImageIcon("src/main/resources/email2.png"))));
         t.ToolBarButton(loginButton);
         loginButton.setBorderPainted(true);
-        loginButton.setBorder(new LineBorder(Color.BLACK,2));
+        loginButton.setBorder(new LineBorder(Color.BLACK, 2));
         TextEmail.setFont(frame.getFontToolBar());
         TextPass.setFont(frame.getFontToolBar());
         TextEmail.setForeground(Color.BLACK);
@@ -105,7 +106,7 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(OldPanel, MainPanel);
-                frame.Resize(1400,700);
+                frame.Resize(1400, 700);
             }
         });
 
@@ -113,11 +114,10 @@ public class LoginPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (controller.Login(emailField.getText(), passwordField.getText())){
-                    frame.SetNewPanel(new HomeAutore(frame,controller).getPanel() , MainPanel);
-                    frame.Resize(1400,700);
-                }
-                else{
+                if (controller.Login(emailField.getText(), passwordField.getText())) {
+                    frame.SetNewPanel(new HomeAutore(frame, controller).getPanel(), MainPanel);
+                    frame.Resize(1400, 700);
+                } else {
                     errorMessage.setVisible(true);
                 }
             }
@@ -176,7 +176,7 @@ public class LoginPage {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.SetNewPanel(OldPanel, MainPanel);
-                frame.Resize(1400,700);
+                frame.Resize(1400, 700);
             }
         });
 
@@ -184,9 +184,9 @@ public class LoginPage {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                if(bool){
+                if (bool) {
                     t.SetIcon(IconLock, new ImageIcon(lockaperto));
-                }else{
+                } else {
                     t.SetIcon(IconLock, new ImageIcon(lockchiuso));
                 }
             }
@@ -194,9 +194,9 @@ public class LoginPage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                if(bool){
+                if (bool) {
                     t.SetIcon(IconLock, new ImageIcon(lockchiuso));
-                }else{
+                } else {
                     t.SetIcon(IconLock, new ImageIcon(lockaperto));
                 }
             }
@@ -204,10 +204,10 @@ public class LoginPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if(bool){
+                if (bool) {
                     bool = false;
-                    passwordField.setEchoChar((char)0);
-                }else{
+                    passwordField.setEchoChar((char) 0);
+                } else {
                     bool = true;
                     passwordField.setEchoChar('•');
                 }
@@ -219,7 +219,7 @@ public class LoginPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.SetNewPanel(new RegisterPage(frame,MainPanel,controller).getPanel(), MainPanel);
+                frame.SetNewPanel(new RegisterPage(frame, MainPanel, controller).getPanel(), MainPanel);
             }
         });
 

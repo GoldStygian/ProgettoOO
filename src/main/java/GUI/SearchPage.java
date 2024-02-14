@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -20,10 +21,10 @@ public class SearchPage {
 
     public SearchPage(MainJFrame frame, JPanel OldPanel, Controller controller, String ricerca) {
 
-        this.controller=controller;
-        this.ricerca=ricerca;
-        this.frame=frame;
-        this.OldPanel=OldPanel;
+        this.controller = controller;
+        this.ricerca = ricerca;
+        this.frame = frame;
+        this.OldPanel = OldPanel;
 
     }
 
@@ -40,7 +41,7 @@ public class SearchPage {
         ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
         ScrollPanel = new JScrollPane(ContentContentPane);
 
-        if (DataPages!=null){
+        if (DataPages != null) {
             this.listener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -54,7 +55,7 @@ public class SearchPage {
             for (ArrayList<String> innerList : DataPages) {
 
                 JButton button = new JButton(innerList.get(0));
-                JLabel label = new JLabel(innerList.get(1)+innerList.get(2));
+                JLabel label = new JLabel(innerList.get(1) + innerList.get(2));
 
                 button.addActionListener(listener);
 
@@ -62,10 +63,11 @@ public class SearchPage {
                 ContentContentPane.add(label);
 
             }
-        }else{
+        } else {
             JLabel label = new JLabel("Nessuna pagina trovata");
 
             ContentContentPane.add(label);
         }
     }
+
 }

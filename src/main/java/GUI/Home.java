@@ -4,10 +4,14 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class Home {
 
@@ -37,9 +41,9 @@ public class Home {
 
         ToolBar.setBackground(frame.getColorToolBar());
 
-        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65,65,frame.getIcon())));
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
 
-        t.SetIcon(IconaLente, new ImageIcon(t.ResizeIcon(20,20,new ImageIcon("src\\main\\resources\\magnifying-glass.png"))));
+        t.SetIcon(IconaLente, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\magnifying-glass.png"))));
 
         BarraDiRicerca.setBackground(frame.getColorToolBar());
 
@@ -54,11 +58,11 @@ public class Home {
         //SerchBar.setBorder(new LineBorder(Color.BLACK,1));
         SerchBar.setBorder(null);
 
-        SerchBar.setPreferredSize(new Dimension(500,30));
+        SerchBar.setPreferredSize(new Dimension(500, 30));
 
         SerchBar.setBackground(new Color(199, 111, 91));
 
-        SerchBorder.setBorder(new LineBorder(Color.BLACK,2));
+        SerchBorder.setBorder(new LineBorder(Color.BLACK, 2));
 
         SerchBar.setFont(frame.getFontToolBar());
 
@@ -66,9 +70,9 @@ public class Home {
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.SetNewPanel(new LoginPage(frame, MainPanel,controller).getPanel(), MainPanel);
+                frame.SetNewPanel(new LoginPage(frame, MainPanel, controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
-                frame.Resize(700,850);
+                frame.Resize(700, 850);
 
             }
         });
@@ -107,8 +111,10 @@ public class Home {
         registerbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.SetNewPanel(new RegisterPage(frame, MainPanel,controller).getPanel(), MainPanel);
+                frame.SetNewPanel(new RegisterPage(frame, MainPanel, controller).getPanel(), MainPanel);
                 loginbutton.setBackground(frame.getColorToolBar());
+                frame.SetNewPanel(new HomeAutore(frame, controller).getPanel(), MainPanel);
+                frame.Resize(1400, 700);
             }
         });
 
@@ -116,7 +122,7 @@ public class Home {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                if(bool){
+                if (bool) {
                     bool = false;
                     SerchBar.setText("");
                 }
@@ -129,7 +135,7 @@ public class Home {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 super.mouseEntered(e);
-                frame.SetNewPanel(new SearchPage(frame, MainPanel,controller, SerchBar.getText()).getPanel(), MainPanel);
+                frame.SetNewPanel(new SearchPage(frame, MainPanel, controller, SerchBar.getText()).getPanel(), MainPanel);
             }
         });
 
