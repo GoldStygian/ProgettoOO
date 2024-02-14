@@ -18,6 +18,7 @@ public class Controller {
         try {
             this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
             if(utenteLoggato!=null) {
+                utenteLoggato.print();
                 return true;
             }else{
                 return false;

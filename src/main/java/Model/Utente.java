@@ -20,7 +20,11 @@ public class Utente {
         this.genere=genere;
     }
 
-    public void print(){
-        System.out.println(Email);
+    public void print() {
+        System.out.println("Email: " + Email);
+        System.out.println("Password: " + Password);
+        System.out.println("Nome: " + Nome);
+        System.out.println("Cognome: " + Cognome);
+        System.out.println("Genere: " + genere);
     }
 }

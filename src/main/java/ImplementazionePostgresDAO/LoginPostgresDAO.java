@@ -22,31 +22,30 @@ public class LoginPostgresDAO implements LoginDAO {
 
         // Chiusura delle risorse
         con.close();
+        Utente utente = null;
         if (resultSet.next()){//se contiene qualcosa allora email e password combaciano
             if (resultSet.getBoolean("autore")==true){
-                new Autore(
+                utente = new Autore(
                         resultSet.getString("email"),
-                        resultSet.getString("password"),
+                        resultSet.getString("password_utente"),
                         resultSet.getString("nome"),
                         resultSet.getString("cognome"),
                         resultSet.getString("genere").charAt(0)
                 );
             }else {
-                new Utente(
+                utente = new Utente(
                         resultSet.getString("email"),
-                        resultSet.getString("password"),
+                        resultSet.getString("password_utente"),
                         resultSet.getString("nome"),
                         resultSet.getString("cognome"),
                         resultSet.getString("genere").charAt(0)
                 );
             }
-            resultSet.close();
-            statement.close();
-        }else{
-            resultSet.close();
-            statement.close();
-            return null;
         }
+
+        resultSet.close();
+        statement.close();
+        return utente;
 
     }
 }

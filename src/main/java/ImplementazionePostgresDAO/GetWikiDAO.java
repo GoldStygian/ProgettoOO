@@ -18,7 +18,7 @@ public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
         HashMap<Integer, String> Frasi = new HashMap<Integer, String>(); // ci sta sempre un elemento nella pagina
         while(WikiPage.next()){
 
-            Frasi.put("USA", "Washington DC");
+            //Frasi.put("USA", "Washington DC");
             System.out.println(WikiPage.getString("testo"));
         }
 
