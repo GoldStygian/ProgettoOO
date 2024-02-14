@@ -2,6 +2,8 @@ package main.java.GUI;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -15,16 +17,13 @@ public class Menu extends JMenuBar {
         menu = new JMenu("Menu");
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
-        JMenuItem menuItem = new JMenuItem("Both text and icon");
-        menuItem.setMnemonic(KeyEvent.VK_B);
+
+        JMenuItem menuItem = new MenuItem(frame,"ciao", null);
         menu.add(menuItem);
+        menuItem = new MenuItem(frame,"ciao2", null);
+        menu.add(menuItem);
+        menu.setOpaque(true);
         menu.setForeground(Color.BLACK);
-        //menu.setBorder( new LineBorder(Color.RED));
-        //menu.setBorderPainted(false);
-        menuItem.setOpaque(true);
-        menuItem.setBackground(frame.getColorToolBar());
-        menuItem.setFont(frame.getFontToolBar());
-        menuItem.setForeground(Color.BLACK);
 
         this.setBorder(null);
         this.setBackground(frame.getColorToolBar());
