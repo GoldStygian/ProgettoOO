@@ -1,4 +1,4 @@
-# main/ProgettoOO
+# ProgettoOO
 
 ## Getting Started
 
@@ -9,15 +9,21 @@ SSH clone URL: ssh://git@git.jetbrains.space/r4ff4space/main/ProgettoOO.git
 HTTPS clone URL: https://git.jetbrains.space/r4ff4space/main/ProgettoOO.git
 
 
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Prerequisites
 
-What things you need to install the software and how to install them.
+Put DataBase Credentials into file: 
 
 ```
-Examples
+src/main/java/ImplementazionePostgresDAO/credenziali.txt
+```
+in this order:
+
+```
+hostname
+user
+password
 ```
 
 ## Deployment

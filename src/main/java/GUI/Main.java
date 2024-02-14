@@ -19,5 +19,6 @@ public class Main {
     }
 
 }
+//id nell'arry DataPages /nimuovere o no
 //eliminare il metoto chiudi connessione
 //mettere stderr nel log
