@@ -43,28 +43,14 @@ public class Controller {
     }
 
     public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {
-        System.out.println("Nome:" + Nome+"'"); //-1
-        System.out.println("Cognome: " + Cognome); //-2
+        /*
+        System.out.println("Nome:" + Nome+"'");
+        System.out.println("Cognome: " + Cognome);
         System.out.println("Genere: " + Genere.toString());
-        System.out.println("Email: " + Email); //-4 gia esiste //-5 non valida
-        System.out.println("Password: " + Password); //-3
-        //0 OK
-        //-6 generale
+        System.out.println("Email: " + Email);
+        System.out.println("Password: " + Password);*/
+
         String messageError = "<html>";
-        if (Nome.isBlank()){
-            System.out.println("[-] nome non valido");
-            messageError += "nome non valido<br>";
-        }
-        if (Cognome.isBlank()){
-            System.out.println("[-] cognome non valida");
-            messageError += "cognome non valido<br>";
-        }
-        if (Password.isBlank()){
-            System.out.println("[-] password non valido");
-            messageError += "password non valida<br>";
-        }
-        //email controllata dal DB
-        //genere è pre-impostato
         try{
             messageError += new RegisterPostgerDAO().RegisterUser(Nome, Cognome, Genere.toString(), Email, Password);
         }catch (Exception e){
