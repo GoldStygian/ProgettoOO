@@ -42,33 +42,36 @@ public class Controller {
         }
     }
 
-    public int register(String Nome, String Cognome, Object Genere, String Email, String Password) {
+    public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {
         System.out.println("Nome:" + Nome+"'"); //-1
         System.out.println("Cognome: " + Cognome); //-2
         System.out.println("Genere: " + Genere.toString());
-        System.out.println("Email: " + Email); //-4 gia esiste //-6 non valida
+        System.out.println("Email: " + Email); //-4 gia esiste //-5 non valida
         System.out.println("Password: " + Password); //-3
         //0 OK
-        //-5 generale
+        //-6 generale
+        String messageError = "<html>";
         if (Nome.isBlank()){
-            System.out.println("nome non valido");
-            return -1;
+            System.out.println("[-] nome non valido");
+            messageError += "nome non valido<br>";
         }
         if (Cognome.isBlank()){
-            System.out.println("cognome non valida");
-            return -2;
+            System.out.println("[-] cognome non valida");
+            messageError += "cognome non valido<br>";
         }
         if (Password.isBlank()){
-            System.out.println("password non valido");
-            return -3;
+            System.out.println("[-] password non valido");
+            messageError += "password non valida<br>";
         }
         //email controllata dal DB
         //genere è pre-impostato
         try{
-            return new RegisterPostgerDAO().RegisterUser(Nome, Cognome, Genere.toString(), Email, Password);
+            messageError += new RegisterPostgerDAO().RegisterUser(Nome, Cognome, Genere.toString(), Email, Password);
         }catch (Exception e){
-            System.out.println(e.getMessage());
-            return -6;
+            System.out.println("[-] "+e.getMessage());
+            messageError += "problema sconosciuto<br>";
         }
+
+        return messageError+"</html>";
     }
 }
