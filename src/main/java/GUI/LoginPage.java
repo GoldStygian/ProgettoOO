@@ -92,9 +92,8 @@ public class LoginPage {
         PassBox.setBorder(new LineBorder(Color.BLACK, 2));
         passwordField.setBorder(null);
         t.SetIcon(IconName, new ImageIcon(t.ResizeIcon(50, 50, new ImageIcon("src/main/resources/email2.png"))));
-        t.ToolBarButton(loginButton);
-        loginButton.setBorderPainted(true);
-        loginButton.setBorder(new LineBorder(Color.BLACK, 2));
+        t.GenericButton(loginButton);
+
         TextEmail.setFont(frame.getFontToolBar());
         TextPass.setFont(frame.getFontToolBar());
         TextEmail.setForeground(Color.BLACK);
