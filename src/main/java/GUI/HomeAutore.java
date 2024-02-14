@@ -20,6 +20,9 @@ public class HomeAutore {
     private JPanel ButtonPanel;
     private JPanel MenuButton;
     private JLabel IconMenu;
+    private JButton NotificheButton;
+    private JLabel IconNotfiche;
+    private JPanel NotificheBox;
     private JMenu Menu;
     private JMenuBar MenuBar;
     //private MainJFrame frame;
@@ -60,11 +63,33 @@ public class HomeAutore {
 
         t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
+        NotificheBox.setBackground(frame.getColorToolBar());
+
 
         MenuBar = new Menu(frame, Menu, HomePanel, MainPanel);
         ButtonPanel.setBackground(frame.getColorToolBar());
         MenuButton.setBackground(frame.getColorToolBar());
         MenuButton.add(MenuBar);
+
+        t.ToolBarButton(NotificheButton);
+        t.SetIcon(IconNotfiche,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
+
+        NotificheButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                NotificheBox.setBackground(new Color(199, 111, 91));
+                NotificheButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                NotificheBox.setBackground(frame.getColorToolBar());
+                NotificheButton.setBackground(frame.getColorToolBar());
+            }
+
+        });
 
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
@@ -87,6 +112,22 @@ public class HomeAutore {
             }
         });
 
+        NotificheBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                NotificheBox.setBackground(new Color(199, 111, 91));
+                NotificheButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                NotificheBox.setBackground(frame.getColorToolBar());
+                NotificheButton.setBackground(frame.getColorToolBar());
+            }
+
+        });
 
         /*
         IconaLente.addMouseListener(new MouseAdapter() {
