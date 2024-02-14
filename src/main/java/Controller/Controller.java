@@ -1,6 +1,7 @@
 package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
+import main.java.Model.Autore;
 import main.java.Model.Utente;
 
 import java.sql.SQLException;
@@ -16,6 +17,14 @@ public class Controller {
             this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
             if(utenteLoggato!=null) {
                 utenteLoggato.print(); //debug
+                if (utenteLoggato instanceof Utente) {
+                    System.out.println("[+] l'utente è un utente seplice");
+                }
+
+                if (utenteLoggato instanceof Autore) {
+                    System.out.println("[+] l'utente è un autore");
+                }
+
                 return true;
             }else{
                 return false;
