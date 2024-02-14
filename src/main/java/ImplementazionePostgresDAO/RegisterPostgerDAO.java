@@ -31,6 +31,7 @@ public class RegisterPostgerDAO implements RegisterDAO {
             try {
                 Pstatement.executeUpdate();//ritorna il numero di righe inserite
                 System.out.println("[ ] " + query);
+                Pstatement.close();
             } catch (SQLException e) { // se duplicato o dominio non valido
                 System.out.println(e.getMessage());
                 messageError += "email errata<br>";
@@ -38,10 +39,11 @@ public class RegisterPostgerDAO implements RegisterDAO {
 
         }
 
+        statement.close();
+        resultSet.close();
+        con.close();
         return messageError;
 
     }
-
-    //gestire chiusura connessioni
 
 }
