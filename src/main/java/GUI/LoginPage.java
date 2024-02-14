@@ -34,6 +34,7 @@ public class LoginPage {
     private JLabel IconName;
     private JLabel TextEmail;
     private JLabel TextPass;
+    private JLabel RegisterButtonLink;
     private JPanel EmailLine;
     private boolean bool = true;
 
@@ -97,7 +98,7 @@ public class LoginPage {
         TextPass.setFont(frame.getFontToolBar());
         TextEmail.setForeground(Color.BLACK);
         TextPass.setForeground(Color.BLACK);
-
+        LoginButtonBox.setBackground(frame.getColorBack());
 
 
         Backbutton.addActionListener(new ActionListener() {
@@ -210,6 +211,14 @@ public class LoginPage {
                     passwordField.setEchoChar('•');
                 }
 
+            }
+        });
+
+        RegisterButtonLink.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.SetNewPanel(new RegisterPage(frame,MainPanel,controller).getPanel(), MainPanel);
             }
         });
 
