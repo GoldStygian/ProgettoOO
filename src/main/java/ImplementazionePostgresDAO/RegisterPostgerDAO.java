@@ -29,7 +29,7 @@ public class RegisterPostgerDAO implements RegisterDAO {
             String query = "INSERT INTO utente VALUES('%s', '%s', '%s', '%s', '%s', '%s')".formatted(Email, Nome, Cognome, Password, Genere, 0);
             PreparedStatement Pstatement = con.prepareStatement(query);
             try {
-                Pstatement.executeUpdate();
+                Pstatement.executeUpdate();//ritorna il numero di righe inserite
                 System.out.println("[ ] " + query);
             } catch (SQLException e) { // se duplicato o dominio non valido
                 System.out.println(e.getMessage());
