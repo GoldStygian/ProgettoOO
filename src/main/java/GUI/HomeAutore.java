@@ -66,6 +66,7 @@ public class HomeAutore {
         ButtonPanel.setBackground(frame.getColorToolBar());
         MenuButton.setBackground(frame.getColorToolBar());
         MenuButton.add(MenuBar);
+
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
