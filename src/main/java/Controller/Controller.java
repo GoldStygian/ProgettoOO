@@ -88,10 +88,6 @@ public class Controller {
     }
 
     public boolean GetAutoreLog(){
-        if(utenteLoggato instanceof Autore){
-            return true;
-        }else{
-            return  false;
-        }
+        return utenteLoggato instanceof Autore;
     }
 }
