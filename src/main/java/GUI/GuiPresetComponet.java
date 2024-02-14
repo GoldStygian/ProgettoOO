@@ -1,6 +1,7 @@
 package main.java.GUI;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class GuiPresetComponet {
@@ -30,5 +31,16 @@ public class GuiPresetComponet {
         j.setIcon(i);
     }
 
+
+    public void GenericButton(JButton Button){
+        Button.setFont(frame.getFontToolBar());
+
+        Button.setBackground(frame.getColorToolBar());
+
+        Button.setForeground(Color.BLACK);
+
+        Button.setBorder(new LineBorder(Color.BLACK, 2));
+
+    }
 
 }
