@@ -27,4 +27,9 @@ public class Utente {
         System.out.println("Cognome: " + Cognome);
         System.out.println("Genere: " + genere);
     }
+
+    public String getEmail(){
+        return Email;
+    }
+
 }

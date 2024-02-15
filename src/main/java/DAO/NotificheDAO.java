@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public interface NotificheDAO {
 
-    public ArrayList<Notifica> LoadNotifiche(String EmailAutore, HashMap<Integer, Pagina> Pagine) throws SQLException;
+    public ArrayList<ArrayList> LoadNotifiche(String EmailAutore) throws SQLException;
 
     public void SetNotification();
 }

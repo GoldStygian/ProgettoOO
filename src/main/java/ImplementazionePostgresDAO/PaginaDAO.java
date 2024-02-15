@@ -23,6 +23,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
 
         HashMap<Integer, Frase> Frasi = new HashMap<Integer, Frase>(); // ci sta sempre un elemento nella pagina
         Integer index = 0;
+
         while(WikiPage.next()){
             Frase frase;
             index+=1;

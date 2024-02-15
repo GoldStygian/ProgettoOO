@@ -1,11 +1,10 @@
 package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
-import main.java.Model.Autore;
-import main.java.Model.Frase;
-import main.java.Model.Pagina;
-import main.java.Model.Utente;
+import main.java.Model.*;
 
+import java.lang.reflect.Array;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,8 +86,23 @@ public class Controller {
         return messageError+"</html>";
     }
 
-
     public boolean GetAutoreLog(){
         return utenteLoggato instanceof Autore;
     }
+
+    public  void LoadNotifiche() throws SQLException {
+        NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
+        ArrayList<Notifica> notifiche = new ArrayList<>();
+        ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
+
+        for (int i = 0 ; i<Dati.get(0).size(); i++){
+
+
+
+        }
+
+
+    }
+
+
 }
