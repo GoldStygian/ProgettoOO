@@ -11,11 +11,13 @@ import java.util.HashMap;
 
 public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
 
-    public HashMap<Integer, Frase> getWikiPage(String titolo) throws SQLException {
+    @Override
+    public HashMap<Integer, Frase> getWikiPage(int idPagina) throws SQLException {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="SELECT posizione, testo, link FROM frase WHERE pagina IN (SELECT id_pagina FROM pagina WHERE titolo = '%s')".formatted(titolo);
+        //String query="SELECT posizione, testo, link FROM frase WHERE pagina IN (SELECT id_pagina FROM pagina WHERE titolo = '%s')".formatted(titolo);
+        String query="SELECT posizione, testo, link FROM frase WHERE pagina = %d order by posizione".formatted(idPagina);
         ResultSet WikiPage = statement.executeQuery(query);
 
         HashMap<Integer, Frase> Frasi = new HashMap<Integer, Frase>(); // ci sta sempre un elemento nella pagina
@@ -38,4 +40,5 @@ public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
 
         return Frasi;
     }
+
 }

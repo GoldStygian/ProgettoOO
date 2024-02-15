@@ -7,6 +7,6 @@ import java.util.HashMap;
 
 public interface GetWikiDAO {
 
-    public HashMap<Integer, Frase> getWikiPage(String titolo) throws SQLException;
+    public HashMap<Integer, Frase> getWikiPage(int idPagina) throws SQLException;
 
 }

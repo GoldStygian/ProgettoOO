@@ -17,15 +17,15 @@ public class WikiPage {
     private JScrollPane ScrollPanel;
     private JPanel ContentContentPane;
     private final Controller controller;
-    private final String titolo;
+    private final int idPagina;
     HashMap<Integer, Frase> Frasi;
 
-    public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, String titolo) {
+    public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
         this.controller = controller;
         this.frame = frame;
         this.OldPanel = OldPanel;
-        this.titolo=titolo;
+        this.idPagina= idPagina;
 
     }
 
@@ -36,7 +36,7 @@ public class WikiPage {
     private void createUIComponents() {
         // TODO: place custom component creation code here
 
-        this.Frasi =  controller.getWikiPage(titolo);
+        this.Frasi =  controller.getWikiPage(idPagina);
 
         ContentContentPane = new JPanel();
         ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
