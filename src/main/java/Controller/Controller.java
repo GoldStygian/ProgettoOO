@@ -40,17 +40,24 @@ public class Controller {
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
         try {
-            ArrayList<ArrayList<String>> DataPages = new RicercaPagineDAO().SearchPage(ricerca);
-            return DataPages;
+            return new RicercaPagineDAO().SearchPage(ricerca);
         } catch (SQLException e) {
             return null;
         }
 
     }
 
-    public HashMap<Integer, Frase> getWikiPage(int idPagina) {//fare per id
+    public HashMap<Integer, Frase> getWikiPage(int idPagina) {
         try{
-            return new GetWikiDAO().getWikiPage(idPagina);
+            PaginaDAO p =  new PaginaDAO();
+            HashMap<Integer, Frase> Frasi = p.getWikiPage(idPagina);
+            Pagina paginaCercata = p.getWikiInfo(idPagina);
+            if (paginaCercata!=null){
+                paginaCercata.AddFrasi(Frasi);
+                Pagine.put(idPagina, paginaCercata);
+            }
+            return Frasi;
+
         }catch (Exception e){
             System.out.println(e.getMessage());
             return null;

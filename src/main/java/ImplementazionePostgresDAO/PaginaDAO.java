@@ -2,6 +2,7 @@ package main.java.ImplementazionePostgresDAO;
 
 import main.java.Model.Frase;
 import main.java.Model.Link;
+import main.java.Model.Pagina;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
+public class PaginaDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public HashMap<Integer, Frase> getWikiPage(int idPagina) throws SQLException {
@@ -39,6 +40,28 @@ public class GetWikiDAO implements main.java.DAO.GetWikiDAO {
         con.close();
 
         return Frasi;
+    }
+
+    @Override
+    public Pagina getWikiInfo(int idPagina) throws SQLException{
+
+        Connection con = new ConnessionePostgesDAO().openConnection();
+        Statement statement = con.createStatement();
+        String query="SELECT * FROM pagina WHERE id_pagina = %d".formatted(idPagina);
+        ResultSet result = statement.executeQuery(query);
+
+        Pagina pagina_cercata = null;
+        if (result.next()){
+            pagina_cercata = new Pagina(
+                    result.getString("titolo"),
+                    result.getString("generalita_autore"),
+                    result.getDate("dataultimamodifica"),
+                    result.getDate("datacreazione")
+            );
+        }
+
+
+        return pagina_cercata;
     }
 
 }
