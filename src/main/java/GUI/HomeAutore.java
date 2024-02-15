@@ -4,6 +4,9 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,6 +15,7 @@ import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.WindowEvent;
+import java.util.Locale;
 
 public class HomeAutore {
     private JPanel MainPanel;
@@ -27,7 +31,7 @@ public class HomeAutore {
     private JPanel MenuButton;
     private JLabel IconMenu;
     private JFrame FrameNotifiche;
-    private boolean NotificheNotOpen = true ;
+    private boolean NotificheNotOpen = true;
     private JButton NotificheButton;
     private JLabel IconNotifiche;
     private JPanel NotificheBox;
@@ -39,7 +43,6 @@ public class HomeAutore {
     private Boolean bool = true;
 
     public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
-
 
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
@@ -75,15 +78,15 @@ public class HomeAutore {
         SerchBar.setFont(frame.getFontToolBar());
 
         Menu = new JMenu("Menu");
-        MenuBox = new Menu(frame,Menu ,oldPanel,MainPanel);
+        MenuBox = new Menu(frame, Menu, oldPanel, MainPanel);
 
 
-        t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
+        t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
         MenuButton.add(MenuBox);
         MenuButton.setBackground(frame.getColorToolBar());
 
-        t.SetIcon(IconNotifiche,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
+        t.SetIcon(IconNotifiche, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
         t.ToolBarButton(NotificheButton);
 
         NotificheBox.setBackground(frame.getColorToolBar());
@@ -97,6 +100,7 @@ public class HomeAutore {
                 Menu.setBackground(new Color(199, 111, 91));
                 MenuButton.setBackground(new Color(199, 111, 91));
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
@@ -162,7 +166,7 @@ public class HomeAutore {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                if(NotificheNotOpen){
+                if (NotificheNotOpen) {
 
                     FrameNotifiche.setVisible(true);
                     NotificheNotOpen = false;
@@ -172,7 +176,7 @@ public class HomeAutore {
 
 
                     controller.LoadNotifiche();
-                    ArrayList<ArrayList> s =  controller.GetNotifiche();
+                    ArrayList<ArrayList> s = controller.GetNotifiche();
                     System.out.print(s);
 
                 } catch (SQLException ex) {
@@ -227,7 +231,6 @@ public class HomeAutore {
     public JPanel getPanel() {
         return MainPanel;
     }
-
 
 
 }

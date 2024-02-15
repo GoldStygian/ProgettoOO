@@ -4,6 +4,7 @@ import main.java.Controller.Controller;
 import main.java.Model.Frase;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -27,7 +28,7 @@ public class WikiPage {
         this.controller = controller;
         this.frame = frame;
         this.OldPanel = OldPanel;
-        this.idPagina= idPagina;
+        this.idPagina = idPagina;
 
     }
 
@@ -35,10 +36,10 @@ public class WikiPage {
         return MainPanel;
     }
 
-    private void createUIComponents() throws SQLException {
+    private void createUIComponents() {
         // TODO: place custom component creation code here
 
-        this.Frasi =  controller.getWikiPage(idPagina);
+        this.Frasi = controller.getWikiPage(idPagina);
 
         ContentContentPane = new JPanel();
         ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
@@ -71,4 +72,5 @@ public class WikiPage {
             ContentContentPane.add(label);
         }
     }
+
 }

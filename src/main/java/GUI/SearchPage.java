@@ -47,7 +47,7 @@ public class SearchPage {
                 public void actionPerformed(ActionEvent e) {
 
                     int buttonHidden = Integer.parseInt(((JButton) e.getSource()).getActionCommand());
-                    System.out.println("Hai premuto il link con id: "+ e.getActionCommand());
+                    System.out.println("Hai premuto il link con id: " + e.getActionCommand());
                     frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonHidden).getPanel(), MainPanel);
                 }
             };

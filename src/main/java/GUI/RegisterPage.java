@@ -36,9 +36,9 @@ public class RegisterPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String Message = controller.register(NomeField.getText(), CognomeField.getText(), GenereBox.getSelectedItem(), EmailField.getText(), passwordField.getText());
-                if(!Message.equals("<html></html>")) {
+                if (!Message.equals("<html></html>")) {
                     MessageError.setText(Message);
-                }else{
+                } else {
                     frame.SetNewPanel(OldPanel, MainPanel);
                 }
 
