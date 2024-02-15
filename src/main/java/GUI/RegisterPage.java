@@ -28,7 +28,7 @@ public class RegisterPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(OldPanel, MainPanel);
-                frame.Resize(1400, 700);
+                //frame.Resize(1400, 700);
             }
         });
 

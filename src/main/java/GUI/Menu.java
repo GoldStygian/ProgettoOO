@@ -21,8 +21,12 @@ public class Menu extends JMenuBar {
         JMenuItem menuItem = new MenuItem(frame,"Impostazioni", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\gear.png"))));
         menu.add(menuItem);
 
-        menuItem = new MenuItem(frame,"Esci", new ImageIcon(t.ResizeIcon(63, 63, new ImageIcon("src\\main\\resources\\logout.png"))));
 
+        menuItem = new MenuItem(frame,"Crea Pagina", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\writing.png"))));
+        menu.add(menuItem);
+
+        menuItem = new MenuItem(frame,"Esci", new ImageIcon(t.ResizeIcon(63, 63, new ImageIcon("src\\main\\resources\\logout.png"))));
+        menu.add(menuItem);
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -31,7 +35,7 @@ public class Menu extends JMenuBar {
 
         });
 
-        menu.add(menuItem);
+
 
 
 
