@@ -77,7 +77,6 @@ public class Controller {
         return messageError+"</html>";
     }
 
-    public void
 
     public boolean GetAutoreLog(){
         return utenteLoggato instanceof Autore;
