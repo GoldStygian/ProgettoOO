@@ -21,6 +21,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
 
         HashMap<Integer, ArrayList<String>> Frasi = new HashMap<>(); // ci sta sempre un elemento nella pagina
         Integer index = 0;
+
         while(WikiPage.next()){
             index+=1;
             ArrayList<String> frase = new ArrayList<>();

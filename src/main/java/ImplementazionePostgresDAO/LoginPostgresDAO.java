@@ -8,11 +8,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class LoginPostgresDAO implements LoginDAO {
 
     @Override
-    public Utente Login(String email, String password) throws SQLException {
+    public ArrayList<String> Login(String email, String password) throws SQLException {
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
@@ -22,30 +23,28 @@ public class LoginPostgresDAO implements LoginDAO {
 
         // Chiusura delle risorse
         con.close();
-        Utente utente = null;
+
+
+
+        ArrayList<String> Contenuto = null;
+
         if (resultSet.next()){//se contiene qualcosa allora email e password combaciano
-            if (resultSet.getBoolean("autore")==true){
-                utente = new Autore(
-                        resultSet.getString("email"),
-                        resultSet.getString("password_utente"),
-                        resultSet.getString("nome"),
-                        resultSet.getString("cognome"),
-                        resultSet.getString("genere").charAt(0)
-                );
-            }else {
-                utente = new Utente(
-                        resultSet.getString("email"),
-                        resultSet.getString("password_utente"),
-                        resultSet.getString("nome"),
-                        resultSet.getString("cognome"),
-                        resultSet.getString("genere").charAt(0)
-                );
-            }
+
+            Contenuto = new ArrayList<String>();
+
+            Contenuto.add(resultSet.getString("autore"));
+            Contenuto.add(resultSet.getString("email"));
+            Contenuto.add(resultSet.getString("password_utente"));
+            Contenuto.add(resultSet.getString("nome"));
+            Contenuto.add(resultSet.getString("cognome"));
+            Contenuto.add(resultSet.getString("genere"));
+
+
         }
 
         resultSet.close();
         statement.close();
-        return utente;
+        return Contenuto;
 
     }
 }

@@ -1,11 +1,10 @@
 package main.java.Controller;
 
 import main.java.ImplementazionePostgresDAO.*;
-import main.java.Model.Autore;
-import main.java.Model.Frase;
-import main.java.Model.Pagina;
-import main.java.Model.Utente;
+import main.java.Model.*;
 
+import java.lang.reflect.Array;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,8 +18,18 @@ public class Controller {
     public boolean Login(String email, String password) { //OK
 
         try {
-            this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
-            if(utenteLoggato!=null) {
+            ArrayList<String> Contenuto =  new LoginPostgresDAO().Login(email, password);
+
+            if(Contenuto !=null) {
+
+                if(Contenuto.get(0).equals("1")){
+                    Contenuto.removeFirst();
+                    utenteLoggato = new Autore(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
+
+                }else{
+                    utenteLoggato = new Utente(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
+                }
+
                 utenteLoggato.print(); //debug
                 if (utenteLoggato instanceof Utente) {
                     System.out.println("[+] l'utente è un utente semplice");
@@ -83,4 +92,20 @@ public class Controller {
     public boolean GetAutoreLog(){
         return utenteLoggato instanceof Autore;
     }
+
+    public  void LoadNotifiche() throws SQLException {
+        NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
+        ArrayList<Notifica> notifiche = new ArrayList<>();
+        ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
+
+        for (int i = 0 ; i<Dati.get(0).size(); i++){
+
+
+
+        }
+
+
+    }
+
+
 }
