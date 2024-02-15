@@ -23,6 +23,15 @@ public class Menu extends JMenuBar {
 
 
         menuItem = new MenuItem(frame,"Crea Pagina", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\writing.png"))));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+
+
         menu.add(menuItem);
 
         menuItem = new MenuItem(frame,"Esci", new ImageIcon(t.ResizeIcon(63, 63, new ImageIcon("src\\main\\resources\\logout.png"))));
