@@ -17,7 +17,14 @@ public class Autore extends Utente{
 
     public void addPagina(){}
 
-    public void addNotifica(){}
+    public void addNotifica(Notifica notifica){
+        Notifiche.add(notifica);
+
+    }
+
+    public ArrayList<Notifica> getNotifiche(){
+        return Notifiche;
+    }
 
     public void addOperazione(){}
 

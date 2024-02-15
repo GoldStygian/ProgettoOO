@@ -7,6 +7,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class HomeAutore {
     private JPanel MainPanel;
@@ -133,6 +134,7 @@ public class HomeAutore {
             }
         });
 
+
         NotificheButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -147,6 +149,16 @@ public class HomeAutore {
                 super.mouseExited(e);
                 NotificheButton.setBackground(frame.getColorToolBar());
                 NotificheBox.setBackground(frame.getColorToolBar());
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                try {
+                    controller.LoadNotifiche();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 

@@ -4,9 +4,9 @@ import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
 import java.lang.reflect.Array;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.HashMap;
 
@@ -94,18 +94,41 @@ public class Controller {
     }
 
     public  void LoadNotifiche() throws SQLException {
-        NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
-        ArrayList<Notifica> notifiche = new ArrayList<>();
-        ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
 
-        for (int i = 0 ; i<Dati.get(0).size(); i++){
+        if(this.GetAutoreLog()){
+            NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
+            ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
+            Autore utenteLoggato1 = (Autore) utenteLoggato;
 
 
+            for (int i = 0 ; i<Dati.get(0).size(); i++){
+                if(!((Boolean) Dati.getLast().get(i))){
+
+                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i))));
+                    //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
+                    //System.out.println("io");
+                }else{
+                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i))));
+                }
+
+            }
 
         }
-
-
     }
 
+    public ArrayList<ArrayList> GetNotifiche(){
+
+        ArrayList<ArrayList> s = null;
+       if(this.GetAutoreLog()){
+           Autore utenteLoggato1 = (Autore) utenteLoggato;
+           for(Notifica n: utenteLoggato1.getNotifiche()){
+
+           }
+
+
+       }
+        return s;
+
+    }
 
 }
