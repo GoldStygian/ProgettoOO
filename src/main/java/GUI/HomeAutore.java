@@ -7,7 +7,11 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.awt.event.WindowEvent;
 
 public class HomeAutore {
     private JPanel MainPanel;
@@ -22,6 +26,8 @@ public class HomeAutore {
     private JPanel ButtonPanel;
     private JPanel MenuButton;
     private JLabel IconMenu;
+    private JFrame FrameNotifiche;
+    private boolean NotificheNotOpen = true ;
     private JButton NotificheButton;
     private JLabel IconNotifiche;
     private JPanel NotificheBox;
@@ -82,6 +88,7 @@ public class HomeAutore {
 
         NotificheBox.setBackground(frame.getColorToolBar());
 
+        FrameNotifiche = new NotificheFrame("Notifiche", frame, controller);
 
         Menu.addMouseListener(new MouseAdapter() {
             @Override
@@ -154,14 +161,35 @@ public class HomeAutore {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                if(NotificheNotOpen){
+
+                    FrameNotifiche.setVisible(true);
+                    NotificheNotOpen = false;
+                }
+
                 try {
+
+
                     controller.LoadNotifiche();
+                    ArrayList<ArrayList> s =  controller.GetNotifiche();
+                    System.out.print(s);
+
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
 
+
+        FrameNotifiche.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosed(e);
+                NotificheNotOpen = true;
+
+            }
+        });
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {

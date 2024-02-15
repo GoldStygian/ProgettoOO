@@ -1,18 +1,21 @@
 package main.java.Model;
+import java.sql.Timestamp;
 import java.util.Date;
 public class OperazioneUtente {
 
-    private Date DataA;
-    private Date DataR;
+    private int id_operazione;
+    private Timestamp DataA;
+    private Timestamp DataR;
     private String Testo;
     private boolean accettata;
     private boolean visionata;
     private boolean link;
-    private Pagina link_pagina;
+    private int link_pagina;
+    private String Utente;
 
     private boolean modifica;
 
-    public OperazioneUtente(Date DataA, Date DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, Pagina link_pagina){
+    public OperazioneUtente(int id_operazione,Timestamp DataA, Timestamp DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, int link_pagina, String Utente){
         this.DataA = DataA;
         this.DataR = DataR;
         this.Testo = Testo;
@@ -21,19 +24,27 @@ public class OperazioneUtente {
         this.link = link;
         this.link_pagina = link_pagina;
         this.modifica = modifica;
+        this.id_operazione = id_operazione;
+        this.Utente = Utente;
 
     }
 
-    public OperazioneUtente(Date DataR, boolean accettata, boolean visionata, boolean modifica){
+    public OperazioneUtente(int id_operazione, Timestamp DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, int link_pagina, String Utente){
+
         this.DataR = DataR;
+        this.Testo = Testo;
         this.accettata = accettata;
         this.visionata = visionata;
+        this.link = link;
+        this.link_pagina = link_pagina;
         this.modifica = modifica;
+        this.id_operazione = id_operazione;
+        this.Utente = Utente;
 
     }
 
-    public Date getDataA() {
-        return DataA;
+    public Timestamp getDataR() {
+        return DataR;
     }
 
     public boolean getAccettata() {
@@ -48,5 +59,23 @@ public class OperazioneUtente {
         return modifica;
     }
 
+    public int getLink_pagina() {
+        return link_pagina;
+    }
 
+    public String getTesto(){
+        return Testo;
+    }
+
+    public boolean getLink(){
+        return link;
+    }
+
+    public int getIdOperazione(){
+        return id_operazione;
+    }
+
+    public String getUtente(){
+        return Utente;
+    }
 }

@@ -26,6 +26,10 @@ public class Autore extends Utente{
         return Notifiche;
     }
 
+    public void ResetNotifiche(){
+        Notifiche.clear();
+    }
+
     public void addOperazione(){}
 
 

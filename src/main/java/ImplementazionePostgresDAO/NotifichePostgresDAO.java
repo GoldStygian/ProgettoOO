@@ -1,17 +1,13 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.NotificheDAO;
-import main.java.GUI.WikiPage;
-import main.java.Model.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Timestamp;
+
+
 
 public class NotifichePostgresDAO implements NotificheDAO  {
 
@@ -21,15 +17,21 @@ public class NotifichePostgresDAO implements NotificheDAO  {
 
         ArrayList<ArrayList> Dati = new ArrayList<>();
 
-        Dati.add(new ArrayList<Date>());
+        Dati.add(new ArrayList<Integer>());
+        Dati.add(new ArrayList<Timestamp>());
+        Dati.add(new ArrayList<String>());
         Dati.add(new ArrayList<Boolean>());
         Dati.add(new ArrayList<Boolean>());
         Dati.add(new ArrayList<Boolean>());
+        Dati.add(new ArrayList<Boolean>());
+        Dati.add(new ArrayList<Integer>());
+        Dati.add(new ArrayList<Integer>());
+        Dati.add(new ArrayList<String>());
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="SELECT id_operazione, datar, pagina_frase, modifica, accettata, visionata FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
+        String query="SELECT * FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
         ResultSet Notifiche = statement.executeQuery(query);
 
         con.close();
@@ -38,15 +40,31 @@ public class NotifichePostgresDAO implements NotificheDAO  {
             int row = 0;
             for (ArrayList l : Dati){
                 if(row == 0){
-                    l.add(Notifiche.getDate("datar"));
-                }else if(row == 1){
-                    l.add(Notifiche.getBoolean("visionata"));
-                }else if(row == 2){
+                    l.add(Notifiche.getInt("id_operazione"));
+                }else if(row ==1){
+                    l.add(Notifiche.getTimestamp("datar"));
+                }else if(row ==2){
+                    l.add(Notifiche.getString("testo"));
+                }else if(row ==3){
                     l.add(Notifiche.getBoolean("accettata"));
-                }else if (row == 3){
+                }else if(row ==4){
+                    l.add(Notifiche.getBoolean("visionata"));
+                }else if(row ==5){
                     l.add(Notifiche.getBoolean("modifica"));
+                }else if(row ==6){
+                    l.add(Notifiche.getBoolean("link"));
+                }else if(row ==7){
+                    l.add(Notifiche.getInt("link_pagina"));
+                }else if(row ==8){
+                    l.add(Notifiche.getInt("posizioneins"));
+                }else if(row ==9){
+                    l.add(Notifiche.getString("utente"));
+
                 }
+
+
                 row++;
+
 
             }
         }

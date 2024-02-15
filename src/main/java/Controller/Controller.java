@@ -5,6 +5,7 @@ import main.java.Model.*;
 
 import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -99,16 +100,17 @@ public class Controller {
             NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
             ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
             Autore utenteLoggato1 = (Autore) utenteLoggato;
+            utenteLoggato1.ResetNotifiche();
 
-
+            //System.out.print((Dati.get(0).get(1)));
             for (int i = 0 ; i < Dati.get(0).size(); i++){
-                if(!((Boolean) Dati.getLast().get(i))){
-
-                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i),(Boolean) Dati.get(3).get(i))));
+                if(!((Boolean) Dati.get(5).get(i))){
+                    //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
+                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i))));
                     //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
                     //System.out.println("io");
                 }else{
-                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i),(Boolean) Dati.get(3).get(i))));
+                    utenteLoggato1.addNotifica(new Notifica(new ModificaUtente((int) Dati.get(0).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i))));
                 }
 
             }
@@ -120,16 +122,33 @@ public class Controller {
 
         ArrayList<ArrayList> s = null;
        if(this.GetAutoreLog()){
-           s.add(new ArrayList<Date>());
+           s = new ArrayList<>();
+           s.add(new ArrayList<Integer>());
+           s.add(new ArrayList<Timestamp>());
+           s.add(new ArrayList<String>());
            s.add(new ArrayList<Boolean>());
            s.add(new ArrayList<Boolean>());
            s.add(new ArrayList<Boolean>());
+           s.add(new ArrayList<Boolean>());
+           s.add(new ArrayList<Integer>());
+           s.add(new ArrayList<Integer>());
+           s.add(new ArrayList<String>());
            Autore utenteLoggato1 = (Autore) utenteLoggato;
            for(Notifica n: utenteLoggato1.getNotifiche()){
-               s.get(0).add(n.getOperazioni_notificate().getDataA());
-               s.get(1).add(n.getOperazioni_notificate().getVisionata());
-               s.get(2).add(n.getOperazioni_notificate().getAccettata());
-               s.get(3).add(n.getOperazioni_notificate().getModifica());
+               s.get(0).add(n.getOperazioni_notificate().getIdOperazione());
+               s.get(1).add(n.getOperazioni_notificate().getDataR());
+               s.get(2).add(n.getOperazioni_notificate().getTesto());
+               s.get(3).add(n.getOperazioni_notificate().getAccettata());
+               s.get(4).add(n.getOperazioni_notificate().getVisionata());
+               s.get(5).add(n.getOperazioni_notificate().getModifica());
+               s.get(6).add(n.getOperazioni_notificate().getLink());
+               s.get(7).add(n.getOperazioni_notificate().getLink_pagina());
+               if(n.getOperazioni_notificate() instanceof InserimentoUtente){
+                   s.get(8).add( ((InserimentoUtente)(n.getOperazioni_notificate())).getPosizione());
+               }
+
+               s.get(9).add(n.getOperazioni_notificate().getUtente());
+
            }
 
 
