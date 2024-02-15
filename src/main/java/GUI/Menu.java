@@ -9,11 +9,12 @@ import java.awt.event.*;
 
 public class Menu extends JMenuBar {
 
+
     public Menu(MainJFrame frame, JMenu menu, JPanel HomePanel, JPanel Oldpanel){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
-        menu = new JMenu("Menu");
+
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
 
@@ -42,7 +43,7 @@ public class Menu extends JMenuBar {
         this.add(menu);
 
 
-
     }
+
 
 }
