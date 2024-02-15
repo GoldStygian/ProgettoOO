@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class Controller {
 
     Utente utenteLoggato = null;
-    HashMap<Integer, Pagina> Pagine = null;
+    HashMap<Integer, Pagina> Pagine = new HashMap<>();
 
     public boolean Login(String email, String password) {
 

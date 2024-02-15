@@ -6,6 +6,7 @@ import main.java.Model.Frase;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class WikiPage {
         return MainPanel;
     }
 
-    private void createUIComponents() {
+    private void createUIComponents() throws SQLException {
         // TODO: place custom component creation code here
 
         this.Frasi =  controller.getWikiPage(idPagina);
