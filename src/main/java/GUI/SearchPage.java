@@ -46,17 +46,17 @@ public class SearchPage {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    String buttonText = ((JButton) e.getSource()).getText();
-                    System.out.println("Hai premuto il link: " + buttonText);
-                    frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonText).getPanel(), MainPanel);
+                    int buttonHidden = Integer.parseInt(((JButton) e.getSource()).getActionCommand());
+                    System.out.println("Hai premuto il link con id: "+ e.getActionCommand());
+                    frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonHidden).getPanel(), MainPanel);
                 }
             };
 
             for (ArrayList<String> innerList : DataPages) {
 
                 JButton button = new JButton(innerList.get(0));
+                button.setActionCommand(innerList.get(3));
                 JLabel label = new JLabel(innerList.get(1) + innerList.get(2));
-
                 button.addActionListener(listener);
 
                 ContentContentPane.add(button);

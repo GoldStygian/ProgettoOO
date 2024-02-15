@@ -4,10 +4,8 @@ import main.java.Controller.Controller;
 import main.java.Model.Frase;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,16 +17,15 @@ public class WikiPage {
     private JScrollPane ScrollPanel;
     private JPanel ContentContentPane;
     private final Controller controller;
-    private String titolo;
+    private final int idPagina;
     HashMap<Integer, Frase> Frasi;
-    private ActionListener listener;
 
-    public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, String titolo) {
+    public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
         this.controller = controller;
         this.frame = frame;
         this.OldPanel = OldPanel;
-        this.titolo=titolo;
+        this.idPagina= idPagina;
 
     }
 
@@ -39,14 +36,14 @@ public class WikiPage {
     private void createUIComponents() {
         // TODO: place custom component creation code here
 
-        this.Frasi =  controller.getWikiPage(titolo);
+        this.Frasi =  controller.getWikiPage(idPagina);
 
         ContentContentPane = new JPanel();
         ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
         ScrollPanel = new JScrollPane(ContentContentPane);
 
         if (Frasi != null) {
-            this.listener = new ActionListener() {
+            ActionListener listener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 

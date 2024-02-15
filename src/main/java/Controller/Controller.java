@@ -3,6 +3,7 @@ package main.java.Controller;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.Autore;
 import main.java.Model.Frase;
+import main.java.Model.Pagina;
 import main.java.Model.Utente;
 
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 public class Controller {
 
     Utente utenteLoggato = null;
+    HashMap<Integer, Pagina> Pagine = null;
 
     public boolean Login(String email, String password) {
 
@@ -34,19 +36,6 @@ public class Controller {
         }
 
     }
-    /*
-    public boolean Login(String email, String password) {
-
-        try {
-            boolean login =  new LoginPostgresDAO().Login(email, password);
-            if(login) {this.login=email; this.password=password;} // gestire meglio
-            return  login;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            return false;
-        }
-
-    }*/
 
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
@@ -59,10 +48,9 @@ public class Controller {
 
     }
 
-    public HashMap<Integer, Frase> getWikiPage(String titolo) {//da finire
+    public HashMap<Integer, Frase> getWikiPage(int idPagina) {//fare per id
         try{
-            return new GetWikiDAO().getWikiPage(titolo);
-
+            return new GetWikiDAO().getWikiPage(idPagina);
         }catch (Exception e){
             System.out.println(e.getMessage());
             return null;
@@ -70,12 +58,6 @@ public class Controller {
     }
 
     public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {
-        /*
-        System.out.println("Nome:" + Nome+"'");
-        System.out.println("Cognome: " + Cognome);
-        System.out.println("Genere: " + Genere.toString());
-        System.out.println("Email: " + Email);
-        System.out.println("Password: " + Password);*/
 
         String messageError = "<html>";
         try{
