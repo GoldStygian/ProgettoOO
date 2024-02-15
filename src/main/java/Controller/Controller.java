@@ -8,6 +8,7 @@ import main.java.Model.Utente;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Controller {
@@ -15,7 +16,7 @@ public class Controller {
     Utente utenteLoggato = null;
     HashMap<Integer, Pagina> Pagine = new HashMap<>();
 
-    public boolean Login(String email, String password) {
+    public boolean Login(String email, String password) { //OK
 
         try {
             this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
@@ -37,7 +38,7 @@ public class Controller {
 
     }
 
-    public ArrayList<ArrayList<String>> searchPages(String ricerca) {
+    public ArrayList<ArrayList<String>> searchPages(String ricerca) {//OK
 
         try {
             return new RicercaPagineDAO().SearchPage(ricerca);
@@ -47,14 +48,16 @@ public class Controller {
 
     }
 
-    public HashMap<Integer, Frase> getWikiPage(int idPagina) {
+    public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {//ok1
+
         try{
             PaginaDAO p =  new PaginaDAO();
-            HashMap<Integer, Frase> Frasi = p.getWikiPage(idPagina);
-            Pagina paginaCercata = p.getWikiInfo(idPagina);
+            HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
+            ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
             if (paginaCercata!=null){
-                paginaCercata.AddFrasi(Frasi);
-                Pagine.put(idPagina, paginaCercata);
+                Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3));
+                pagina_cercata.AddFrasi(Frasi);
+                Pagine.put(idPagina, pagina_cercata);
             }
             return Frasi;
 

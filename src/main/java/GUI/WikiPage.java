@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class WikiPage {
     private JPanel ContentContentPane;
     private final Controller controller;
     private final int idPagina;
-    HashMap<Integer, Frase> Frasi;
+    HashMap<Integer, ArrayList<String>> Frasi;
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
@@ -53,10 +54,10 @@ public class WikiPage {
                 }
             };
 
-            for (Map.Entry<Integer, Frase> entry : Frasi.entrySet()) {
+            for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
                 JButton button = new JButton(String.valueOf(entry.getKey()));
-                JLabel label = new JLabel(entry.getValue().getText());
+                JLabel label = new JLabel(entry.getValue().get(2));
 
                 button.addActionListener(listener);
 
