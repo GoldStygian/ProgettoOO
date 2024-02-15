@@ -18,8 +18,18 @@ public class Controller {
     public boolean Login(String email, String password) {
 
         try {
-            this.utenteLoggato  =  new LoginPostgresDAO().Login(email, password);
-            if(utenteLoggato!=null) {
+            ArrayList<String> Contenuto =  new LoginPostgresDAO().Login(email, password);
+
+            if(Contenuto !=null) {
+
+                if(Contenuto.get(0).equals("1")){
+                    Contenuto.removeFirst();
+                    utenteLoggato = new Autore(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
+
+                }else{
+                    utenteLoggato = new Utente(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
+                }
+
                 utenteLoggato.print(); //debug
                 if (utenteLoggato instanceof Utente) {
                     System.out.println("[+] l'utente è un utente semplice");
