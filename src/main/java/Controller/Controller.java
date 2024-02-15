@@ -97,8 +97,6 @@ public class Controller {
 
         for (int i = 0 ; i<Dati.get(0).size(); i++){
 
-
-
         }
 
 
