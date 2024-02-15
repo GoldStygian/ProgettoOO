@@ -9,4 +9,7 @@ public class Notifica {
         this.Operazioni_notificate = Operazioni_notificate;
     }
 
+    public OperazioneUtente getOperazioni_notificate() {
+        return Operazioni_notificate;
+    }
 }

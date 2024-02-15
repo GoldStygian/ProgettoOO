@@ -10,7 +10,9 @@ public class OperazioneUtente {
     private boolean link;
     private Pagina link_pagina;
 
-    public OperazioneUtente(Date DataA, Date DataR, String Testo, boolean accettata, boolean visionata, boolean link, Pagina link_pagina){
+    private boolean modifica;
+
+    public OperazioneUtente(Date DataA, Date DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, Pagina link_pagina){
         this.DataA = DataA;
         this.DataR = DataR;
         this.Testo = Testo;
@@ -18,14 +20,33 @@ public class OperazioneUtente {
         this.visionata = visionata;
         this.link = link;
         this.link_pagina = link_pagina;
+        this.modifica = modifica;
 
     }
 
-    public OperazioneUtente(Date DataR, boolean accettata, boolean visionata){
+    public OperazioneUtente(Date DataR, boolean accettata, boolean visionata, boolean modifica){
         this.DataR = DataR;
         this.accettata = accettata;
         this.visionata = visionata;
+        this.modifica = modifica;
 
     }
+
+    public Date getDataA() {
+        return DataA;
+    }
+
+    public boolean getAccettata() {
+        return accettata;
+    }
+
+    public boolean getVisionata() {
+        return visionata;
+    }
+
+    public boolean getModifica() {
+        return modifica;
+    }
+
 
 }

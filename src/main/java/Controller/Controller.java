@@ -101,14 +101,14 @@ public class Controller {
             Autore utenteLoggato1 = (Autore) utenteLoggato;
 
 
-            for (int i = 0 ; i<Dati.get(0).size(); i++){
+            for (int i = 0 ; i < Dati.get(0).size(); i++){
                 if(!((Boolean) Dati.getLast().get(i))){
 
-                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i))));
+                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i),(Boolean) Dati.get(3).get(i))));
                     //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
                     //System.out.println("io");
                 }else{
-                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i))));
+                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i),(Boolean) Dati.get(3).get(i))));
                 }
 
             }
@@ -120,9 +120,16 @@ public class Controller {
 
         ArrayList<ArrayList> s = null;
        if(this.GetAutoreLog()){
+           s.add(new ArrayList<Date>());
+           s.add(new ArrayList<Boolean>());
+           s.add(new ArrayList<Boolean>());
+           s.add(new ArrayList<Boolean>());
            Autore utenteLoggato1 = (Autore) utenteLoggato;
            for(Notifica n: utenteLoggato1.getNotifiche()){
-
+               s.get(0).add(n.getOperazioni_notificate().getDataA());
+               s.get(1).add(n.getOperazioni_notificate().getVisionata());
+               s.get(2).add(n.getOperazioni_notificate().getAccettata());
+               s.get(3).add(n.getOperazioni_notificate().getModifica());
            }
 
 
