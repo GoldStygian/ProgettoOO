@@ -21,20 +21,28 @@ public class NotifichePostgresDAO implements NotificheDAO  {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="SELECSELECT id_operazione, datar, pagina_frase, modifica, acettata, visionata FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
+        String query="SELECSELECT id_operazione, datar, pagina_frase, modifica, acettata, visionata, FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
         ResultSet Notifiche = statement.executeQuery(query);
 
 
         while(Notifiche.next()){
-           int id_pagina = Notifiche.getInt("pagina_frase");
-           Pagina p = Pagine.get(id_pagina);
-           HashMap<Integer, Frase> Frasi = p.getFrasi();
+           //int id_pagina = Notifiche.getInt("pagina_frase");
+           //Pagina p = Pagine.get(id_pagina);
+           //HashMap<Integer, Frase> Frasi = p.getFrasi();
            if(Notifiche.getBoolean("modifica")){
-               InserimentoUtente ins = new InserimentoUtente(Notifiche.getDate("datar"), Notifiche.getBoolean("accettata"), Notifiche.getBoolean("visionata"));
+                Notifica NewNotifica = new Notifica(new InserimentoUtente(Notifiche.getDate("datar"), Notifiche.getBoolean("accettata"), Notifiche.getBoolean("visionata")));
+                n.add(NewNotifica);
+           }else{
+               Notifica NewNotifica = new Notifica(new ModificaUtente(Notifiche.getDate("datar"), Notifiche.getBoolean("accettata"), Notifiche.getBoolean("visionata")));
+               n.add(NewNotifica);
 
            }
 
         }
+
+        Notifiche.close();
+        statement.close();
+        con.close();
 
         return n;
     }

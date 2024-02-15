@@ -10,4 +10,9 @@ public class ModificaUtente extends OperazioneUtente{
 
     }
 
+    public ModificaUtente( Date DataR, boolean accettata, boolean visionata){
+        super(DataR,accettata,visionata);
+
+    }
+
 }

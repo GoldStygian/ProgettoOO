@@ -23,7 +23,7 @@ public class Frase {
 
     public void AddModifica(){}
 
-    public void AddInserimento(){}
+    public void AddInserimentoUtente(){}
 
 
 
