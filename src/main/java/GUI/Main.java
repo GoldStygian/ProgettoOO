@@ -24,3 +24,4 @@ public class Main {
 //mettere stderr nel log
 //aggiornare RegisterDAO
 //creare l'oggetto utente loggato
+//settare l'utente = null quando fai exit
