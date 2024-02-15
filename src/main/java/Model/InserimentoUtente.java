@@ -10,5 +10,10 @@ public class InserimentoUtente extends OperazioneUtente{
         this.posizione = posizione;
     }
 
+    public InserimentoUtente(Date DataR, boolean accettata, boolean visionata){
+        super(DataR,accettata,visionata);
+
+    }
+
 
 }

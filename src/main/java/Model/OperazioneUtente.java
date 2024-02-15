@@ -21,4 +21,11 @@ public class OperazioneUtente {
 
     }
 
+    public OperazioneUtente(Date DataR, boolean accettata, boolean visionata){
+        this.DataR = DataR;
+        this.accettata = accettata;
+        this.visionata = visionata;
+
+    }
+
 }

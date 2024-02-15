@@ -25,4 +25,6 @@ public class Pagina {
         this.Frasi=Frasi;
     }
 
+    public HashMap<Integer, Frase> getFrasi(){return Frasi;}
+
 }
