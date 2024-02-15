@@ -32,6 +32,9 @@ public class HomeAutore {
     private Boolean bool = true;
 
     public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
+
+
+
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
 
@@ -64,7 +67,10 @@ public class HomeAutore {
 
         SerchBar.setFont(frame.getFontToolBar());
 
+        Menu = new JMenu("Menu");
         MenuBox = new Menu(frame,Menu ,oldPanel,MainPanel);
+
+
         t.SetIcon(IconMenu,new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));
 
         MenuButton.add(MenuBox);
@@ -74,6 +80,41 @@ public class HomeAutore {
         t.ToolBarButton(NotificheButton);
 
         NotificheBox.setBackground(frame.getColorToolBar());
+
+
+        Menu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                Menu.setBackground(new Color(199, 111, 91));
+                MenuButton.setBackground(new Color(199, 111, 91));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                MenuButton.setBackground(frame.getColorToolBar());
+                Menu.setBackground(frame.getColorToolBar());
+            }
+
+        });
+
+        MenuButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                MenuButton.setBackground(new Color(199, 111, 91));
+                Menu.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                MenuButton.setBackground(frame.getColorToolBar());
+                Menu.setBackground(frame.getColorToolBar());
+            }
+
+
+        });
 
         NotificheBox.addMouseListener(new MouseAdapter() {
             @Override
