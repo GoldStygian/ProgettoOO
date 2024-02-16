@@ -43,4 +43,7 @@ public class GuiPresetComponet {
 
     }
 
+    public void LabelSetTextBlack(JLabel j) {
+        j.setForeground(Color.BLACK);
+    }
 }

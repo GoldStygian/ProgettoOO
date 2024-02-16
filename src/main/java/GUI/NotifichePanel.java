@@ -21,6 +21,8 @@ public class NotifichePanel extends JPanel {
 
     public NotifichePanel(MainJFrame frame, int Id_operazione, Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina ,String Utente) {
 
+        GuiPresetComponet t = new GuiPresetComponet(frame);
+
         Autore.setText(Utente);
         Data.setText(datar.toString());
         Modifica.setText(String.valueOf(modifica));
@@ -31,12 +33,26 @@ public class NotifichePanel extends JPanel {
         MainPanel.setBorder(new LineBorder(Color.BLACK, 2));
         this.add(MainPanel);
         this.setBackground(frame.getColorBack());
+        MainPanel.setForeground(Color.BLACK);
+        t.LabelSetTextBlack(Autore);
+        t.LabelSetTextBlack(Data);
+        t.LabelSetTextBlack(Modifica);
+        t.LabelSetTextBlack(accettataJLabel);
+        t.LabelSetTextBlack(visionataJLabel);
+        t.LabelSetTextBlack(LinkJLabel);
+
 
         MainPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 MainPanel.setBackground(frame.getColorBack());
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                MainPanel.setBackground(frame.getColorToolBar());
             }
         });
     }
