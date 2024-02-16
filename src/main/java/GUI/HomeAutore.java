@@ -171,7 +171,7 @@ public class HomeAutore {
                     FrameNotifiche.setVisible(true);
                     NotificheNotOpen = false;
                 }
-
+                /*
                 try {
 
 
@@ -182,7 +182,7 @@ public class HomeAutore {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-
+                    */
 
             }
         });
