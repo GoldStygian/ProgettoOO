@@ -3,7 +3,10 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Timestamp;
 
 public class NotifichePanel extends JPanel {
@@ -24,8 +27,18 @@ public class NotifichePanel extends JPanel {
         accettataJLabel.setText(String.valueOf(accettata));
         visionataJLabel.setText(String.valueOf(visionata));
         LinkJLabel.setText(String.valueOf(link));
+        MainPanel.setBackground(frame.getColorToolBar());
+        MainPanel.setBorder(new LineBorder(Color.BLACK, 2));
         this.add(MainPanel);
         this.setBackground(frame.getColorBack());
+
+        MainPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                MainPanel.setBackground(frame.getColorBack());
+            }
+        });
     }
 
 
