@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 
 public class NotifichePanel extends JPanel {
 
+    private JFrame AccettazioneFrame;
     private JPanel MainPanel;
     private JLabel Autore;
     private JLabel Data;
@@ -42,6 +43,7 @@ public class NotifichePanel extends JPanel {
         t.LabelSetTextBlack(LinkJLabel);
 
 
+
         MainPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -53,6 +55,13 @@ public class NotifichePanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
                 MainPanel.setBackground(frame.getColorToolBar());
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                AccettazioneFrame = new ComparazioneFrame("Comparazione", frame);
+
             }
         });
     }

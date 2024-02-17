@@ -1,22 +1,28 @@
 package main.java.GUI;
 
 import main.java.Controller.Controller;
-import main.java.Model.InserimentoUtente;
-import main.java.Model.ModificaUtente;
-import main.java.Model.Notifica;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.MissingFormatArgumentException;
 
 public class NotificheFrame extends JFrame {
 
     private JPanel MainJPanel;
     private JPanel Notifiche;
     private JScrollPane MainScrollPane;
+    private JPanel ToolBar;
+    private JPanel BarIcon;
+    private JLabel Icon;
+    private JLabel NameApp;
+    private JPanel BarraDiRicerca;
+    private JPanel ButtonPanel;
+    private JPanel RefreshBox;
+    private JLabel IconRefresh;
+    private JButton RefreshButton;
 
 
     public NotificheFrame(String Nome, MainJFrame frame, Controller controller) {
@@ -26,11 +32,31 @@ public class NotificheFrame extends JFrame {
         this.pack();
         this.setVisible(false);
         this.add(MainJPanel);
-        this.setSize(500, 700);
+        this.setSize(600, 800);
         this.setIconImage(frame.getIconImage());
         this.setResizable(false);
         //this.setUndecorated(true);
         this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+
+        GuiPresetComponet t = new GuiPresetComponet(frame);
+        ButtonPanel.setBackground(frame.getColorToolBar());
+
+        ToolBar.setBackground(frame.getColorToolBar());
+
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
+
+        t.SetIcon(IconRefresh, new ImageIcon(t.ResizeIcon(30, 30, new ImageIcon("src/main/resources/refresh.png"))));
+
+        BarraDiRicerca.setBackground(frame.getColorToolBar());
+
+        NameApp.setFont(frame.getFontToolBar());
+
+        NameApp.setForeground(Color.BLACK);
+
+        RefreshBox.setBackground(frame.getColorToolBar());
+        t.ToolBarButton(RefreshButton);
+
+        MainScrollPane.setBorder(null);
 
         Notifiche.setBackground(frame.getColorBack());
         MainScrollPane.setBackground(frame.getColorBack());
