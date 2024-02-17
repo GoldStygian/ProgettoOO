@@ -15,9 +15,8 @@ public class ConfrontaPostgersDAO implements ConfrontaDAO {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        //System.out.print(id_operazione);
+
         String query="SELECT visualizzapropostaandconfronta(%d,'%s')".formatted(id_operazione, email_autore);
-        //System.out.print(query);
         ResultSet resultSet = statement.executeQuery(query);
 
         // Chiusura delle risorse
