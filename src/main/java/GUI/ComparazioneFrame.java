@@ -4,6 +4,8 @@ import javax.swing.*;
 
 public class ComparazioneFrame extends JFrame{
     private JPanel MainJPanel;
+    private JButton button1;
+    private JButton button2;
 
     public  ComparazioneFrame(String Nome, MainJFrame frame){
         super(Nome);
