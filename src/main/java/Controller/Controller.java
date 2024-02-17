@@ -151,10 +151,17 @@ public class Controller {
 
            }
 
-
        }
         return s;
+    }
 
+    public void LoadConfronto(int id_operazione){
+        ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
+        try {
+            c.LoadConfronto(id_operazione,utenteLoggato.getEmail());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

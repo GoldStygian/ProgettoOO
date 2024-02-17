@@ -61,6 +61,7 @@ public class NotifichePanel extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, Id_operazione);
+                controller.LoadConfronto(Id_operazione);
 
             }
         });
