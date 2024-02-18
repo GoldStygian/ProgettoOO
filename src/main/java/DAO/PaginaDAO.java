@@ -6,8 +6,9 @@ import java.util.HashMap;
 
 public interface PaginaDAO {
 
-    public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) throws SQLException;
+    HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) throws SQLException;
 
-    public ArrayList<String> getWikiInfo(int idPagina) throws SQLException;
+    ArrayList<String> getWikiInfo(int idPagina) throws SQLException;
 
+    void createPage(String titolo, String frase);
 }

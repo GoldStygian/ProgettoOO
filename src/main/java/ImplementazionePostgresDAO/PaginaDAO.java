@@ -1,7 +1,5 @@
 package main.java.ImplementazionePostgresDAO;
 
-import main.java.Model.Pagina;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,6 +58,14 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
         }
 
         return pagina_cercata;
+    }
+
+    @Override
+    public void createPage(String titolo, String frase){
+        Connection con = new ConnessionePostgesDAO().openConnection();
+
+
+
     }
 
 }

@@ -238,4 +238,8 @@ public class Controller {
     public void logOut(){
         this.utenteLoggato= null;
     }
+
+    public void creaPagina(String titolo, String frase) {
+        new PaginaDAO().createPage(titolo, frase);
+    }
 }

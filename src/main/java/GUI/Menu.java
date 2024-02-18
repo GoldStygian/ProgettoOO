@@ -16,7 +16,6 @@ public class Menu extends JMenuBar {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
-
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
 
@@ -29,6 +28,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //QUI IL TASTO CREA
+                frame.SetNewPanel(new CreaPagina(frame, HomePanel, controller).getPanel(), HomePanel);
             }
 
         });
@@ -46,10 +46,6 @@ public class Menu extends JMenuBar {
             }
 
         });
-
-
-
-
 
         menu.setOpaque(true);
         menu.setForeground(Color.BLACK);
