@@ -77,9 +77,10 @@ public class NotificheFrame extends JFrame {
             gbc = new GridBagConstraints();
             gbc.gridx = 0;
             gbc.gridy = i;
-            Notifiche.add(new NotifichePanel(frame, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i)),gbc);
+            Notifiche.add(new NotifichePanel(frame,controller, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i)),gbc);
 
         }
+        /*
         int i = 0;
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
@@ -118,6 +119,7 @@ public class NotificheFrame extends JFrame {
         gbc.gridy = 8;
         Notifiche.add(new NotifichePanel(frame, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i)),gbc);
 
+         */
 
     }
 
