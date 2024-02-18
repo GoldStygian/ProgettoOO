@@ -5,15 +5,16 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class ComparazioneFrame extends JFrame{
     private JPanel MainJPanel;
-    private JButton button1;
-    private JButton button2;
+    private JButton AcceptButton;
+    private JButton RejectButton;
     private JPanel OldTextPanel;
     private JLabel OldTextJLabel;
-    private JPanel NewTextPanel;
     private JLabel NewTextJLabel;
     private JPanel ButtonBox;
     private JLabel OldLink;
@@ -39,6 +40,8 @@ public class ComparazioneFrame extends JFrame{
     private JLabel NameApp;
     private JPanel NoToolBarComponet;
     private JPanel OldLabelBox;
+    private JLabel Oldver;
+    private JLabel New;
 
     private Color semiBack = new Color(199, 111, 91);
     public  ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente){
@@ -75,8 +78,48 @@ public class ComparazioneFrame extends JFrame{
         OldTextBox.setBackground(semiBack);
         NewTextBox.setBackground(semiBack);
         DivisoreOldBox.setBackground(semiBack);
+        t.LabelSetFontAndColor(NewLink);
+        t.LabelSetFontAndColor(NewLinkPagina);
+        t.LabelSetFontAndColor(NewPosizione);
+        t.LabelSetFontAndColor(Modifica);
+        DivisoreNewBox.setBorder(new LineBorder(Color.BLACK, 1));
         t.LabelSetFontAndColor(OldLink);
         t.LabelSetFontAndColor(OldPosizione);
         t.LabelSetFontAndColor(OldLinkPagina);
+        UtenteRichiesta.setFont(frame.getFontToolBarLower());
+        UtenteRichiesta.setForeground(Color.BLACK);
+        t.GenericButton(AcceptButton);
+        t.GenericButton(RejectButton);
+        t.LabelSetFontAndColor(New);
+        t.LabelSetFontAndColor(Oldver);
+        ModificaBox.setBorder(new LineBorder(Color.BLACK, 2));
+
+        AcceptButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                AcceptButton.setBackground(semiBack);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                AcceptButton.setBackground(frame.getColorToolBar());
+            }
+        });
+
+        RejectButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                RejectButton.setBackground(semiBack);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                RejectButton.setBackground(frame.getColorToolBar());
+            }
+        });
     }
 }

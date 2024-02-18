@@ -36,7 +36,7 @@ public class MainJFrame extends JFrame {
         }
 
         try {
-            FontToolBarLower = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(17f);
+            FontToolBarLower = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(18f);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

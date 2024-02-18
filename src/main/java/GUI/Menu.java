@@ -28,7 +28,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //QUI IL TASTO CREA
-                frame.SetNewPanel(new CreaPagina(frame, HomePanel, controller).getPanel(), HomePanel);
+                frame.SetNewPanel(new CreaPagina(frame, Oldpanel, controller).getPanel(), HomePanel);
             }
 
         });
