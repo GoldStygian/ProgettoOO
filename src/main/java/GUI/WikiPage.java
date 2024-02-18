@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -28,6 +29,8 @@ public class WikiPage {
     private JLabel LabelPaginaRef;
     private JLabel MessageError;
     private JLabel LoginNedded;
+    private JPanel ModPanel;
+    private JTextField textField1;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
@@ -39,11 +42,13 @@ public class WikiPage {
         this.OldPanel = OldPanel;
         this.idPagina = idPagina;
 
-        this.InsertPanel.setVisible(false);
+        this.InsertPanel.setVisible(false); //dx panel
         this.PageLinkRefFiled.setVisible(false);
         this.LabelPaginaRef.setVisible(false);
         this.MessageError.setVisible(false);
         this.LoginNedded.setVisible(false);
+
+        this.ModPanel.setVisible(false); //sx panel
 
 
         InsertButton.addActionListener(new ActionListener() {
@@ -60,6 +65,7 @@ public class WikiPage {
                         clicked=false;
                     }
                 }else{
+                    LoginNedded.setText("Devi effettuare l'accesso per poter inserire");
                     LoginNedded.setVisible(true);
                 }
             }
@@ -82,9 +88,11 @@ public class WikiPage {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                MessageError.setVisible(true);
                 MessageError.setText(controller.ProponiInserimento(idPagina, PositionField.getText(), TextField.getText(), LinkBox.isSelected(), PageLinkRefFiled.getText()));
-
+                System.out.println(MessageError.getText());
+                if (MessageError.getText().equals("<html>Richiesta avvenuta con successo<br></html>")) MessageError.setForeground(Color.green);
+                else MessageError.setForeground(Color.red);
+                MessageError.setVisible(true);
             }
         });
 
@@ -105,17 +113,30 @@ public class WikiPage {
 
         if (Frasi != null) {
             ActionListener listener = new ActionListener() {
+                boolean clicked = false;
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    String buttonText = ((JButton) e.getSource()).getText();
+                    //String buttonText = ((JButton) e.getSource()).getText();
+                    if(controller.isUserLogged()){
+                        if (clicked == false){
+                            ModPanel.setVisible(true);
+                            clicked=true;
+                        }else{
+                            ModPanel.setVisible(false);
+                            clicked=false;
+                        }
+                    }else{
+                        LoginNedded.setText("Devi effettuare l'accesso per poter modificare");
+                        LoginNedded.setVisible(true);
+                    }
                 }
             };
 
             for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
                 JButton button = new JButton(String.valueOf(entry.getKey()));
-                JLabel label = new JLabel(entry.getValue().get(2));
+                JLabel label = new JLabel(entry.getValue().get(2), 10);
 
                 button.addActionListener(listener);
 

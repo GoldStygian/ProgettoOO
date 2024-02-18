@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -17,11 +18,13 @@ public class CreaPagina {
     private JCheckBox linkCheckBox;
     private JTextField PaginaLinkRef;
     private JLabel LabelPaginaLinkRef;
+    private JLabel Message;
 
     public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller){
 
         PaginaLinkRef.setVisible(false);
         LabelPaginaLinkRef.setVisible(false);
+        Message.setVisible(false);
 
         BackButton.addActionListener(new ActionListener() {
             @Override
@@ -34,7 +37,12 @@ public class CreaPagina {
         CreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText());
+                Message.setText(controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText()));
+                System.out.println(Message.getText());
+                if (Message.getText().equals("<html>Pagina creata con successo<br></html>")) Message.setForeground(Color.green);
+                else Message.setForeground(Color.red);
+                Message.setVisible(true);
+
             }
         });
 

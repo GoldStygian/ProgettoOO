@@ -18,6 +18,7 @@ public class Main {
     }
 
 }
+//quando faccio inserimento io inserisco in quella posizione quindi capire come mettere in 1 e ultima pos
 //mettere nel model le proposte
 //mettere stderr nel log
 //settare l'utente = null quando fai exit

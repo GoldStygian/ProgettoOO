@@ -16,7 +16,7 @@ public class Controller {
     //debug
     //Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
-    HashMap<Integer, Pagina> Pagine = new HashMap<>();
+    HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
 
     public boolean Login(String email, String password) { //OK
 
@@ -58,14 +58,14 @@ public class Controller {
 
     }
 
-    public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {//ok1
+    public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {
 
         try{
             PaginaDAO p =  new PaginaDAO();
             HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
             ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
             if (paginaCercata!=null){
-                Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3));
+                Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3), paginaCercata.get(4));
                 pagina_cercata.AddFrasi(Frasi);
                 Pagine.put(idPagina, pagina_cercata);
             }
@@ -90,13 +90,13 @@ public class Controller {
         return messageError+"</html>";
     }
 
-    public boolean GetAutoreLog(){
+    public boolean isAutore(){
         return utenteLoggato instanceof Autore;
     }
 
     public  void LoadNotifiche() throws SQLException {
 
-        if(this.GetAutoreLog()){
+        if(this.isAutore()){
             NotifichePostgresDAO NotificheDao = new NotifichePostgresDAO();
             ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
             Autore utenteLoggato1 = (Autore) utenteLoggato;
@@ -121,7 +121,7 @@ public class Controller {
     public ArrayList<ArrayList> GetNotifiche(){
 
         ArrayList<ArrayList> s = null;
-       if(this.GetAutoreLog()){
+       if(this.isAutore()){
            s = new ArrayList<>();
            s.add(new ArrayList<Integer>());
            s.add(new ArrayList<Timestamp>());
@@ -174,20 +174,6 @@ public class Controller {
 
     public String ProponiInserimento(int idPagina, String posizione, String text, boolean selected, String RiferimentoLink) {
 
-        //utente
-        //testo
-        //posizione
-        //modifica = 0
-        //pagina in cui sta
-        //posizione
-        //link
-        //link ref
-
-        /*System.out.println("Text: " + text);
-        System.out.println("Posizione: " + posizione);
-        System.out.println("Selected: " + selected);
-        System.out.println("Riferimento Link: " + RiferimentoLink);*/
-
         String messageError = "<html>";
         int posizioneInt=-1;
 
@@ -215,14 +201,22 @@ public class Controller {
 
             Integer posizioneDB = Integer.parseInt(frase.get(0)); //0 : posizione
 
+            Boolean isAutore;
+            Pagina currentPage = Pagine.get(idPagina);
+            if ( email.equals(currentPage.getEmailAutore())){
+                isAutore=true;
+            }else{
+                isAutore=false;
+            }
+
             try {
-                messageError += new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneDB, selected, RiferimentoLink);
+                messageError += new WikiPagePostgresDAO().proponiInserimento(isAutore, idPagina, email, text, posizioneDB, selected, RiferimentoLink);
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
 
-        return messageError;
+        return messageError+"</html>";
     }
 
     public void SetVisionata(int id_operazione){
@@ -248,7 +242,27 @@ public class Controller {
         this.utenteLoggato= null;
     }
 
-    public void creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
-        new PaginaDAO().createPage(titolo, frase, selected, TitoloPaginaLink);
+    public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
+
+        String messageError = "<html>";
+        if (titolo.isEmpty()){
+            messageError += "Il titolo è vuota<br>";
+        }
+        else if (frase.isEmpty()){
+            messageError += "la frase è vuota<br>";
+        }else {
+
+            String email = utenteLoggato.getEmail();
+            try {
+                messageError += new PaginaDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
+            }catch (Exception e){
+                e.printStackTrace();
+                messageError += "Problema sconosciuto<br>";
+            }
+
+        }
+
+        return messageError+="</html>";
+
     }
 }

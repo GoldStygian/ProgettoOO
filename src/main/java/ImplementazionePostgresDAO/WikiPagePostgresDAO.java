@@ -7,7 +7,7 @@ import java.sql.*;
 public class WikiPagePostgresDAO implements WikiPageDAO {
 
     @Override
-    public String proponiInserimento(int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
+    public String proponiInserimento(boolean isAutore, int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         String MessageReturn = new String();
@@ -29,11 +29,21 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
                 checkPageStatement.close();
             }
 
-            query = "CALL operazioneutenterichiesta('%s'::VARCHAR(255), '%s'::TEXT, %d, 0::bit(1), %d, %d, 1::bit(1), %d)".formatted(email, text, posizione, idPagina, posizione, linkValue);
+            if (isAutore) {
+                query = "CALL insertfraseautore('%d', '%s'::VARCHAR(255), '%s'::TEXT, 1::bit(1), '%s'::VARCHAR(255), %d)".formatted(idPagina, email, text, riferimentoLink, posizione);
+            }else {
+                query = "CALL operazioneutenterichiesta('%s'::VARCHAR(255), '%s'::TEXT, %d, 0::bit(1), %d, %d, 1::bit(1), %d)".formatted(email, text, posizione, idPagina, posizione, linkValue);
+            }
+
 
 
         }else{
-            query = "CALL operazioneutenterichiesta('%s'::VARCHAR(255), '%s'::TEXT, %d, 0::bit(1), %d, %d, 0::bit(1), %d)".formatted(email, text, posizione, idPagina, posizione, null);
+
+            if (isAutore) {
+                query = "CALL insertfraseautore('%d', '%s'::VARCHAR(255), '%s'::TEXT, 0::bit(1), '%s'::VARCHAR(255), %d)".formatted(idPagina, email, text, null, posizione);
+            }else {
+                query = "CALL operazioneutenterichiesta('%s'::VARCHAR(255), '%s'::TEXT, %d, 0::bit(1), %d, %d, 0::bit(1), %d)".formatted(email, text, posizione, idPagina, posizione, null);
+            }
 
         }
 
@@ -42,7 +52,7 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
 
         System.out.println(result);
         if (!result){ //la procedura non deve ritornare valori
-            MessageReturn = "Inserimento proposto con successo<br>";
+            MessageReturn = "Richiesta avvenuta con successo<br>";
         }else{
             ResultSet rs = stm.getResultSet();
             System.out.println(rs);

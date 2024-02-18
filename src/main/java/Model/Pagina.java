@@ -1,24 +1,29 @@
 package main.java.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Pagina {
 
     private String titolo = new String();
+    private String emailAutore;
     private String Generalita_Autore = new String();
     private String Data_Ultima_Modifica;
     private String Crezione_Pagina;
     private HashMap<Integer, Frase> Frasi; //l'indice parte da 1
 
-    public Pagina(String titolo, String Generalita_Autore, String DataUltimaModifica, String Crezione_Pagina){
+    public Pagina(String titolo, String emailAutore, String Generalita_Autore, String DataUltimaModifica, String Crezione_Pagina){
         this.titolo = titolo;
+        this.emailAutore=emailAutore;
         this.Generalita_Autore = Generalita_Autore;
         this.Data_Ultima_Modifica = DataUltimaModifica;
         this.Crezione_Pagina = Crezione_Pagina;
 
+    }
+
+    public String getEmailAutore(){
+        return emailAutore;
     }
 
     public void AddFrase(){}
