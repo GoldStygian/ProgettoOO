@@ -13,7 +13,6 @@ public class ComparazioneFrame extends JFrame{
     private JButton button2;
     private JPanel OldTextPanel;
     private JLabel OldTextJLabel;
-    private JPanel NewTextPanel;
     private JLabel NewTextJLabel;
     private JPanel ButtonBox;
     private JLabel OldLink;
@@ -75,8 +74,14 @@ public class ComparazioneFrame extends JFrame{
         OldTextBox.setBackground(semiBack);
         NewTextBox.setBackground(semiBack);
         DivisoreOldBox.setBackground(semiBack);
+        t.LabelSetFontAndColor(NewLink);
+        t.LabelSetFontAndColor(NewLinkPagina);
+        t.LabelSetFontAndColor(NewPosizione);
+
+        DivisoreNewBox.setBorder(new LineBorder(Color.BLACK, 1));
         t.LabelSetFontAndColor(OldLink);
         t.LabelSetFontAndColor(OldPosizione);
         t.LabelSetFontAndColor(OldLinkPagina);
+        UtenteRichiesta.setFont(frame.getFontToolBarLower());
     }
 }
