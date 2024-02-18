@@ -7,6 +7,5 @@ public interface ConnessioneDAO {
 
 
     public Connection openConnection();
-    public void closeConnection(Connection con) throws SQLException;
 
 }

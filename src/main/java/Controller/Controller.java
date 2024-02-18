@@ -195,10 +195,13 @@ public class Controller {
 
         String email = utenteLoggato.getEmail();
 
+        Pagina pagina = Pagine.get(idPagina);
+        //Frase frase = pagina.
+
         try {
-            new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneInt, selected, RiferimentoLink);
+            messageError += new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneInt, selected, RiferimentoLink);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         return messageError;
@@ -212,5 +215,9 @@ public class Controller {
             return true;
         }
 
+    }
+
+    public void logOut(){
+        this.utenteLoggato= null;
     }
 }

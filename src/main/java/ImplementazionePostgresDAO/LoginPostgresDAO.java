@@ -37,7 +37,6 @@ public class LoginPostgresDAO implements LoginDAO {
             Contenuto.add(resultSet.getString("cognome"));
             Contenuto.add(resultSet.getString("genere"));
 
-
         }
 
         resultSet.close();

@@ -52,14 +52,4 @@ public class ConnessionePostgesDAO implements ConnessioneDAO {
         return null;
     }
 
-    @Override
-    public void closeConnection(Connection con) {
-        try {
-            con.close();
-        }catch (SQLException e) {
-            System.out.println("[-] Connessione Fallita \n");
-            System.out.println(e);
-        }
-    }
-
 }

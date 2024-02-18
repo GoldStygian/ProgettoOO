@@ -4,7 +4,6 @@ import main.java.Controller.Controller;
 
 import java.sql.SQLException;
 
-
 public class Main {
 
     private static MainJFrame frame;
@@ -19,8 +18,9 @@ public class Main {
     }
 
 }
-//eliminare il metoto chiudi connessione
+//rinumerare la proposta di inserimento
 //mettere stderr nel log
 //settare l'utente = null quando fai exit
 //unire i DAO PaginaDAO e Ricerca PagineDao
 //mettere if al posto di while nei reultset con 1 return result
+//utilizzare array temporaneo del controller per passare informazioni
