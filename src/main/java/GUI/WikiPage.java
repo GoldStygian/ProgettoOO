@@ -1,13 +1,12 @@
 package main.java.GUI;
 
 import main.java.Controller.Controller;
-import main.java.Model.Frase;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +18,16 @@ public class WikiPage {
     private final JPanel OldPanel;
     private JScrollPane ScrollPanel;
     private JPanel ContentContentPane;
+    private JPanel InsertPanel;
+    private JButton InsertButton;
+    private JTextField PositionField;
+    private JTextField TextField;
+    private JCheckBox LinkBox;
+    private JTextField PageLinkRefFiled;
+    private JButton ProponiButton;
+    private JLabel LabelPaginaRef;
+    private JLabel MessageError;
+    private JLabel LoginNedded;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
@@ -29,6 +38,55 @@ public class WikiPage {
         this.frame = frame;
         this.OldPanel = OldPanel;
         this.idPagina = idPagina;
+
+        this.InsertPanel.setVisible(false);
+        this.PageLinkRefFiled.setVisible(false);
+        this.LabelPaginaRef.setVisible(false);
+        this.MessageError.setVisible(false);
+        this.LoginNedded.setVisible(false);
+
+
+        InsertButton.addActionListener(new ActionListener() {
+            boolean clicked = false;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(controller.isUserLogged()){
+                    if (clicked == false){
+                        InsertPanel.setVisible(true);
+                        clicked=true;
+                    }else{
+                        InsertPanel.setVisible(false);
+                        clicked=false;
+                    }
+                }else{
+                    LoginNedded.setVisible(true);
+                }
+            }
+        });
+
+        LinkBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    PageLinkRefFiled.setVisible(true);
+                    LabelPaginaRef.setVisible(true);
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    PageLinkRefFiled.setVisible(false);
+                    LabelPaginaRef.setVisible(false);
+                }
+            }
+        });
+
+        ProponiButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MessageError.setVisible(true);
+                MessageError.setText(controller.ProponiInserimento(idPagina, PositionField.getText(), TextField.getText(), LinkBox.isSelected(), PageLinkRefFiled.getText()));
+
+            }
+        });
 
     }
 
@@ -51,7 +109,6 @@ public class WikiPage {
                 public void actionPerformed(ActionEvent e) {
 
                     String buttonText = ((JButton) e.getSource()).getText();
-                    System.out.println("Hai premuto la frase: " + buttonText);
                 }
             };
 

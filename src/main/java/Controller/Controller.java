@@ -3,17 +3,19 @@ package main.java.Controller;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
-import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import java.util.Date;
 import java.util.HashMap;
 
 public class Controller {
 
-    Utente utenteLoggato = null;
+    //Utente utenteLoggato = null;
+
+    //debug
+    Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+    //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>();
 
     public boolean Login(String email, String password) { //OK
@@ -24,18 +26,16 @@ public class Controller {
             if(Contenuto !=null) {
 
                 if(Contenuto.get(0).equals("1")){
-                    Contenuto.removeFirst();
-                    utenteLoggato = new Autore(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
-
+                    utenteLoggato = new Autore(Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4),Contenuto.get(5).charAt(0));
                 }else{
-                    utenteLoggato = new Utente(Contenuto.get(0),Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4).charAt(0));
+                    utenteLoggato = new Utente(Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4),Contenuto.get(5).charAt(0));
                 }
 
                 utenteLoggato.print(); //debug
                 if (utenteLoggato instanceof Utente) {
-                    System.out.println("[+] l'utente è un utente semplice");
+                    System.out.println("[+] l'utente è un utente semplice");//debug
                 }else{
-                    System.out.println("[+] l'utente è un autore");
+                    System.out.println("[+] l'utente è un autore");//debug
                 }
                 return true;
             }else{
@@ -164,4 +164,53 @@ public class Controller {
         }
     }
 
+    public String ProponiInserimento(int idPagina, String posizione, String text, boolean selected, String RiferimentoLink) {
+
+        //utente
+        //testo
+        //posizione
+        //modifica = 0
+        //pagina in cui sta
+        //posizione
+        //link
+        //link ref
+
+        /*System.out.println("Text: " + text);
+        System.out.println("Posizione: " + posizione);
+        System.out.println("Selected: " + selected);
+        System.out.println("Riferimento Link: " + RiferimentoLink);*/
+
+        String messageError = "<html>";
+        int posizioneInt=-1;
+
+        if (posizione.isEmpty()){
+            messageError += "posizione non valida<br>";
+        }
+
+        try{
+            posizioneInt = Integer.parseInt(posizione);
+        }catch (NumberFormatException e){
+            messageError += "La posizione deve esssere un numero<br>";
+        }
+
+        String email = utenteLoggato.getEmail();
+
+        try {
+            new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneInt, selected, RiferimentoLink);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        return messageError;
+    }
+
+    public boolean isUserLogged(){
+
+        if (utenteLoggato==null){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 }
