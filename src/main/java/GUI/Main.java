@@ -18,7 +18,7 @@ public class Main {
     }
 
 }
-//rinumerare la proposta di inserimento
+//mettere nel model le proposte
 //mettere stderr nel log
 //settare l'utente = null quando fai exit
 //unire i DAO PaginaDAO e Ricerca PagineDao

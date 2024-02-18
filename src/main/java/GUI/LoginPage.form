@@ -139,7 +139,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <text value=""/>
+                  <text value="florindozec@gmail.com"/>
                 </properties>
               </component>
               <component id="446f6" class="javax.swing.JLabel" binding="IconName">
@@ -167,7 +167,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <text value=""/>
+                  <text value="PasswordForte"/>
                 </properties>
               </component>
               <component id="f368b" class="javax.swing.JLabel" binding="IconLock">
