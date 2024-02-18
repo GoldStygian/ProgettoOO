@@ -5,5 +5,5 @@ import java.util.ArrayList;
 
 public interface ConfrontaDAO {
 
-    public ArrayList<ArrayList> LoadConfronto(int id_operazione, String email_autore) throws SQLException;
+    public String LoadConfronto(int id_operazione, String email_autore) throws SQLException;
 }
