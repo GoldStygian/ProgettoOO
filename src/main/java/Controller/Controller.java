@@ -159,7 +159,9 @@ public class Controller {
     public void LoadConfronto(int id_operazione){
         ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
         try {
-            c.LoadConfronto(id_operazione,utenteLoggato.getEmail());
+            String Confronto = c.LoadConfronto(id_operazione,utenteLoggato.getEmail());
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

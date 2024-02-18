@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ConfrontaPostgersDAO implements ConfrontaDAO {
 
-    public ArrayList<ArrayList> LoadConfronto(int id_operazione, String email_autore) throws SQLException {
+    public String LoadConfronto(int id_operazione, String email_autore) throws SQLException {
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
@@ -23,12 +23,12 @@ public class ConfrontaPostgersDAO implements ConfrontaDAO {
         con.close();
 
         resultSet.next();
-        String idPagineReturn = resultSet.getString("visualizzapropostaandconfronta");
-        System.out.print(idPagineReturn);
+        String Confronto = resultSet.getString("visualizzapropostaandconfronta");
+        System.out.print(Confronto + "\n");
 
         resultSet.close();
         statement.close();
-        return null;
+        return Confronto;
     }
 
 }
