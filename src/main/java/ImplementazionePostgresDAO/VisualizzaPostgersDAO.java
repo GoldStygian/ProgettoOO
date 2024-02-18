@@ -14,7 +14,7 @@ public class VisualizzaPostgersDAO implements VisualizzaDAO {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="UPDATE operazione_utente SET visionata = 1 where id_operazione = %s".formatted(id_operazione);
+        String query="UPDATE operazione_utente SET visionata = 1::bit(1) where id_operazione = %s".formatted(id_operazione);
         ResultSet resultSet = statement.executeQuery(query);
 
         con.close();

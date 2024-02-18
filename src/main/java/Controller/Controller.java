@@ -219,7 +219,7 @@ public class Controller {
         try {
             v.Visionata(id_operazione);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.printf("visionata");
         }
     }
 
