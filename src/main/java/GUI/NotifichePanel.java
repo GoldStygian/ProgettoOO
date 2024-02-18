@@ -24,12 +24,12 @@ public class NotifichePanel extends JPanel {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
-        Autore.setText(Utente);
-        Data.setText(datar.toString());
-        Modifica.setText(String.valueOf(modifica));
-        accettataJLabel.setText(String.valueOf(accettata));
-        visionataJLabel.setText(String.valueOf(visionata));
-        LinkJLabel.setText(String.valueOf(link));
+        Autore.setText("Uente: " + Utente);
+        Data.setText("Data: " + datar.toString());
+        Modifica.setText("Modifica: " + String.valueOf(modifica));
+        accettataJLabel.setText("Accettata: " + String.valueOf(accettata));
+        visionataJLabel.setText("Visionata: " + String.valueOf(visionata));
+        LinkJLabel.setText("Link: " + String.valueOf(link));
         MainPanel.setBackground(frame.getColorToolBar());
         MainPanel.setBorder(new LineBorder(Color.BLACK, 2));
         this.add(MainPanel);
