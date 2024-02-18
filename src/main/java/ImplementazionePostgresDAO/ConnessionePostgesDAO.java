@@ -14,10 +14,6 @@ import java.util.Scanner;
 
 public class ConnessionePostgesDAO implements ConnessioneDAO {
 
-    private String password;
-    private String user;
-    private String url;
-
     @Override
     public Connection openConnection() {
 
@@ -44,10 +40,8 @@ public class ConnessionePostgesDAO implements ConnessioneDAO {
             return con;
         } catch (ClassNotFoundException e) {
             System.out.println("[-] DB driver not found \n");
-            System.out.println(e);
         } catch (SQLException e) {
             System.out.println("[-] Connessione Fallita \n");
-            System.out.println(e);
         }
         return null;
     }

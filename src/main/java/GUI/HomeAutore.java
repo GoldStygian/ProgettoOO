@@ -78,7 +78,7 @@ public class HomeAutore {
         SerchBar.setFont(frame.getFontToolBar());
 
         Menu = new JMenu("Menu");
-        MenuBox = new Menu(frame, Menu, oldPanel, MainPanel);
+        MenuBox = new Menu(frame, Menu, oldPanel, MainPanel, controller);
 
 
         t.SetIcon(IconMenu, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\dots.png"))));

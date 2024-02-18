@@ -1,5 +1,7 @@
 package main.java.GUI;
 
+import main.java.Controller.Controller;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.MenuEvent;
@@ -10,10 +12,9 @@ import java.awt.event.*;
 public class Menu extends JMenuBar {
 
 
-    public Menu(MainJFrame frame, JMenu menu, JPanel HomePanel, JPanel Oldpanel){
+    public Menu(MainJFrame frame, JMenu menu, JPanel HomePanel, JPanel Oldpanel, Controller controller){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
-
 
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
@@ -27,6 +28,7 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //QUI IL TASTO CREA
+                frame.SetNewPanel(new CreaPagina(frame, HomePanel, controller).getPanel(), HomePanel);
             }
 
         });
@@ -43,10 +45,6 @@ public class Menu extends JMenuBar {
             }
 
         });
-
-
-
-
 
         menu.setOpaque(true);
         menu.setForeground(Color.BLACK);
