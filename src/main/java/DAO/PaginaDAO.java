@@ -10,5 +10,5 @@ public interface PaginaDAO {
 
     ArrayList<String> getWikiInfo(int idPagina) throws SQLException;
 
-    void createPage(String titolo, String frase);
+    void createPage(String titolo, String frase, boolean link, String TitoloLink);
 }

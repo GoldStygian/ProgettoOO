@@ -61,7 +61,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
     }
 
     @Override
-    public void createPage(String titolo, String frase){
+    public void createPage(String titolo, String frase, boolean link, String TitoloLink){
         Connection con = new ConnessionePostgesDAO().openConnection();
 
 
