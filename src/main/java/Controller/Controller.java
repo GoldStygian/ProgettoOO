@@ -12,10 +12,10 @@ import java.util.HashMap;
 
 public class Controller {
 
-    //Utente utenteLoggato = null;
+    Utente utenteLoggato = null;
 
     //debug
-    Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+    //Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>();
 
