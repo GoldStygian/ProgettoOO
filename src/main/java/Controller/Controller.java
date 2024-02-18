@@ -1,6 +1,5 @@
 package main.java.Controller;
 
-import main.java.DAO.VisualizzaDAO;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
@@ -196,6 +195,10 @@ public class Controller {
             messageError += "La posizione deve esssere un numero<br>";
         }
 
+        if (text.isEmpty()){
+            return messageError += "Il testo è vuoto<br>";
+        }
+
         String email = utenteLoggato.getEmail();
 
         Pagina pagina = Pagine.get(idPagina);
@@ -239,7 +242,7 @@ public class Controller {
         this.utenteLoggato= null;
     }
 
-    public void creaPagina(String titolo, String frase) {
-        new PaginaDAO().createPage(titolo, frase);
+    public void creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
+        new PaginaDAO().createPage(titolo, frase, selected, TitoloPaginaLink);
     }
 }
