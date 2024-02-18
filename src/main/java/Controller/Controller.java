@@ -156,11 +156,17 @@ public class Controller {
         return s;
     }
 
-    public void LoadConfronto(int id_operazione){
+    public ArrayList<String[]> LoadConfronto(int id_operazione){
         ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
         try {
             String Confronto = c.LoadConfronto(id_operazione,utenteLoggato.getEmail());
-
+            int index = Confronto.indexOf('+');
+            Confronto = Confronto.substring(index+1);
+            String [] s = Confronto.split("\\|");
+            ArrayList<String[]> Confronti = new ArrayList<>();
+            Confronti.add(s[0].split("-"));
+            Confronti.add(s[1].split("-"));
+            return Confronti;
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
