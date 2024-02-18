@@ -26,7 +26,8 @@ public class ConfrontaPostgersDAO implements ConfrontaDAO {
         String idPagineReturn = resultSet.getString("visualizzapropostaandconfronta");
         System.out.print(idPagineReturn);
 
-
+        resultSet.close();
+        statement.close();
         return null;
     }
 

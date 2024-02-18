@@ -1,5 +1,6 @@
 package main.java.Controller;
 
+import main.java.DAO.VisualizzaDAO;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
@@ -202,6 +203,15 @@ public class Controller {
         }
 
         return messageError;
+    }
+
+    public void SetVisionata(int id_operazione){
+        VisualizzaPostgersDAO v = new VisualizzaPostgersDAO();
+        try {
+            v.Visionata(id_operazione);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean isUserLogged(){

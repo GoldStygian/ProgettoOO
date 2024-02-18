@@ -62,6 +62,7 @@ public class NotifichePanel extends JPanel {
                 super.mouseClicked(e);
                 AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, Id_operazione);
                 controller.LoadConfronto(Id_operazione);
+                controller.SetVisionata(Id_operazione);
 
             }
         });
