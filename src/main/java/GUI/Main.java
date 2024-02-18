@@ -19,9 +19,8 @@ public class Main {
     }
 
 }
-//id nell'arry DataPages /nimuovere o no
 //eliminare il metoto chiudi connessione
 //mettere stderr nel log
-//aggiornare RegisterDAO
-//creare l'oggetto utente loggato
 //settare l'utente = null quando fai exit
+//unire i DAO PaginaDAO e Ricerca PagineDao
+//mettere if al posto di while nei reultset con 1 return result

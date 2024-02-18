@@ -24,8 +24,6 @@ public class LoginPostgresDAO implements LoginDAO {
         // Chiusura delle risorse
         con.close();
 
-
-
         ArrayList<String> Contenuto = null;
 
         if (resultSet.next()){//se contiene qualcosa allora email e password combaciano
