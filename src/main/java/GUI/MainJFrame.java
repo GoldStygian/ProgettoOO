@@ -9,6 +9,8 @@ import java.io.IOException;
 public class MainJFrame extends JFrame {
     private Font FontToolBar;
 
+    private Font FontToolBarLower;
+
     private Color ColorToolBar = new Color(128,71,57);
 
     private  Color ColorBack = new Color(253, 233, 229);
@@ -27,6 +29,14 @@ public class MainJFrame extends JFrame {
         File is = new File("src\\main\\resources\\Roman SD.ttf");
         try {
             FontToolBar = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(22f);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            FontToolBarLower = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(17f);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -52,6 +62,10 @@ public class MainJFrame extends JFrame {
 
     public Font getFontToolBar(){
         return FontToolBar;
+    }
+
+    public Font getFontToolBarLower(){
+        return FontToolBarLower;
     }
 
     public ImageIcon getIcon(){
