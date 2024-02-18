@@ -90,8 +90,8 @@ public class ComparazioneFrame extends JFrame{
         UtenteRichiesta.setForeground(Color.BLACK);
         t.GenericButton(AcceptButton);
         t.GenericButton(RejectButton);
-        t.LabelSetTextBlack(New);
-        t.LabelSetTextBlack(Oldver);
+        t.LabelSetFontAndColor(New);
+        t.LabelSetFontAndColor(Oldver);
         ModificaBox.setBorder(new LineBorder(Color.BLACK, 2));
 
         AcceptButton.addMouseListener(new MouseAdapter() {
