@@ -12,7 +12,7 @@ public class CreaPagina {
     private JTextField fraseTextField;
     private JButton CreateButton;
     private JPanel MainPanel;
-    private JCheckBox checkBox1;
+    private JCheckBox linkCheckBox;
     private JTextField textField1;
 
     public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller){
