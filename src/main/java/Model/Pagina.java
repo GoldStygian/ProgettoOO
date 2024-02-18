@@ -11,7 +11,7 @@ public class Pagina {
     private String Generalita_Autore = new String();
     private String Data_Ultima_Modifica;
     private String Crezione_Pagina;
-    private HashMap<Integer, Frase> Frasi;
+    private HashMap<Integer, Frase> Frasi; //l'indice parte da 1
 
     public Pagina(String titolo, String Generalita_Autore, String DataUltimaModifica, String Crezione_Pagina){
         this.titolo = titolo;
@@ -41,5 +41,17 @@ public class Pagina {
     }
 
     public HashMap<Integer, Frase> getFrasi(){return Frasi;}
+
+    public ArrayList<String> getFrase(int n){
+
+        Frase StoredFrase = Frasi.get(n);
+        if (StoredFrase==null){// l afrase n non esiste
+            return null;
+        }
+
+        ArrayList<String> frase = StoredFrase.getData();
+
+       return frase;
+    }
 
 }

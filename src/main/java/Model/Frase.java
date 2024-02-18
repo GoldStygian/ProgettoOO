@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 public class Frase {
 
-    private String Testo = new String();
-    private int posizione;
-
-    private InserimentoAutore inserimentoAutore = null;
+    private final String Testo;
+    private final int posizione;
+    private final InserimentoAutore inserimentoAutore = null;
     private ArrayList<ModificaAutore> ModificheAutore = new ArrayList<ModificaAutore>();
-    private InserimentoUtente inserimentoUtente = null;
+    private final InserimentoUtente inserimentoUtente = null;
     private ArrayList<ModificaUtente> ModificheUtente = new ArrayList<ModificaUtente>();
 
     public Frase(String Testo, int posizione){
@@ -24,6 +23,15 @@ public class Frase {
     public void AddModifica(){}
 
     public void AddInserimentoUtente(){}
+
+    public ArrayList<String> getData(){
+
+        ArrayList<String> Data = new ArrayList<>();
+        Data.add(String.valueOf(posizione));
+        Data.add(Testo);
+
+        return Data;
+    }
 
 
 

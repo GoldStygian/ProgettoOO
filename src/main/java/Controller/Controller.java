@@ -197,12 +197,18 @@ public class Controller {
         String email = utenteLoggato.getEmail();
 
         Pagina pagina = Pagine.get(idPagina);
-        //Frase frase = pagina.
+        ArrayList<String> frase = pagina.getFrase(Integer.parseInt(posizione));
+        if (frase==null){ //la frase non è nell'hashmap
+            messageError += "posizione non valida<br>";
+        }else{
 
-        try {
-            messageError += new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneInt, selected, RiferimentoLink);
-        }catch (Exception e){
-            e.printStackTrace();
+            Integer posizioneDB = Integer.parseInt(frase.get(0)); //0 : posizione
+
+            try {
+                messageError += new WikiPagePostgresDAO().proponiInserimento(idPagina, email, text, posizioneDB, selected, RiferimentoLink);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         return messageError;
