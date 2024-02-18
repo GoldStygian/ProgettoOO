@@ -114,17 +114,19 @@ public class NotificheFrame extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0 ; i < NumNot; i++) {
-                    Notifiche.remove(NotificheOnPanel.get(i));
-                    //Notifiche.add(NotificheOnPanel.get(i));
+                if(controller.NumerOfNotifiche() != NumNot){
+                    for (int i = 0 ; i < NumNot; i++) {
+                        Notifiche.remove(NotificheOnPanel.get(i));
+                        //Notifiche.add(NotificheOnPanel.get(i));
+                    }
+                    controller.Resize(600, 800,f);
+                    try {
+                        controller.LoadNotifiche();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    load(controller,frame);
                 }
-                controller.Resize(600, 800,f);
-                try {
-                    controller.LoadNotifiche();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                load(controller,frame);
             }
         });
 

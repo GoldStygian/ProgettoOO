@@ -89,4 +89,20 @@ public class NotifichePostgresDAO implements NotificheDAO  {
 
     }
 
+
+    public int NumberOfNotiche(String EmailAutore) throws SQLException {
+        Connection con = new ConnessionePostgesDAO().openConnection();
+        Statement statement = con.createStatement();
+
+        String query="SELECT count(*) as number FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
+        ResultSet Notifiche = statement.executeQuery(query);
+
+        Notifiche.next();
+        int n = Notifiche.getInt("number");
+        con.close();
+        Notifiche.close();
+        statement.close();
+
+        return n;
+    }
 }

@@ -245,6 +245,16 @@ public class Controller {
 
     }
 
+    public int NumerOfNotifiche(){
+        NotifichePostgresDAO n = new NotifichePostgresDAO();
+        try {
+            //System.out.printf("\n%d", n.NumberOfNotiche(utenteLoggato.getEmail()));
+            return n.NumberOfNotiche(utenteLoggato.getEmail());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void logOut(){
         this.utenteLoggato= null;
     }
