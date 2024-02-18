@@ -5,6 +5,8 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -25,11 +27,13 @@ public class NotificheFrame extends JFrame {
     private JPanel RefreshBox;
     private JLabel IconRefresh;
     private JButton RefreshButton;
-
+    private ArrayList<JPanel> NotificheOnPanel = new ArrayList<>();
+    private int NumNot;
 
     public NotificheFrame(String Nome, MainJFrame frame, Controller controller) {
 
         super(Nome);
+        JFrame f = this;
         this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.pack();
         this.setVisible(false);
@@ -70,18 +74,8 @@ public class NotificheFrame extends JFrame {
             throw new RuntimeException(e);
         }
 
-        ArrayList<ArrayList> s = controller.GetNotifiche();
-        System.out.print(s);
-        System.out.printf("%d", s.get(0).size());
-        for (int i = 0 ; i < s.get(0).size(); i++) {
+        load(controller, frame);
 
-            GridBagConstraints gbc;
-            gbc = new GridBagConstraints();
-            gbc.gridx = 0;
-            gbc.gridy = i;
-            Notifiche.add(new NotifichePanel(frame,controller, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i)),gbc);
-
-        }
 
         RefreshBox.addMouseListener(new MouseAdapter() {
             @Override
@@ -114,9 +108,45 @@ public class NotificheFrame extends JFrame {
                 RefreshBox.setBackground(frame.getColorToolBar());
                 RefreshButton.setBackground(frame.getColorToolBar());
             }
+
         });
 
+        RefreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0 ; i < NumNot; i++) {
+                    Notifiche.remove(NotificheOnPanel.get(i));
+                    //Notifiche.add(NotificheOnPanel.get(i));
+                }
+                controller.Resize(600, 800,f);
+                try {
+                    controller.LoadNotifiche();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                load(controller,frame);
+            }
+        });
 
+    }
+
+    public void load(Controller controller, MainJFrame frame){
+        NotificheOnPanel.clear();
+        ArrayList<ArrayList> s = controller.GetNotifiche();
+        System.out.print(s);
+        System.out.printf("%d", s.get(0).size());
+        NumNot = s.get(0).size();
+        for (int i = 0 ; i < NumNot; i++) {
+
+            GridBagConstraints gbc;
+            gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = i;
+            NotifichePanel toadd = new NotifichePanel(frame,controller, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i));
+            NotificheOnPanel.add(toadd);
+            Notifiche.add(toadd,gbc);
+
+        }
     }
 
 

@@ -3,6 +3,7 @@ package main.java.Controller;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -251,4 +252,10 @@ public class Controller {
     public void creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
         new PaginaDAO().createPage(titolo, frase, selected, TitoloPaginaLink);
     }
+
+    public void Resize(int W, int H, JFrame frame){
+        frame.setSize(W+1,H);
+        frame.setSize(W,H);
+    }
+
 }
