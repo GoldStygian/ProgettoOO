@@ -31,7 +31,7 @@ public class NotifichePostgresDAO implements NotificheDAO  {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
 
-        String query="SELECT * FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);
+        String query="SELECT * FROM notifica WHERE autore_notificato = '%s' ORDER BY visionata ASC".formatted(EmailAutore);
         ResultSet Notifiche = statement.executeQuery(query);
 
         con.close();
