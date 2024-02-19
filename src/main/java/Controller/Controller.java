@@ -3,6 +3,7 @@ package main.java.Controller;
 import main.java.ImplementazionePostgresDAO.*;
 import main.java.Model.*;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -238,6 +239,41 @@ public class Controller {
 
     }
 
+    public int NumerOfNotifiche(){
+        NotifichePostgresDAO n = new NotifichePostgresDAO();
+        try {
+            //System.out.printf("\n%d", n.NumberOfNotiche(utenteLoggato.getEmail()));
+            return n.NumberOfNotiche(utenteLoggato.getEmail());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void ModificaProposta(int id_operazione, int accettata){
+        RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
+        if(accettata == 1){
+            r.Accettazione(id_operazione, utenteLoggato.getEmail());
+        }else{
+            r.Rifiuto(id_operazione, utenteLoggato.getEmail());
+        }
+
+
+    }
+
+    /*
+    public void SetVisualizzato(int id_operazione){
+        if(utenteLoggato instanceof Autore){
+            Autore utenteLoggato1 = (Autore) utenteLoggato;
+
+            for(Notifica n : utenteLoggato1.getNotifiche()){
+                if(n.getOperazioni_notificate())
+
+            }
+        }
+
+
+    }*/
+
     public void logOut(){
         this.utenteLoggato= null;
     }
@@ -265,4 +301,10 @@ public class Controller {
         return messageError+="</html>";
 
     }
+
+    public void Resize(int W, int H, JFrame frame){
+        frame.setSize(W+1,H);
+        frame.setSize(W,H);
+    }
+
 }

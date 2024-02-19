@@ -13,7 +13,8 @@ public class MainJFrame extends JFrame {
 
     private Color ColorToolBar = new Color(128,71,57);
 
-    private  Color ColorBack = new Color(253, 233, 229);
+    //private  Color ColorBack = new Color(253, 233, 229);
+    private  Color ColorBack = new Color(253, 233, 221);
 
     private ImageIcon Icon = new ImageIcon("src\\main\\resources\\logo2.png");
 

@@ -67,6 +67,7 @@ public class Home {
         SerchBar.setFont(frame.getFontToolBar());
 
 
+
         loginbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,6 +114,8 @@ public class Home {
             public void actionPerformed(ActionEvent e) {
                 frame.SetNewPanel(new RegisterPage(frame, MainPanel, controller).getPanel(), MainPanel);
                 registerbutton.setBackground(frame.getColorToolBar());
+                frame.Resize(700, 950);
+
                // frame.SetNewPanel(new HomeAutore(frame, controller, MainPanel).getPanel(), MainPanel);
 
             }

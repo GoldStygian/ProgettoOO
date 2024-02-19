@@ -5,6 +5,8 @@ import main.java.Controller.Controller;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -44,8 +46,9 @@ public class ComparazioneFrame extends JFrame{
     private JLabel New;
 
     private Color semiBack = new Color(199, 111, 91);
-    public  ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente){
+    public  ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente){
         super(Nome);
+        ComparazioneFrame f = this;
         GuiPresetComponet t = new GuiPresetComponet(frame);
         NameApp.setFont(frame.getFontToolBar());
         NameApp.setForeground(Color.BLACK);
@@ -57,8 +60,8 @@ public class ComparazioneFrame extends JFrame{
         this.setIconImage(frame.getIconImage());
         this.setResizable(false);
         ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
-        OldTextJLabel.setText(Confronti.get(1)[0]);
-        NewTextJLabel.setText((Confronti.get(0)[0]));
+        OldTextJLabel.setText(Confronti.get(0)[0]);
+        NewTextJLabel.setText((Confronti.get(1)[0]));
         OldLink.setText("Link: " + Confronti.get(0)[2]);
         OldPosizione.setText("Posizione: " + Confronti.get(0)[1]);
         OldLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
@@ -78,20 +81,20 @@ public class ComparazioneFrame extends JFrame{
         OldTextBox.setBackground(semiBack);
         NewTextBox.setBackground(semiBack);
         DivisoreOldBox.setBackground(semiBack);
-        t.LabelSetFontAndColor(NewLink);
-        t.LabelSetFontAndColor(NewLinkPagina);
-        t.LabelSetFontAndColor(NewPosizione);
-        t.LabelSetFontAndColor(Modifica);
+        t.LabelSetFontAndColorLower(NewLink);
+        t.LabelSetFontAndColorLower(NewLinkPagina);
+        t.LabelSetFontAndColorLower(NewPosizione);
+        t.LabelSetFontAndColorLower(Modifica);
         DivisoreNewBox.setBorder(new LineBorder(Color.BLACK, 1));
-        t.LabelSetFontAndColor(OldLink);
-        t.LabelSetFontAndColor(OldPosizione);
-        t.LabelSetFontAndColor(OldLinkPagina);
+        t.LabelSetFontAndColorLower(OldLink);
+        t.LabelSetFontAndColorLower(OldPosizione);
+        t.LabelSetFontAndColorLower(OldLinkPagina);
         UtenteRichiesta.setFont(frame.getFontToolBarLower());
         UtenteRichiesta.setForeground(Color.BLACK);
         t.GenericButton(AcceptButton);
         t.GenericButton(RejectButton);
-        t.LabelSetFontAndColor(New);
-        t.LabelSetFontAndColor(Oldver);
+        t.LabelSetFontAndColorLower(New);
+        t.LabelSetFontAndColorLower(Oldver);
         ModificaBox.setBorder(new LineBorder(Color.BLACK, 2));
 
         AcceptButton.addMouseListener(new MouseAdapter() {
@@ -121,5 +124,24 @@ public class ComparazioneFrame extends JFrame{
                 RejectButton.setBackground(frame.getColorToolBar());
             }
         });
+
+        AcceptButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.ModificaProposta(id_operazione, 1);
+                PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
+                f.dispose();
+            }
+        });
+
+        RejectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.ModificaProposta(id_operazione, 0);
+                PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
+                f.dispose();
+            }
+        });
+
     }
 }
