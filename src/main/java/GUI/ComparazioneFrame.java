@@ -78,20 +78,20 @@ public class ComparazioneFrame extends JFrame{
         OldTextBox.setBackground(semiBack);
         NewTextBox.setBackground(semiBack);
         DivisoreOldBox.setBackground(semiBack);
-        t.LabelSetFontAndColor(NewLink);
-        t.LabelSetFontAndColor(NewLinkPagina);
-        t.LabelSetFontAndColor(NewPosizione);
-        t.LabelSetFontAndColor(Modifica);
+        t.LabelSetFontAndColorLower(NewLink);
+        t.LabelSetFontAndColorLower(NewLinkPagina);
+        t.LabelSetFontAndColorLower(NewPosizione);
+        t.LabelSetFontAndColorLower(Modifica);
         DivisoreNewBox.setBorder(new LineBorder(Color.BLACK, 1));
-        t.LabelSetFontAndColor(OldLink);
-        t.LabelSetFontAndColor(OldPosizione);
-        t.LabelSetFontAndColor(OldLinkPagina);
+        t.LabelSetFontAndColorLower(OldLink);
+        t.LabelSetFontAndColorLower(OldPosizione);
+        t.LabelSetFontAndColorLower(OldLinkPagina);
         UtenteRichiesta.setFont(frame.getFontToolBarLower());
         UtenteRichiesta.setForeground(Color.BLACK);
         t.GenericButton(AcceptButton);
         t.GenericButton(RejectButton);
-        t.LabelSetFontAndColor(New);
-        t.LabelSetFontAndColor(Oldver);
+        t.LabelSetFontAndColorLower(New);
+        t.LabelSetFontAndColorLower(Oldver);
         ModificaBox.setBorder(new LineBorder(Color.BLACK, 2));
 
         AcceptButton.addMouseListener(new MouseAdapter() {

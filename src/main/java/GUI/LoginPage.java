@@ -223,7 +223,7 @@ public class LoginPage {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.SetNewPanel(new RegisterPage(frame, MainPanel, controller).getPanel(), MainPanel);
+                frame.SetNewPanel(new RegisterPage(frame, OldPanel, controller).getPanel(), MainPanel);
             }
         });
 
