@@ -53,10 +53,11 @@ public class RegisterPage {
         GenereBox.setFont(frame.getFontToolBar());
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
+        t.LabelSetFontAndColorUpper(TextGenere);
         t.ToolBarButton(BackButton);
         t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
-        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(100, 100, frame.getIcon())));
         t.GenericButton(RegisterButton);
         t.LabelSetFontAndColorUpper(NameApp);
         t.LabelSetFontAndColorUpper(TextNome);
@@ -86,6 +87,16 @@ public class RegisterPage {
         t.SetIcon(IconPassword, new ImageIcon(lockchiuso));
         BoxEmail.setBackground(new Color(199, 111, 91));
         BoxPassword.setBackground(new Color(199, 111, 91));
+        BoxNome.setBackground(new Color(199, 111, 91));
+        NomeField.setFont(frame.getFontToolBar());
+        CognomeField.setBorder(null);
+        CognomeField.setBackground(new Color(199, 111, 91));
+        NomeField.setBackground(new Color(199, 111, 91));
+        BoxCognome.setBackground(new Color(199, 111, 91));
+        CognomeField.setFont(frame.getFontToolBar());
+        NomeField.setBorder(null);
+        CognomeField.setForeground(Color.BLACK);
+        NomeField.setForeground(Color.BLACK);
 
         BackButton.addActionListener(new ActionListener() {
             @Override
