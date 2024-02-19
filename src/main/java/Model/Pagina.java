@@ -59,4 +59,16 @@ public class Pagina {
        return frase;
     }
 
+    public int getLastIdxFrase(){//ritorna indice rinumerato
+
+        int last_idx = 0;
+        for (Integer key : Frasi.keySet()) {
+            if (key>=last_idx){
+                last_idx=key;
+            }
+        }
+        System.out.println("Chiave dell'ultima frase: " + last_idx);
+        return  last_idx;
+    }
+
 }

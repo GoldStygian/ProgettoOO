@@ -12,10 +12,10 @@ import java.util.HashMap;
 
 public class Controller {
 
-    Utente utenteLoggato = null;
+    //Utente utenteLoggato = null;
 
     //debug
-    //Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+    Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
 
@@ -201,11 +201,19 @@ public class Controller {
 
         Pagina pagina = Pagine.get(idPagina);
         ArrayList<String> frase = pagina.getFrase(Integer.parseInt(posizione));
-        if (frase==null){ //la frase non è nell'hashmap
-            messageError += "posizione non valida<br>";
-        }else{
 
-            Integer posizioneDB = Integer.parseInt(frase.get(0)); //0 : posizione
+        Integer posizioneDB = posizioneInt;
+        if (frase==null){ //la frase non è nell'hashmap
+            //messageError += "posizione non valida<br>";
+            int lastIdxFrase=pagina.getLastIdxFrase(); //puo essere l'ultima
+            if (lastIdxFrase<posizioneInt){
+                System.out.println("stai inserendo in coda");
+                posizioneDB= Integer.valueOf(pagina.getFrase(lastIdxFrase).get(0))+1;
+            }
+        }else{
+            posizioneDB = Integer.parseInt(frase.get(0));  //0 : posizione
+        }
+
 
             Boolean isAutore;
             Pagina currentPage = Pagine.get(idPagina);
@@ -220,7 +228,7 @@ public class Controller {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }
+
 
         return messageError+"</html>";
     }
