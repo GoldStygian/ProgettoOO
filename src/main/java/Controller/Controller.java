@@ -255,6 +255,31 @@ public class Controller {
         }
     }
 
+    public void ModificaProposta(int id_operazione, int accettata){
+        RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
+        if(accettata == 1){
+            r.Accettazione(id_operazione, utenteLoggato.getEmail());
+        }else{
+            r.Rifiuto(id_operazione, utenteLoggato.getEmail());
+        }
+
+
+    }
+
+    /*
+    public void SetVisualizzato(int id_operazione){
+        if(utenteLoggato instanceof Autore){
+            Autore utenteLoggato1 = (Autore) utenteLoggato;
+
+            for(Notifica n : utenteLoggato1.getNotifiche()){
+                if(n.getOperazioni_notificate())
+
+            }
+        }
+
+
+    }*/
+
     public void logOut(){
         this.utenteLoggato= null;
     }

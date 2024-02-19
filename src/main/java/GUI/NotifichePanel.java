@@ -20,7 +20,7 @@ public class NotifichePanel extends JPanel {
     private JLabel visionataJLabel;
     private JLabel LinkJLabel;
 
-    public NotifichePanel(MainJFrame frame, Controller controller , int Id_operazione, Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina ,String Utente) {
+    public NotifichePanel(MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche , int Id_operazione, Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina ,String Utente) {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -62,7 +62,7 @@ public class NotifichePanel extends JPanel {
                 super.mouseClicked(e);
                 controller.LoadConfronto(Id_operazione);
                 controller.SetVisionata(Id_operazione);
-                AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, Id_operazione, testo, visionata,modifica,link, Utente);
+                AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, PanelloNotifiche , Id_operazione, testo, visionata,modifica,link, Utente);
 
             }
         });
