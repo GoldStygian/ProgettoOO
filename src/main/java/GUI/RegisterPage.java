@@ -19,11 +19,29 @@ public class RegisterPage {
     private JTextField CognomeField;
     private JButton RegisterButton;
     private JLabel MessageError;
+    private JPanel ToolBar;
+    private JPanel IconBox;
+    private JLabel Icon;
+    private JLabel NameApp;
+    private JPanel GoBack;
+    private JPanel InternalBox;
+    private JLabel IconBack;
+    private JLabel Logo;
+    private JPanel Divisore;
+    private JPanel Box;
 
     public RegisterPage(MainJFrame frame, JPanel OldPanel, Controller controller) {
+
         GenereBox.addItem("M");
         GenereBox.addItem("F");
+        GenereBox.setFont(frame.getFontToolBar());
+        GuiPresetComponet t = new GuiPresetComponet(frame);
 
+        t.ToolBarButton(BackButton);
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        t.GenericButton(RegisterButton);
         BackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,6 +62,7 @@ public class RegisterPage {
 
             }
         });
+
 
     }
 
