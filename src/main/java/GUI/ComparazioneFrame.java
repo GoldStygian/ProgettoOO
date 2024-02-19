@@ -44,11 +44,12 @@ public class ComparazioneFrame extends JFrame{
     private JPanel OldLabelBox;
     private JLabel Oldver;
     private JLabel New;
+    private JPanel ExsternalModificaBox;
 
     private Color semiBack = new Color(199, 111, 91);
     public  ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente){
         super(Nome);
-        ComparazioneFrame f = this;
+        ComparazioneFrame f = this; //questo frame
         GuiPresetComponet t = new GuiPresetComponet(frame);
         NameApp.setFont(frame.getFontToolBar());
         NameApp.setForeground(Color.BLACK);
@@ -59,16 +60,7 @@ public class ComparazioneFrame extends JFrame{
         this.setSize(1500, 700);
         this.setIconImage(frame.getIconImage());
         this.setResizable(false);
-        ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
-        OldTextJLabel.setText(Confronti.get(0)[0]);
-        NewTextJLabel.setText((Confronti.get(1)[0]));
-        OldLink.setText("Link: " + Confronti.get(0)[2]);
-        OldPosizione.setText("Posizione: " + Confronti.get(0)[1]);
-        OldLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
-        NewLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
-        NewLink.setText("Link: " +Confronti.get(1)[2]);
-        NewPosizione.setText("Posizione: " + Confronti.get(1)[1]);
-        Modifica.setText("Modifica: " + String.valueOf(modifica));
+        this.TipoConfronto(modifica,controller,id_operazione,f);
         UtenteRichiesta.setText(utente);
         BoxUtente.setBackground(frame.getColorBack());
         OldLinkPage.setBackground(semiBack);
@@ -128,20 +120,59 @@ public class ComparazioneFrame extends JFrame{
         AcceptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 controller.ModificaProposta(id_operazione, 1);
                 PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
-                f.dispose();
+
             }
         });
 
         RejectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 controller.ModificaProposta(id_operazione, 0);
                 PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
                 f.dispose();
             }
         });
 
+
+
     }
+
+
+    public void TipoConfronto(boolean modifica, Controller controller, int id_operazione, ComparazioneFrame f){
+
+        ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
+        if(modifica){
+            //ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
+
+            OldTextJLabel.setText(Confronti.get(0)[0]);
+            NewTextJLabel.setText((Confronti.get(1)[0]));
+            OldLink.setText("Link: " + Confronti.get(0)[2]);
+            OldPosizione.setText("Posizione: " + Confronti.get(0)[1]);
+            OldLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
+            NewLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
+            NewLink.setText("Link: " +Confronti.get(1)[2]);
+            NewPosizione.setText("Posizione: " + Confronti.get(1)[1]);
+            Modifica.setText("Modifica: " + String.valueOf(modifica));
+
+        }else{
+
+            OldTextJLabel.setText(Confronti.get(0)[0]);
+            OldLink.setText("Link: " + Confronti.get(0)[2]);
+            OldPosizione.setText("Posizione: " + Confronti.get(0)[1]);
+            OldLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(0)[4]);
+            Modifica.setText("Modifica: " + String.valueOf(modifica));
+            NewLinkPage.setVisible(false);
+            New.setVisible(false);
+            Modifica.setVisible(false);
+            Oldver.setText("Frase Da inserire");
+            ModificaBox.setVisible(false);
+            ExsternalModificaBox.setVisible(false);
+        }
+
+    };
+
 }

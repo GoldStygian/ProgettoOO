@@ -159,13 +159,18 @@ public class Controller {
     public ArrayList<String[]> LoadConfronto(int id_operazione){
         ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
         try {
+            ArrayList<String[]> Confronti = new ArrayList<>();
             String Confronto = c.LoadConfronto(id_operazione,utenteLoggato.getEmail());
             int index = Confronto.indexOf('+');
             Confronto = Confronto.substring(index+1);
-            String [] s = Confronto.split("\\|");
-            ArrayList<String[]> Confronti = new ArrayList<>();
-            Confronti.add(s[0].split("-"));
-            Confronti.add(s[1].split("-"));
+            if(Confronto.contains("|")){
+                String [] s = Confronto.split("\\|");
+                Confronti.add(s[0].split("-"));
+                Confronti.add(s[1].split("-"));
+            }else{
+                Confronti.add(Confronto.split("-"));
+            }
+
             return Confronti;
 
         } catch (SQLException e) {
