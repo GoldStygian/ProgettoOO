@@ -120,15 +120,17 @@ public class ComparazioneFrame extends JFrame{
         AcceptButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 controller.ModificaProposta(id_operazione, 1);
                 PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
-                f.dispose();
+
             }
         });
 
         RejectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                f.dispose();
                 controller.ModificaProposta(id_operazione, 0);
                 PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
                 f.dispose();
