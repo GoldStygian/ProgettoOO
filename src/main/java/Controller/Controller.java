@@ -197,26 +197,30 @@ public class Controller {
             return messageError += "Il testo è vuoto<br>";
         }
 
-        String email = utenteLoggato.getEmail();
+
 
         Pagina pagina = Pagine.get(idPagina);
-        ArrayList<String> frase = pagina.getFrase(Integer.parseInt(posizione));
+        //ArrayList<String> frase = pagina.getFrase(Integer.parseInt(posizione));
+        Frase frase = pagina.getFrase(Integer.parseInt(posizione));
 
         Integer posizioneDB = posizioneInt;
         if (frase==null){ //la frase non è nell'hashmap
             //messageError += "posizione non valida<br>";
             int lastIdxFrase=pagina.getLastIdxFrase(); //puo essere l'ultima
             if (lastIdxFrase<posizioneInt){
-                System.out.println("stai inserendo in coda");
-                posizioneDB= Integer.valueOf(pagina.getFrase(lastIdxFrase).get(0))+1;
+                //System.out.println("stai inserendo in coda");
+                //posizioneDB= Integer.valueOf(pagina.getFrase(lastIdxFrase).get(0))+1;
+                posizioneDB= pagina.getFrase(lastIdxFrase).getPosizione()+1;
             }
         }else{
-            posizioneDB = Integer.parseInt(frase.get(0));  //0 : posizione
+            //posizioneDB = Integer.parseInt(frase.get(0));  //0 : posizione
+            posizioneDB = frase.getPosizione();
         }
 
 
             Boolean isAutore;
             Pagina currentPage = Pagine.get(idPagina);
+            String email = utenteLoggato.getEmail();
             if ( email.equals(currentPage.getEmailAutore())){
                 isAutore=true;
             }else{
@@ -231,6 +235,48 @@ public class Controller {
 
 
         return messageError+"</html>";
+    }
+
+    public String ProponiModifica(int idPagina, int posizione, String text, boolean link, String titoloLink) {
+        //id_pagina //strong
+        //email //strong
+        //testo //to check
+        //link //to check
+        //titolo link //to check
+        //posizione //strong
+
+        System.out.println("la posizione che stai modificando è la: "+posizione);
+
+        String Message = "<html>";
+        if (text.isEmpty()){
+            Message+="Il testo è vuoto<br>";
+        }else {
+
+            Boolean isAutore;
+            String email = utenteLoggato.getEmail();
+            Pagina currentPage = Pagine.get(idPagina);
+            if (email.equals(currentPage.getEmailAutore())){
+                isAutore=true;
+            }else{
+                isAutore=false;
+            }
+
+            Pagina pagina = Pagine.get(idPagina);
+            //ArrayList<String> frase = pagina.getFrase(posizione);
+            Frase frase = pagina.getFrase(posizione);
+            //posizione = Integer.parseInt(frase.get(0));
+            posizione = frase.getPosizione();
+
+
+            try{
+                Message+= new WikiPagePostgresDAO().proponiModifica(isAutore, idPagina, email, text, posizione, link, titoloLink);
+            }catch (Exception e){
+                e.printStackTrace();
+                Message+="problema sconosciuto<br>";
+            }
+        }
+
+        return Message+"</html>";
     }
 
     public void SetVisionata(int id_operazione){

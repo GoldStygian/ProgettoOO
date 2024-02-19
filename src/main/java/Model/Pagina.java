@@ -47,16 +47,27 @@ public class Pagina {
 
     public HashMap<Integer, Frase> getFrasi(){return Frasi;}
 
-    public ArrayList<String> getFrase(int n){
+    /*public ArrayList<String> getFrase(int n){
 
         Frase StoredFrase = Frasi.get(n);
-        if (StoredFrase==null){// l afrase n non esiste
+        if (StoredFrase==null){// la frase n non esiste
             return null;
         }
 
         ArrayList<String> frase = StoredFrase.getData();
 
-       return frase;
+        return frase;
+    }*/
+
+    public Frase getFrase(int n){
+
+        Frase StoredFrase = Frasi.get(n);
+        if (StoredFrase==null){// la frase n non esiste
+            return null;
+        }else{
+            return StoredFrase;
+        }
+
     }
 
     public int getLastIdxFrase(){//ritorna indice rinumerato
