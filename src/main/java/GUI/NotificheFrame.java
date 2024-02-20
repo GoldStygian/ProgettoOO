@@ -119,7 +119,7 @@ public class NotificheFrame extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(controller.NumerOfNotifiche() != NumNot){
+                if(controller.NumerOfModifiche() != NumNot){
                     RefreshAndLoad(controller, frame,f);
                 }else{
                     RefreshAndReload(controller,frame,f);
@@ -150,7 +150,7 @@ public class NotificheFrame extends JFrame {
     }
 
     public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() != NumNot){
+        if(controller.NumerOfModifiche() != NumNot){
             for (int i = 0 ; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
@@ -166,7 +166,7 @@ public class NotificheFrame extends JFrame {
     }
 
     public void RefreshAndReload(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() == NumNot){
+        if(controller.NumerOfModifiche() == NumNot){
             for (int i = 0 ; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));

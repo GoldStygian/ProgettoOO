@@ -421,7 +421,11 @@ public class Controller {
 
     public int NumerOfModifiche(){
         ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
-        return m.NumeroModifiche(utenteLoggato.getEmail());
+        try {
+            return m.NumeroModifiche(utenteLoggato.getEmail());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void ModificaProposta(int id_operazione, int accettata){

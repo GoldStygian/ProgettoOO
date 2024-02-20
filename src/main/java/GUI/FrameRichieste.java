@@ -107,6 +107,7 @@ public class FrameRichieste extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //System.out.printf("Qui %d", controller.NumerOfNotifiche() );
                 if(controller.NumerOfNotifiche() != NumNot){
                     RefreshAndLoad(controller,frame,f);
                 }else{

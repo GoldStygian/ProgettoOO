@@ -28,27 +28,20 @@ public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
     }
 
     @Override
-    public int NumeroModifiche(String email) {
+    public int NumeroModifiche(String email) throws SQLException {
 
         Connection con = new ConnessionePostgesDAO().openConnection();
-        Statement statement = null;
-        ResultSet num = null;
-        try {
-            statement = con.createStatement();
-            String query="SELECT count(*) as sum from operazione_modifiche where utente like '%s'".formatted(email);
-            num = statement.executeQuery(query);
-            statement.close();
-            con.close();
-        } catch (SQLException e) {
-            System.out.printf("[] Messaggio:%s CODE: %d\n",e.getMessage(),e.getErrorCode());
-        }
+        Statement statement = con.createStatement();
+        String query="SELECT count(*) as sum from operazione_utente where utente like '%s' group by utente".formatted(email);
+        ResultSet num = statement.executeQuery(query);
+        con.close();
+        //num.next();
+        //System.out.print("\n|"+num.getInt("sum")+"\n|");
+        statement.close();
+        num.close();
+        return num.getInt("sum");
 
-        try {
-            num.next();
-            return num.getInt("sum");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
 }
