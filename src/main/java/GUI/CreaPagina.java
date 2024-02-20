@@ -28,6 +28,7 @@ public class CreaPagina {
     private JLabel TitoloLabel;
     private JLabel FraseLabel;
     private JPanel Divisore;
+    private JLabel Message;
 
     public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller){
 
@@ -65,6 +66,7 @@ public class CreaPagina {
         t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
         t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        Message.setVisible(false);
 
         BackButton.addActionListener(new ActionListener() {
             @Override
@@ -77,7 +79,12 @@ public class CreaPagina {
         CreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText());
+                Message.setText(controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText()));
+                System.out.println(Message.getText());
+                if (Message.getText().equals("<html>Pagina creata con successo<br></html>")) Message.setForeground(Color.green);
+                else Message.setForeground(Color.red);
+                Message.setVisible(true);
+
             }
         });
 

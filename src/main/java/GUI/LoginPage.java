@@ -4,7 +4,6 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -114,7 +113,7 @@ public class LoginPage {
             public void actionPerformed(ActionEvent e) {
 
                 if (controller.Login(emailField.getText(), passwordField.getText())) {
-                    if (controller.GetAutoreLog()) {
+                    if (controller.isAutore()) {
                         frame.SetNewPanel(new HomeAutore(frame, controller, OldPanel).getPanel(), MainPanel);
                         frame.Resize(1400, 700);
                     } else {

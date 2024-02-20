@@ -33,6 +33,11 @@ public class Frase {
         return Data;
     }
 
+    public int getPosizione(){
+        return posizione;
+    }
+
+
 
 
 }

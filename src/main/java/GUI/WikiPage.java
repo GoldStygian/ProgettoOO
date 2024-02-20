@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -28,9 +29,21 @@ public class WikiPage {
     private JLabel LabelPaginaRef;
     private JLabel MessageError;
     private JLabel LoginNedded;
+    private JPanel ModPanel;
+    private JTextField TestoModField;
+    private JButton ModificaButton;
+    private JLabel MessageErrorMod;
+    private JTextField PaginaLinkRefModField;
+    private JLabel ModSelectedLabel;
+    private JCheckBox LinkModBox;
+    private JLabel LabelPaginaRefMod;
+    private JButton BackButton;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
+
+    //locali
+    int last_key = -1;
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
@@ -39,12 +52,22 @@ public class WikiPage {
         this.OldPanel = OldPanel;
         this.idPagina = idPagina;
 
-        this.InsertPanel.setVisible(false);
+        this.InsertPanel.setVisible(false); //dx panel
         this.PageLinkRefFiled.setVisible(false);
         this.LabelPaginaRef.setVisible(false);
         this.MessageError.setVisible(false);
         this.LoginNedded.setVisible(false);
 
+        this.ModPanel.setVisible(false); //sx panel
+        this.PaginaLinkRefModField.setVisible(false);
+        this.LabelPaginaRefMod.setVisible(false);
+
+        BackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.SetNewPanel(OldPanel, MainPanel);
+            }
+        });
 
         InsertButton.addActionListener(new ActionListener() {
             boolean clicked = false;
@@ -60,6 +83,7 @@ public class WikiPage {
                         clicked=false;
                     }
                 }else{
+                    LoginNedded.setText("Devi effettuare l'accesso per poter inserire");
                     LoginNedded.setVisible(true);
                 }
             }
@@ -82,9 +106,34 @@ public class WikiPage {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                MessageError.setVisible(true);
                 MessageError.setText(controller.ProponiInserimento(idPagina, PositionField.getText(), TextField.getText(), LinkBox.isSelected(), PageLinkRefFiled.getText()));
+                if (MessageError.getText().equals("<html>Richiesta avvenuta con successo<br></html>")) MessageError.setForeground(Color.green);
+                else MessageError.setForeground(Color.red);
+                MessageError.setVisible(true);
+            }
+        });
 
+        LinkModBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    PaginaLinkRefModField.setVisible(true);
+                    LabelPaginaRefMod.setVisible(true);
+                } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    PaginaLinkRefModField.setVisible(false);
+                    LabelPaginaRefMod.setVisible(false);
+                }
+            }
+        });
+
+        ModificaButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MessageErrorMod.setText(controller.ProponiModifica(idPagina, last_key,TestoModField.getText(), LinkModBox.isSelected(), PaginaLinkRefModField.getText()));
+                if (MessageErrorMod.getText().equals("<html>Richiesta avvenuta con successo<br></html>")) MessageErrorMod.setForeground(Color.green);
+                else MessageErrorMod.setForeground(Color.red);
+                MessageErrorMod.setVisible(true);
             }
         });
 
@@ -105,10 +154,26 @@ public class WikiPage {
 
         if (Frasi != null) {
             ActionListener listener = new ActionListener() {
+                boolean clicked = false;
+                //int last_key;
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    String buttonText = ((JButton) e.getSource()).getText();
+                    //String buttonText = ((JButton) e.getSource()).getText();
+                    if(controller.isUserLogged()){
+                        if (clicked == false || last_key!=Integer.parseInt(e.getActionCommand())){
+                            ModSelectedLabel.setText("Frase selezionata: "+e.getActionCommand());
+                            ModPanel.setVisible(true);
+                            clicked=true;
+                            last_key=Integer.parseInt(e.getActionCommand());
+                        }else{
+                            ModPanel.setVisible(false);
+                            clicked=false;
+                        }
+                    }else{
+                        LoginNedded.setText("Devi effettuare l'accesso per poter modificare");
+                        LoginNedded.setVisible(true);
+                    }
                 }
             };
 

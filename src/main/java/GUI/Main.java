@@ -20,7 +20,6 @@ public class Main {
 }
 //mettere nel model le proposte
 //mettere stderr nel log
-//settare l'utente = null quando fai exit
 //unire i DAO PaginaDAO e Ricerca PagineDao
 //mettere if al posto di while nei reultset con 1 return result
 //utilizzare array temporaneo del controller per passare informazioni

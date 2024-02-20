@@ -1,24 +1,29 @@
 package main.java.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Pagina {
 
     private String titolo = new String();
+    private String emailAutore;
     private String Generalita_Autore = new String();
     private String Data_Ultima_Modifica;
     private String Crezione_Pagina;
     private HashMap<Integer, Frase> Frasi; //l'indice parte da 1
 
-    public Pagina(String titolo, String Generalita_Autore, String DataUltimaModifica, String Crezione_Pagina){
+    public Pagina(String titolo, String emailAutore, String Generalita_Autore, String DataUltimaModifica, String Crezione_Pagina){
         this.titolo = titolo;
+        this.emailAutore=emailAutore;
         this.Generalita_Autore = Generalita_Autore;
         this.Data_Ultima_Modifica = DataUltimaModifica;
         this.Crezione_Pagina = Crezione_Pagina;
 
+    }
+
+    public String getEmailAutore(){
+        return emailAutore;
     }
 
     public void AddFrase(){}
@@ -42,16 +47,39 @@ public class Pagina {
 
     public HashMap<Integer, Frase> getFrasi(){return Frasi;}
 
-    public ArrayList<String> getFrase(int n){
+    /*public ArrayList<String> getFrase(int n){
 
         Frase StoredFrase = Frasi.get(n);
-        if (StoredFrase==null){// l afrase n non esiste
+        if (StoredFrase==null){// la frase n non esiste
             return null;
         }
 
         ArrayList<String> frase = StoredFrase.getData();
 
-       return frase;
+        return frase;
+    }*/
+
+    public Frase getFrase(int n){
+
+        Frase StoredFrase = Frasi.get(n);
+        if (StoredFrase==null){// la frase n non esiste
+            return null;
+        }else{
+            return StoredFrase;
+        }
+
+    }
+
+    public int getLastIdxFrase(){//ritorna indice rinumerato
+
+        int last_idx = 0;
+        for (Integer key : Frasi.keySet()) {
+            if (key>=last_idx){
+                last_idx=key;
+            }
+        }
+        System.out.println("Chiave dell'ultima frase: " + last_idx);
+        return  last_idx;
     }
 
 }
