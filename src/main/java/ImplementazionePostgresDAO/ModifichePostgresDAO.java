@@ -25,12 +25,15 @@ public class ModifichePostgresDAO implements ModificheDAO {
         Dati.add(new ArrayList<Timestamp>());
         Dati.add(new ArrayList<String>());
         Dati.add(new ArrayList<String>());
+        Dati.add(new ArrayList<String>());
+
 
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement statement = con.createStatement();
         Statement statement2 = con.createStatement();
+        Statement statement3 = con.createStatement();
 
-        String query="SELECT id_operazione,dataa,datar,testo,accettata,visionata,posizioneins,modifica,link,link_pagina,autore_notificato,utente FROM Operazione_utente WHERE utente = '%s'".formatted(EmailUtente);
+        String query="SELECT id_operazione,dataa,datar,testo,accettata,visionata,posizioneins,modifica,link,link_pagina,autore_notificato,utente, pagina_frase FROM Operazione_utente WHERE utente = '%s'".formatted(EmailUtente);
         ResultSet Modifiche = statement.executeQuery(query);
 
 
@@ -38,6 +41,10 @@ public class ModifichePostgresDAO implements ModificheDAO {
             int row = 0;
             query = "SELECT titolo FROM Pagina where id_pagina = %d".formatted(Modifiche.getInt("link_pagina"));
             ResultSet TitoloLink = statement2.executeQuery(query);
+
+            query = "SELECT titolo FROM Pagina where id_pagina = %d".formatted(Modifiche.getInt("pagina_frase"));
+            ResultSet Titolo = statement3.executeQuery(query);
+
             for (ArrayList l : Dati){
                 if(row == 0){
                     l.add(Modifiche.getInt("id_operazione"));
@@ -70,19 +77,22 @@ public class ModifichePostgresDAO implements ModificheDAO {
                     }else {
                         TitoloLink.next();
                         l.add(TitoloLink.getString("titolo"));
-
-
                     }
+                }else if(row == 13){
+                    Titolo.next();
+                    l.add(Titolo.getString("titolo"));
                 }
                 row++;
             }
             TitoloLink.close();
+            Titolo.close();
         }
 
         con.close();
         Modifiche.close();
         statement.close();
         statement2.close();
+        statement3.close();
 
 
         return Dati;

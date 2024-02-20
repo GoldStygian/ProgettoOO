@@ -194,15 +194,15 @@ public class Controller {
         System.out.printf(String.valueOf(Dati));
 
         for (int i = 0 ; i < Dati.get(0).size(); i++){
-            this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i));
+            this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i),(String) Dati.get(13).get(i));
             if(!((Boolean) Dati.get(5).get(i))){
-                InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i));
+                InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
                 //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
                 Operazioni_utente.add(ToAdd);
                 //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
                 //System.out.println("io");
             }else{
-                ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i));
+                ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
                 Operazioni_utente.add(ToAdd);
             }
 
@@ -228,6 +228,7 @@ public class Controller {
             s.add(new ArrayList<Timestamp>());
             s.add(new ArrayList<String>());
             s.add(new ArrayList<String>());
+            s.add(new ArrayList<String>());
 
             Autore utenteLoggato1 = (Autore) utenteLoggato;
             for(OperazioneUtente n: Operazioni_utente){
@@ -247,6 +248,7 @@ public class Controller {
                 s.get(10).add(n.getDataA());
                 s.get(11).add(n.getUtenteNotificato());
                 s.get(12).add(n.getTitoloPaginaLink());
+                s.get(13).add(n.getTitolo());
 
             }
 
@@ -254,12 +256,13 @@ public class Controller {
         return s;
     }
 
-    public void AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data){
+    public void AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina){
         for(OperazioneUtente u: Operazioni_utente){
             if(u.getIdOperazione() == id_operazione){
                 ((OperazioneUtente) u).SetAutore(Autore);
                 ((OperazioneUtente) u).SetTitoloLink(Titolo);
                 ((OperazioneUtente) u).SetDataA(Data);
+                ((OperazioneUtente) u).SetTitolo(Titolo);
             }
 
         }
@@ -395,6 +398,11 @@ public class Controller {
 
     }
 
+    public void ModificaPropsostaEffetuata(int id_proposta,String Testo){
+        ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
+        m.AggironamentoProposta(id_proposta,utenteLoggato.getEmail(),Testo);
+    }
+
     public int NumerOfNotifiche(){
         NotifichePostgresDAO n = new NotifichePostgresDAO();
         try {
@@ -431,7 +439,10 @@ public class Controller {
     }*/
 
     public void logOut(){
+
         this.utenteLoggato= null;
+        this.Operazioni_utente = null;
+        Operazioni_utente = new ArrayList<>();
     }
 
     public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {

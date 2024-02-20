@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 
 public class PanelRichieste extends JPanel {
 
+    private JFrame ModificaFrame;
     private JPanel MainPanel;
     private JLabel DataAccettazione;
     private JLabel DataRichiesta;
@@ -19,8 +20,9 @@ public class PanelRichieste extends JPanel {
     private JLabel Modifica;
     private JLabel Link;
     private JLabel PropetarioPagina;
+    private JLabel TitoloPagina;
 
-    public PanelRichieste(MainJFrame frame, Controller controller, FrameRichieste PanelloNotifiche , int Id_operazione, Timestamp dataa,Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina , String Utente,String Autore, String Titolo_pagina_link ){
+    public PanelRichieste(MainJFrame frame, Controller controller, int Id_operazione, Timestamp dataa,Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina, int posizione , String Utente,String Autore, String Titolo_pagina_link, String Titolo){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -38,6 +40,7 @@ public class PanelRichieste extends JPanel {
         Link.setText("Link: " + String.valueOf(link));
         MainPanel.setBackground(frame.getColorToolBar());
         MainPanel.setBorder(new LineBorder(Color.BLACK, 2));
+        TitoloPagina.setText("Titolo: " + Titolo);
         this.add(MainPanel);
         this.setBackground(frame.getColorBack());
         MainPanel.setForeground(Color.BLACK);
@@ -48,6 +51,7 @@ public class PanelRichieste extends JPanel {
         t.LabelSetTextBlack(Visionata);
         t.LabelSetTextBlack(Link);
         t.LabelSetTextBlack(DataAccettazione);
+        t.LabelSetTextBlack(TitoloPagina);
 
 
 
@@ -67,13 +71,11 @@ public class PanelRichieste extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                /*
-                controller.LoadConfronto(Id_operazione);
-                controller.SetVisionata(Id_operazione);
-                AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, PanelloNotifiche , Id_operazione, testo, visionata,modifica,link, Utente);
+
+                ModificaFrame = new ModificaPropostaFrame("Comparazione", frame, controller , Id_operazione, testo, visionata,modifica,link,posizione, Utente, Autore, Titolo_pagina_link,Titolo);
                 controller.SetVisionataNotModel(Id_operazione);
 
-                 */
+
             }
         });
     }
