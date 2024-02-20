@@ -63,6 +63,7 @@ public class ModifichePostgresDAO implements ModificheDAO {
                 }else if(row == 7){
                     l.add(Modifiche.getInt("link_pagina"));
                 }else if(row == 8){
+                    //System.out.printf("\n"+Modifiche.getInt("posizioneins"));
                     l.add(Modifiche.getInt("posizioneins"));
                 }else if(row == 9){
                     l.add(Modifiche.getString("utente"));

@@ -4,8 +4,11 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -23,8 +26,9 @@ public class FrameRichieste extends JFrame {
     private JPanel MainJPanel;
     private JScrollPane MainScrollPane;
     private JPanel Modifiche;
-
+    private int NumNot;
     private ArrayList<PanelRichieste> ModificheOnPanel = new ArrayList<>();
+    private int id_operazione;
 
     public FrameRichieste(String Nome, MainJFrame frame, Controller controller){
         super(Nome);
@@ -95,31 +99,68 @@ public class FrameRichieste extends JFrame {
                 super.mouseExited(e);
                 RefreshBox.setBackground(frame.getColorToolBar());
                 RefreshButton.setBackground(frame.getColorToolBar());
+
             }
 
+        });
+
+        RefreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(controller.NumerOfNotifiche() != NumNot){
+                    RefreshAndLoad(controller,frame,f);
+                }else{
+                    RefreshAndReLoad(controller,frame,f);
+                }
+            }
         });
 
     }
 
     public void LoadModifiche(MainJFrame frame, Controller controller){
-
+        ModificheOnPanel.clear();
         controller.loadModifiche();
         ArrayList<ArrayList> s = controller.GetModifiche();
-        System.out.print(s);
-        System.out.printf("%d", s.get(0).size());
-        int NumNot = s.get(0).size();
+        //System.out.print("\n|"+s+"|\n");
+        //System.out.printf("%d", s.get(0).size());
+        NumNot = s.get(0).size();
         for (int i = 0 ; i < NumNot; i++) {
 
             GridBagConstraints gbc;
             gbc = new GridBagConstraints();
             gbc.gridx = 0;
             gbc.gridy = i;
-            PanelRichieste toadd = new PanelRichieste(frame,controller,(int) s.get(0).get(i), (Timestamp) s.get(10).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (int) s.get(8).get(i),(String) s.get(9).get(i),(String) s.get(11).get(i),(String) s.get(12).get(i),(String) s.get(13).get(i));
+            PanelRichieste toadd = new PanelRichieste(frame,controller,this,(int) s.get(0).get(i), (Timestamp) s.get(10).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (int) s.get(8).get(i),(String) s.get(9).get(i),(String) s.get(11).get(i),(String) s.get(12).get(i),(String) s.get(13).get(i));
             ModificheOnPanel.add(toadd);
             Modifiche.add(toadd,gbc);
 
         }
 
+    }
+
+    public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f){
+        if(controller.NumerOfNotifiche() != NumNot){
+            for (int i = 0 ; i < NumNot; i++) {
+                Modifiche.remove(ModificheOnPanel.get(i));
+                //Notifiche.add(NotificheOnPanel.get(i));
+            }
+            controller.Resize(800, 950,f);
+
+            controller.loadModifiche();
+            LoadModifiche(frame,controller);
+        }
+    }
+
+    public void RefreshAndReLoad(Controller controller, MainJFrame frame, JFrame f){
+        if(controller.NumerOfNotifiche() == NumNot){
+            for (int i = 0 ; i < NumNot; i++) {
+                Modifiche.remove(ModificheOnPanel.get(i));
+                //Notifiche.add(NotificheOnPanel.get(i));
+            }
+            controller.Resize(800, 950,f);
+
+            LoadModifiche(frame,controller);
+        }
     }
 
 }

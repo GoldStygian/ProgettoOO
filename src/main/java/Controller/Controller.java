@@ -191,7 +191,10 @@ public class Controller {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.printf(String.valueOf(Dati));
+
+        Operazioni_utente.clear();
+
+        //System.out.printf(String.valueOf(Dati));
 
         for (int i = 0 ; i < Dati.get(0).size(); i++){
             this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i),(String) Dati.get(13).get(i));
@@ -242,7 +245,10 @@ public class Controller {
                 s.get(7).add(n.getLink_pagina());
                 if(n instanceof InserimentoUtente){
                     s.get(8).add( ((InserimentoUtente)(n)).getPosizione());
+                }else{
+                    s.get(8).add(0);
                 }
+
 
                 s.get(9).add(n.getUtente());
                 s.get(10).add(n.getDataA());
@@ -411,6 +417,11 @@ public class Controller {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int NumerOfModifiche(){
+        ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
+        return m.NumeroModifiche(utenteLoggato.getEmail());
     }
 
     public void ModificaProposta(int id_operazione, int accettata){

@@ -107,8 +107,6 @@ public class HomeUtente {
 
 
 
-
-
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {

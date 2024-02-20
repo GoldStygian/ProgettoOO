@@ -99,6 +99,7 @@ public class NotifichePostgresDAO implements NotificheDAO  {
 
         Notifiche.next();
         int n = Notifiche.getInt("number");
+        //System.out.print("\n||"+n+"||\n");
         con.close();
         Notifiche.close();
         statement.close();

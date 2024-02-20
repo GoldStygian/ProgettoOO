@@ -41,7 +41,7 @@ public class ModificaPropostaFrame extends JFrame{
     private JLabel TitoloPagina;
     private JLabel Avviso;
     private Color semiBack = new Color(199, 111, 91);
-    public ModificaPropostaFrame(String Nome, MainJFrame frame, Controller controller,int id_operazione, String testo, boolean visionata, boolean modifica, boolean link,int posizione, String Utente, String Autore,String TitoloLinkPagina, String Titolo){
+    public ModificaPropostaFrame(String Nome, MainJFrame frame, Controller controller, FrameRichieste FrameModifica,int id_operazione, String testo, boolean visionata, boolean modifica, boolean link,int posizione, String Utente, String Autore,String TitoloLinkPagina, String Titolo){
 
         super(Nome);
         ModificaPropostaFrame f = this; //questo frame
@@ -112,6 +112,7 @@ public class ModificaPropostaFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
+                FrameModifica.RefreshAndLoad(controller,frame,FrameModifica);
                 controller.ModificaPropsostaEffetuata(id_operazione, OldTextJLabel.getText());
             }
         });

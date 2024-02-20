@@ -22,7 +22,7 @@ public class PanelRichieste extends JPanel {
     private JLabel PropetarioPagina;
     private JLabel TitoloPagina;
 
-    public PanelRichieste(MainJFrame frame, Controller controller, int Id_operazione, Timestamp dataa,Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina, int posizione , String Utente,String Autore, String Titolo_pagina_link, String Titolo){
+    public PanelRichieste(MainJFrame frame, Controller controller, FrameRichieste FrameModifche,int Id_operazione, Timestamp dataa,Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina, int posizione , String Utente,String Autore, String Titolo_pagina_link, String Titolo){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -72,7 +72,7 @@ public class PanelRichieste extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                ModificaFrame = new ModificaPropostaFrame("Comparazione", frame, controller , Id_operazione, testo, visionata,modifica,link,posizione, Utente, Autore, Titolo_pagina_link,Titolo);
+                ModificaFrame = new ModificaPropostaFrame("Comparazione", frame, controller ,FrameModifche, Id_operazione, testo, visionata,modifica,link,posizione, Utente, Autore, Titolo_pagina_link,Titolo);
                 controller.SetVisionataNotModel(Id_operazione);
 
 

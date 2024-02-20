@@ -91,6 +91,12 @@ public class NotificheFrame extends JFrame {
                 RefreshButton.setBackground(frame.getColorToolBar());
             }
 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                RefreshAndReload(controller,frame,f);
+                RefreshAndLoad(controller, frame,f);
+            }
         });
 
         RefreshButton.addMouseListener(new MouseAdapter() {
@@ -113,7 +119,11 @@ public class NotificheFrame extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RefreshAndLoad(controller, frame,f);
+                if(controller.NumerOfNotifiche() != NumNot){
+                    RefreshAndLoad(controller, frame,f);
+                }else{
+                    RefreshAndReload(controller,frame,f);
+                }
             }
 
         });
@@ -123,8 +133,8 @@ public class NotificheFrame extends JFrame {
     public void load(Controller controller, MainJFrame frame){
         NotificheOnPanel.clear();
         ArrayList<ArrayList> s = controller.GetNotifiche();
-        System.out.print(s);
-        System.out.printf("%d", s.get(0).size());
+        //System.out.print(s);
+        //System.out.printf("%d", s.get(0).size());
         NumNot = s.get(0).size();
         for (int i = 0 ; i < NumNot; i++) {
 
@@ -156,17 +166,12 @@ public class NotificheFrame extends JFrame {
     }
 
     public void RefreshAndReload(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() != NumNot){
+        if(controller.NumerOfNotifiche() == NumNot){
             for (int i = 0 ; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
             }
             controller.Resize(600, 800,f);
-            try {
-                controller.LoadNotifiche();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
             load(controller,frame);
         }
     }
