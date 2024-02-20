@@ -12,8 +12,9 @@ public class OperazioneUtente {
     private boolean link;
     private int link_pagina;
     private String Utente;
-
+    private String utente_notificato;
     private boolean modifica;
+    private String Titolo_pagina_link;
 
     public OperazioneUtente(int id_operazione,Timestamp DataA, Timestamp DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, int link_pagina, String Utente){
         this.DataA = DataA;
@@ -43,8 +44,28 @@ public class OperazioneUtente {
 
     }
 
+    public OperazioneUtente(int id_operazione,Timestamp DataA, Timestamp DataR, String Testo, boolean accettata, boolean visionata,boolean modifica, boolean link, int link_pagina, String Utente, String Autore, String Titolo_pagina_link){
+        this.DataA = DataA;
+        this.DataR = DataR;
+        this.Testo = Testo;
+        this.accettata = accettata;
+        this.visionata = visionata;
+        this.link = link;
+        this.link_pagina = link_pagina;
+        this.modifica = modifica;
+        this.id_operazione = id_operazione;
+        this.Utente = Utente;
+        this.utente_notificato = Autore;
+        this.Titolo_pagina_link = Titolo_pagina_link;
+
+    }
+
     public Timestamp getDataR() {
         return DataR;
+    }
+
+    public Timestamp getDataA() {
+        return DataA;
     }
 
     public boolean getAccettata() {
@@ -78,4 +99,19 @@ public class OperazioneUtente {
     public String getUtente(){
         return Utente;
     }
+
+    public String getUtenteNotificato(){
+        return utente_notificato;
+    }
+
+    public String getTitoloPaginaLink(){
+        return Titolo_pagina_link;
+    }
+
+    public void SetDataA(Timestamp d){DataR = d;}
+
+    public void SetAutore(String d){utente_notificato = d;}
+
+    public void SetTitoloLink(String d){Titolo_pagina_link = d;}
+    public void SetVisionata(boolean d){visionata = d;}
 }

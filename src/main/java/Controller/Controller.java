@@ -18,6 +18,7 @@ public class Controller {
     Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
+    private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
     public boolean Login(String email, String password) { //OK
 
@@ -106,12 +107,16 @@ public class Controller {
             //System.out.print((Dati.get(0).get(1)));
             for (int i = 0 ; i < Dati.get(0).size(); i++){
                 if(!((Boolean) Dati.get(5).get(i))){
+                    InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i));
                     //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
-                    utenteLoggato1.addNotifica(new Notifica(new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i))));
+                    utenteLoggato1.addNotifica(new Notifica(ToAdd));
+                    Operazioni_utente.add(ToAdd);
                     //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
                     //System.out.println("io");
                 }else{
-                    utenteLoggato1.addNotifica(new Notifica(new ModificaUtente((int) Dati.get(0).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i))));
+                    ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i));
+                    utenteLoggato1.addNotifica(new Notifica(ToAdd));
+                    Operazioni_utente.add(ToAdd);
                 }
 
             }
@@ -175,6 +180,98 @@ public class Controller {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void loadModifiche(){
+        ModifichePostgresDAO ModificheDao = new ModifichePostgresDAO();
+        ArrayList<ArrayList> Dati;
+        try {
+            Dati = ModificheDao.LoadModifiche(utenteLoggato.getEmail());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.printf(String.valueOf(Dati));
+
+        for (int i = 0 ; i < Dati.get(0).size(); i++){
+            this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i));
+            if(!((Boolean) Dati.get(5).get(i))){
+                InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i));
+                //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
+                Operazioni_utente.add(ToAdd);
+                //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
+                //System.out.println("io");
+            }else{
+                ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i));
+                Operazioni_utente.add(ToAdd);
+            }
+
+        }
+
+    }
+
+    public ArrayList<ArrayList> GetModifiche(){
+
+        ArrayList<ArrayList> s = null;
+        if(this.isAutore()){
+            s = new ArrayList<>();
+            s.add(new ArrayList<Integer>());
+            s.add(new ArrayList<Timestamp>());
+            s.add(new ArrayList<String>());
+            s.add(new ArrayList<Boolean>());
+            s.add(new ArrayList<Boolean>());
+            s.add(new ArrayList<Boolean>());
+            s.add(new ArrayList<Boolean>());
+            s.add(new ArrayList<Integer>());
+            s.add(new ArrayList<Integer>());
+            s.add(new ArrayList<String>());
+            s.add(new ArrayList<Timestamp>());
+            s.add(new ArrayList<String>());
+            s.add(new ArrayList<String>());
+
+            Autore utenteLoggato1 = (Autore) utenteLoggato;
+            for(OperazioneUtente n: Operazioni_utente){
+                s.get(0).add(n.getIdOperazione());
+                s.get(1).add(n.getDataR());
+                s.get(2).add(n.getTesto());
+                s.get(3).add(n.getAccettata());
+                s.get(4).add(n.getVisionata());
+                s.get(5).add(n.getModifica());
+                s.get(6).add(n.getLink());
+                s.get(7).add(n.getLink_pagina());
+                if(n instanceof InserimentoUtente){
+                    s.get(8).add( ((InserimentoUtente)(n)).getPosizione());
+                }
+
+                s.get(9).add(n.getUtente());
+                s.get(10).add(n.getDataA());
+                s.get(11).add(n.getUtenteNotificato());
+                s.get(12).add(n.getTitoloPaginaLink());
+
+            }
+
+        }
+        return s;
+    }
+
+    public void AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data){
+        for(OperazioneUtente u: Operazioni_utente){
+            if(u.getIdOperazione() == id_operazione){
+                ((OperazioneUtente) u).SetAutore(Autore);
+                ((OperazioneUtente) u).SetTitoloLink(Titolo);
+                ((OperazioneUtente) u).SetDataA(Data);
+            }
+
+        }
+
+    }
+
+    public void SetVisionataNotModel(int id_operazione){
+        for(OperazioneUtente u: Operazioni_utente){
+            if(u.getIdOperazione() == id_operazione){
+                ((OperazioneUtente) u).SetVisionata(true);
+                return;
+            }
         }
     }
 

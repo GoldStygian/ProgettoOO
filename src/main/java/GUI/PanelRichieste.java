@@ -9,38 +9,45 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Timestamp;
 
-public class NotifichePanel extends JPanel {
+public class PanelRichieste extends JPanel {
 
-    private JFrame AccettazioneFrame;
     private JPanel MainPanel;
-    private JLabel Autore;
-    private JLabel Data;
+    private JLabel DataAccettazione;
+    private JLabel DataRichiesta;
+    private JLabel Accettata;
+    private JLabel Visionata;
     private JLabel Modifica;
-    private JLabel accettataJLabel;
-    private JLabel visionataJLabel;
-    private JLabel LinkJLabel;
+    private JLabel Link;
+    private JLabel PropetarioPagina;
 
-    public NotifichePanel(MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche , int Id_operazione, Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina ,String Utente) {
+    public PanelRichieste(MainJFrame frame, Controller controller, FrameRichieste PanelloNotifiche , int Id_operazione, Timestamp dataa,Timestamp datar, String testo, boolean accettata, boolean visionata, boolean modifica, boolean link, int link_pagina , String Utente,String Autore, String Titolo_pagina_link ){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
-        Autore.setText("Uente: " + Utente);
-        Data.setText("Data: " + datar.toString());
+        PropetarioPagina.setText("Autore Pagina: " + Autore);
+        DataRichiesta.setText("Data Richesta: " + datar.toString());
+        if(dataa != null){
+            DataAccettazione.setText("Data Accettazione: " + dataa.toString());
+        }else{
+            DataAccettazione.setText("Data Accettazione: " + "Non c'è");
+        }
+
         Modifica.setText("Modifica: " + String.valueOf(modifica));
-        accettataJLabel.setText("Accettata: " + String.valueOf(accettata));
-        visionataJLabel.setText("Visionata: " + String.valueOf(visionata));
-        LinkJLabel.setText("Link: " + String.valueOf(link));
+        Accettata.setText("Accettata: " + String.valueOf(accettata));
+        Visionata.setText("Visionata: " + String.valueOf(visionata));
+        Link.setText("Link: " + String.valueOf(link));
         MainPanel.setBackground(frame.getColorToolBar());
         MainPanel.setBorder(new LineBorder(Color.BLACK, 2));
         this.add(MainPanel);
         this.setBackground(frame.getColorBack());
         MainPanel.setForeground(Color.BLACK);
-        t.LabelSetTextBlack(Autore);
-        t.LabelSetTextBlack(Data);
+        t.LabelSetTextBlack(PropetarioPagina);
+        t.LabelSetTextBlack(DataRichiesta);
         t.LabelSetTextBlack(Modifica);
-        t.LabelSetTextBlack(accettataJLabel);
-        t.LabelSetTextBlack(visionataJLabel);
-        t.LabelSetTextBlack(LinkJLabel);
+        t.LabelSetTextBlack(Accettata);
+        t.LabelSetTextBlack(Visionata);
+        t.LabelSetTextBlack(Link);
+        t.LabelSetTextBlack(DataAccettazione);
 
 
 
@@ -60,14 +67,16 @@ public class NotifichePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                /*
                 controller.LoadConfronto(Id_operazione);
                 controller.SetVisionata(Id_operazione);
                 AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, PanelloNotifiche , Id_operazione, testo, visionata,modifica,link, Utente);
                 controller.SetVisionataNotModel(Id_operazione);
+
+                 */
             }
         });
     }
 
 
 }
-

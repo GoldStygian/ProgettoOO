@@ -70,11 +70,6 @@ public class HomeUtente {
         MenuButton.setBackground(frame.getColorToolBar());
 
 
-
-
-
-
-
         Menu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {

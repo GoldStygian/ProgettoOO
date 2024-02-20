@@ -11,10 +11,14 @@ import java.awt.event.*;
 
 public class Menu extends JMenuBar {
 
+    private FrameRichieste ModificeUtente;
+    private boolean bool = true;
 
     public Menu(MainJFrame frame, JMenu menu, JPanel HomePanel, JPanel Oldpanel, Controller controller){
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
+
+        ModificeUtente = new FrameRichieste("Modifiche",frame,controller);
 
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
@@ -41,8 +45,22 @@ public class Menu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Mie richieste
+                if(bool){
+                    ModificeUtente.setVisible(true);
+                    bool = false;
+                }
+
             }
 
+        });
+
+        ModificeUtente.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosed(e);
+                bool = true;
+
+            }
         });
 
         menu.add(menuItem);
