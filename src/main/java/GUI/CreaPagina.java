@@ -3,10 +3,9 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.event.*;
 
 public class CreaPagina {
     private JButton BackButton;
@@ -17,11 +16,55 @@ public class CreaPagina {
     private JCheckBox linkCheckBox;
     private JTextField PaginaLinkRef;
     private JLabel LabelPaginaLinkRef;
+    private JPanel ToolBar;
+    private JPanel IconBox;
+    private JLabel Icon;
+    private JLabel NameApp;
+    private JPanel GoBack;
+    private JPanel InternalBox;
+    private JLabel IconBack;
+    private JLabel Logo;
+    private JPanel MainBox;
+    private JLabel TitoloLabel;
+    private JLabel FraseLabel;
+    private JPanel Divisore;
 
     public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller){
 
+        GuiPresetComponet t = new GuiPresetComponet(frame);
         PaginaLinkRef.setVisible(false);
         LabelPaginaLinkRef.setVisible(false);
+        Divisore.setVisible(false);
+        NameApp.setFont(frame.getFontToolBar());
+        NameApp.setForeground(Color.BLACK);
+        titoloTextField.setFont(frame.getFontToolBar());
+        titoloTextField.setForeground(Color.BLACK);
+        titoloTextField.setBackground(new Color(199, 111, 91));
+        titoloTextField.setBorder(new LineBorder(Color.BLACK, 2));
+
+        fraseTextField.setBorder(new LineBorder(Color.BLACK, 2));
+        fraseTextField.setFont(frame.getFontToolBar());
+        fraseTextField.setForeground(Color.BLACK);
+        fraseTextField.setBackground(new Color(199, 111, 91));
+        linkCheckBox.setFont(frame.getFontToolBar());
+        linkCheckBox.setForeground(Color.BLACK);
+
+        PaginaLinkRef.setBorder(new LineBorder(Color.BLACK, 2));
+        PaginaLinkRef.setFont(frame.getFontToolBar());
+        PaginaLinkRef.setForeground(Color.BLACK);
+        PaginaLinkRef.setBackground(new Color(199, 111, 91));
+
+        MainPanel.setBackground(frame.getColorBack());
+        t.LabelSetFontAndColorUpper(TitoloLabel);
+        t.LabelSetFontAndColorUpper(FraseLabel);
+        t.LabelSetFontAndColorUpper(LabelPaginaLinkRef);
+        t.GenericButton(CreateButton);
+
+
+        t.ToolBarButton(BackButton);
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
 
         BackButton.addActionListener(new ActionListener() {
             @Override
@@ -44,13 +87,70 @@ public class CreaPagina {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     PaginaLinkRef.setVisible(true);
                     LabelPaginaLinkRef.setVisible(true);
+                    Divisore.setVisible(true);
                 } else if (e.getStateChange() == ItemEvent.DESELECTED) {
                     PaginaLinkRef.setVisible(false);
                     LabelPaginaLinkRef.setVisible(false);
+                    Divisore.setVisible(false);
                 }
             }
         });
 
+        CreateButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                CreateButton.setBackground(new Color(199, 111, 91));
+
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                CreateButton.setBackground(frame.getColorToolBar());
+            }
+        });
+
+        BackButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                BackButton.setBackground(new Color(199, 111, 91));
+                InternalBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                BackButton.setBackground(frame.getColorToolBar());
+                InternalBox.setBackground(frame.getColorToolBar());
+
+            }
+        });
+        InternalBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                BackButton.setBackground(new Color(199, 111, 91));
+                InternalBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                BackButton.setBackground(frame.getColorToolBar());
+                InternalBox.setBackground(frame.getColorToolBar());
+
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.SetNewPanel(OldPanel, MainPanel);
+                frame.Resize(1400, 700);
+            }
+        });
     }
 
     public JPanel getPanel() {

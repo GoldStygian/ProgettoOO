@@ -29,6 +29,7 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
                 //QUI IL TASTO CREA
                 frame.SetNewPanel(new CreaPagina(frame, Oldpanel, controller).getPanel(), HomePanel);
+                frame.Resize(600, 850);
             }
 
         });
