@@ -117,7 +117,8 @@ public class LoginPage {
                         frame.SetNewPanel(new HomeAutore(frame, controller, OldPanel).getPanel(), MainPanel);
                         frame.Resize(1400, 700);
                     } else {
-
+                        frame.SetNewPanel(new HomeUtente(frame, controller, OldPanel).getPanel(), MainPanel);
+                        frame.Resize(1400, 700);
                     }
 
                 } else {

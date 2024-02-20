@@ -34,6 +34,16 @@ public class Menu extends JMenuBar {
 
         });
 
+        menu.add(menuItem);
+
+        menuItem = new MenuItem(frame,"Le mie Richieste", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\request2.png"))));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Mie richieste
+            }
+
+        });
 
         menu.add(menuItem);
 
@@ -48,8 +58,13 @@ public class Menu extends JMenuBar {
 
         });
 
+
+
+        menu.add(menuItem);
+
         menu.setOpaque(true);
         menu.setForeground(Color.BLACK);
+
 
         this.setBorder(null);
         this.setBackground(frame.getColorToolBar());

@@ -4,20 +4,13 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.awt.event.WindowEvent;
-import java.util.Locale;
 
-public class HomeAutore {
+public class HomeUtente {
     private JPanel MainPanel;
     private JPanel ToolBar;
     private JPanel BarIcon;
@@ -28,21 +21,13 @@ public class HomeAutore {
     private JTextField SerchBar;
     private JLabel IconaLente;
     private JPanel ButtonPanel;
+    private JMenu Menu;
+    private JMenuBar MenuBox;
     private JPanel MenuButton;
     private JLabel IconMenu;
-    private JFrame FrameNotifiche;
-    private boolean NotificheNotOpen = true;
-    private JButton NotificheButton;
-    private JLabel IconNotifiche;
-    private JPanel NotificheBox;
-    private JMenuBar MenuBox;
-    private JMenu Menu;
-    private MainJFrame frame;
     private Boolean bool = true;
 
-    public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
-
-
+    public  HomeUtente(MainJFrame frame, Controller controller, JPanel oldPanel){
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
 
@@ -84,12 +69,11 @@ public class HomeAutore {
         MenuButton.add(MenuBox);
         MenuButton.setBackground(frame.getColorToolBar());
 
-        t.SetIcon(IconNotifiche, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\bell.png"))));
-        t.ToolBarButton(NotificheButton);
 
-        NotificheBox.setBackground(frame.getColorToolBar());
 
-        FrameNotifiche = new NotificheFrame("Notifiche", frame, controller);
+
+
+
 
         Menu.addMouseListener(new MouseAdapter() {
             @Override
@@ -126,74 +110,10 @@ public class HomeAutore {
 
         });
 
-        NotificheBox.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                NotificheBox.setBackground(new Color(199, 111, 91));
-                NotificheButton.setBackground(new Color(199, 111, 91));
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                NotificheBox.setBackground(frame.getColorToolBar());
-                NotificheButton.setBackground(frame.getColorToolBar());
-            }
-        });
 
 
-        NotificheButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                super.mouseEntered(e);
-                NotificheButton.setBackground(new Color(199, 111, 91));
-                NotificheBox.setBackground(new Color(199, 111, 91));
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                super.mouseExited(e);
-                NotificheButton.setBackground(frame.getColorToolBar());
-                NotificheBox.setBackground(frame.getColorToolBar());
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                if (NotificheNotOpen) {
-
-                    FrameNotifiche.setVisible(true);
-                    NotificheNotOpen = false;
-                }
-                /*
-                try {
 
 
-                    controller.LoadNotifiche();
-                    ArrayList<ArrayList> s = controller.GetNotifiche();
-                    System.out.print(s);
-
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                    */
-
-            }
-        });
-
-
-        FrameNotifiche.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosed(e);
-                NotificheNotOpen = true;
-
-            }
-        });
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -232,5 +152,5 @@ public class HomeAutore {
         return MainPanel;
     }
 
-
 }
+
