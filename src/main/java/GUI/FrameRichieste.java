@@ -108,7 +108,7 @@ public class FrameRichieste extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.printf("Qui %d", controller.NumerOfNotifiche() );
-                if(controller.NumerOfNotifiche() != NumNot){
+                if(controller.NumerOfModifiche() != NumNot){
                     RefreshAndLoad(controller,frame,f);
                 }else{
                     RefreshAndReLoad(controller,frame,f);
@@ -140,7 +140,7 @@ public class FrameRichieste extends JFrame {
     }
 
     public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() != NumNot){
+        //if(controller.NumerOfModifiche() != NumNot){
             for (int i = 0 ; i < NumNot; i++) {
                 Modifiche.remove(ModificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
@@ -149,11 +149,11 @@ public class FrameRichieste extends JFrame {
 
             controller.loadModifiche();
             LoadModifiche(frame,controller);
-        }
+        //}
     }
 
     public void RefreshAndReLoad(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() == NumNot){
+        //if(controller.NumerOfModifiche() == NumNot){
             for (int i = 0 ; i < NumNot; i++) {
                 Modifiche.remove(ModificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
@@ -161,7 +161,7 @@ public class FrameRichieste extends JFrame {
             controller.Resize(800, 950,f);
 
             LoadModifiche(frame,controller);
-        }
+        //}
     }
 
 }
