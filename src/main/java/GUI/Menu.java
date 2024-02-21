@@ -54,6 +54,16 @@ public class Menu extends JMenuBar {
 
         });
 
+        menuItem = new MenuItem(frame,"Storicita", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\request2.png"))));
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //qui codice
+
+            }
+
+        });
+
         ModificeUtente.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
