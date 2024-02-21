@@ -211,21 +211,21 @@ public class WikiPage {
                 // link
                 // id link
 
-
+                int idx=0;
                 for (String element : entry.getValue()) {
-                    System.out.println("[ ] "+element);
+                    //System.out.println("["] "+element);
                 }
                 System.out.println();
 
                 JButton button = new JButton(String.valueOf(entry.getKey()));
 
                 JLabel label;
-                //if (Boolean.parseBoolean(entry.getValue().get(3))) {
+                if (Boolean.parseBoolean(entry.getValue().get(3))) {
                     label = new JLabel(entry.getValue().get(2));
                     label.addMouseListener(listnerlik);
-                //}else{
-                    //label = new JLabel(entry.getValue().get(2));
-                //}
+                }else{
+                    label = new JLabel(entry.getValue().get(2));
+                }
                 button.addActionListener(listener);
 
                 ContentContentPane.add(button);
