@@ -27,7 +27,7 @@ public class SearchPanelPage extends JPanel {
         LinkToPage.setBorder(null);
         LinkToPage.setFont(frame.getFontToolBarLower());
         LinkToPage.setBackground(frame.getColorBack());
-
+        LinkToPage.setForeground(new Color(0, 0, 0));
 
         LinkToPage.addMouseListener(new MouseAdapter() {
             @Override
@@ -47,14 +47,13 @@ public class SearchPanelPage extends JPanel {
                 }
 
             }
+        });
 
+        LinkToPage.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
+            public void actionPerformed(ActionEvent e) {
                 LinkToPage.setForeground(new Color(199, 111, 91));
                 clic = false;
-
             }
         });
 
