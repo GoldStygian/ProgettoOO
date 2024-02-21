@@ -28,7 +28,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
 
             Frasi.put(index, frase);
         }
-        System.out.println(Frasi);
+        //System.out.println(Frasi);
 
         WikiPage.close();
         statement.close();
@@ -94,7 +94,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
             MessageReturn = "Pagina creata con successo<br>";
         }else{
             ResultSet rs = stm.getResultSet();
-            System.out.println(rs);
+            //System.out.println(rs);
         }
 
         return MessageReturn;

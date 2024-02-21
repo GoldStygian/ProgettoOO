@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import java.util.Map;
 import java.util.HashMap;
 
 public class Controller {
@@ -18,9 +19,21 @@ public class Controller {
     Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
+
+    //debug
+    public void printHashMap(){
+        for (Map.Entry<Integer, Pagina> entry : Pagine.entrySet()) {
+
+            System.out.println("[ ] chiave pagina: "+ entry.getKey());
+            //entry.getValue()
+
+        }
+    }
+    //
+
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
-    public boolean Login(String email, String password) { //OK
+    public boolean Login(String email, String password) {
 
         try {
             ArrayList<String> Contenuto =  new LoginPostgresDAO().Login(email, password);
@@ -34,11 +47,6 @@ public class Controller {
                 }
 
                 utenteLoggato.print(); //debug
-                if (utenteLoggato instanceof Utente) {
-                    System.out.println("[+] l'utente è un utente semplice");//debug
-                }else{
-                    System.out.println("[+] l'utente è un autore");//debug
-                }
                 return true;
             }else{
                 return false;
@@ -351,7 +359,7 @@ public class Controller {
         //titolo link //to check
         //posizione //strong
 
-        System.out.println("la posizione che stai modificando è la: "+posizione);
+        //System.out.println("la posizione che stai modificando è la: "+posizione);
 
         String Message = "<html>";
         if (text.isEmpty()){
@@ -390,7 +398,7 @@ public class Controller {
         try {
             v.Visionata(id_operazione);
         } catch (SQLException e) {
-            System.out.printf("visionata");
+            //System.out.printf("visionata");
         }
     }
 

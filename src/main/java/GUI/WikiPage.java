@@ -4,10 +4,7 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -147,6 +144,7 @@ public class WikiPage {
         // TODO: place custom component creation code here
 
         this.Frasi = controller.getWikiPage(idPagina);
+        controller.printHashMap();//debug
 
         ContentContentPane = new JPanel();
         ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
@@ -177,11 +175,57 @@ public class WikiPage {
                 }
             };
 
+            MouseListener listnerlik = new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    System.out.println("link cliccato");
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println("link cliccato");
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    System.out.println("link cliccato");
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    System.out.println("link cliccato");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    System.out.println("link cliccato");
+                }
+
+            };
+
             for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
-                JButton button = new JButton(String.valueOf(entry.getKey()));
-                JLabel label = new JLabel(entry.getValue().get(2));
+                // idPag
+                // pos reale
+                // frase
+                // link
+                // id link
 
+
+                for (String element : entry.getValue()) {
+                    System.out.println("[ ] "+element);
+                }
+                System.out.println();
+
+                JButton button = new JButton(String.valueOf(entry.getKey()));
+
+                JLabel label;
+                //if (Boolean.parseBoolean(entry.getValue().get(3))) {
+                    label = new JLabel(entry.getValue().get(2));
+                    label.addMouseListener(listnerlik);
+                //}else{
+                    //label = new JLabel(entry.getValue().get(2));
+                //}
                 button.addActionListener(listener);
 
                 ContentContentPane.add(button);
