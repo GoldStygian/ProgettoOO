@@ -15,6 +15,7 @@ public class SearchPanelPage extends JPanel{
         this.add(MainPanel);
         LinkToPage.setActionCommand(Id_pagina);
         Intestazione.setText(NomeAutore + " " + Ultima_modifica);
+        LinkToPage.setText(Titolo);
 
         LinkToPage.addActionListener(new ActionListener() {
             @Override
