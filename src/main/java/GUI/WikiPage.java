@@ -66,9 +66,58 @@ public class WikiPage {
         this.PaginaLinkRefModField.setVisible(false);
         this.LabelPaginaRefMod.setVisible(false);
 
+        GuiPresetComponet t = new GuiPresetComponet(frame);
+        t.ToolBarButton(BackButton);
+
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
+        t.LabelSetFontAndColorUpper(NameApp);
+        ScrollPanel.setBorder(null);
+
         BackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.SetNewPanel(OldPanel, MainPanel);
+            }
+        });
+
+        BackButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                BackButton.setBackground(new Color(199, 111, 91));
+                InternalBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                BackButton.setBackground(frame.getColorToolBar());
+                InternalBox.setBackground(frame.getColorToolBar());
+
+            }
+        });
+
+        InternalBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                InternalBox.setBackground(new Color(199, 111, 91));
+                BackButton.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                InternalBox.setBackground(frame.getColorToolBar());
+                BackButton.setBackground(frame.getColorToolBar());
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
                 frame.SetNewPanel(OldPanel, MainPanel);
             }
         });
@@ -151,14 +200,17 @@ public class WikiPage {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+
 
         this.Frasi = controller.getWikiPage(idPagina);
         controller.printHashMap();//debug
 
         ContentContentPane = new JPanel();
-        ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
+
+        ContentContentPane.setLayout(new GridBagLayout());
         ScrollPanel = new JScrollPane(ContentContentPane);
+        ContentContentPane.setBackground(frame.getColorBack());
+        ScrollPanel.setBackground(frame.getColorBack());
 
         if (Frasi != null) {
             ActionListener listener = new ActionListener() {
@@ -214,8 +266,23 @@ public class WikiPage {
 
             };
 
+            int i = 0;
             for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
+
+                GridBagConstraints gbc;
+                gbc = new GridBagConstraints();
+                //gbc.fill = GridBagConstraints.WEST;
+                //gbc.gridx = 0;
+                //gbc.gridy = i+1;
+                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+                gbc.gridx = 0;
+                gbc.gridy = i;
+                gbc.insets.left = 5;
+                gbc.insets.top = 5;
+                gbc.weightx = 1.0;
+                gbc.weighty = 1.0;
+                i++;
                 // idPag
                 // pos reale
                 // frase
@@ -241,8 +308,11 @@ public class WikiPage {
                 }
                 button.addActionListener(listener);
 
-                ContentContentPane.add(button);
-                ContentContentPane.add(label);
+                JPanel Contenuto = new JPanel();
+                Contenuto.setLayout(new FlowLayout());
+                Contenuto.add(button);
+                Contenuto.add(label);
+                ContentContentPane.add(Contenuto,gbc);
 
             }
         } else {
@@ -252,5 +322,6 @@ public class WikiPage {
             ContentContentPane.add(label);
         }
     }
+
 
 }
