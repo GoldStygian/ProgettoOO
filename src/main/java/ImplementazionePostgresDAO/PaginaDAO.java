@@ -101,4 +101,55 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
         return MessageReturn;
     }
 
+    @Override
+    public ArrayList<ArrayList<String>> getMyPage(String email) throws SQLException {
+        Connection con = new ConnessionePostgesDAO().openConnection();
+        Statement stm = con.createStatement();
+        String query = "SELECT * FROM pagina WHERE emailautore = '%s'".formatted(email);
+        ResultSet rs = stm.executeQuery(query);
+
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        while (rs.next()){
+            ArrayList<String> tmp = new ArrayList<>();
+            tmp.add(rs.getString("id_pagina"));
+            tmp.add(rs.getString("titolo"));
+            result.add(tmp);
+        }
+
+        con.close();
+        stm.close();
+        rs.close();
+        return result;
+
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> getStroicitaSpecifica(int idPagina, String data) throws SQLException {
+        Connection con = new ConnessionePostgesDAO().openConnection();
+        Statement stm = con.createStatement();
+
+        String query;
+
+        if(data.isEmpty()) {
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = 38 ORDER BY posizione\n".formatted(idPagina);
+        }else{
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = 38 AND data_accettazione <= '2024-02-20 19:27:17' ORDER BY posizione\n".formatted(idPagina, data);
+        }
+
+        ResultSet rs = stm.executeQuery(query);
+
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        while (rs.next()){
+            ArrayList<String> tmp = new ArrayList<>();
+            tmp.add(rs.getString("frase"));
+            tmp.add("posizione");
+            result.add(tmp);
+        }
+
+        con.close();
+        stm.close();
+        rs.close();
+        return result;
+    }
+
 }

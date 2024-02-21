@@ -83,12 +83,6 @@ public class Controller {
                 temp.add(String.valueOf(idPagina));
                 temp.add(String.valueOf(entry.getValue().getPosizione()));
                 temp.add(entry.getValue().getTesto());
-                try{
-                    System.out.println("[ded]"+((Link) entry.getValue()).getPaginaId());
-                }catch (Exception e){
-
-
-                }
 
                 if (entry.getValue() instanceof Link){
                     temp.add(String.valueOf(1));
@@ -494,6 +488,34 @@ public class Controller {
 
 
     }*/
+
+    public ArrayList<ArrayList<String>> getMyPage(){
+
+        String email = utenteLoggato.getEmail();
+        ArrayList<ArrayList<String>> pages;
+        try{
+            pages = new PaginaDAO().getMyPage(email);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+        if (pages.isEmpty()){
+            return null;
+        }else{
+            return pages;
+        }
+    }
+
+    /*
+    public ArrayList<ArrayList<String>> getStoricitaPage(){
+
+        String email = utenteLoggato.getEmail();
+
+        return null;
+    }*/
+
+    //public ArrayList<ArrayList<String>> getPagine(){}
 
     public void logOut(){
 

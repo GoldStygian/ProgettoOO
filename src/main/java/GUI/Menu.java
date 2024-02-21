@@ -33,7 +33,7 @@ public class Menu extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
                 //QUI IL TASTO CREA
                 frame.SetNewPanel(new CreaPagina(frame, Oldpanel, controller).getPanel(), HomePanel);
-                frame.Resize(600, 850);
+                //frame.Resize(600, 850);
             }
 
         });
@@ -59,8 +59,8 @@ public class Menu extends JMenuBar {
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //qui codice
-
+                //Storicita
+                frame.SetNewPanel(new StoricitaPage(frame, Oldpanel, controller).getPanel(), HomePanel);
             }
 
         });

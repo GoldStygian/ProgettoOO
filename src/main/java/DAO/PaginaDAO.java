@@ -11,4 +11,8 @@ public interface PaginaDAO {
     ArrayList<String> getWikiInfo(int idPagina) throws SQLException;
 
     String createPage(String email, String titolo, String frase, boolean link, String TitoloLink) throws SQLException;
+
+    ArrayList<ArrayList<String>> getMyPage(String email) throws SQLException;
+
+    ArrayList<ArrayList<String>> getStroicitaSpecifica(int idPagina, String data) throws SQLException;
 }
