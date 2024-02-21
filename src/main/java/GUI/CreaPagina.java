@@ -4,6 +4,7 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -30,7 +31,7 @@ public class CreaPagina {
     private JPanel Divisore;
     private JLabel Message;
 
-    public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller){
+    public CreaPagina(MainJFrame frame, JPanel OldPanel, Controller controller) {
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
         PaginaLinkRef.setVisible(false);
@@ -78,10 +79,11 @@ public class CreaPagina {
 
         CreateButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 Message.setText(controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText()));
                 System.out.println(Message.getText());
-                if (Message.getText().equals("<html>Pagina creata con successo<br></html>")) Message.setForeground(Color.green);
+                if (Message.getText().equals("<html>Pagina creata con successo<br></html>"))
+                    Message.setForeground(Color.green);
                 else Message.setForeground(Color.red);
                 Message.setVisible(true);
 
@@ -110,6 +112,7 @@ public class CreaPagina {
                 CreateButton.setBackground(new Color(199, 111, 91));
 
             }
+
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);

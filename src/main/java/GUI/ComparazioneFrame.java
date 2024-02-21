@@ -4,14 +4,18 @@ import main.java.Controller.Controller;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class ComparazioneFrame extends JFrame{
+public class ComparazioneFrame extends JFrame {
     private JPanel MainJPanel;
     private JButton AcceptButton;
     private JButton RejectButton;
@@ -47,7 +51,8 @@ public class ComparazioneFrame extends JFrame{
     private JPanel ExsternalModificaBox;
 
     private Color semiBack = new Color(199, 111, 91);
-    public  ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente){
+
+    public ComparazioneFrame(String Nome, MainJFrame frame, Controller controller, NotificheFrame PanelloNotifiche, int id_operazione, String testo, boolean visionata, boolean modifica, boolean link, String utente) {
         super(Nome);
         ComparazioneFrame f = this; //questo frame
         GuiPresetComponet t = new GuiPresetComponet(frame);
@@ -60,7 +65,7 @@ public class ComparazioneFrame extends JFrame{
         this.setSize(1500, 700);
         this.setIconImage(frame.getIconImage());
         this.setResizable(false);
-        this.TipoConfronto(modifica,controller,id_operazione,f);
+        this.TipoConfronto(modifica, controller, id_operazione, f);
         UtenteRichiesta.setText(utente);
         BoxUtente.setBackground(frame.getColorBack());
         OldLinkPage.setBackground(semiBack);
@@ -122,7 +127,7 @@ public class ComparazioneFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
                 controller.ModificaProposta(id_operazione, 1);
-                PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
+                PanelloNotifiche.RefreshAndLoad(controller, frame, PanelloNotifiche);
 
             }
         });
@@ -132,20 +137,19 @@ public class ComparazioneFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
                 controller.ModificaProposta(id_operazione, 0);
-                PanelloNotifiche.RefreshAndLoad(controller,frame,PanelloNotifiche);
+                PanelloNotifiche.RefreshAndLoad(controller, frame, PanelloNotifiche);
                 f.dispose();
             }
         });
 
 
-
     }
 
 
-    public void TipoConfronto(boolean modifica, Controller controller, int id_operazione, ComparazioneFrame f){
+    public void TipoConfronto(boolean modifica, Controller controller, int id_operazione, ComparazioneFrame f) {
 
         ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
-        if(modifica){
+        if (modifica) {
             //ArrayList<String[]> Confronti = controller.LoadConfronto(id_operazione); //index[0] contenuto frase sulla wiki index[1] contenuto frase proposta
 
             OldTextJLabel.setText(Confronti.get(0)[0]);
@@ -154,11 +158,11 @@ public class ComparazioneFrame extends JFrame{
             OldPosizione.setText("Posizione: " + Confronti.get(0)[1]);
             OldLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
             NewLinkPagina.setText("Titolo Pagina di Riferimento: " + Confronti.get(1)[4]);
-            NewLink.setText("Link: " +Confronti.get(1)[2]);
+            NewLink.setText("Link: " + Confronti.get(1)[2]);
             NewPosizione.setText("Posizione: " + Confronti.get(1)[1]);
             Modifica.setText("Modifica: " + String.valueOf(modifica));
 
-        }else{
+        } else {
 
             OldTextJLabel.setText(Confronti.get(0)[0]);
             OldLink.setText("Link: " + Confronti.get(0)[2]);
@@ -173,6 +177,8 @@ public class ComparazioneFrame extends JFrame{
             ExsternalModificaBox.setVisible(false);
         }
 
-    };
+    }
+
+    ;
 
 }

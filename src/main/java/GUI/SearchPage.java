@@ -3,7 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +36,7 @@ public class SearchPage {
         this.ricerca = ricerca;
         this.frame = frame;
         this.OldPanel = OldPanel;
+        ScrollPanel.setBorder(null);
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -53,6 +54,36 @@ public class SearchPage {
         NameApp.setFont(frame.getFontToolBar());
 
         NameApp.setForeground(Color.BLACK);
+
+        this.DataPages = controller.searchPages(ricerca);
+
+
+        if (DataPages != null) {
+
+
+            int i = 0;
+            for (ArrayList<String> innerList : DataPages) {
+                GridBagConstraints gbc;
+                gbc = new GridBagConstraints();
+                //gbc.fill = GridBagConstraints.WEST;
+                //gbc.gridx = 0;
+                //gbc.gridy = i+1;
+                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+                gbc.gridx = 0;
+                gbc.gridy = i;
+                gbc.insets.left = 5;
+                gbc.insets.top = 5;
+                gbc.weightx = 1.0;
+                gbc.weighty = 1.0;
+
+                ContentContentPane.add(new SearchPanelPage(frame, controller, MainPanel, innerList.get(0), innerList.get(3), innerList.get(1), innerList.get(2)), gbc);
+                i++;
+            }
+        } else {
+            JLabel label = new JLabel("Nessuna pagina trovata");
+
+            ContentContentPane.add(label);
+        }
 
         Backbutton.addMouseListener(new MouseAdapter() {
             @Override
@@ -80,55 +111,12 @@ public class SearchPage {
             }
         });
 
+
     }
 
     public JPanel getPanel() {
         return MainPanel;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-        this.DataPages = controller.searchPages(ricerca);
-
-        ContentContentPane = new JPanel();
-        ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
-        ScrollPanel = new JScrollPane(ContentContentPane);
-
-        if (DataPages != null) {
-
-            this.listener = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    int buttonHidden = Integer.parseInt(((JButton) e.getSource()).getActionCommand());
-                    //System.out.println("Hai premuto il link con id: " + e.getActionCommand());
-                    frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonHidden).getPanel(), MainPanel);
-                }
-            };
-
-
-
-            for (ArrayList<String> innerList : DataPages) {
-
-                //Titolo[0] ID_pagina[3] NomeAutore[1] ultima modifica[2]
-                JButton button = new JButton(innerList.get(0));
-                button.setActionCommand(innerList.get(3));
-                JLabel label = new JLabel(innerList.get(1) + innerList.get(2));
-                button.addActionListener(listener);
-
-                label.setBorder(new EmptyBorder(0, 0, 10, 0));
-
-                ContentContentPane.add(button);
-                ContentContentPane.add(label);
-
-                //ContentContentPane.add(new SearchPanelPage(frame,controller,MainPanel,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)));
-            }
-        } else {
-            JLabel label = new JLabel("Nessuna pagina trovata");
-
-            ContentContentPane.add(label);
-        }
-    }
 
 }
