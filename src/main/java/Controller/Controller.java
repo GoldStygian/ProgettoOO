@@ -69,22 +69,58 @@ public class Controller {
     }
 
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {
+        // idPag
+        // pos reale
+        // frase
+        // link
+        // id link
+        if (Pagine.get(idPagina) != null) { //gia sta una pagina nell'hashmap
 
-        try{
-            PaginaDAO p =  new PaginaDAO();
-            HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
-            ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
-            if (paginaCercata!=null){
-                Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3), paginaCercata.get(4));
-                pagina_cercata.AddFrasi(Frasi);
-                Pagine.put(idPagina, pagina_cercata);
+            Pagina StoredPage = Pagine.get(idPagina);
+            HashMap<Integer, ArrayList<String>> frasi = new HashMap<>();
+            for (Map.Entry<Integer, Frase> entry : StoredPage.getFrasi().entrySet()){
+                ArrayList<String> temp = new ArrayList<>();
+                temp.add(String.valueOf(idPagina));
+                temp.add(String.valueOf(entry.getValue().getPosizione()));
+                temp.add(entry.getValue().getTesto());
+                try{
+                    System.out.println("[ded]"+((Link) entry.getValue()).getPaginaId());
+                }catch (Exception e){
+
+
+                }
+
+                if (entry.getValue() instanceof Link){
+                    temp.add(String.valueOf(1));
+                    temp.add(String.valueOf(((Link) entry.getValue()).getPaginaId()));
+                }else{
+                    temp.add(String.valueOf(0));
+                    temp.add("null");
+                }
+                frasi.put(entry.getKey(), temp);
             }
-            return Frasi;
 
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            return null;
+            return frasi;
+
+
+        } else { //devo caricare dal DB
+            try {
+                PaginaDAO p = new PaginaDAO();
+                HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
+                ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
+                if (paginaCercata != null) {
+                    Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3), paginaCercata.get(4), Integer.parseInt(paginaCercata.get(5)) );
+                    pagina_cercata.AddFrasi(Frasi);
+                    Pagine.put(idPagina, pagina_cercata);//
+                }
+                return Frasi;
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
         }
+
     }
 
     public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {

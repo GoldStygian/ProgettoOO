@@ -183,22 +183,22 @@ public class WikiPage {
 
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    System.out.println("link cliccato");
+                    //System.out.println("link cliccato");
                 }
 
                 @Override
                 public void mouseReleased(MouseEvent e) {
-                    System.out.println("link cliccato");
+                    //System.out.println("link cliccato");
                 }
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    System.out.println("link cliccato");
+                    //System.out.println("link cliccato");
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    System.out.println("link cliccato");
+                    //System.out.println("link cliccato");
                 }
 
             };
@@ -213,15 +213,17 @@ public class WikiPage {
 
                 int idx=0;
                 for (String element : entry.getValue()) {
-                    //System.out.println("["] "+element);
+                    System.out.println("["+idx+"] "+element);
+                    idx++;
                 }
                 System.out.println();
 
                 JButton button = new JButton(String.valueOf(entry.getKey()));
 
                 JLabel label;
-                if (Boolean.parseBoolean(entry.getValue().get(3))) {
+                if ( entry.getValue().get(3).equals("1") ) {
                     label = new JLabel(entry.getValue().get(2));
+                    label.setForeground(Color.blue);
                     label.addMouseListener(listnerlik);
                 }else{
                     label = new JLabel(entry.getValue().get(2));
@@ -234,6 +236,7 @@ public class WikiPage {
             }
         } else {
             JLabel label = new JLabel("Nessuna pagina trovata");
+            label.setForeground(Color.red);
 
             ContentContentPane.add(label);
         }

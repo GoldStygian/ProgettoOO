@@ -1,13 +1,17 @@
 package main.java.Model;
 
-import java.util.ArrayList;
-
 public class Link extends Frase{
 
-    private Pagina Pagine_linkate;
+    private Pagina PagineLinkata;
 
-    public  Link(String testo, int posizione){
+    public  Link(String testo, int posizione, Pagina pagina){
         super(testo,posizione);
+        this.PagineLinkata = pagina;
+
+    }
+
+    public int getPaginaId(){
+        return PagineLinkata.getID();
     }
 
 }

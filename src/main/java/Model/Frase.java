@@ -37,7 +37,8 @@ public class Frase {
         return posizione;
     }
 
-
-
+    public String getTesto(){
+        return Testo;
+    }
 
 }

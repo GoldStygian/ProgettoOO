@@ -53,6 +53,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
             pagina_cercata.add(result.getString("generalita_autore"));
             pagina_cercata.add(result.getString("dataultimamodifica"));
             pagina_cercata.add(result.getString("datacreazione"));
+            pagina_cercata.add(result.getString("id_pagina"));
         }
 
         return pagina_cercata;
