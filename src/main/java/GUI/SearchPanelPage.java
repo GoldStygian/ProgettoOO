@@ -11,7 +11,7 @@ public class SearchPanelPage extends JPanel{
     private JPanel MainPanel;
     private JPanel Link;
 
-    public SearchPanelPage(MainJFrame frame, Controller controller, String Titolo, String Id_pagina, String NomeAutore, String Ultima_modifica) {
+    public SearchPanelPage(MainJFrame frame, Controller controller, JPanel OldPanel, String Titolo, String Id_pagina, String NomeAutore, String Ultima_modifica) {
         this.add(MainPanel);
         LinkToPage.setActionCommand(Id_pagina);
         Intestazione.setText(NomeAutore + " " + Ultima_modifica);
@@ -21,7 +21,7 @@ public class SearchPanelPage extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 int buttonHidden = Integer.parseInt(((JButton) e.getSource()).getActionCommand());
                 System.out.println("Hai premuto il link con id: " + e.getActionCommand());
-                frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonHidden).getPanel(), MainPanel);
+                frame.SetNewPanel(new WikiPage(frame, OldPanel, controller, buttonHidden).getPanel(), MainPanel);
             }
         });
 

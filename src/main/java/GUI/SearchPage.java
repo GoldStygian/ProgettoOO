@@ -121,7 +121,7 @@ public class SearchPage {
                 ContentContentPane.add(button);
                 ContentContentPane.add(label);
                 */
-                ContentContentPane.add(new SearchPanelPage(frame,controller,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)));
+                ContentContentPane.add(new SearchPanelPage(frame,controller,MainPanel,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)));
             }
         } else {
             JLabel label = new JLabel("Nessuna pagina trovata");
