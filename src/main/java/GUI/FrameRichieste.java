@@ -108,9 +108,10 @@ public class FrameRichieste extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.printf("Qui %d", controller.NumerOfNotifiche() );
-                if(controller.NumerOfModifiche() != NumNot){
+                int num = controller.NumerOfModifiche();
+                if( num != NumNot && num != 0){
                     RefreshAndLoad(controller,frame,f);
-                }else{
+                }else if(num != 0){
                     RefreshAndReLoad(controller,frame,f);
                 }
             }
