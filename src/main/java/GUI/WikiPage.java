@@ -35,6 +35,13 @@ public class WikiPage {
     private JCheckBox LinkModBox;
     private JLabel LabelPaginaRefMod;
     private JButton BackButton;
+    private JPanel ToolBar;
+    private JPanel IconBox;
+    private JLabel Icon;
+    private JLabel NameApp;
+    private JPanel GoBack;
+    private JPanel InternalBox;
+    private JLabel IconBack;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
