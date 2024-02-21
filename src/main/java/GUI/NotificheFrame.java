@@ -154,7 +154,7 @@ public class NotificheFrame extends JFrame {
     }
 
     public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f) {
-        if (controller.NumerOfNotifiche() != NumNot) {
+        //if (controller.NumerOfNotifiche() != NumNot) {
             for (int i = 0; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
@@ -166,18 +166,18 @@ public class NotificheFrame extends JFrame {
                 throw new RuntimeException(ex);
             }
             load(controller, frame);
-        }
+        //}
     }
 
     public void RefreshAndReload(Controller controller, MainJFrame frame, JFrame f) {
-        if (controller.NumerOfNotifiche() == NumNot) {
+        //if (controller.NumerOfNotifiche() == NumNot) {
             for (int i = 0; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
             }
             controller.Resize(600, 800, f);
             load(controller, frame);
-        }
+        //}
     }
 
 

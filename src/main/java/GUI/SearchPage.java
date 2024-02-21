@@ -36,6 +36,7 @@ public class SearchPage {
         this.ricerca = ricerca;
         this.frame = frame;
         this.OldPanel = OldPanel;
+        ScrollPanel.setBorder(null);
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
@@ -71,7 +72,7 @@ public class SearchPage {
                 gbc.gridx = 0;
                 gbc.gridy = i;
                 gbc.insets.left = 5;
-                gbc.insets.top = 0;
+                gbc.insets.top = 5;
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
 
