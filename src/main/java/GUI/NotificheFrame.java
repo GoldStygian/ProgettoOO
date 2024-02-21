@@ -3,6 +3,9 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class NotificheFrame extends JFrame {
 
@@ -94,8 +98,8 @@ public class NotificheFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                RefreshAndReload(controller,frame,f);
-                RefreshAndLoad(controller, frame,f);
+                RefreshAndReload(controller, frame, f);
+                RefreshAndLoad(controller, frame, f);
             }
         });
 
@@ -119,10 +123,10 @@ public class NotificheFrame extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(controller.NumerOfNotifiche() != NumNot){
-                    RefreshAndLoad(controller, frame,f);
-                }else{
-                    RefreshAndReload(controller,frame,f);
+                if (controller.NumerOfNotifiche() != NumNot) {
+                    RefreshAndLoad(controller, frame, f);
+                } else {
+                    RefreshAndReload(controller, frame, f);
                 }
             }
 
@@ -130,49 +134,49 @@ public class NotificheFrame extends JFrame {
 
     }
 
-    public void load(Controller controller, MainJFrame frame){
+    public void load(Controller controller, MainJFrame frame) {
         NotificheOnPanel.clear();
         ArrayList<ArrayList> s = controller.GetNotifiche();
         //System.out.print(s);
         //System.out.printf("%d", s.get(0).size());
         NumNot = s.get(0).size();
-        for (int i = 0 ; i < NumNot; i++) {
+        for (int i = 0; i < NumNot; i++) {
 
             GridBagConstraints gbc;
             gbc = new GridBagConstraints();
             gbc.gridx = 0;
             gbc.gridy = i;
-            NotifichePanel toadd = new NotifichePanel(frame,controller, this ,(int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i));
+            NotifichePanel toadd = new NotifichePanel(frame, controller, this, (int) s.get(0).get(i), (Timestamp) s.get(1).get(i), (String) s.get(2).get(i), (Boolean) s.get(3).get(i), (Boolean) s.get(4).get(i), (Boolean) s.get(5).get(i), (Boolean) s.get(6).get(i), (int) s.get(7).get(i), (String) s.get(9).get(i));
             NotificheOnPanel.add(toadd);
-            Notifiche.add(toadd,gbc);
+            Notifiche.add(toadd, gbc);
 
         }
     }
 
-    public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() != NumNot){
-            for (int i = 0 ; i < NumNot; i++) {
+    public void RefreshAndLoad(Controller controller, MainJFrame frame, JFrame f) {
+        if (controller.NumerOfNotifiche() != NumNot) {
+            for (int i = 0; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
             }
-            controller.Resize(600, 800,f);
+            controller.Resize(600, 800, f);
             try {
                 controller.LoadNotifiche();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-            load(controller,frame);
+            load(controller, frame);
         }
     }
 
-    public void RefreshAndReload(Controller controller, MainJFrame frame, JFrame f){
-        if(controller.NumerOfNotifiche() == NumNot){
-            for (int i = 0 ; i < NumNot; i++) {
+    public void RefreshAndReload(Controller controller, MainJFrame frame, JFrame f) {
+        if (controller.NumerOfNotifiche() == NumNot) {
+            for (int i = 0; i < NumNot; i++) {
                 Notifiche.remove(NotificheOnPanel.get(i));
                 //Notifiche.add(NotificheOnPanel.get(i));
             }
-            controller.Resize(600, 800,f);
-            load(controller,frame);
+            controller.Resize(600, 800, f);
+            load(controller, frame);
         }
     }
 

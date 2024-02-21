@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,16 +57,25 @@ public class SearchPage {
         this.DataPages = controller.searchPages(ricerca);
 
 
-
         if (DataPages != null) {
 
             int i = 0;
             for (ArrayList<String> innerList : DataPages) {
                 GridBagConstraints gbc;
                 gbc = new GridBagConstraints();
+                //gbc.fill = GridBagConstraints.WEST;
+                //gbc.gridx = 0;
+                //gbc.gridy = i+1;
+                gbc.anchor = GridBagConstraints.FIRST_LINE_START;
                 gbc.gridx = 0;
                 gbc.gridy = i;
-                ContentContentPane.add(new SearchPanelPage(frame,controller,MainPanel,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)),gbc);
+                gbc.insets.left = 5;
+                gbc.insets.top = 0;
+                gbc.gridx = 1;
+                gbc.weightx = 1.0;
+                gbc.weighty = 1.0;
+
+                ContentContentPane.add(new SearchPanelPage(frame, controller, MainPanel, innerList.get(0), innerList.get(3), innerList.get(1), innerList.get(2)), gbc);
                 i++;
             }
         } else {
@@ -101,13 +111,11 @@ public class SearchPage {
         });
 
 
-
     }
 
     public JPanel getPanel() {
         return MainPanel;
     }
-
 
 
 }

@@ -3,9 +3,10 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
-public class SearchPanelPage extends JPanel{
+public class SearchPanelPage extends JPanel {
     private JButton LinkToPage;
     private JLabel Intestazione;
     private JPanel MainPanel;

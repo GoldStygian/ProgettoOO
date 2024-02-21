@@ -15,7 +15,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="ac98a" binding="ContentContentPane" layout-manager="GridBagLayout">
+          <grid id="2586b" binding="ContentContentPane" layout-manager="GridBagLayout">
             <constraints/>
             <properties>
               <background color="-136739"/>
