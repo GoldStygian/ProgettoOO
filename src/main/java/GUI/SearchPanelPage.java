@@ -17,6 +17,10 @@ public class SearchPanelPage extends JPanel {
         LinkToPage.setActionCommand(Id_pagina);
         Intestazione.setText(NomeAutore + " " + Ultima_modifica);
         LinkToPage.setText(Titolo);
+        this.setBorder(null);
+        Link.setBackground(frame.getColorBack());
+        Link.setBorder(null);
+        this.setBackground(frame.getColorBack());
 
         LinkToPage.addActionListener(new ActionListener() {
             @Override

@@ -59,6 +59,7 @@ public class SearchPage {
 
         if (DataPages != null) {
 
+
             int i = 0;
             for (ArrayList<String> innerList : DataPages) {
                 GridBagConstraints gbc;
@@ -71,7 +72,6 @@ public class SearchPage {
                 gbc.gridy = i;
                 gbc.insets.left = 5;
                 gbc.insets.top = 0;
-                gbc.gridx = 1;
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
 
