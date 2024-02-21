@@ -35,7 +35,9 @@ public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
         String query="SELECT count(*) as sum from operazione_utente where utente like '%s' group by utente".formatted(email);
         ResultSet num = statement.executeQuery(query);
         con.close();
-        num.next();
+        if(!num.next()){
+            return 0;
+        }
         //System.out.print("\n|"+num.getInt("sum")+"\n|");
         return num.getInt("sum");
 

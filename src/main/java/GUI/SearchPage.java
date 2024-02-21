@@ -97,6 +97,7 @@ public class SearchPage {
         ScrollPanel = new JScrollPane(ContentContentPane);
 
         if (DataPages != null) {
+            /*
             this.listener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -107,8 +108,11 @@ public class SearchPage {
                 }
             };
 
-            for (ArrayList<String> innerList : DataPages) {
 
+               */
+            for (ArrayList<String> innerList : DataPages) {
+                /*
+                //Titolo[0] ID_pagina[3] NomeAutore[1] ultima modifica[2]
                 JButton button = new JButton(innerList.get(0));
                 button.setActionCommand(innerList.get(3));
                 JLabel label = new JLabel(innerList.get(1) + innerList.get(2));
@@ -116,7 +120,8 @@ public class SearchPage {
 
                 ContentContentPane.add(button);
                 ContentContentPane.add(label);
-
+                */
+                ContentContentPane.add(new SearchPanelPage(frame,controller,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)));
             }
         } else {
             JLabel label = new JLabel("Nessuna pagina trovata");

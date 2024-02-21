@@ -67,8 +67,10 @@ public class FrameRichieste extends JFrame {
         MainScrollPane.setBackground(frame.getColorBack());
         MainJPanel.setBackground(frame.getColorBack());
 
-        LoadModifiche(frame, controller);
-
+        int num = controller.NumerOfModifiche();
+        if(num != 0) {
+            LoadModifiche(frame, controller);
+        }
         RefreshBox.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -107,7 +109,7 @@ public class FrameRichieste extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //System.out.printf("Qui %d", controller.NumerOfNotifiche() );
+                System.out.printf("Qui %d", controller.NumerOfNotifiche() );
                 int num = controller.NumerOfModifiche();
                 if( num != NumNot && num != 0){
                     RefreshAndLoad(controller,frame,f);
