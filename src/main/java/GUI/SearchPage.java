@@ -53,6 +53,27 @@ public class SearchPage {
 
         NameApp.setForeground(Color.BLACK);
 
+        this.DataPages = controller.searchPages(ricerca);
+
+
+
+        if (DataPages != null) {
+
+            int i = 0;
+            for (ArrayList<String> innerList : DataPages) {
+                GridBagConstraints gbc;
+                gbc = new GridBagConstraints();
+                gbc.gridx = 0;
+                gbc.gridy = i;
+                ContentContentPane.add(new SearchPanelPage(frame,controller,MainPanel,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)),gbc);
+                i++;
+            }
+        } else {
+            JLabel label = new JLabel("Nessuna pagina trovata");
+
+            ContentContentPane.add(label);
+        }
+
         Backbutton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -87,47 +108,6 @@ public class SearchPage {
         return MainPanel;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
 
-        this.DataPages = controller.searchPages(ricerca);
-
-        ContentContentPane = new JPanel();
-        ContentContentPane.setLayout(new BoxLayout(ContentContentPane, BoxLayout.Y_AXIS));
-        ScrollPanel = new JScrollPane(ContentContentPane);
-
-        if (DataPages != null) {
-            /*
-            this.listener = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    int buttonHidden = Integer.parseInt(((JButton) e.getSource()).getActionCommand());
-                    //System.out.println("Hai premuto il link con id: " + e.getActionCommand());
-                    frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, buttonHidden).getPanel(), MainPanel);
-                }
-            };
-
-
-               */
-            for (ArrayList<String> innerList : DataPages) {
-                /*
-                //Titolo[0] ID_pagina[3] NomeAutore[1] ultima modifica[2]
-                JButton button = new JButton(innerList.get(0));
-                button.setActionCommand(innerList.get(3));
-                JLabel label = new JLabel(innerList.get(1) + innerList.get(2));
-                button.addActionListener(listener);
-
-                ContentContentPane.add(button);
-                ContentContentPane.add(label);
-                */
-                ContentContentPane.add(new SearchPanelPage(frame,controller,MainPanel,innerList.get(0),innerList.get(3),innerList.get(1),innerList.get(2)));
-            }
-        } else {
-            JLabel label = new JLabel("Nessuna pagina trovata");
-
-            ContentContentPane.add(label);
-        }
-    }
 
 }
