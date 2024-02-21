@@ -116,6 +116,7 @@ public class OperazioneUtente {
     public void SetAutore(String d){utente_notificato = d;}
 
     public void SetTitoloLink(String d){Titolo_pagina_link = d;}
+
     public void SetVisionata(boolean d){visionata = d;}
 
     public void SetTitolo(String d){Titolo = d;}
