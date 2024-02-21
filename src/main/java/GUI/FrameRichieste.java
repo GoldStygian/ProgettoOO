@@ -73,6 +73,7 @@ public class FrameRichieste extends JFrame {
 
         int num = controller.NumerOfModifiche();
         if (num != 0) {
+            //controller.loadModifiche();
             LoadModifiche(frame, controller);
         }
         RefreshBox.addMouseListener(new MouseAdapter() {
@@ -113,7 +114,7 @@ public class FrameRichieste extends JFrame {
         RefreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.printf("Qui %d", controller.NumerOfNotifiche());
+                //System.out.printf("Qui %d", controller.NumerOfNotifiche());
                 int num = controller.NumerOfModifiche();
                 if (num != NumNot && num != 0) {
                     RefreshAndLoad(controller, frame, f);
