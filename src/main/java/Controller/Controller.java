@@ -337,20 +337,18 @@ public class Controller {
             messageError += "posizione non valida<br>";
         }
 
-        try{
-            posizioneInt = Integer.parseInt(posizione);
-        }catch (NumberFormatException e){
-            messageError += "La posizione deve esssere un numero<br>";
-        }
-
         if (text.isEmpty()){
             return messageError += "Il testo è vuoto<br>";
         }
 
-
+        try{
+            posizioneInt = Integer.parseInt(posizione);
+        }catch (NumberFormatException e){
+            messageError += "La posizione deve esssere un numero<br>";
+            return messageError;
+        }
 
         Pagina pagina = Pagine.get(idPagina);
-        //ArrayList<String> frase = pagina.getFrase(Integer.parseInt(posizione));
         Frase frase = pagina.getFrase(Integer.parseInt(posizione));
 
         Integer posizioneDB = posizioneInt;
