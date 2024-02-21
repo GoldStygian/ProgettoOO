@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class SearchPage {
@@ -14,6 +16,14 @@ public class SearchPage {
     private final JPanel OldPanel;
     private JScrollPane ScrollPanel;
     private JPanel ContentContentPane;
+    private JPanel ToolBar;
+    private JPanel IconBox;
+    private JLabel Icon;
+    private JLabel NameApp;
+    private JPanel GoBack;
+    private JPanel InternalBox;
+    private JLabel IconBack;
+    private JButton Backbutton;
     private final Controller controller;
     private final String ricerca;
     private ArrayList<ArrayList<String>> DataPages;
@@ -25,6 +35,51 @@ public class SearchPage {
         this.ricerca = ricerca;
         this.frame = frame;
         this.OldPanel = OldPanel;
+
+        GuiPresetComponet t = new GuiPresetComponet(frame);
+
+        t.ToolBarButton(Backbutton);
+
+        ToolBar.setBackground(frame.getColorToolBar());
+
+        MainPanel.setBackground(frame.getColorBack());
+
+
+        t.SetIcon(Icon, new ImageIcon(t.ResizeIcon(65, 65, frame.getIcon())));
+
+        t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
+
+        NameApp.setFont(frame.getFontToolBar());
+
+        NameApp.setForeground(Color.BLACK);
+
+        Backbutton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                Backbutton.setBackground(new Color(199, 111, 91));
+                InternalBox.setBackground(new Color(199, 111, 91));
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                Backbutton.setBackground(frame.getColorToolBar());
+                InternalBox.setBackground(frame.getColorToolBar());
+
+            }
+        });
+
+        Backbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.SetNewPanel(OldPanel, MainPanel);
+                frame.Resize(1400, 700);
+            }
+        });
+
+
 
     }
 
