@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.logging.Logger;
+
+
 public class WikiPage {
 
     private JPanel MainPanel;
@@ -51,6 +54,8 @@ public class WikiPage {
 
     //locali
     int last_key = -1;
+    Logger logger = Logger.getLogger(getClass().getName());
+
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
@@ -325,7 +330,6 @@ public class WikiPage {
             int i = 0;
             for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
-
                 GridBagConstraints gbc;
                 gbc = new GridBagConstraints();
                 //gbc.fill = GridBagConstraints.WEST;
@@ -349,6 +353,7 @@ public class WikiPage {
                 int idx = 0;
                 for (String element : entry.getValue()) {
                     System.out.println("["+idx+"] "+element);
+                    logger.info("["+idx+"] "+element);
                     idx++;
                 }
                 System.out.println();
