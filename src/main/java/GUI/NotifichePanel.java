@@ -62,7 +62,7 @@ public class NotifichePanel extends JPanel {
                 controller.LoadConfronto(Id_operazione);
                 controller.SetVisionata(Id_operazione);
                 AccettazioneFrame = new ComparazioneFrame("Comparazione", frame, controller, PanelloNotifiche, Id_operazione, testo, visionata, modifica, link, Utente);
-                controller.SetVisionataNotModel(Id_operazione);
+                controller.SetVisionataNotificheModel(Id_operazione);
             }
         });
     }

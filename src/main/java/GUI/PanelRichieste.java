@@ -72,7 +72,7 @@ public class PanelRichieste extends JPanel {
                 super.mouseClicked(e);
 
                 ModificaFrame = new ModificaPropostaFrame("Comparazione", frame, controller, FrameModifche, Id_operazione, testo, visionata, modifica, link, posizione, Utente, Autore, Titolo_pagina_link, Titolo);
-                controller.SetVisionataNotModel(Id_operazione);
+                controller.SetVisionataNotificheModel(Id_operazione);
 
 
             }

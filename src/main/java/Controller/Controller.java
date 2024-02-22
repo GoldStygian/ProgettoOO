@@ -16,9 +16,9 @@ public class Controller {
     //Utente utenteLoggato = null;
 
     //debug
-    Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+    private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
-    HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
+    private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
     //debug
@@ -98,7 +98,7 @@ public class Controller {
 
         } else { //devo caricare dal DB
             try {
-                PaginaDAO p = new PaginaDAO();
+                PaginaPostgresDAO p = new PaginaPostgresDAO();
                 HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
                 ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
                 if (paginaCercata != null) {
@@ -312,7 +312,7 @@ public class Controller {
 
     }
 
-    public void SetVisionataNotModel(int id_operazione){
+    public void SetVisionataNotificheModel(int id_operazione){
         for(OperazioneUtente u: Operazioni_utente){
             if(u.getIdOperazione() == id_operazione){
                 ((OperazioneUtente) u).SetVisionata(true);
@@ -479,7 +479,7 @@ public class Controller {
         String email = utenteLoggato.getEmail();
         ArrayList<ArrayList<String>> pages;
         try{
-            pages = new PaginaDAO().getMyPage(email);
+            pages = new PaginaPostgresDAO().getMyPage(email);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -496,7 +496,7 @@ public class Controller {
 
         ArrayList<ArrayList<String>> frasi;
         try {
-            frasi = new PaginaDAO().getStroicitaSpecifica(idPage, Data);
+            frasi = new PaginaPostgresDAO().getStroicitaSpecifica(idPage, Data);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -509,7 +509,7 @@ public class Controller {
     public ArrayList<String> getDateAvailable(int idPagina){
 
         try {
-            return new PaginaDAO().getDateAvailable(idPagina);
+            return new PaginaPostgresDAO().getDateAvailable(idPagina);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -536,7 +536,7 @@ public class Controller {
 
             String email = utenteLoggato.getEmail();
             try {
-                messageError += new PaginaDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
+                messageError += new PaginaPostgresDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
             }catch (Exception e){
                 e.printStackTrace();
                 messageError += "Problema sconosciuto<br>";
