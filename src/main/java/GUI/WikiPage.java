@@ -135,6 +135,8 @@ public class WikiPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Contenuto refresh
+                controller.removePage(idPagina);
+                frame.SetNewPanel(new WikiPage(frame, OldPanel, controller, idPagina).getPanel(), OldPanel);
             }
 
         });
@@ -228,8 +230,6 @@ public class WikiPage {
                 InsertButton.setBackground(frame.getColorToolBar());
             }
         });
-
-
 
         InsertButton.addActionListener(new ActionListener() {
             boolean clicked = false;
@@ -417,7 +417,7 @@ public class WikiPage {
                 if ( entry.getValue().get(3).equals("1") ) {
                     label = new JLabel(entry.getValue().get(2));
                     label.setForeground(Color.blue);
-                    System.out.println("[] il label "+entry.getValue().get(2)+" sta associando la pagina "+ entry.getValue().get(4));
+                    //System.out.println("[] il label "+entry.getValue().get(2)+" sta associando la pagina "+ entry.getValue().get(4));
                     label.putClientProperty("pagina",entry.getValue().get(4));
                     label.addMouseListener(listnerlik);
                 } else {

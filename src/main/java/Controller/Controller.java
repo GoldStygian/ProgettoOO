@@ -63,6 +63,7 @@ public class Controller {
         // frase
         // link
         // id link
+
         if (Pagine.get(idPagina) != null) { //gia sta una pagina nell'hashmap
 
             Pagina StoredPage = Pagine.get(idPagina);
@@ -567,4 +568,8 @@ public class Controller {
         frame.setSize(W,H);
     }
 
+    public void removePage(int idPagina) {
+        System.out.println(idPagina);
+        Pagine.remove(idPagina);
+    }
 }
