@@ -16,9 +16,6 @@ public class Frase {
         this.posizione = posizione;
     }
 
-    public String getText(){
-        return this.Testo;
-    }
 
     public void AddModificaAutore(ModificaAutore m){
         ModificheAutore.add(m);
