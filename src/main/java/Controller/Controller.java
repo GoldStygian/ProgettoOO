@@ -19,6 +19,7 @@ public class Controller {
     Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
+    private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
     //debug
     public void printHashMap(){
@@ -30,8 +31,6 @@ public class Controller {
         }
     }
     //
-
-    private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
     public boolean Login(String email, String password) {
 
@@ -475,20 +474,6 @@ public class Controller {
 
     }
 
-    /*
-    public void SetVisualizzato(int id_operazione){
-        if(utenteLoggato instanceof Autore){
-            Autore utenteLoggato1 = (Autore) utenteLoggato;
-
-            for(Notifica n : utenteLoggato1.getNotifiche()){
-                if(n.getOperazioni_notificate())
-
-            }
-        }
-
-
-    }*/
-
     public ArrayList<ArrayList<String>> getMyPage(){
 
         String email = utenteLoggato.getEmail();
@@ -506,7 +491,6 @@ public class Controller {
             return pages;
         }
     }
-
 
     public ArrayList<ArrayList<String>> getStoricitaPage(int idPage, String Data){
 
@@ -532,8 +516,6 @@ public class Controller {
         }
 
     }
-
-    //public ArrayList<ArrayList<String>> getPagine(){}
 
     public void logOut(){
 

@@ -16,7 +16,6 @@ public class Frase {
         this.posizione = posizione;
     }
 
-
     public void AddModificaAutore(ModificaAutore m){
         ModificheAutore.add(m);
     }
@@ -26,7 +25,6 @@ public class Frase {
     public void AddInserimentoAutore(InserimentoAutore i){
         this.inserimentoAutore = i;
     }
-
     public void AddInserimentoUtente(InserimentoUtente i){
         this.inserimentoUtente = i;
     }
