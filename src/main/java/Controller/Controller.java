@@ -552,7 +552,7 @@ public class Controller {
             try {
                 messageError += new PaginaPostgresDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
             }catch (Exception e){
-                e.printStackTrace();
+                //e.printStackTrace();
                 messageError += "Problema sconosciuto<br>";
             }
 
