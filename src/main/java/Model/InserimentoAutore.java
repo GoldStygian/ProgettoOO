@@ -10,4 +10,7 @@ public class InserimentoAutore extends OperazioneAutore{
         this.Posizione=Posizione;
     }
 
+    public Integer getPosizione() {
+        return Posizione;
+    }
 }

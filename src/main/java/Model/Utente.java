@@ -32,6 +32,21 @@ public class Utente {
         return Email;
     }
 
+    public char getGenere() {
+        return genere;
+    }
+
+    public String getCognome() {
+        return Cognome;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
     //public
 
 }
