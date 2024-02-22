@@ -283,6 +283,7 @@ public class WikiPage {
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
                 i++;
+
                 // idPag
                 // pos reale
                 // frase
