@@ -3,7 +3,6 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -55,7 +54,6 @@ public class WikiPage {
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
-        //GuiPresetComponet t = new GuiPresetComponet(frame);
         this.controller = controller;
         this.frame = frame;
         this.OldPanel = OldPanel;
@@ -198,7 +196,6 @@ public class WikiPage {
             }
         });
 
-
         LinkBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -259,7 +256,6 @@ public class WikiPage {
 
 
         this.Frasi = this.controller.getWikiPage(idPagina);
-        controller.printHashMap();//debug
 
         ContentContentPane = new JPanel();
 
@@ -272,11 +268,9 @@ public class WikiPage {
             ActionListener listener = new ActionListener() {
                 boolean clicked = false;
 
-                //int last_key;
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    //String buttonText = ((JButton) e.getSource()).getText();
                     if (controller.isUserLogged()) {
                         if (clicked == false || last_key != Integer.parseInt(e.getActionCommand())) {
                             ModSelectedLabel.setText("Frase selezionata: " + e.getActionCommand());
@@ -299,7 +293,9 @@ public class WikiPage {
             MouseListener listnerlik = new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("link cliccato");
+                    //System.out.println("link cliccato, la pagina di riferimento è: "+);
+                    //label.
+                    //frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, ));
                 }
 
                 @Override
@@ -347,19 +343,13 @@ public class WikiPage {
                 // link
                 // id link
 
-                int idx = 0;
-                for (String element : entry.getValue()) {
-                    System.out.println("["+idx+"] "+element);
-                    idx++;
-                }
-                System.out.println();
-
                 JButton button = new JButton(String.valueOf(entry.getKey()));
 
                 JLabel label;
                 if ( entry.getValue().get(3).equals("1") ) {
                     label = new JLabel(entry.getValue().get(2));
                     label.setForeground(Color.blue);
+                    label.putClientProperty("pagina",entry.getValue().get(4));
                     label.addMouseListener(listnerlik);
                 } else {
                     label = new JLabel(entry.getValue().get(2));
