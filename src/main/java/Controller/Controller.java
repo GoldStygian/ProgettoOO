@@ -16,21 +16,11 @@ public class Controller {
     //Utente utenteLoggato = null;
 
     //debug
-    private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+        private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
-    //debug
-    public void printHashMap(){
-        for (Map.Entry<Integer, Pagina> entry : Pagine.entrySet()) {
-
-            System.out.println("[ ] chiave pagina: "+ entry.getKey());
-            //entry.getValue()
-
-        }
-    }
-    //
 
     public boolean Login(String email, String password) {
 
@@ -60,7 +50,7 @@ public class Controller {
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {//OK
 
         try {
-            return new RicercaPagineDAO().SearchPage(ricerca);
+            return new PaginaPostgresDAO().SearchPage(ricerca);
         } catch (SQLException e) {
             return null;
         }

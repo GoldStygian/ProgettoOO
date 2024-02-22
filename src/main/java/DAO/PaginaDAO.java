@@ -17,4 +17,6 @@ public interface PaginaDAO {
     ArrayList<ArrayList<String>> getStroicitaSpecifica(int idPagina, String data) throws SQLException;
 
     ArrayList<String> getDateAvailable(int idPagina) throws SQLException;
+
+    ArrayList<ArrayList<String>> SearchPage(String ricerca) throws SQLException;
 }
