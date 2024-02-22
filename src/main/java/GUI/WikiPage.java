@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.util.logging.Logger;
-
-
 public class WikiPage {
 
     private JPanel MainPanel;
@@ -54,7 +51,6 @@ public class WikiPage {
 
     //locali
     int last_key = -1;
-    Logger logger = Logger.getLogger(getClass().getName());
 
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
@@ -66,6 +62,7 @@ public class WikiPage {
         this.idPagina = idPagina;
         DivisioreDx.setVisible(false);
         DivisioreSx.setVisible(false);
+
 
         this.InsertPanel.setVisible(false); //dx panel
         this.PageLinkRefFiled.setVisible(false);
@@ -261,7 +258,7 @@ public class WikiPage {
     private void createUIComponents() {
 
 
-        this.Frasi = controller.getWikiPage(idPagina);
+        this.Frasi = this.controller.getWikiPage(idPagina);
         controller.printHashMap();//debug
 
         ContentContentPane = new JPanel();
@@ -353,7 +350,6 @@ public class WikiPage {
                 int idx = 0;
                 for (String element : entry.getValue()) {
                     System.out.println("["+idx+"] "+element);
-                    logger.info("["+idx+"] "+element);
                     idx++;
                 }
                 System.out.println();

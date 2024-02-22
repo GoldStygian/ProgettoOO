@@ -507,13 +507,15 @@ public class Controller {
         }
     }
 
-    /*
-    public ArrayList<ArrayList<String>> getStoricitaPage(){
+
+    public ArrayList<ArrayList<String>> getStoricitaPage(int idPage){
 
         String email = utenteLoggato.getEmail();
 
+
+
         return null;
-    }*/
+    }
 
     //public ArrayList<ArrayList<String>> getPagine(){}
 
