@@ -6,9 +6,9 @@ public class Frase {
 
     private final String Testo;
     private final int posizione;
-    private final InserimentoAutore inserimentoAutore = null;
+    private InserimentoAutore inserimentoAutore = null;
     private ArrayList<ModificaAutore> ModificheAutore = new ArrayList<ModificaAutore>();
-    private final InserimentoUtente inserimentoUtente = null;
+    private InserimentoUtente inserimentoUtente = null;
     private ArrayList<ModificaUtente> ModificheUtente = new ArrayList<ModificaUtente>();
 
     public Frase(String Testo, int posizione){
@@ -20,9 +20,20 @@ public class Frase {
         return this.Testo;
     }
 
-    public void AddModifica(){}
+    public void AddModificaAutore(ModificaAutore m){
+        ModificheAutore.add(m);
+    }
+    public void AddModificaUtente(ModificaUtente m){
+        ModificheUtente.add(m);
+    }
 
-    public void AddInserimentoUtente(){}
+    public void AddInserimentoAutore(InserimentoAutore i){
+        this.inserimentoAutore = i;
+    }
+
+    public void AddInserimentoUtente(InserimentoUtente i){
+        this.inserimentoUtente = i;
+    }
 
     public ArrayList<String> getData(){
 
