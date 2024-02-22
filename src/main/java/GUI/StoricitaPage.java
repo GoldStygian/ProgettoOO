@@ -30,6 +30,9 @@ public class StoricitaPage {
     private final Controller controller;
     MainJFrame frame;
 
+    //locale
+    int last_page;
+
     public StoricitaPage(MainJFrame frame, JPanel OldPanel, Controller controller){
 
         this.frame = frame;
@@ -51,6 +54,27 @@ public class StoricitaPage {
 
         ScrollPanel.setBorder(null);
 
+        DateComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("ho selezionato la data: "+DateComboBox.getSelectedItem());
+
+                StoricitaPanel.removeAll();
+                ArrayList<ArrayList<String>> frasi = controller.getStoricitaPage(last_page, String.valueOf(DateComboBox.getSelectedItem()) );
+                if (frasi != null){
+                    for (ArrayList<String> innerArray : frasi){
+                        JLabel label = new JLabel(innerArray.get(1)+". "+innerArray.get(0));
+                        StoricitaPanel.add(label);
+                    }
+                }else {
+                    JLabel label = new JLabel("Nessuna frase in questa pagina");
+                    StoricitaPanel.add(label);
+                }
+
+                StoricitaPanel.revalidate();
+                StoricitaPanel.repaint();
+            }
+        });
         Backbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,9 +157,10 @@ public class StoricitaPage {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                StoricitaPanel.removeAll();
 
-                ArrayList<ArrayList<String>> frasi = controller.getStoricitaPage(Integer.parseInt(e.getActionCommand()));
+                StoricitaPanel.removeAll();
+                last_page = Integer.parseInt(e.getActionCommand());
+                ArrayList<ArrayList<String>> frasi = controller.getStoricitaPage(last_page, "");
                 if (frasi != null){
                     for (ArrayList<String> innerArray : frasi){
                         JLabel label = new JLabel(innerArray.get(1)+". "+innerArray.get(0));
@@ -146,6 +171,7 @@ public class StoricitaPage {
                     StoricitaPanel.add(label);
                 }
 
+                DateComboBox.removeAllItems();
                 ArrayList<String> dateDisponibili = controller.getDateAvailable(Integer.parseInt(e.getActionCommand()));
                 for (String Data : dateDisponibili){
                     DateComboBox.addItem(Data);

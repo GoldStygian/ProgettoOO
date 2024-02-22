@@ -508,11 +508,11 @@ public class Controller {
     }
 
 
-    public ArrayList<ArrayList<String>> getStoricitaPage(int idPage){
+    public ArrayList<ArrayList<String>> getStoricitaPage(int idPage, String Data){
 
         ArrayList<ArrayList<String>> frasi;
         try {
-            frasi = new PaginaDAO().getStroicitaSpecifica(idPage, "");
+            frasi = new PaginaDAO().getStroicitaSpecifica(idPage, Data);
         }catch (Exception e){
             e.printStackTrace();
             return null;

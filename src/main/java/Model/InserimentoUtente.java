@@ -1,7 +1,6 @@
 package main.java.Model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class InserimentoUtente extends OperazioneUtente{
 

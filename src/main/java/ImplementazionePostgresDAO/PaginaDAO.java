@@ -130,7 +130,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
 
         String query;
 
-        if(data.isEmpty()) {
+        if(data.isEmpty() || data.equals("null")) {
             query = "SELECT * FROM storicita_totale WHERE id_pagina = %d ORDER BY posizione\n".formatted(idPagina);
         }else{
             query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' ORDER BY posizione\n".formatted(idPagina, data);
@@ -156,7 +156,7 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
     public ArrayList<String> getDateAvailable(int idPagina) throws SQLException {
         Connection con = new ConnessionePostgesDAO().openConnection();
         Statement stm = con.createStatement();
-        String query = "SELECT data_accettazione FROM storicita_totale WHERE data_accettazione IS NOT NULL AND id_pagina = %d".formatted(idPagina);
+        String query = "SELECT DISTINCT data_accettazione FROM storicita_totale WHERE data_accettazione IS NOT NULL AND id_pagina = %d order by data_accettazione DESC".formatted(idPagina);
         ResultSet rs = stm.executeQuery(query);
 
         ArrayList<String> result = new ArrayList<>();
