@@ -44,6 +44,11 @@ public class WikiPage {
     private JLabel IconBack;
     private JPanel DivisioreSx;
     private JPanel DivisioreDx;
+    private JButton RefreshButton;
+    private JLabel IconRefresh;
+    private JPanel RefreshBox;
+    private JPanel InserisciBox;
+    private JPanel InternalBox2;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
@@ -83,6 +88,56 @@ public class WikiPage {
         t.ToolBarButton(InsertButton);
         t.GenericButton(ModificaButton);
         t.GenericButton(ProponiButton);
+        t.ToolBarButton(RefreshButton);
+        t.SetIcon(IconRefresh, new ImageIcon(t.ResizeIcon(30, 30, new ImageIcon("src/main/resources/refresh.png"))));
+
+
+        RefreshBox.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                RefreshBox.setBackground(new Color(199, 111, 91));
+                RefreshButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                RefreshBox.setBackground(frame.getColorToolBar());
+                RefreshButton.setBackground(frame.getColorToolBar());
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                //Contenuto refresh
+            }
+        });
+
+        RefreshButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                RefreshBox.setBackground(new Color(199, 111, 91));
+                RefreshButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                RefreshBox.setBackground(frame.getColorToolBar());
+                RefreshButton.setBackground(frame.getColorToolBar());
+            }
+
+        });
+
+        RefreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Contenuto refresh
+            }
+
+        });
 
 
         ProponiButton.addMouseMotionListener(new MouseAdapter() {
@@ -123,7 +178,7 @@ public class WikiPage {
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
                 BackButton.setBackground(new Color(199, 111, 91));
-                InternalBox.setBackground(new Color(199, 111, 91));
+                InternalBox2.setBackground(new Color(199, 111, 91));
 
             }
 
@@ -131,16 +186,17 @@ public class WikiPage {
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
                 BackButton.setBackground(frame.getColorToolBar());
-                InternalBox.setBackground(frame.getColorToolBar());
+                InternalBox2.setBackground(frame.getColorToolBar());
 
             }
         });
 
-        InternalBox.addMouseListener(new MouseAdapter() {
+
+        InternalBox2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-                InternalBox.setBackground(new Color(199, 111, 91));
+                InternalBox2.setBackground(new Color(199, 111, 91));
                 BackButton.setBackground(new Color(199, 111, 91));
 
             }
@@ -148,7 +204,7 @@ public class WikiPage {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                InternalBox.setBackground(frame.getColorToolBar());
+                InternalBox2.setBackground(frame.getColorToolBar());
                 BackButton.setBackground(frame.getColorToolBar());
             }
 
@@ -172,6 +228,8 @@ public class WikiPage {
                 InsertButton.setBackground(frame.getColorToolBar());
             }
         });
+
+
 
         InsertButton.addActionListener(new ActionListener() {
             boolean clicked = false;
