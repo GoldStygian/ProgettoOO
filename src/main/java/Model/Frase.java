@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Frase {
 
-    private final String Testo;
+    private String Testo;
     private final int posizione;
     private InserimentoAutore inserimentoAutore = null;
     private ArrayList<ModificaAutore> ModificheAutore = new ArrayList<ModificaAutore>();
@@ -23,7 +23,6 @@ public class Frase {
     public void AddModificaUtente(ModificaUtente m){
         ModificheUtente.add(m);
     }
-
     public void AddInserimentoAutore(InserimentoAutore i){
         this.inserimentoAutore = i;
     }

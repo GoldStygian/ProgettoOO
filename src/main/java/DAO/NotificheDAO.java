@@ -11,7 +11,6 @@ public interface NotificheDAO {
 
     public ArrayList<ArrayList> LoadNotifiche(String EmailAutore) throws SQLException;
 
-    public void SetNotification();
 
     public  int  NumberOfNotiche(String EmailAutore) throws SQLException;
 }

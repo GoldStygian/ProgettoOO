@@ -84,10 +84,6 @@ public class NotifichePostgresDAO implements NotificheDAO  {
         return Dati;
     }
 
-    @Override
-    public void SetNotification() {
-
-    }
 
 
     public int NumberOfNotiche(String EmailAutore) throws SQLException {
