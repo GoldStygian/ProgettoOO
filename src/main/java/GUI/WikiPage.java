@@ -3,6 +3,7 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -42,6 +43,8 @@ public class WikiPage {
     private JPanel GoBack;
     private JPanel InternalBox;
     private JLabel IconBack;
+    private JPanel DivisioreSx;
+    private JPanel DivisioreDx;
     private final Controller controller;
     private final int idPagina;
     HashMap<Integer, ArrayList<String>> Frasi;
@@ -51,10 +54,13 @@ public class WikiPage {
 
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
+        //GuiPresetComponet t = new GuiPresetComponet(frame);
         this.controller = controller;
         this.frame = frame;
         this.OldPanel = OldPanel;
         this.idPagina = idPagina;
+        DivisioreDx.setVisible(false);
+        DivisioreSx.setVisible(false);
 
         this.InsertPanel.setVisible(false); //dx panel
         this.PageLinkRefFiled.setVisible(false);
@@ -65,6 +71,7 @@ public class WikiPage {
         this.ModPanel.setVisible(false); //sx panel
         this.PaginaLinkRefModField.setVisible(false);
         this.LabelPaginaRefMod.setVisible(false);
+        MainPanel.setBackground(frame.getColorBack());
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
         t.ToolBarButton(BackButton);
@@ -73,6 +80,36 @@ public class WikiPage {
         t.SetIcon(IconBack, new ImageIcon(t.ResizeIcon(20, 20, new ImageIcon("src\\main\\resources\\back.png"))));
         t.LabelSetFontAndColorUpper(NameApp);
         ScrollPanel.setBorder(null);
+        t.ToolBarButton(InsertButton);
+        t.GenericButton(ModificaButton);
+        t.GenericButton(ProponiButton);
+
+
+        ProponiButton.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                ProponiButton.setBackground(new Color(199, 111, 91));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                ProponiButton.setBackground(frame.getColorToolBar());
+            }
+        });
+
+        ModificaButton.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                ModificaButton.setBackground(new Color(199, 111, 91));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                ModificaButton.setBackground(frame.getColorToolBar());
+            }
+        });
 
         BackButton.addActionListener(new ActionListener() {
             @Override
@@ -122,6 +159,20 @@ public class WikiPage {
             }
         });
 
+        InsertButton.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                InsertButton.setBackground(new Color(199, 111, 91));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                InsertButton.setBackground(frame.getColorToolBar());
+            }
+        });
+
         InsertButton.addActionListener(new ActionListener() {
             boolean clicked = false;
 
@@ -131,9 +182,11 @@ public class WikiPage {
                 if (controller.isUserLogged()) {
                     if (clicked == false) {
                         InsertPanel.setVisible(true);
+                        DivisioreDx.setVisible(true);
                         clicked = true;
                     } else {
                         InsertPanel.setVisible(false);
+                        DivisioreDx.setVisible(false);
                         clicked = false;
                     }
                 } else {
@@ -142,6 +195,7 @@ public class WikiPage {
                 }
             }
         });
+
 
         LinkBox.addItemListener(new ItemListener() {
             @Override
@@ -225,10 +279,12 @@ public class WikiPage {
                         if (clicked == false || last_key != Integer.parseInt(e.getActionCommand())) {
                             ModSelectedLabel.setText("Frase selezionata: " + e.getActionCommand());
                             ModPanel.setVisible(true);
+                            DivisioreSx.setVisible(true);
                             clicked = true;
                             last_key = Integer.parseInt(e.getActionCommand());
                         } else {
                             ModPanel.setVisible(false);
+                            DivisioreSx.setVisible(false);
                             clicked = false;
                         }
                     } else {
@@ -311,6 +367,13 @@ public class WikiPage {
 
                 JPanel Contenuto = new JPanel();
                 Contenuto.setLayout(new FlowLayout());
+                Contenuto.setBackground(frame.getColorBack());
+                button.setBackground(frame.getColorBack());
+                button.setFont(frame.getFontToolBar());
+                button.setBackground(frame.getColorBack());
+                //button.setBorder(new LineBorder(Color.BLACK));
+                button.setForeground(Color.BLACK);
+
                 Contenuto.add(button);
                 Contenuto.add(label);
                 ContentContentPane.add(Contenuto,gbc);
