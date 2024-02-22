@@ -15,11 +15,9 @@ public class Main {
     }
 
 }
+//aggiustare il layout
 //aggiungere cose alla home
-//link che portano ad altre pagine
 //refesh della cache quando clicco aggiorna
 //mettere nel model le proposte
 //mettere stderr nel log
-//unire i DAO PaginaDAO e Ricerca PagineDao
 //mettere if al posto di while nei reultset con 1 return result
-//utilizzare array temporaneo del controller per passare informazioni
