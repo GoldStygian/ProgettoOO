@@ -55,27 +55,28 @@ public class Menu extends JMenuBar {
         });
         menu.add(menuItem);
 
-        menuItem = new MenuItem(frame,"Storicita", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\request2.png"))));
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Storicita
-                frame.SetNewPanel(new StoricitaPage(frame, Oldpanel, controller).getPanel(), HomePanel);
-            }
+        if(controller.isAutore()){
+            menuItem = new MenuItem(frame,"Storicita", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\request2.png"))));
+            menuItem.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Storicita
+                    frame.SetNewPanel(new StoricitaPage(frame, Oldpanel, controller).getPanel(), HomePanel);
+                }
 
-        });
+            });
 
-        ModificeUtente.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosed(e);
-                bool = true;
+            ModificeUtente.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    super.windowClosed(e);
+                    bool = true;
 
-            }
-        });
+                }
+            });
 
-        menu.add(menuItem);
-
+            menu.add(menuItem);
+        }
         menuItem = new MenuItem(frame,"Esci", new ImageIcon(t.ResizeIcon(63, 63, new ImageIcon("src\\main\\resources\\logout.png"))));
         menu.add(menuItem);
         menuItem.addActionListener(new ActionListener() {
