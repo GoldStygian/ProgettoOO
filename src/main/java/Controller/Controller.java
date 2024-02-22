@@ -510,11 +510,27 @@ public class Controller {
 
     public ArrayList<ArrayList<String>> getStoricitaPage(int idPage){
 
-        String email = utenteLoggato.getEmail();
+        ArrayList<ArrayList<String>> frasi;
+        try {
+            frasi = new PaginaDAO().getStroicitaSpecifica(idPage, "");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
 
 
+        return frasi;
+    }
 
-        return null;
+    public ArrayList<String> getDateAvailable(int idPagina){
+
+        try {
+            return new PaginaDAO().getDateAvailable(idPagina);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     //public ArrayList<ArrayList<String>> getPagine(){}

@@ -3,14 +3,13 @@ package main.java.GUI;
 import main.java.Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-
 
 public class StoricitaPage {
 
@@ -26,6 +25,8 @@ public class StoricitaPage {
     private JPanel InternalBox;
     private JLabel IconBack;
     private JButton Backbutton;
+    private JScrollPane ScrollPagePane;
+    private JComboBox DateComboBox;
     private final Controller controller;
     MainJFrame frame;
 
@@ -34,7 +35,9 @@ public class StoricitaPage {
         this.frame = frame;
         this.controller = controller;
 
+        this.ScrollPagePane.setVisible(false);
         this.StoricitaPanel.setVisible(false);
+        this.DateComboBox.setVisible(false);
 
         GuiPresetComponet t = new GuiPresetComponet(frame);
         NameApp.setFont(frame.getFontToolBar());
@@ -47,7 +50,6 @@ public class StoricitaPage {
         NameApp.setForeground(Color.BLACK);
 
         ScrollPanel.setBorder(null);
-
 
         Backbutton.addActionListener(new ActionListener() {
             @Override
@@ -109,26 +111,54 @@ public class StoricitaPage {
     private void createUIComponents() {
         // TODO: place custom component creation code here
 
-        ContentScrollPane = new JPanel();
+        this.ContentScrollPane = new JPanel();
+        ContentScrollPane.setLayout(new BoxLayout(ContentScrollPane, BoxLayout.Y_AXIS));
+
+        ContentScrollPane.setBorder(new EmptyBorder(0,20,0,0));
+
+        ScrollPagePane = new JScrollPane();
+        this.StoricitaPanel = new JPanel();
+        StoricitaPanel.setLayout(new BoxLayout(StoricitaPanel, BoxLayout.Y_AXIS));
+        ScrollPagePane.add(StoricitaPanel);
+
+        StoricitaPanel.setBorder(null);
+        ScrollPagePane.setBorder(null);
 
         ArrayList<ArrayList<String>> pages = controller.getMyPage();
 
-        //id
-        //testo
-
         ActionListener listnerButton = new ActionListener() {
+
+            //id
+            //testo
+
             @Override
             public void actionPerformed(ActionEvent e) {
+                StoricitaPanel.removeAll();
 
-                //controller.getStoricitaPage();
+                ArrayList<ArrayList<String>> frasi = controller.getStoricitaPage(Integer.parseInt(e.getActionCommand()));
+                if (frasi != null){
+                    for (ArrayList<String> innerArray : frasi){
+                        JLabel label = new JLabel(innerArray.get(1)+". "+innerArray.get(0));
+                        StoricitaPanel.add(label);
+                    }
+                }else {
+                    JLabel label = new JLabel("Nessuna frase in questa pagina");
+                    StoricitaPanel.add(label);
+                }
+
+                ArrayList<String> dateDisponibili = controller.getDateAvailable(Integer.parseInt(e.getActionCommand()));
+                for (String Data : dateDisponibili){
+                    DateComboBox.addItem(Data);
+                }
+
+                ScrollPagePane.setVisible(true);
                 StoricitaPanel.setVisible(true);
+                DateComboBox.setVisible(true);
+                StoricitaPanel.revalidate();
+                StoricitaPanel.repaint();
+
             }
         };
-        
-
-
-        //ContentScrollPane.add(datePanel);
-
 
         if(pages!=null){
             for (ArrayList<String> page : pages){
@@ -140,6 +170,7 @@ public class StoricitaPage {
                 pageButton.setFont(frame.getFontToolBarLower());
                 pageButton.setBackground(frame.getColorBack());
                 pageButton.setForeground(new Color(0, 0, 0));
+                pageButton.setBorder(new EmptyBorder(5, 0, 15, 0));
 
                 pageButton.addActionListener(listnerButton);
                 pageButton.addMouseMotionListener(new MouseAdapter() {
@@ -157,11 +188,11 @@ public class StoricitaPage {
 
                 });
 
-
                 ContentScrollPane.add(pageButton);
 
             }
         }
 
     }
+
 }

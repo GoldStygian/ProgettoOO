@@ -131,9 +131,9 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
         String query;
 
         if(data.isEmpty()) {
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = 38 ORDER BY posizione\n".formatted(idPagina);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d ORDER BY posizione\n".formatted(idPagina);
         }else{
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = 38 AND data_accettazione <= '2024-02-20 19:27:17' ORDER BY posizione\n".formatted(idPagina, data);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' ORDER BY posizione\n".formatted(idPagina, data);
         }
 
         ResultSet rs = stm.executeQuery(query);
@@ -141,8 +141,8 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
         ArrayList<ArrayList<String>> result = new ArrayList<>();
         while (rs.next()){
             ArrayList<String> tmp = new ArrayList<>();
-            tmp.add(rs.getString("frase"));
-            tmp.add("posizione");
+            tmp.add(rs.getString("testo"));
+            tmp.add(rs.getString("posizione"));
             result.add(tmp);
         }
 
@@ -150,6 +150,26 @@ public class PaginaDAO implements main.java.DAO.PaginaDAO {
         stm.close();
         rs.close();
         return result;
+    }
+
+    @Override
+    public ArrayList<String> getDateAvailable(int idPagina) throws SQLException {
+        Connection con = new ConnessionePostgesDAO().openConnection();
+        Statement stm = con.createStatement();
+        String query = "SELECT data_accettazione FROM storicita_totale WHERE data_accettazione IS NOT NULL AND id_pagina = %d".formatted(idPagina);
+        ResultSet rs = stm.executeQuery(query);
+
+        ArrayList<String> result = new ArrayList<>();
+        while (rs.next()){
+            result.add(rs.getString("data_accettazione"));
+        }
+
+        if (result.isEmpty()) {
+            return null;
+        }else{
+            return result;
+        }
+
     }
 
 }

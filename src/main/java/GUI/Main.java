@@ -21,7 +21,7 @@ public class Main {
 //link che portano ad altre pagine
 //refesh della cache quando clicco aggiorna
 //mettere nel model le proposte
-//le mie pagine
+//mettere le date in mie pagine
 //mettere stderr nel log
 //unire i DAO PaginaDAO e Ricerca PagineDao
 //mettere if al posto di while nei reultset con 1 return result
