@@ -1,6 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.WikiPageDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.*;
 
@@ -9,7 +10,7 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
     @Override
     public String proponiInserimento(boolean isAutore, int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         String MessageReturn = new String();
         String query;
 
@@ -66,7 +67,7 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
     @Override
     public String proponiModifica(boolean isAutore, int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         String MessageReturn = new String();
         String query;
 

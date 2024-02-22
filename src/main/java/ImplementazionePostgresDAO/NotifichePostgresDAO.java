@@ -1,6 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.NotificheDAO;
+import main.java.Database.ConnessionePostges;
 
 
 import java.sql.*;
@@ -28,7 +29,7 @@ public class NotifichePostgresDAO implements NotificheDAO  {
         Dati.add(new ArrayList<Integer>());
         Dati.add(new ArrayList<String>());
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="SELECT * FROM notifica WHERE autore_notificato = '%s' ORDER BY visionata ASC".formatted(EmailAutore);
@@ -87,7 +88,7 @@ public class NotifichePostgresDAO implements NotificheDAO  {
 
 
     public int NumberOfNotiche(String EmailAutore) throws SQLException {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="SELECT count(*) as number FROM notifica WHERE autore_notificato = '%s'".formatted(EmailAutore);

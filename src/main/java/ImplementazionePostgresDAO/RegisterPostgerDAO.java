@@ -1,6 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.RegisterDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.*;
 
@@ -18,7 +19,7 @@ public class RegisterPostgerDAO implements RegisterDAO {
             messageError += "password non valida<br>";
         }
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
 
         Statement statement = con.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT email FROM utente WHERE email = '%s'".formatted(Email));

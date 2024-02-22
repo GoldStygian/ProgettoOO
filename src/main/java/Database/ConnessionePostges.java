@@ -1,6 +1,4 @@
-package main.java.ImplementazionePostgresDAO;
-
-import main.java.DAO.ConnessioneDAO;
+package main.java.Database;
 
 //sql
 import java.io.*;
@@ -12,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class ConnessionePostgesDAO implements ConnessioneDAO {
+public class ConnessionePostges {
 
-    @Override
     public Connection openConnection() {
 
         ArrayList<String> Credenziali = new ArrayList<>();

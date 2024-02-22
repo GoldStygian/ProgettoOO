@@ -1,6 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.VisualizzaDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ public class VisualizzaPostgersDAO implements VisualizzaDAO {
 
     public void Visionata(int id_operazione) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="UPDATE operazione_utente SET visionata = 1::bit(1) where id_operazione = %s".formatted(id_operazione);

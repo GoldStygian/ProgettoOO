@@ -1,7 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.ModificaPorpostaDAO;
-import main.java.DAO.ModificheDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
 
     @Override
     public void AggironamentoProposta(int id_proposta, String Email, String Testo) {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = null;
         try {
             statement = con.createStatement();
@@ -30,7 +30,7 @@ public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
     @Override
     public int NumeroModifiche(String email) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
         String query="SELECT count(*) as sum from operazione_utente where utente like '%s' group by utente".formatted(email);
         ResultSet num = statement.executeQuery(query);
