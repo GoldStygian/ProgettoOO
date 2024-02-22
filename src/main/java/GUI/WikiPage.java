@@ -52,6 +52,7 @@ public class WikiPage {
     //locali
     int last_key = -1;
 
+
     public WikiPage(MainJFrame frame, JPanel OldPanel, Controller controller, int idPagina) {
 
         //GuiPresetComponet t = new GuiPresetComponet(frame);
@@ -61,6 +62,7 @@ public class WikiPage {
         this.idPagina = idPagina;
         DivisioreDx.setVisible(false);
         DivisioreSx.setVisible(false);
+
 
         this.InsertPanel.setVisible(false); //dx panel
         this.PageLinkRefFiled.setVisible(false);
@@ -256,7 +258,7 @@ public class WikiPage {
     private void createUIComponents() {
 
 
-        this.Frasi = controller.getWikiPage(idPagina);
+        this.Frasi = this.controller.getWikiPage(idPagina);
         controller.printHashMap();//debug
 
         ContentContentPane = new JPanel();
@@ -325,7 +327,6 @@ public class WikiPage {
             int i = 0;
             for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
 
-
                 GridBagConstraints gbc;
                 gbc = new GridBagConstraints();
                 //gbc.fill = GridBagConstraints.WEST;
@@ -339,6 +340,7 @@ public class WikiPage {
                 gbc.weightx = 1.0;
                 gbc.weighty = 1.0;
                 i++;
+
                 // idPag
                 // pos reale
                 // frase
