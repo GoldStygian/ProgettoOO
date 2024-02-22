@@ -77,6 +77,7 @@ public class Controller {
 
             Pagina StoredPage = Pagine.get(idPagina);
             HashMap<Integer, ArrayList<String>> frasi = new HashMap<>();
+            if (StoredPage.getFrasi()!=null){
             for (Map.Entry<Integer, Frase> entry : StoredPage.getFrasi().entrySet()){
                 ArrayList<String> temp = new ArrayList<>();
                 temp.add(String.valueOf(idPagina));
@@ -94,17 +95,40 @@ public class Controller {
             }
 
             return frasi;
+            }else {
+                return null;
+            }
+
 
 
         } else { //devo caricare dal DB
             try {
-                PaginaDAO p = new PaginaDAO();
+                PaginaPostgresDAO p = new PaginaPostgresDAO();
                 HashMap<Integer, ArrayList<String>> Frasi = p.getWikiPage(idPagina);
                 ArrayList<String> paginaCercata = p.getWikiInfo(idPagina);
                 if (paginaCercata != null) {
                     Pagina pagina_cercata = new Pagina(paginaCercata.get(0), paginaCercata.get(1), paginaCercata.get(2), paginaCercata.get(3), paginaCercata.get(4), Integer.parseInt(paginaCercata.get(5)) );
-                    pagina_cercata.AddFrasi(Frasi);
-                    Pagine.put(idPagina, pagina_cercata);//
+
+                    for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
+                        //0 idPagina
+                        //1 1
+                        //2 testo
+                        //3 link
+                        //4 idLink
+                        Frase frase;
+                        if (entry.getValue().get(3).equals("1")){ //se è un link
+                            ArrayList<String> PaginaLinkRow = p.getWikiInfo(Integer.parseInt(entry.getValue().get(4)));
+                            Pagina PaginaLink = new Pagina(PaginaLinkRow.get(0), PaginaLinkRow.get(1), PaginaLinkRow.get(2), PaginaLinkRow.get(3), PaginaLinkRow.get(4), Integer.parseInt(PaginaLinkRow.get(5)));
+                            frase = new Link(entry.getValue().get(2), Integer.parseInt(entry.getValue().get(1)), PaginaLink);//testo //posizione
+                        }else{
+                            frase = new Frase(entry.getValue().get(2), Integer.parseInt(entry.getValue().get(1)));
+                        }
+
+                        pagina_cercata.AddFrase(frase, entry.getKey());
+
+                    }
+
+                    Pagine.put(idPagina, pagina_cercata);
                 }
                 return Frasi;
 
@@ -479,7 +503,7 @@ public class Controller {
         String email = utenteLoggato.getEmail();
         ArrayList<ArrayList<String>> pages;
         try{
-            pages = new PaginaDAO().getMyPage(email);
+            pages = new PaginaPostgresDAO().getMyPage(email);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -496,7 +520,7 @@ public class Controller {
 
         ArrayList<ArrayList<String>> frasi;
         try {
-            frasi = new PaginaDAO().getStroicitaSpecifica(idPage, Data);
+            frasi = new PaginaPostgresDAO().getStroicitaSpecifica(idPage, Data);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -509,7 +533,7 @@ public class Controller {
     public ArrayList<String> getDateAvailable(int idPagina){
 
         try {
-            return new PaginaDAO().getDateAvailable(idPagina);
+            return new PaginaPostgresDAO().getDateAvailable(idPagina);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -536,7 +560,7 @@ public class Controller {
 
             String email = utenteLoggato.getEmail();
             try {
-                messageError += new PaginaDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
+                messageError += new PaginaPostgresDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
             }catch (Exception e){
                 e.printStackTrace();
                 messageError += "Problema sconosciuto<br>";

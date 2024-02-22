@@ -293,9 +293,18 @@ public class WikiPage {
             MouseListener listnerlik = new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    //System.out.println("link cliccato, la pagina di riferimento è: "+);
-                    //label.
-                    //frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, ));
+                    Component component = e.getComponent();
+
+                    if (component instanceof JLabel) {
+                        JLabel clickedLabel = (JLabel) component;
+
+                        int idLink = Integer.parseInt((String) clickedLabel.getClientProperty("pagina"));
+                        //int idLink = clickedLabel.getet;
+                        System.out.println("Pagina riferimento: " + idLink);
+                        frame.SetNewPanel(new WikiPage(frame, MainPanel, controller, idLink).getPanel(), MainPanel);
+                    }
+                    //int idLink = controller.getLinkIdPagina(idPagina, );
+
                 }
 
                 @Override
@@ -344,17 +353,18 @@ public class WikiPage {
                 // id link
 
                 JButton button = new JButton(String.valueOf(entry.getKey()));
+                button.addActionListener(listener);
 
                 JLabel label;
                 if ( entry.getValue().get(3).equals("1") ) {
                     label = new JLabel(entry.getValue().get(2));
                     label.setForeground(Color.blue);
+                    System.out.println("[] il label "+entry.getValue().get(2)+" sta associando la pagina "+ entry.getValue().get(4));
                     label.putClientProperty("pagina",entry.getValue().get(4));
                     label.addMouseListener(listnerlik);
                 } else {
                     label = new JLabel(entry.getValue().get(2));
                 }
-                button.addActionListener(listener);
 
                 JPanel Contenuto = new JPanel();
                 Contenuto.setLayout(new FlowLayout());

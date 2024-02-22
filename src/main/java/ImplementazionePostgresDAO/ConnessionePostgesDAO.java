@@ -26,7 +26,7 @@ public class ConnessionePostgesDAO implements ConnessioneDAO {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Credenziali.add(line);
-                System.out.println(line);
+                //System.out.println(line);
             }
             scanner.close();
         } catch (FileNotFoundException e) {

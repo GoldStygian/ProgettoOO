@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PaginaDAO implements main.java.DAO.PaginaDAO {
+public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) throws SQLException {

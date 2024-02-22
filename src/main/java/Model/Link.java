@@ -2,16 +2,16 @@ package main.java.Model;
 
 public class Link extends Frase{
 
-    private Pagina PagineLinkata;
+    private Pagina PaginaLinkata;
 
     public  Link(String testo, int posizione, Pagina pagina){
         super(testo,posizione);
-        this.PagineLinkata = pagina;
+        this.PaginaLinkata = pagina;
 
     }
 
     public int getPaginaId(){
-        return PagineLinkata.getID();
+        return PaginaLinkata.getID();
     }
 
 }

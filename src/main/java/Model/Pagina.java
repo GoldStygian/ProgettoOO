@@ -28,38 +28,17 @@ public class Pagina {
         return emailAutore;
     }
 
-    public void AddFrase(){}
-    public void AddFrasi(HashMap<Integer, ArrayList<String>> Frasi){
+    public void AddFrase(Frase fraseToInsert, int idx){
 
-        this.Frasi = new HashMap<Integer, Frase>();
-        for (Map.Entry<Integer, ArrayList<String>> entry : Frasi.entrySet()) {
-
-            Frase frase;
-            if (entry.getValue().get(3).equals("1")){
-                frase = new Link(entry.getValue().get(2), Integer.parseInt(entry.getValue().get(1)), this);//testo //posizione
-            }else{
-                frase = new Frase(entry.getValue().get(2), Integer.parseInt(entry.getValue().get(1)));
-            }
-
-            this.Frasi.put(entry.getKey(), frase);
-
+        if (Frasi == null){
+            Frasi = new HashMap<Integer, Frase>();
         }
+
+        Frasi.put(idx, fraseToInsert);
 
     }
 
     public HashMap<Integer, Frase> getFrasi(){return Frasi;}
-
-    /*public ArrayList<String> getFrase(int n){
-
-        Frase StoredFrase = Frasi.get(n);
-        if (StoredFrase==null){// la frase n non esiste
-            return null;
-        }
-
-        ArrayList<String> frase = StoredFrase.getData();
-
-        return frase;
-    }*/
 
     public Frase getFrase(int n){
 
