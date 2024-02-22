@@ -15,5 +15,19 @@ public class OperazioneAutore {
         this.LinkPagina=LinkPagina;
     }
 
+    public Date getData() {
+        return Data;
+    }
 
+    public Integer getLinkPagina() {
+        return LinkPagina;
+    }
+
+    public String getTesto() {
+        return Testo;
+    }
+
+    public boolean getLink(){
+        return Link;
+    }
 }
