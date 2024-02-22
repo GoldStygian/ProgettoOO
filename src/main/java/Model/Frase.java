@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Frase {
 
-    private final String Testo;
+    private String Testo;
     private final int posizione;
     private InserimentoAutore inserimentoAutore = null;
     private ArrayList<ModificaAutore> ModificheAutore = new ArrayList<ModificaAutore>();

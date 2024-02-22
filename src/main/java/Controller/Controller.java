@@ -16,9 +16,9 @@ public class Controller {
     //Utente utenteLoggato = null;
 
     //debug
-    Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
+    private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
     //debug
-    HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
+    private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
     //debug
@@ -336,7 +336,7 @@ public class Controller {
 
     }
 
-    public void SetVisionataNotModel(int id_operazione){
+    public void SetVisionataNotificheModel(int id_operazione){
         for(OperazioneUtente u: Operazioni_utente){
             if(u.getIdOperazione() == id_operazione){
                 ((OperazioneUtente) u).SetVisionata(true);
