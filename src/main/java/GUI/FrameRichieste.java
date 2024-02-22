@@ -73,7 +73,7 @@ public class FrameRichieste extends JFrame {
 
         int num = controller.NumerOfModifiche();
         if (num != 0) {
-            //controller.loadModifiche();
+            controller.loadModifiche();
             LoadModifiche(frame, controller);
         }
         RefreshBox.addMouseListener(new MouseAdapter() {
@@ -128,7 +128,7 @@ public class FrameRichieste extends JFrame {
 
     public void LoadModifiche(MainJFrame frame, Controller controller) {
         ModificheOnPanel.clear();
-        controller.loadModifiche();
+        //controller.loadModifiche();
         ArrayList<ArrayList> s = controller.GetModifiche();
         //System.out.print("\n|"+s+"|\n");
         //System.out.printf("%d", s.get(0).size());
