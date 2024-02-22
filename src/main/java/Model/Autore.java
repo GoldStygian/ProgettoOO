@@ -15,7 +15,9 @@ public class Autore extends Utente{
 
     }
 
-    public void addPagina(){}
+    public void addPagina(Pagina p){
+        Pagine.add(p);
+    }
 
     public void addNotifica(Notifica notifica){
         Notifiche.add(notifica);
@@ -30,7 +32,9 @@ public class Autore extends Utente{
         Notifiche.clear();
     }
 
-    public void addOperazione(){}
+    public void addOperazione(OperazioneAutore p){
+        OperazioniAutore.add(p);
+    }
 
 
 }
