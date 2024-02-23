@@ -174,10 +174,23 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
         String query;
 
-        if(data.isEmpty() || data.equals("null")) {
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND (accettata != 0::bit(1) OR accettata is null) ORDER BY posizione".formatted(idPagina);
+        if(!(data.isEmpty() || data.equals("null"))) {
+            query=  "SELECT t1.id_pagina, t1.data_accettazione, t1.data_richiesta, t1.posizione, t1.testo, t1.utente, t1.accettata, t1.modifica, t1.link, t1.link_pagina " +
+                    "FROM storicita_totale t1 JOIN " +
+                    "(SELECT posizione, MAX(data_accettazione) AS max_data_accettazione " +
+                    " FROM storicita_totale " +
+                    " WHERE id_pagina = %d AND (accettata != 0::bit(1) OR accettata is null) ".formatted(idPagina) +
+                    " GROUP BY posizione) t2 ON t1.posizione = t2.posizione AND t1.data_accettazione = t2.max_data_accettazione " +
+                    "WHERE data_accettazione <= '%s' ".formatted(data) +
+                    "ORDER BY posizione";
         }else{
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' AND (accettata != 0::bit(1) OR accettata is null) ORDER BY posizione".formatted(idPagina, data);
+            query=  "SELECT t1.id_pagina, t1.data_accettazione, t1.data_richiesta, t1.posizione, t1.testo, t1.utente, t1.accettata, t1.modifica, t1.link, t1.link_pagina " +
+                    "FROM storicita_totale t1 JOIN " +
+                    "(SELECT posizione, MAX(data_accettazione) AS max_data_accettazione " +
+                    " FROM storicita_totale " +
+                    " WHERE id_pagina = %d AND (accettata != 0::bit(1) OR accettata is null) ".formatted(idPagina) +
+                    " GROUP BY posizione) t2 ON t1.posizione = t2.posizione AND t1.data_accettazione = t2.max_data_accettazione " +
+                    "ORDER BY posizione";
         }
 
         ResultSet rs = stm.executeQuery(query);
