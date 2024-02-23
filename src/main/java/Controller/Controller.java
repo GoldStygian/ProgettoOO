@@ -331,7 +331,7 @@ public class Controller {
      * Carica una matrice con tutti i dati utili di una Modifica, come:
      * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione,utente,
      * DataA(data Accettazione) , utenteNotificato, titolo pagina link(titolo della pagina in cui mi riferisco) e titolo pagina
-     * dopo che ha carivato la matrice la restituisce
+     * dopo che ha caricato la matrice la restituisce
      *
      * @return Una Matrice con i dati di ogni Modifica nel model. Dove La riga Corrisponde a un tipo di dato del model
      * e un a colonna a un oggetto. Es: matrice 5x5 ho 5 attributi e 5 oggetti. Es: matrice 5x7 ho 5 attributi e sette oggetti
