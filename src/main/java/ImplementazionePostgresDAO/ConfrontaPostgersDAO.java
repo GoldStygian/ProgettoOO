@@ -19,12 +19,11 @@ public class ConfrontaPostgersDAO implements ConfrontaDAO {
         String query="SELECT visualizzapropostaandconfronta(%d,'%s')".formatted(id_operazione, email_autore);
         ResultSet resultSet = statement.executeQuery(query);
 
-        // Chiusura delle risorse
         con.close();
 
         resultSet.next();
         String Confronto = resultSet.getString("visualizzapropostaandconfronta");
-        System.out.print(Confronto + "\n");
+        System.out.println(Confronto);
 
         resultSet.close();
         statement.close();

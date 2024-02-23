@@ -41,7 +41,6 @@ public class Controller {
                     utenteLoggato = new Utente(Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4),Contenuto.get(5).charAt(0));
                 }
 
-                //utenteLoggato.print(); //debug
                 return true;
             }else{
                 return false;

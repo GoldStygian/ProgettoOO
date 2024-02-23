@@ -15,6 +15,7 @@ public class Main {
     }
 
 }
+//per correggere i link che rimangono arancioni prova a chiamare il metodo che ridisegna il pannello quando torna indietro
 //problema con posizioni a null in storicita
 //controllare se in storicita vengono prese le frasi rifiutate
 //login troppo lento
