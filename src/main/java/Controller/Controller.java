@@ -528,6 +528,12 @@ public class Controller {
 
     }
 
+
+    /**
+     * Funzione che permette di prendere le pagine wiki associate all'utente corrente.
+     * @return Una Matrice di pagine wiki associate all'utente corrente.
+     *         Se l'utente non ha pagine associate o si verifica un'eccezione durante l'accesso al database, restituisce null.
+     */
     public ArrayList<ArrayList<String>> getMyPage(){
 
         String email = utenteLoggato.getEmail();
