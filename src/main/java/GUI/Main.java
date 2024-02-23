@@ -17,8 +17,6 @@ public class Main {
 }
 //quando creo passo il panel all'autore
 //per correggere i link che rimangono arancioni prova a chiamare il metodo che ridisegna il pannello quando torna indietro
-//problema con posizioni a null in storicita
-//controllare se in storicita vengono prese le frasi rifiutate
 //cache nella storicita
 //aggiustare il layout
 //aggiungere cose alla home

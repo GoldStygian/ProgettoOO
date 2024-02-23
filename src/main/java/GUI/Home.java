@@ -10,6 +10,7 @@ import javax.swing.text.StyleContext;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.Locale;
 
@@ -28,6 +29,7 @@ public class Home {
     private JLabel NameApp;
     private JPanel BarIcon;
     private JPanel SerchBorder;
+    private JPanel RecentWikiPanel;
 
     public Home(MainJFrame frame, Controller controller) throws SQLException {
 
@@ -65,7 +67,6 @@ public class Home {
         SerchBorder.setBorder(new LineBorder(Color.BLACK, 2));
 
         SerchBar.setFont(frame.getFontToolBar());
-
 
         loginbutton.addActionListener(new ActionListener() {
             @Override
