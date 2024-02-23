@@ -582,8 +582,8 @@ public class Controller {
 
     /**
      * Crea un oggetto NotifichePostgresDAO()
-     * e richiama
-     * @return
+     * e richiama NumberOfNotiche(email utente loggato)
+     * @return restituisce il numero di notifiche per l'utente loggato
      */
     public int NumerOfNotifiche(){
         NotifichePostgresDAO n = new NotifichePostgresDAO();
@@ -595,8 +595,11 @@ public class Controller {
         }
     }
 
-
-
+    /**
+     * Crea un oggetto ModificaPorpostaPostgresDAO()
+     * e richiama NumberOfModifiche(email utente loggato)
+     * @return restituisce il numero di Modifiche per l'utente loggato
+     */
     public int NumerOfModifiche(){
         ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
         try {
@@ -607,6 +610,12 @@ public class Controller {
     }
 
 
+    /**
+     * Crea un oggetto RisultatoConfrontoPostgresDAO()
+     * Richiama Accettazione(id_operazione, email utente loggato) se accettata e 1 altrimenti Rifiuto(id_operazione, email utente loggato)
+     * @param id_operazione
+     * @param accettata
+     */
     public void ModificaProposta(int id_operazione, int accettata){
         RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
         if(accettata == 1){
