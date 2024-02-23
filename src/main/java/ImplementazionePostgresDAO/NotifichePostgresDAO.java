@@ -12,6 +12,16 @@ import java.sql.Timestamp;
 
 public class NotifichePostgresDAO implements NotificheDAO  {
 
+    /**
+     * Creiamo una matrice dove ogni riga è un dato e ogni colonna e un oggetto che andremo a creare.
+     * Questa funzione farà la seguente query:
+     * 1) prendere tutte le informazioni sulle Notifiche
+     * Dati sono: Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione e utente
+     * dopo aver preso tutti i dati li carichiamo nella matrice
+     * @param EmailAutore
+     * @return Matrice dove le righe è un tipo di dato e le colonne un oggetto da creare
+     * @throws SQLException
+     */
     @Override
     public ArrayList<ArrayList> LoadNotifiche(String EmailAutore) throws SQLException {
 
@@ -85,7 +95,12 @@ public class NotifichePostgresDAO implements NotificheDAO  {
         return Dati;
     }
 
-
+    /**
+     * Crea una connessione con il database e esegue una query che restituisce il numero di Notifiche proposte su altre pagine.
+     * @param EmailAutore
+     * @return  restituisce il numero di Notifiche su latre pagine di un Autore(tramite email)
+     * @throws SQLException
+     */
 
     public int NumberOfNotiche(String EmailAutore) throws SQLException {
         Connection con = new ConnessionePostges().openConnection();

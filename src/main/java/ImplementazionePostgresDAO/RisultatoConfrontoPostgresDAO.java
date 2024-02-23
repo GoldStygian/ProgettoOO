@@ -10,6 +10,12 @@ import java.sql.Statement;
 public class RisultatoConfrontoPostgresDAO implements RisultatoConfrontoDAO {
 
 
+    /**
+     * Questa funzione crea una conessione con il database e richiama una funzione del database 'accettaproposta()'
+     * che accettera la proposta se accettata = 1
+     * @param id_operazione
+     * @param Email
+     */
     public void Accettazione(int id_operazione, String Email){
 
         Connection con = new ConnessionePostges().openConnection();
@@ -30,6 +36,12 @@ public class RisultatoConfrontoPostgresDAO implements RisultatoConfrontoDAO {
 
     }
 
+    /**
+     * Questa funzione crea una conessione con il database e richiama una funzione del database 'accettaproposta()'
+     *  che accettera la proposta se accettata = 0
+     * @param id_operazione
+     * @param Email
+     */
     @Override
     public void Rifiuto(int id_operazione, String Email) {
         Connection con = new ConnessionePostges().openConnection();

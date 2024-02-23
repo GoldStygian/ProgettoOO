@@ -10,6 +10,13 @@ import java.sql.Statement;
 
 public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
 
+    /**
+     * Questa funzione crea una conessione con il database e richiama una funzione del database 'modificarichestaproposta()'
+     * che modifica la proposta fatta a una pagina wiki
+     * @param id_proposta
+     * @param Email
+     * @param Testo
+     */
     @Override
     public void AggironamentoProposta(int id_proposta, String Email, String Testo) {
         Connection con = new ConnessionePostges().openConnection();
@@ -26,6 +33,14 @@ public class ModificaPorpostaPostgresDAO implements ModificaPorpostaDAO {
 
 
     }
+
+    /**
+     * Crea una connessione con il database e esegue una query che restituisce il numero di modifiche proposte su altre pagine.
+     * @param email
+     * @return restituisce il numero di modifche su latre pagine di un utente(tramite email)
+     *
+     * @throws SQLException
+     */
 
     @Override
     public int NumeroModifiche(String email) throws SQLException {

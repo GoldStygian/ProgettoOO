@@ -9,6 +9,21 @@ import java.util.ArrayList;
 public class ModifichePostgresDAO implements ModificheDAO {
 
 
+    /**
+     * Creiamo una matrice dove ogni riga è un dato e ogni colonna e un oggetto che andremo a creare.
+     * Questa funzione farà tre query:
+     * 1) per prendere tutte le informazioni sulle modfiche
+     * 2) per prendere il titolo della pagina in cui abbiamo fatto la richiesta di modifica
+     * 3) per prendere il titolo della pagina a cui ci riferiamo nel caso sia un link.
+     * I dati sono: Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione,utente,
+     * DataA(data Accettazione) , utenteNotificato, titolo pagina link(titolo della pagina in cui mi riferisco) e titolo pagina
+     *
+     *
+     * dopo aver preso tutti i dati li carichiamo nella matrice
+     * @param EmailUtente
+     * @return Matrice dove le righe è un tipo di dato e le colonne un oggetto da creare
+     * @throws SQLException
+     */
     public ArrayList<ArrayList> LoadModifiche(String EmailUtente) throws SQLException {
 
         ArrayList<ArrayList> Dati = new ArrayList<>();
