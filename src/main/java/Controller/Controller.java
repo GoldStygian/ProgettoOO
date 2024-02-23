@@ -191,7 +191,6 @@ public class Controller {
             ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
             Autore utenteLoggato1 = (Autore) utenteLoggato;
             utenteLoggato1.ResetNotifiche();
-
             //System.out.print((Dati.get(0).get(1)));
             for (int i = 0 ; i < Dati.get(0).size(); i++){
                 if(!((Boolean) Dati.get(5).get(i))){
@@ -261,11 +260,12 @@ public class Controller {
 
     /**
      *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione , email Autore)
-     *  LoadConfronto ritornerà un stringa formattata nel seguente modo:
-     *
-     *
+     *  LoadConfronto ritornerà un stringa formattata nel seguente modo: Titolo+testo-posizione-link-
+     * id pagina riferita-titolo pagina riferita | proposta testo-proposta posizione-
+     * proposta link-proposta id pagina riferita-proposta titolo pagina riferita
      * @param id_operazione
-     * @return
+     * @return Restituisce un array di stringe[](matrice di stringe o array 3D) dove in posizione zero ci sono le informazioni sulla frase in uno nella wiki e
+     * nella posizione 1 le informazione della nuova frase.
      */
     public ArrayList<String[]> LoadConfronto(int id_operazione){
         ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
@@ -289,6 +289,14 @@ public class Controller {
         }
     }
 
+    /**
+     * Crea un oggetto di ModifichePostgresDAO.
+     * richiama la funzione LoadModifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
+     * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
+     * altrimenti un inserimento.
+     * in oltre se delle modifiche sono gia presenti andremo ad aggiungere i dati mancanti. questo solo al primo avvio del l'app e al primo utilizzo
+     * di loadModifiche.
+     */
     public void loadModifiche(){
         ModifichePostgresDAO ModificheDao = new ModifichePostgresDAO();
         ArrayList<ArrayList> Dati;
@@ -298,21 +306,26 @@ public class Controller {
             throw new RuntimeException(e);
         }
 
-        Operazioni_utente.clear();
 
+        utenteLoggato.ClearModifiche();
         //System.out.printf(String.valueOf(Dati));
 
         for (int i = 0 ; i < Dati.get(0).size(); i++){
-            this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i),(String) Dati.get(13).get(i));
+            if(this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i),(String) Dati.get(13).get(i), i,Dati)){
+                continue;
+            }
+            //Operazioni_utente.clear();
             if(!((Boolean) Dati.get(5).get(i))){
                 InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
                 //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
-                Operazioni_utente.add(ToAdd);
+                utenteLoggato.addOperazione_Utente(ToAdd);
+                //Operazioni_utente.add(ToAdd);
                 //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
                 //System.out.println("io");
             }else{
                 ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
-                Operazioni_utente.add(ToAdd);
+                utenteLoggato.addOperazione_Utente(ToAdd);
+                //Operazioni_utente.add(ToAdd);
             }
 
         }
@@ -339,8 +352,8 @@ public class Controller {
             s.add(new ArrayList<String>());
             s.add(new ArrayList<String>());
 
-            Autore utenteLoggato1 = (Autore) utenteLoggato;
-            for(OperazioneUtente n: Operazioni_utente){
+            //Autore utenteLoggato1 = (Autore) utenteLoggato;
+            for(OperazioneUtente n: utenteLoggato.getOperazioni_Utente()){
                 s.get(0).add(n.getIdOperazione());
                 s.get(1).add(n.getDataR());
                 s.get(2).add(n.getTesto());
@@ -368,23 +381,32 @@ public class Controller {
         return s;
     }
 
-    public void AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina){
-        for(OperazioneUtente u: Operazioni_utente){
+    public boolean AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina, int i,ArrayList<ArrayList> Dati){
+        for(OperazioneUtente u: utenteLoggato.getOperazioni_Utente()){
             if(u.getIdOperazione() == id_operazione){
                 ((OperazioneUtente) u).SetAutore(Autore);
-                ((OperazioneUtente) u).SetTitoloLink(Titolo);
+                ((OperazioneUtente) u).SetTitoloLink(TitoloPagina);
                 ((OperazioneUtente) u).SetDataA(Data);
                 ((OperazioneUtente) u).SetTitolo(Titolo);
+                for (int j = 0 ; j < Dati.size(); j++) {
+                    Dati.get(j).remove(i);
+                }
+                return true;
             }
 
         }
-
+        return false;
     }
 
     public void SetVisionataNotificheModel(int id_operazione){
-        for(OperazioneUtente u: Operazioni_utente){
-            if(u.getIdOperazione() == id_operazione){
-                ((OperazioneUtente) u).SetVisionata(true);
+        Autore utenteLoggato1 = null;
+        if(isAutore()){
+            utenteLoggato1 = (Autore) utenteLoggato;
+        }
+        for(Notifica u: utenteLoggato1.getNotifiche()){
+
+            if(u.getOperazioni_notificate().getIdOperazione() == id_operazione){
+                u.getOperazioni_notificate().SetVisionata(true);
                 return;
             }
         }
@@ -552,12 +574,12 @@ public class Controller {
         }
     }
 
-    public void ModificaProposta(int id_operazione, int accettata){
+    public void ModificaProposta(int id_operazione, int accettata, String Utente){
         RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
         if(accettata == 1){
-            r.Accettazione(id_operazione, utenteLoggato.getEmail());
+            r.Accettazione(id_operazione, Utente);
         }else{
-            r.Rifiuto(id_operazione, utenteLoggato.getEmail());
+            r.Rifiuto(id_operazione, Utente);
         }
 
 

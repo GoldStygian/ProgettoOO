@@ -27,7 +27,12 @@ public class PanelRichieste extends JPanel {
         GuiPresetComponet t = new GuiPresetComponet(frame);
 
         PropetarioPagina.setText("Autore Pagina: " + Autore);
-        DataRichiesta.setText("Data Richesta: " + datar.toString());
+        if(datar != null){
+            DataRichiesta.setText("Data Richesta: " + datar.toString());
+        }else{
+            DataRichiesta.setText("Data Richesta: ");
+        }
+
         if (dataa != null) {
             DataAccettazione.setText("Data Accettazione: " + dataa.toString());
         } else {

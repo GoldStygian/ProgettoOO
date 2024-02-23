@@ -47,6 +47,19 @@ public class Utente {
     public String getPassword() {
         return Password;
     }
+
+    public void addOperazione_Utente(OperazioneUtente d){
+        Operazioni_Utente.add(d);
+    }
+
+    public ArrayList<OperazioneUtente> getOperazioni_Utente() {
+        return Operazioni_Utente;
+    }
+
+    public void ClearModifiche(){
+        Operazioni_Utente.clear();
+    }
+
     //public
 
 }
