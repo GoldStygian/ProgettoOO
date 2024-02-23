@@ -69,7 +69,7 @@ public class Controller {
     /**
      * Funzione che permette di caricare il contenuto di una pagina wiki.
      * Crea un oggetto pagina e ogni frase ritornata dal DB viene aggiunta all'oggetto pagina.
-     * Inoltre l'oggetto pagina viene aggiunto ad una HashMap, in modo tale che la prossima volta che viene
+     * Inoltre l'oggetto pagina viene aggiunto a una HashMap, in modo tale che la prossima volta che viene
      * selezionata tale pagina non venga effettuata nuovamente una richiesta al DB
      * @param idPagina id della pagina che si vuole caricare
      * @return HashMap contenente per ogni chiave un array di dati cosi formato
@@ -560,6 +560,12 @@ public class Controller {
         return frasi;
     }
 
+    /**
+     *
+     * @param idPagina
+     * @return
+     */
+
     public ArrayList<String> getDateAvailable(int idPagina){
 
         try {
@@ -571,12 +577,28 @@ public class Controller {
 
     }
 
+    /**
+     * Funzione utilizzata quando viene effettuato il log out di un utente dall'applicativo.
+     * Setta l'oggetto utenteLoggato a null, cosi da cancellare i dati del vecchio utente e ripetere il log in
+     */
+
     public void logOut(){
 
         this.utenteLoggato= null;
         this.Operazioni_utente = null;
-        Operazioni_utente = new ArrayList<>();
+        this.Operazioni_utente = new ArrayList<>();
     }
+
+    /**
+     * Crea una nuova pagina wiki con il titolo e la frase specificati.
+     * Se il titolo o la frase sono vuoti, restituisce un messaggio di errore corrispondente.
+     * Altrimenti, invia una richiesta al database per creare la pagina e restituisce un messaggio di successo o di errore.
+     * @param titolo Il titolo della pagina wiki da creare.
+     * @param frase La frase iniziale da inserire nella pagina wiki.
+     * @param selected True se la pagina deve essere selezionata, false altrimenti.
+     * @param TitoloPaginaLink Il titolo della pagina a cui collegare questa pagina, se applicabile.
+     * @return Stringa che contiene un messaggio che indica se la creazione della pagina è avvenuta con successo o se si è verificato un errore.
+     */
 
     public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
 
@@ -607,8 +629,12 @@ public class Controller {
         frame.setSize(W,H);
     }
 
+    /**
+     * Funzione che rimuove dall HashMap "Pagine" la pagina con id corrispondente.
+     * Utilizzata prima delle operazioni di "Refresh" delle pagine Wiki.
+     * @param idPagina numero che identifica la pagina da eliminare
+     */
     public void removePage(int idPagina) {
-        System.out.println(idPagina);
         Pagine.remove(idPagina);
     }
 }
