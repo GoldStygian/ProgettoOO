@@ -10,7 +10,7 @@ public class Utente {
     private String Cognome;
     private char genere;
 
-    ArrayList<OperazioneUtente> Operazioni_Utente = new ArrayList<OperazioneUtente>();
+    protected ArrayList<OperazioneUtente> Operazioni_Utente = new ArrayList<OperazioneUtente>();
 
     public Utente(String Email, String Password, String Nome, String Cognome, char genere){
         this.Nome=Nome;
@@ -47,6 +47,19 @@ public class Utente {
     public String getPassword() {
         return Password;
     }
+
+    public void addOperazione_Utente(OperazioneUtente d){
+        Operazioni_Utente.add(d);
+    }
+
+    public ArrayList<OperazioneUtente> getOperazioni_Utente() {
+        return Operazioni_Utente;
+    }
+
+    public void ClearModifiche(){
+        Operazioni_Utente.clear();
+    }
+
     //public
 
 }
