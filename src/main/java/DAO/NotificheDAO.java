@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 public interface NotificheDAO {
 
-    public ArrayList<ArrayList> LoadNotifiche(String EmailAutore) throws SQLException;
+    ArrayList<ArrayList> LoadNotifiche(String EmailAutore) throws SQLException;
 
 
-    public  int  NumberOfNotiche(String EmailAutore) throws SQLException;
+    int  NumberOfNotiche(String EmailAutore) throws SQLException;
 }

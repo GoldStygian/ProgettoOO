@@ -5,5 +5,5 @@ import java.util.ArrayList;
 
 public interface ModificheDAO {
 
-    public ArrayList<ArrayList> LoadModifiche(String EmailUtente) throws SQLException;
+    ArrayList<ArrayList> LoadModifiche(String EmailUtente) throws SQLException;
 }

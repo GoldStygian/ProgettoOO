@@ -15,9 +15,11 @@ public class Main {
     }
 
 }
+//creapagina quando clicco link esce fuori dal margine
+//login troppo lento
+//cache nella storicita
 //aggiustare il layout
 //aggiungere cose alla home
-//refesh della cache quando clicco aggiorna
 //mettere nel model le proposte
 //mettere stderr nel log
 //mettere if al posto di while nei reultset con 1 return result

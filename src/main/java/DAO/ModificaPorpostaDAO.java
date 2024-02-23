@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 public interface ModificaPorpostaDAO {
 
-    public void AggironamentoProposta(int id_proposta, String Email, String Testo);
+    void AggironamentoProposta(int id_proposta, String Email, String Testo);
 
-    public int NumeroModifiche(String email) throws SQLException;
+    int NumeroModifiche(String email) throws SQLException;
 
 }

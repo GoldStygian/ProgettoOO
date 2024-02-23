@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 public interface LoginDAO {
 
-    public ArrayList<String> Login(String email, String password) throws SQLException;
+    ArrayList<String> Login(String email, String password) throws SQLException;
 
 }

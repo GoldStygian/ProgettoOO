@@ -4,6 +4,6 @@ import java.sql.SQLException;
 
 public interface RegisterDAO {
 
-    public String RegisterUser(String Nome, String Cognome, String Genere, String Email, String Password) throws SQLException;
+    String RegisterUser(String Nome, String Cognome, String Genere, String Email, String Password) throws SQLException;
 
 }

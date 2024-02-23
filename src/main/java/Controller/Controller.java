@@ -21,6 +21,15 @@ public class Controller {
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
+    /**
+     * Funzione per effettuare il login
+     * Chiama il metodo Login di LoginDAO
+     * se Login di Login DAO ritorna 1 allora significa che l'utnete è un autore
+     * se Login di Login DAO ritorna 0 allora significa che l'utente è un utente semplice
+     * se Login di Login DAO ritorna null allora email e password non combaciano.
+     * La funzione ritonra true se il login è effettuato con successo altrimenti false
+     * in caso di problemi o di credenziali errate.
+     */
 
     public boolean Login(String email, String password) {
 
@@ -543,10 +552,10 @@ public class Controller {
 
         String messageError = "<html>";
         if (titolo.isEmpty()){
-            messageError += "Il titolo è vuota<br>";
+            messageError += "Il titolo è vuoto<br>";
         }
         else if (frase.isEmpty()){
-            messageError += "la frase è vuota<br>";
+            messageError += "La frase è vuota<br>";
         }else {
 
             String email = utenteLoggato.getEmail();
