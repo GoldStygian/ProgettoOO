@@ -1,84 +1,16 @@
 
-K
-src/main/java/GUI/Main.java,7\6\762aaeb6875c32bc88a288d5f30322fc5ab754bf
-O
-src/main/java/Model/Utente.java,2\a\2a4b890ae306aa9d213c8e44b472fe480e2f3f2a
-O
-src/main/java/Model/Autore.java,7\a\7ad6f429b7243bef4b0936eb9897218ee63ab471
-N
-src/main/java/Model/Frase.java,8\c\8ca49dbd75831fe13ee4740347cf3afdedf62436
-M
-src/main/java/Model/Link.java,c\c\cc02f96e9d1986e954a089e2e41bba5f4ce09308
-Q
-!src/main/java/Model/Notifica.java,f\1\f1a94bf155f074cd8256f2088804b6bf2a41b6d3
-Y
-)src/main/java/Model/OperazioneUtente.java,8\3\838626bba9538b3e098d7f43eef48e13555b607e
-O
-src/main/java/Model/Pagina.java,7\e\7eb27db5b67b0817fbc64501d8c55cdab609d1b8
-W
-'src/main/java/Database/Connessione.java,2\3\23895eb755e48109bd361adcd1840c3ac880be75
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-]
--.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
-E
-src/test/java/empty.c,e\0\e0b455e5842258ddf8347bbd4914f927926b4b89
-Y
-)src/main/java/Model/OperazioneAutore.java,5\c\5c01aa7f9a7f5ee6962e384313101f7a8aa48b0a
-Z
-*src/main/java/Model/InserimentoAutore.java,7\8\78d5ee7c89718fd8c6a5adc75c9ea5048f8caadf
-W
-'src/main/java/Model/ModificaAutore.java,1\8\18764493f11298dfa1d100fa31c415c2165fcf0d
-Z
-*src/main/java/Model/InserimentoUtente.java,d\1\d18dde8ba195372ca62c172da1c56b636e17585d
-W
-'src/main/java/Model/ModificaUtente.java,1\f\1f222851d80d265faa1f612202a25dbc28570599
-K
-src/main/java/GUI/Home.java,3\c\3cdbf704492b54ced45c9ce2d236deccb04af514
-P
- src/main/java/GUI/LoginPage.java,c\3\c3228f458f9de991f95e0d266d2168e72aaecbf8
-P
- src/main/java/GUI/LoginPage.form,2\5\255e151102b4c25922641bee730d0a246c87bdfb
-K
-src/main/java/GUI/Home.form,7\d\7dcdd7a9bdb225cf74b15d4425ef6e1139aaa09c
-Q
-!src/main/java/GUI/MainJFrame.java,4\d\4dda53bd3758e00a2e93332b778b5db38ab65162
-X
-(src/main/java/Controller/Controller.java,0\7\078546e943e5b71a5a13778784b81fa2a5095cd8
-U
-%src/main/java/DAO/ConnessioneDAO.java,4\b\4ba3cf7040b437533fd02e82a298a777ead47584
-s
-Csrc/main/java/ImplementazionePostgresDAO/ConnessionePostgesDAO.java,9\b\9bb3d8cde7298f2b30d555046d223285554ca892
-O
-src/main/java/DAO/LoginDao.java,f\e\fe8e020f1a680ca7f569bc31c9b6be0c6228e878
-O
-src/main/java/DAO/LoginDAO.java,e\b\ebdcf0b5da485c414f635e7d19704b1131067e23
-n
->src/main/java/ImplementazionePostgresDAO/LoginPostgresDao.java,9\3\93cf51232aa1918cba1d48b18c72de5e2292cdcd
-n
->src/main/java/ImplementazionePostgresDAO/LoginPostgresDAO.java,a\6\a6a24ca4c9ce3b84025bd6582cc81ecd755829ac
-S
-#src/main/java/GUI/RegisterPage.java,6\1\612116fb48545881a2c89b8badc65f8294eb873e
-S
-#src/main/java/GUI/RegisterPage.form,b\d\bd6304a9f058305ed790b737f791d97036d9cdcf
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+K
+src/main/java/GUI/Main.java,7\6\762aaeb6875c32bc88a288d5f30322fc5ab754bf
 Q
-!src/main/java/GUI/SearchPage.java,8\5\85dbfb3338c0c1fee057f9e6649c4e82f5284c35
-Q
-!src/main/java/GUI/SearchPage.form,c\a\cad6150005e2ca737d0c296c48fc368499e1af71
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-V
-&src/main/java/DAO/FunzionalitaDAO.java,2\4\24812db88e95f20268b457dbd8ffd18ff9026c27
-t
-Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAo.java,0\8\0818f8d9f81a869f5e88ff8905c8eede3409d2c9
-t
-Dsrc/main/java/ImplementazionePostgresDAO/FunzionalitPostgresDAO.java,4\f\4f8d3783f049f93369df73b674d09b5ce802de7e
-X
-(src/main/java/GUI/GuiPresetComponet.java,3\a\3abd207439cda3a81ed8970fd3182014938f0415
-h
-8src/main/java/ImplementazionePostgresDAO/credenziali.txt,9\0\9066b35682f90d36cc87996f3dd3b624c34d90cd
+!src/main/java/GUI/MainJFrame.java,4\d\4dda53bd3758e00a2e93332b778b5db38ab65162
+Å
+Q.idea/sonarlint/securityhotspotstore/4/d/4dda53bd3758e00a2e93332b778b5db38ab65162,9\2\924d260e3f6293211368ca6e4c68220e18ded25f
+w
+G.idea/sonarlint/issuestore/7/6/762aaeb6875c32bc88a288d5f30322fc5ab754bf,1\4\144aa2f300b67f0ce3c62a8a5519f2920d153036
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
