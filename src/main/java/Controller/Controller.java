@@ -13,11 +13,8 @@ import java.util.HashMap;
 
 public class Controller {
 
-    //Utente utenteLoggato = null;
+    Utente utenteLoggato = null;
 
-    //debug
-        private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
-    //debug
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
