@@ -1,9 +1,9 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.RisultatoConfrontoDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -12,7 +12,7 @@ public class RisultatoConfrontoPostgresDAO implements RisultatoConfrontoDAO {
 
     public void Accettazione(int id_operazione, String Email){
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = null;
         try {
             statement = con.createStatement();
@@ -32,7 +32,7 @@ public class RisultatoConfrontoPostgresDAO implements RisultatoConfrontoDAO {
 
     @Override
     public void Rifiuto(int id_operazione, String Email) {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = null;
         try {
             statement = con.createStatement();

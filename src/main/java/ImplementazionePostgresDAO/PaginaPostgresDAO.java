@@ -1,5 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
+import main.java.Database.ConnessionePostges;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +10,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) throws SQLException {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="SELECT * FROM frase WHERE pagina = %d order by posizione".formatted(idPagina);
@@ -40,7 +42,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
     @Override
     public ArrayList<String> getWikiInfo(int idPagina) throws SQLException{
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
         String query="SELECT * FROM pagina WHERE id_pagina = %d".formatted(idPagina);
         ResultSet result = statement.executeQuery(query);
@@ -61,7 +63,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public String createPage(String email, String titolo, String frase, boolean link, String TitoloLink)throws SQLException{
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         String MessageReturn = new String();
         String query;
 
@@ -103,7 +105,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public ArrayList<ArrayList<String>> getMyPage(String email) throws SQLException {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement stm = con.createStatement();
         String query = "SELECT * FROM pagina WHERE emailautore = '%s'".formatted(email);
         ResultSet rs = stm.executeQuery(query);
@@ -125,7 +127,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public ArrayList<ArrayList<String>> getStroicitaSpecifica(int idPagina, String data) throws SQLException {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement stm = con.createStatement();
 
         String query;
@@ -154,7 +156,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     @Override
     public ArrayList<String> getDateAvailable(int idPagina) throws SQLException {
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement stm = con.createStatement();
         String query = "SELECT DISTINCT data_accettazione FROM storicita_totale WHERE data_accettazione IS NOT NULL AND id_pagina = %d order by data_accettazione DESC".formatted(idPagina);
         ResultSet rs = stm.executeQuery(query);
@@ -175,7 +177,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
     @Override
     public ArrayList<ArrayList<String>> SearchPage(String ricerca) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="SELECT * FROM trovapagina('%s')".formatted(ricerca);

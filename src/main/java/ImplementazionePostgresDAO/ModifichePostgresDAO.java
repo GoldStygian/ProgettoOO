@@ -1,6 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.ModificheDAO;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ModifichePostgresDAO implements ModificheDAO {
         Dati.add(new ArrayList<String>());
 
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
         Statement statement2 = con.createStatement();
         Statement statement3 = con.createStatement();

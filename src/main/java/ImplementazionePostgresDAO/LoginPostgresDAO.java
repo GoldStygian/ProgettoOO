@@ -1,8 +1,7 @@
 package main.java.ImplementazionePostgresDAO;
 
 import main.java.DAO.LoginDAO;
-import main.java.Model.Autore;
-import main.java.Model.Utente;
+import main.java.Database.ConnessionePostges;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ public class LoginPostgresDAO implements LoginDAO {
     @Override
     public ArrayList<String> Login(String email, String password) throws SQLException {
 
-        Connection con = new ConnessionePostgesDAO().openConnection();
+        Connection con = new ConnessionePostges().openConnection();
         Statement statement = con.createStatement();
 
         String query="SELECT * FROM utente WHERE email = '%s' AND password_utente = '%s'".formatted(email, password);
