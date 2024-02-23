@@ -290,8 +290,7 @@ public class Controller {
      * richiama la funzione LoadModifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
      * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
      * altrimenti un inserimento.
-     * in oltre se delle modifiche sono gia presenti andremo ad aggiungere i dati mancanti. questo solo al primo avvio del l'app e al primo utilizzo
-     * di loadModifiche.
+     *
      */
     public void loadModifiche(){
         ModifichePostgresDAO ModificheDao = new ModifichePostgresDAO();
@@ -307,27 +306,37 @@ public class Controller {
         //System.out.printf(String.valueOf(Dati));
 
         for (int i = 0 ; i < Dati.get(0).size(); i++){
+            /*
             if(this.AggiornamentoModifiche((int) Dati.get(0).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(Timestamp) Dati.get(10).get(i),(String) Dati.get(13).get(i), i,Dati)){
                 continue;
             }
-            //Operazioni_utente.clear();
+
+             */
+
             if(!((Boolean) Dati.get(5).get(i))){
                 InserimentoUtente ToAdd = new InserimentoUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i),(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(int) Dati.get(8).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
-                //System.out.printf(String.valueOf((Dati.get(0).get(i)).getClass()) + String.valueOf((Dati.get(1).get(i)).getClass()) + String.valueOf((Dati.get(2).get(i)).getClass())+ String.valueOf((Dati.get(3).get(i)).getClass())+ String.valueOf((Dati.get(4).get(i)).getClass())+ String.valueOf((Dati.get(5).get(i)).getClass())+ String.valueOf((Dati.get(6).get(i)).getClass())+ String.valueOf((Dati.get(7).get(i)).getClass())+ String.valueOf((Dati.get(8).get(i)).getClass())+ String.valueOf((Dati.get(9).get(i)).getClass()));
                 utenteLoggato.addOperazione_Utente(ToAdd);
-                //Operazioni_utente.add(ToAdd);
-                //new Notifica(new InserimentoUtente((Date) Dati.get(0).get(i), (Boolean) Dati.get(1).get(i),(Boolean) Dati.get(2).get(i)));
-                //System.out.println("io");
             }else{
                 ModificaUtente ToAdd = new ModificaUtente((int) Dati.get(0).get(i),(Timestamp) Dati.get(10).get(i) ,(Timestamp) Dati.get(1).get(i),(String) Dati.get(2).get(i),(Boolean)Dati.get(3).get(i),(Boolean)Dati.get(4).get(i),(Boolean)Dati.get(5).get(i),(Boolean)Dati.get(6).get(i),(int) Dati.get(7).get(i),(String) Dati.get(9).get(i),(String) Dati.get(11).get(i),(String) Dati.get(12).get(i),(String) Dati.get(13).get(i));
                 utenteLoggato.addOperazione_Utente(ToAdd);
-                //Operazioni_utente.add(ToAdd);
+
             }
 
         }
 
     }
 
+
+    /**
+     * Carica una matrice con tutti i dati utili di una Modifica, come:
+     * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione,utente,
+     * DataA(data Accettazione) , utenteNotificato, titolo pagina link(titolo della pagina in cui mi riferisco) e titolo pagina
+     * dopo che ha carivato la matrice la restituisce
+     *
+     * @return Una Matrice con i dati di ogni Modifica nel model. Dove La riga Corrisponde a un tipo di dato del model
+     * e un a colonna a un oggetto. Es: matrice 5x5 ho 5 attributi e 5 oggetti. Es: matrice 5x7 ho 5 attributi e sette oggetti
+     * {riga}x{colonna}
+     */
     public ArrayList<ArrayList> GetModifiche(){
 
         ArrayList<ArrayList> s = null;
@@ -377,6 +386,7 @@ public class Controller {
         return s;
     }
 
+    /*
     public boolean AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina, int i,ArrayList<ArrayList> Dati){
         for(OperazioneUtente u: utenteLoggato.getOperazioni_Utente()){
             if(u.getIdOperazione() == id_operazione){
@@ -393,6 +403,13 @@ public class Controller {
         }
         return false;
     }
+
+     */
+
+    /**
+     * Se l'utente è un atuore imposta visonata a true nell'operazione utente che ha id_operazione = a id_operazione input
+     * @param id_operazione
+     */
 
     public void SetVisionataNotificheModel(int id_operazione){
         Autore utenteLoggato1 = null;
@@ -685,6 +702,12 @@ public class Controller {
 
     }
 
+    /**
+     * Fa un resize della Frame per far aggiornare il contenuto
+     * @param W
+     * @param H
+     * @param frame
+     */
     public void Resize(int W, int H, JFrame frame){
         frame.setSize(W+1,H);
         frame.setSize(W,H);
