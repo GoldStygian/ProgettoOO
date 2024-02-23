@@ -687,24 +687,23 @@ public class Controller {
     public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
 
         String messageError = "<html>";
-        if (titolo.isEmpty()){
+        if (titolo.isEmpty()) {
             messageError += "Il titolo è vuoto<br>";
-        }
-        else if (frase.isEmpty()){
+        } else if (frase.isEmpty()) {
             messageError += "La frase è vuota<br>";
-        }else {
+        } else {
 
             String email = utenteLoggato.getEmail();
             try {
                 messageError += new PaginaPostgresDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
-            }catch (Exception e){
+            } catch (Exception e) {
                 //e.printStackTrace();
                 messageError += "Problema sconosciuto<br>";
             }
 
         }
 
-        return messageError+="</html>";
+        return messageError += "</html>";
 
     }
 
