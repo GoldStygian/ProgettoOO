@@ -36,6 +36,7 @@ public class HomeAutore {
     private JMenu Menu;
     private MainJFrame frame;
     private Boolean bool = true;
+    private Boolean PrimoAvvio = true;
 
     public HomeAutore(MainJFrame frame, Controller controller, JPanel oldPanel) {
 
@@ -85,7 +86,7 @@ public class HomeAutore {
 
         NotificheBox.setBackground(frame.getColorToolBar());
 
-        FrameNotifiche = new NotificheFrame("Notifiche", frame, controller);
+
 
         Menu.addMouseListener(new MouseAdapter() {
             @Override
@@ -159,8 +160,20 @@ public class HomeAutore {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+                if(PrimoAvvio){
+                    FrameNotifiche = new NotificheFrame("Notifiche", frame, controller);
+                    FrameNotifiche.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosing(WindowEvent e) {
+                            super.windowClosed(e);
+                            NotificheNotOpen = true;
 
-                if (NotificheNotOpen) {
+                        }
+                    });
+                    FrameNotifiche.setVisible(true);
+                    NotificheNotOpen = true;
+                    PrimoAvvio = false;
+                }else if (NotificheNotOpen) {
 
                     FrameNotifiche.setVisible(true);
                     NotificheNotOpen = false;
@@ -182,14 +195,6 @@ public class HomeAutore {
         });
 
 
-        FrameNotifiche.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosed(e);
-                NotificheNotOpen = true;
-
-            }
-        });
         SerchBar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
