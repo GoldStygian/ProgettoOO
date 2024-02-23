@@ -97,6 +97,14 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
     @Override
     public String proponiModifica(boolean isAutore, int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
 
+        System.out.println("isAutore: " + isAutore);
+        System.out.println("idPagina: " + idPagina);
+        System.out.println("email: " + email);
+        System.out.println("text: " + text);
+        System.out.println("posizione: " + posizione); //reale
+        System.out.println("selected: " + selected);
+        System.out.println("riferimentoLink: " + riferimentoLink);
+
         Connection con = new ConnessionePostges().openConnection();
         String MessageReturn = new String();
         String query;
