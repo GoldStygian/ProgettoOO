@@ -540,6 +540,12 @@ public class Controller {
         return Message+"</html>";
     }
 
+
+    /**
+     * Crea un oggetto VisualizzaPostgersDAO()
+     * e richiamiamo la funzione Visionata(id_operazione) che aggiorenera L'operazione utente come vidionata = true
+     * @param id_operazione
+     */
     public void SetVisionata(int id_operazione){
         VisualizzaPostgersDAO v = new VisualizzaPostgersDAO();
         try {
@@ -563,11 +569,22 @@ public class Controller {
 
     }
 
+
+    /**
+     * Crea un oggetto ModificaPorpostaPostgresDAO()
+     * e richiama la funzione AggironamentoProposta(id_proposta,email utente loggato,Testo) e aggiorna il testo e dataR(data richiesta)
+     */
     public void ModificaPropsostaEffetuata(int id_proposta,String Testo){
         ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
         m.AggironamentoProposta(id_proposta,utenteLoggato.getEmail(),Testo);
     }
 
+
+    /**
+     * Crea un oggetto NotifichePostgresDAO()
+     * e richiama
+     * @return
+     */
     public int NumerOfNotifiche(){
         NotifichePostgresDAO n = new NotifichePostgresDAO();
         try {
@@ -578,6 +595,8 @@ public class Controller {
         }
     }
 
+
+
     public int NumerOfModifiche(){
         ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();
         try {
@@ -586,6 +605,7 @@ public class Controller {
             throw new RuntimeException(e);
         }
     }
+
 
     public void ModificaProposta(int id_operazione, int accettata){
         RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
@@ -597,6 +617,7 @@ public class Controller {
 
 
     }
+
 
     public ArrayList<ArrayList<String>> getMyPage(){
 
