@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import java.util.Map;
 import java.util.HashMap;
 
@@ -24,8 +23,8 @@ public class Controller {
      * se Login di Login DAO ritorna 1 allora significa che l'utnete è un autore
      * se Login di Login DAO ritorna 0 allora significa che l'utente è un utente semplice
      * se Login di Login DAO ritorna null allora email e password non combaciano.
-     * La funzione ritonra true se il login è effettuato con successo altrimenti false
-     * in caso di problemi o di credenziali errate.
+     * @return true se il login è effettuato con successo altrimenti
+     * false in caso di problemi o di credenziali errate.
      */
 
     public boolean Login(String email, String password) {
@@ -53,7 +52,11 @@ public class Controller {
 
     }
 
-    public ArrayList<ArrayList<String>> searchPages(String ricerca) {//OK
+    /**
+     * Funzione per cercare le pagine all'interno del DaatBase in base al titolo
+     * @return Matrice contenente per ogni riga tutti i dati di pagina che combacia con la ricerca
+    */
+    public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
         try {
             return new PaginaPostgresDAO().SearchPage(ricerca);
@@ -63,12 +66,16 @@ public class Controller {
 
     }
 
+    /**
+     * Funzione che permette di caricare il contenuto di una pagina wiki.
+     * Crea un oggetto pagina e ogni frase ritornata dal DB viene aggiunta all'oggetto pagina.
+     * Inoltre l'oggetto pagina viene aggiunto ad una HashMap, in modo tale che la prossima volta che viene
+     * selezionata tale pagina non venga effettuata nuovamente una richiesta al DB
+     * @param idPagina id della pagina che si vuole caricare
+     * @return HashMap contenente per ogni chiave un array di dati cosi formato
+     * (idPagia, posizione reale, testo, link, idLink) che costituisce un oggetto "Frase"
+     */
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {
-        // idPag
-        // pos reale
-        // frase
-        // link
-        // id link
 
         if (Pagine.get(idPagina) != null) { //gia sta una pagina nell'hashmap
 
@@ -136,6 +143,13 @@ public class Controller {
         }
 
     }
+
+    /**
+     * Funzione che permette di effettuare la registrazione di un utente.
+     * Tramite la chiamata del metodo RegisterUser di RegisterDAO è possibile registrare l'utente nel DB
+     * e controllare tramite la Stringa di ritorno, se la registrazione è avvenuta con successo oppure no
+     * @return Stringa che contiene un messaggio che può essere sia di errore che si successo
+     */
 
     public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {
 
@@ -342,6 +356,18 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette l'inserimento/proposta di inserimento di una frase.
+     * Attraverso la chiamata proponiInserimento() di WikiPageDAO l'inserimento/proposta viene inserita nel DB.
+     * Prima di chiamare proponiInserimento() viene controllato se l'utente loggato è un auotre oppure no, cosi da capire de il tipo di
+     * operazione è una proposta o inserimento diretto della frase nel DB
+     * @param idPagina pagina su cui si sta effettuando un insrimento
+     * @param posizione posizione dove si sta inserendo una nuova frase
+     * @param text testo della nuova frase
+     * @param selected valore che specifica se la frase è un link oppure no
+     * @param RiferimentoLink titolo della pagina a cui il link fa riferimento
+     * @return Stringa che contiene un messaggio di successo o di errore
+     */
     public String ProponiInserimento(int idPagina, String posizione, String text, boolean selected, String RiferimentoLink) {
 
         String messageError = "<html>";
@@ -379,7 +405,6 @@ public class Controller {
             posizioneDB = frase.getPosizione();
         }
 
-
             Boolean isAutore;
             Pagina currentPage = Pagine.get(idPagina);
             String email = utenteLoggato.getEmail();
@@ -399,15 +424,19 @@ public class Controller {
         return messageError+"</html>";
     }
 
+    /**
+     * Funzione che permette la modifica/proposta di modifica di una frase.
+     * Attraverso la chiamata proponiModifica() di WikiPageDAO la modifica/proposta viene inserita nel DB.
+     * Prima di chiamare proponiModifica() viene controllato se l'utente loggato è un auotre oppure no, cosi da capire de il tipo di
+     * operazione è una proposta o una modifica diretta della frase nel DB
+     * @param idPagina pagina su cui si sta effettuando un insrimento
+     * @param posizione posizione dove si sta inserendo una nuova frase
+     * @param text testo della nuova frase
+     * @param link valore che specifica se la frase è un link oppure no
+     * @param titoloLink titolo della pagina a cui il link fa riferimento
+     * @return Stringa che contiene un messaggio di successo o di errore
+     */
     public String ProponiModifica(int idPagina, int posizione, String text, boolean link, String titoloLink) {
-        //id_pagina //strong
-        //email //strong
-        //testo //to check
-        //link //to check
-        //titolo link //to check
-        //posizione //strong
-
-        //System.out.println("la posizione che stai modificando è la: "+posizione);
 
         String Message = "<html>";
         if (text.isEmpty()){
@@ -450,6 +479,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette di controllare se l'utente ha effettuato il login
+     * @return True se ha effettuato il login, altrimenti False.
+     */
     public boolean isUserLogged(){
 
         if (utenteLoggato==null){
