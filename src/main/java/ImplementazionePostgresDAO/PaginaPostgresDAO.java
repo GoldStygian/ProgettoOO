@@ -197,6 +197,7 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
     }
 
     /**
+     * Permette di ottenere tutte le date disponibili per la visualizzazione di una pagina
      * @param idPagina L'ID della pagina wiki di cui si desiderano ottenere le date disponibili.
      * @return Array che contiene tutte le date in ordine decrescente su cui si è accettata una Modifica o Inserimento, di una pagina specifica.
      * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
