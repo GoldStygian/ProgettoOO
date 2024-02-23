@@ -15,9 +15,6 @@ public class Controller {
 
     Utente utenteLoggato = null;
 
-    /*debug
-        private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
-    debug*/
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
@@ -44,7 +41,6 @@ public class Controller {
                     utenteLoggato = new Utente(Contenuto.get(1),Contenuto.get(2),Contenuto.get(3),Contenuto.get(4),Contenuto.get(5).charAt(0));
                 }
 
-                //utenteLoggato.print(); //debug
                 return true;
             }else{
                 return false;
@@ -180,7 +176,7 @@ public class Controller {
     /**
      * Controlla se l'utente loggato è un autore tramite isAutore().
      * Crea un oggetto di NotifichePostgresDAO.
-     * richiama la funzione LoadNotifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
+     * Richiama la funzione LoadNotifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
      * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
      * altrimenti un inserimento
      */
@@ -191,6 +187,7 @@ public class Controller {
             ArrayList<ArrayList> Dati = NotificheDao.LoadNotifiche(utenteLoggato.getEmail());
             Autore utenteLoggato1 = (Autore) utenteLoggato;
             utenteLoggato1.ResetNotifiche();
+
             //System.out.print((Dati.get(0).get(1)));
             for (int i = 0 ; i < Dati.get(0).size(); i++){
                 if(!((Boolean) Dati.get(5).get(i))){
@@ -212,12 +209,11 @@ public class Controller {
     }
 
     /**
-     * carica una matrice con tutti i dati utili di una notifica, come:
-     * Id_operazionme, DataR(data Richiesta),Testo, accettata, Visionata,Modifica, Link ,Link_pagina,posizione e utente
+     * Carica una matrice con tutti i dati utili di una notifica, come:
+     * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione e utente
      * dopo che ha carivato la matrice la restituisce
      *
-     *
-     * @return Una Matrice con i dati di ogni Notifica nel model. dove La riga Corrisponde a un tipo di dato del model
+     * @return Una Matrice con i dati di ogni Notifica nel model. Dove La riga Corrisponde a un tipo di dato del model
      * e un a colonna a un oggetto. Es: matrice 5x5 ho 5 attributi e 5 oggetti. Es: matrice 5x7 ho 5 attributi e sette oggetti
      * {riga}x{colonna}
      */
@@ -585,6 +581,12 @@ public class Controller {
 
     }
 
+
+    /**
+     * Funzione che permette di prendere le pagine wiki associate all'utente corrente.
+     * @return Una Matrice di pagine wiki associate all'utente corrente.
+     *         Se l'utente non ha pagine associate o si verifica un'eccezione durante l'accesso al database, restituisce null.
+     */
     public ArrayList<ArrayList<String>> getMyPage(){
 
         String email = utenteLoggato.getEmail();

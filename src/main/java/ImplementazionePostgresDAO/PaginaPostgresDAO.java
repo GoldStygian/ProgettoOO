@@ -8,13 +8,20 @@ import java.util.HashMap;
 
 public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
+    /**
+     * Funzione che permette di ottiene le frasi di una pagina wiki identificata dall'ID.
+     * Esegue una query sul database per recuperare le frasi associate alla pagina, ordinandole per posizione.
+     * @param idPagina L'ID della pagina wiki di cui si desidera ottenere le frasi.
+     * @return Restuisce un HashMapdove dove la chiave è l'indice di posizione non reale (ordine crescente)
+     *         della frase e il valore è un ArrayList di stringhe contenente i dati della frase.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) throws SQLException {
         Connection con = new ConnessionePostges().openConnection();
-        Statement statement = con.createStatement();
-
-        String query="SELECT * FROM frase WHERE pagina = %d order by posizione".formatted(idPagina);
-        ResultSet WikiPage = statement.executeQuery(query);
+        PreparedStatement statement = con.prepareStatement("SELECT * FROM frase WHERE pagina = ? order by posizione");
+        statement.setInt(1, idPagina);
+        ResultSet WikiPage = statement.executeQuery();
 
         HashMap<Integer, ArrayList<String>> Frasi = new HashMap<>(); // ci sta sempre un elemento nella pagina
         Integer index = 0;
@@ -39,6 +46,14 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
         return Frasi;
     }
 
+
+    /**
+     * Funzione che permette di ottiene tutte le informazioni di una pagina wiki identificata dall'ID.
+     * Esegue una query sul database per recuperare le informazioni associate alla pagina.
+     * @param idPagina L'ID della pagina wiki di cui si desidera ottenere le informazioni.
+     * @return Restituisce un Array contenente i dati della pagina.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public ArrayList<String> getWikiInfo(int idPagina) throws SQLException{
 
@@ -61,6 +76,16 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
         return pagina_cercata;
     }
 
+    /**
+     * Funzione che permette di creare una nuova pagina Wiki.
+     * @param email L'email dell'utente che sta creando la pagina.
+     * @param titolo Il titolo della pagina wiki da creare.
+     * @param frase Prima frase della pagina wiki.
+     * @param link True se la frase è un link a un'altra pagina, altrimenti False.
+     * @param TitoloLink Il titolo della pagina wiki a cui si desidera collegare, se specificato.
+     * @return Un messaggio che indica l'esito dell'operazione di creazione della pagina.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public String createPage(String email, String titolo, String frase, boolean link, String TitoloLink)throws SQLException{
         Connection con = new ConnessionePostges().openConnection();
@@ -95,14 +120,23 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
         if (!result){ //la procedura non deve ritornare valori
             MessageReturn = "Pagina creata con successo<br>";
-        }else{
-            ResultSet rs = stm.getResultSet();
+        }//else{
+            //ResultSet rs = stm.getResultSet();
             //System.out.println(rs);
-        }
+        //}
 
         return MessageReturn;
     }
 
+    /**
+     * Funzione che permette di ottenere le pagine create dall'utente corrispondente all'indirizzo email specificato.
+     * Esegue una query sul database per recuperare le pagine create dall'utente.
+     * @param email L'indirizzo email dell'utente di cui si vogliono ottenere le pagine create.
+     * @return Restituisce una matrice di stringhe contenente le informazioni delle pagine trovate.
+     *         Ogni array interno contiene l'ID della pagina e il titolo della pagina.
+     *         Se non vengono trovate pagine per l'utente specificato o si verifica un'eccezione durante l'accesso al database, restituisce una lista vuota.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public ArrayList<ArrayList<String>> getMyPage(String email) throws SQLException {
         Connection con = new ConnessionePostges().openConnection();
@@ -125,6 +159,14 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     }
 
+    /**
+     * Ottiene tutte le frasi di una pagina che erano presenti fino ad una certa data spefica.
+     * Esegue una query sul database per recuperare le frasi associate alla pagina wiki specificata, eventualmente filtrate per data.
+     * @param idPagina L'ID della pagina wiki di cui si desidera ottenere le frasi.
+     * @param data La data fino alla quale si desidera ottenere le frasi, o "null" per ottenere tutte le frasi senza restrizioni di data.
+     * @return Una matrice di frasi associate alla pagina wiki specificata, contenente il testo e la posizione di ciascuna frase.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public ArrayList<ArrayList<String>> getStroicitaSpecifica(int idPagina, String data) throws SQLException {
         Connection con = new ConnessionePostges().openConnection();
@@ -133,9 +175,9 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
         String query;
 
         if(data.isEmpty() || data.equals("null")) {
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d ORDER BY posizione\n".formatted(idPagina);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d ORDER BY posizione".formatted(idPagina);
         }else{
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' ORDER BY posizione\n".formatted(idPagina, data);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' ORDER BY posizione".formatted(idPagina, data);
         }
 
         ResultSet rs = stm.executeQuery(query);
@@ -154,6 +196,11 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
         return result;
     }
 
+    /**
+     * @param idPagina L'ID della pagina wiki di cui si desiderano ottenere le date disponibili.
+     * @return Array che contiene tutte le date in ordine decrescente su cui si è accettata una Modifica o Inserimento, di una pagina specifica.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public ArrayList<String> getDateAvailable(int idPagina) throws SQLException {
         Connection con = new ConnessionePostges().openConnection();
@@ -174,6 +221,15 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
     }
 
+    /**
+     * Esegue una ricerca di pagine wiki in base alla stringa di ricerca specificata.
+     * Chiama una Stored Procedure che cerca le pagine wiki che corrispondono alla stringa di ricerca fornita.
+     * @param ricerca La stringa di ricerca per trovare le pagine wiki.
+     * @return Restituisce una matrice di stringhe, ogni sotto-array contiene le informazioni delle pagine wiki trovate, come:
+     *         titolo, generalita autore, data dell'ultima modifica e ID della pagina.
+     *         Se la stringa di ricerca non trova corrispondenze, restituisce null.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query SQL.
+     */
     @Override
     public ArrayList<ArrayList<String>> SearchPage(String ricerca) throws SQLException {
 
@@ -197,7 +253,6 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
 
             ArrayList<ArrayList<String>> DataPages = new ArrayList<>();
 
-            Statement statement2 = con.createStatement();
             String query2="SELECT * FROM pagina WHERE id_pagina = %s";
 
             String[] pagina = idPagineReturn.split("-");

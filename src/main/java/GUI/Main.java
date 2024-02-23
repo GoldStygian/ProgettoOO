@@ -15,9 +15,9 @@ public class Main {
     }
 
 }
+//per correggere i link che rimangono arancioni prova a chiamare il metodo che ridisegna il pannello quando torna indietro
 //problema con posizioni a null in storicita
 //controllare se in storicita vengono prese le frasi rifiutate
-//creapagina quando clicco link esce fuori dal margine
 //login troppo lento
 //cache nella storicita
 //aggiustare il layout
