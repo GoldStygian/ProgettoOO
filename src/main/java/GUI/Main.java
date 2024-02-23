@@ -15,6 +15,8 @@ public class Main {
     }
 
 }
+//problema con posizioni a null in storicita
+//controllare se in storicita vengono prese le frasi rifiutate
 //creapagina quando clicco link esce fuori dal margine
 //login troppo lento
 //cache nella storicita

@@ -13,11 +13,11 @@ import java.util.HashMap;
 
 public class Controller {
 
-    //Utente utenteLoggato = null;
+    Utente utenteLoggato = null;
 
-    //debug
+    /*debug
         private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
-    //debug
+    debug*/
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
@@ -27,8 +27,8 @@ public class Controller {
      * se Login di Login DAO ritorna 1 allora significa che l'utnete è un autore
      * se Login di Login DAO ritorna 0 allora significa che l'utente è un utente semplice
      * se Login di Login DAO ritorna null allora email e password non combaciano.
-     * La funzione ritonra true se il login è effettuato con successo altrimenti false
-     * in caso di problemi o di credenziali errate. @author
+     * @return true se il login è effettuato con successo altrimenti
+     * false in caso di problemi o di credenziali errate.
      */
 
     public boolean Login(String email, String password) {
@@ -57,9 +57,10 @@ public class Controller {
     }
 
     /**
-     *
-     */
-    public ArrayList<ArrayList<String>> searchPages(String ricerca) {//OK
+     * Funzione per cercare le pagine all'interno del DaatBase in base al titolo
+     * @return Matrice contenente per ogni riga tutti i dati di pagina che combacia con la ricerca
+    */
+    public ArrayList<ArrayList<String>> searchPages(String ricerca) {
 
         try {
             return new PaginaPostgresDAO().SearchPage(ricerca);
@@ -69,12 +70,16 @@ public class Controller {
 
     }
 
+    /**
+     * Funzione che permette di caricare il contenuto di una pagina wiki.
+     * Crea un oggetto pagina e ogni frase ritornata dal DB viene aggiunta all'oggetto pagina.
+     * Inoltre l'oggetto pagina viene aggiunto a una HashMap, in modo tale che la prossima volta che viene
+     * selezionata tale pagina non venga effettuata nuovamente una richiesta al DB
+     * @param idPagina id della pagina che si vuole caricare
+     * @return HashMap contenente per ogni chiave un array di dati cosi formato
+     * (idPagia, posizione reale, testo, link, idLink) che costituisce un oggetto "Frase"
+     */
     public HashMap<Integer, ArrayList<String>> getWikiPage(int idPagina) {
-        // idPag
-        // pos reale
-        // frase
-        // link
-        // id link
 
         if (Pagine.get(idPagina) != null) { //gia sta una pagina nell'hashmap
 
@@ -142,6 +147,13 @@ public class Controller {
         }
 
     }
+
+    /**
+     * Funzione che permette di effettuare la registrazione di un utente.
+     * Tramite la chiamata del metodo RegisterUser di RegisterDAO è possibile registrare l'utente nel DB
+     * e controllare tramite la Stringa di ritorno, se la registrazione è avvenuta con successo oppure no
+     * @return Stringa che contiene un messaggio che può essere sia di errore che si successo
+     */
 
     public String register(String Nome, String Cognome, Object Genere, String Email, String Password) {
 
@@ -378,6 +390,18 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette l'inserimento/proposta di inserimento di una frase.
+     * Attraverso la chiamata proponiInserimento() di WikiPageDAO l'inserimento/proposta viene inserita nel DB.
+     * Prima di chiamare proponiInserimento() viene controllato se l'utente loggato è un auotre oppure no, cosi da capire de il tipo di
+     * operazione è una proposta o inserimento diretto della frase nel DB
+     * @param idPagina pagina su cui si sta effettuando un insrimento
+     * @param posizione posizione dove si sta inserendo una nuova frase
+     * @param text testo della nuova frase
+     * @param selected valore che specifica se la frase è un link oppure no
+     * @param RiferimentoLink titolo della pagina a cui il link fa riferimento
+     * @return Stringa che contiene un messaggio di successo o di errore
+     */
     public String ProponiInserimento(int idPagina, String posizione, String text, boolean selected, String RiferimentoLink) {
 
         String messageError = "<html>";
@@ -435,15 +459,19 @@ public class Controller {
         return messageError+"</html>";
     }
 
+    /**
+     * Funzione che permette la modifica/proposta di modifica di una frase.
+     * Attraverso la chiamata proponiModifica() di WikiPageDAO la modifica/proposta viene inserita nel DB.
+     * Prima di chiamare proponiModifica() viene controllato se l'utente loggato è un auotre oppure no, cosi da capire de il tipo di
+     * operazione è una proposta o una modifica diretta della frase nel DB
+     * @param idPagina pagina su cui si sta effettuando un insrimento
+     * @param posizione posizione dove si sta inserendo una nuova frase
+     * @param text testo della nuova frase
+     * @param link valore che specifica se la frase è un link oppure no
+     * @param titoloLink titolo della pagina a cui il link fa riferimento
+     * @return Stringa che contiene un messaggio di successo o di errore
+     */
     public String ProponiModifica(int idPagina, int posizione, String text, boolean link, String titoloLink) {
-        //id_pagina //strong
-        //email //strong
-        //testo //to check
-        //link //to check
-        //titolo link //to check
-        //posizione //strong
-
-        //System.out.println("la posizione che stai modificando è la: "+posizione);
 
         String Message = "<html>";
         if (text.isEmpty()){
@@ -486,6 +514,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette di controllare se l'utente ha effettuato il login
+     * @return True se ha effettuato il login, altrimenti False.
+     */
     public boolean isUserLogged(){
 
         if (utenteLoggato==null){
@@ -549,6 +581,15 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette di ottiene la storia specifica di una pagina wiki identificata dall'ID della pagina e dalla data specificata.
+     * Restituisce una lista di frasi associate alla pagina per la data specificata.
+     * @param idPage L'ID della pagina wiki di cui si desidera ottenere la storia.
+     * @param Data La data per la quale si desidera ottenere la storia della pagina.
+     * @return Matrice di frasi associate alla pagina per la data specificata.
+     *         Se si verifica un'eccezione durante l'accesso al database, restituisce null.
+     */
+
     public ArrayList<ArrayList<String>> getStoricitaPage(int idPage, String Data){
 
         ArrayList<ArrayList<String>> frasi;
@@ -563,6 +604,11 @@ public class Controller {
         return frasi;
     }
 
+    /**
+     * @param idPagina ID della pagina su cui si vuole conoscere tutte le date su cui si sono effettuate delle operazioni
+     * @return Array che contiene tutte le date su cui si è accettata una Modifica o Inserimento, di una pagina specifica.
+     */
+
     public ArrayList<String> getDateAvailable(int idPagina){
 
         try {
@@ -574,12 +620,28 @@ public class Controller {
 
     }
 
+    /**
+     * Funzione utilizzata quando viene effettuato il log out di un utente dall'applicativo.
+     * Setta l'oggetto utenteLoggato a null, cosi da cancellare i dati del vecchio utente e ripetere il log in
+     */
+
     public void logOut(){
 
         this.utenteLoggato= null;
         this.Operazioni_utente = null;
-        Operazioni_utente = new ArrayList<>();
+        this.Operazioni_utente = new ArrayList<>();
     }
+
+    /**
+     * Crea una nuova pagina wiki con il titolo e la frase specificati.
+     * Se il titolo o la frase sono vuoti, restituisce un messaggio di errore corrispondente.
+     * Altrimenti, invia una richiesta al database per creare la pagina e restituisce un messaggio di successo o di errore.
+     * @param titolo Il titolo della pagina wiki da creare.
+     * @param frase La frase iniziale da inserire nella pagina wiki.
+     * @param selected True se la pagina deve essere selezionata, false altrimenti.
+     * @param TitoloPaginaLink Il titolo della pagina a cui collegare questa pagina, se applicabile.
+     * @return Stringa che contiene un messaggio che indica se la creazione della pagina è avvenuta con successo o se si è verificato un errore.
+     */
 
     public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
 
@@ -610,8 +672,12 @@ public class Controller {
         frame.setSize(W,H);
     }
 
+    /**
+     * Funzione che rimuove dall HashMap "Pagine" la pagina con id corrispondente.
+     * Utilizzata prima delle operazioni di "Refresh" delle pagine Wiki.
+     * @param idPagina numero che identifica la pagina da eliminare
+     */
     public void removePage(int idPagina) {
-        System.out.println(idPagina);
         Pagine.remove(idPagina);
     }
 }
