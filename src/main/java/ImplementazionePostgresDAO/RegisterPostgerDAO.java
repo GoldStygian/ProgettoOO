@@ -7,6 +7,20 @@ import java.sql.*;
 
 public class RegisterPostgerDAO implements RegisterDAO {
 
+    /**
+     * Registra un nuovo utente nel DB.
+     * Verifica che i parametri Nome, Cognome e Password non siano vuoti o nulli.
+     * Esegue una query sul database per controllare se l'indirizzo email fornito è già associato a un altro utente.
+     * Se l'indirizzo email non è già presente nel database, inserisce i dettagli dell'utente nel database.
+     * Restituisce un messaggio di errore che descrive eventuali problemi riscontrati durante il processo di registrazione.
+     * @param Nome Il nome dell'utente da registrare.
+     * @param Cognome Il cognome dell'utente da registrare.
+     * @param Genere Il genere dell'utente da registrare.
+     * @param Email L'indirizzo email dell'utente da registrare.
+     * @param Password La password dell'utente da registrare.
+     * @return Un messaggio di errore che descrive eventuali problemi riscontrati durante il processo di registrazione.
+     * @throws SQLException Se si verifica un errore durante l'esecuzione delle query SQL.
+     */
     public String RegisterUser(String Nome, String Cognome, String Genere, String Email, String Password) throws SQLException {
         String messageError="";
         if (Nome.isBlank()){
@@ -21,17 +35,21 @@ public class RegisterPostgerDAO implements RegisterDAO {
 
         Connection con = new ConnessionePostges().openConnection();
 
-        Statement statement = con.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT email FROM utente WHERE email = '%s'".formatted(Email));
+        PreparedStatement statement = con.prepareStatement("SELECT email FROM utente WHERE email = ?");
+        statement.setString(1, Email);
+        ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()){
             messageError += "email gia esistente<br>";
         }else {
 
-            String query = "INSERT INTO utente VALUES('%s', '%s', '%s', '%s', '%s', '%s')".formatted(Email, Nome, Cognome, Password, Genere, 0);
-            PreparedStatement Pstatement = con.prepareStatement(query);
+            PreparedStatement Pstatement = con.prepareStatement("INSERT INTO utente VALUES (?, ?, ?, ?, ?, 0::bit(1))");
+            Pstatement.setString(1, Email);
+            Pstatement.setString(2, Nome);
+            Pstatement.setString(3, Cognome);
+            Pstatement.setString(4, Password);
+            Pstatement.setString(5, Genere);
             try {
                 Pstatement.executeUpdate();//ritorna il numero di righe inserite
-                System.out.println("[ ] " + query);
                 Pstatement.close();
             } catch (SQLException e) { // se duplicato o dominio non valido
                 System.out.println(e.getMessage());
