@@ -15,9 +15,6 @@ public class Controller {
 
     Utente utenteLoggato = null;
 
-    /*debug
-        private Utente utenteLoggato = new Autore("florindozec@gmail.com","PasswordForte", "n", "c", 'M');
-    debug*/
     private HashMap<Integer, Pagina> Pagine = new HashMap<>(); //inseriti quando carico la getwiki selezionata //Integer:IdPagina
     private ArrayList<OperazioneUtente> Operazioni_utente = new ArrayList<>();
 
@@ -180,7 +177,7 @@ public class Controller {
     /**
      * Controlla se l'utente loggato è un autore tramite isAutore().
      * Crea un oggetto di NotifichePostgresDAO.
-     * richiama la funzione LoadNotifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
+     * Richiama la funzione LoadNotifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
      * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
      * altrimenti un inserimento
      */
@@ -213,12 +210,11 @@ public class Controller {
     }
 
     /**
-     * carica una matrice con tutti i dati utili di una notifica, come:
-     * Id_operazionme, DataR(data Richiesta),Testo, accettata, Visionata,Modifica, Link ,Link_pagina,posizione e utente
+     * Carica una matrice con tutti i dati utili di una notifica, come:
+     * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione e utente
      * dopo che ha carivato la matrice la restituisce
      *
-     *
-     * @return Una Matrice con i dati di ogni Notifica nel model. dove La riga Corrisponde a un tipo di dato del model
+     * @return Una Matrice con i dati di ogni Notifica nel model. Dove La riga Corrisponde a un tipo di dato del model
      * e un a colonna a un oggetto. Es: matrice 5x5 ho 5 attributi e 5 oggetti. Es: matrice 5x7 ho 5 attributi e sette oggetti
      * {riga}x{colonna}
      */
@@ -260,7 +256,7 @@ public class Controller {
     }
 
     /**
-     *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione , email Autore)
+     *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione, email Autore)
      *  LoadConfronto ritornerà un stringa formattata nel seguente modo:
      *
      *
