@@ -570,23 +570,17 @@ public class Controller {
         }
     }
 
-    public void ModificaProposta(int id_operazione, int accettata, String Utente){
+    public void ModificaProposta(int id_operazione, int accettata){
         RisultatoConfrontoPostgresDAO r = new RisultatoConfrontoPostgresDAO();
         if(accettata == 1){
-            r.Accettazione(id_operazione, Utente);
+            r.Accettazione(id_operazione, utenteLoggato.getEmail());
         }else{
-            r.Rifiuto(id_operazione, Utente);
+            r.Rifiuto(id_operazione, utenteLoggato.getEmail());
         }
 
 
     }
 
-
-    /**
-     * Funzione che permette di prendere le pagine wiki associate all'utente corrente.
-     * @return Una Matrice di pagine wiki associate all'utente corrente.
-     *         Se l'utente non ha pagine associate o si verifica un'eccezione durante l'accesso al database, restituisce null.
-     */
     public ArrayList<ArrayList<String>> getMyPage(){
 
         String email = utenteLoggato.getEmail();

@@ -126,7 +126,7 @@ public class ComparazioneFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                controller.ModificaProposta(id_operazione, 1, utente);
+                controller.ModificaProposta(id_operazione, 1);
                 PanelloNotifiche.RefreshAndLoad(controller, frame, PanelloNotifiche);
 
             }
@@ -136,7 +136,7 @@ public class ComparazioneFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                controller.ModificaProposta(id_operazione, 0, utente);
+                controller.ModificaProposta(id_operazione, 0);
                 PanelloNotifiche.RefreshAndLoad(controller, frame, PanelloNotifiche);
                 f.dispose();
             }
