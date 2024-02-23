@@ -28,7 +28,7 @@ public class Controller {
      * se Login di Login DAO ritorna 0 allora significa che l'utente è un utente semplice
      * se Login di Login DAO ritorna null allora email e password non combaciano.
      * La funzione ritonra true se il login è effettuato con successo altrimenti false
-     * in caso di problemi o di credenziali errate.
+     * in caso di problemi o di credenziali errate. @author
      */
 
     public boolean Login(String email, String password) {
@@ -56,6 +56,9 @@ public class Controller {
 
     }
 
+    /**
+     *
+     */
     public ArrayList<ArrayList<String>> searchPages(String ricerca) {//OK
 
         try {
@@ -153,10 +156,22 @@ public class Controller {
         return messageError+"</html>";
     }
 
+    /**
+     * Controlla se l'utente loggato è un autore
+     *
+     * @return True se è autore, False se è un Utente
+     */
     public boolean isAutore(){
         return utenteLoggato instanceof Autore;
     }
 
+    /**
+     * Controlla se l'utente loggato è un autore tramite isAutore().
+     * Crea un oggetto di NotifichePostgresDAO.
+     * richiama la funzione LoadNotifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
+     * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
+     * altrimenti un inserimento
+     */
     public  void LoadNotifiche() throws SQLException {
 
         if(this.isAutore()){
@@ -185,6 +200,16 @@ public class Controller {
         }
     }
 
+    /**
+     * carica una matrice con tutti i dati utili di una notifica, come:
+     * Id_operazionme, DataR(data Richiesta),Testo, accettata, Visionata,Modifica, Link ,Link_pagina,posizione e utente
+     * dopo che ha carivato la matrice la restituisce
+     *
+     *
+     * @return Una Matrice con i dati di ogni Notifica nel model. dove La riga Corrisponde a un tipo di dato del model
+     * e un a colonna a un oggetto. Es: matrice 5x5 ho 5 attributi e 5 oggetti. Es: matrice 5x7 ho 5 attributi e sette oggetti
+     * {riga}x{colonna}
+     */
     public ArrayList<ArrayList> GetNotifiche(){
 
         ArrayList<ArrayList> s = null;
@@ -222,6 +247,14 @@ public class Controller {
         return s;
     }
 
+    /**
+     *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione , email Autore)
+     *  LoadConfronto ritornerà un stringa formattata nel seguente modo:
+     *
+     *
+     * @param id_operazione
+     * @return
+     */
     public ArrayList<String[]> LoadConfronto(int id_operazione){
         ConfrontaPostgersDAO c = new ConfrontaPostgersDAO();
         try {
