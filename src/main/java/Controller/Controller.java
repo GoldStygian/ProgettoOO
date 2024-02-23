@@ -619,6 +619,12 @@ public class Controller {
     }
 
 
+
+    /**
+     * Funzione che permette di prendere le pagine wiki associate all'utente corrente.
+     * @return Una Matrice di pagine wiki associate all'utente corrente.
+     *         Se l'utente non ha pagine associate o si verifica un'eccezione durante l'accesso al database, restituisce null.
+     */
     public ArrayList<ArrayList<String>> getMyPage(){
 
         String email = utenteLoggato.getEmail();
@@ -702,24 +708,23 @@ public class Controller {
     public String creaPagina(String titolo, String frase, boolean selected, String TitoloPaginaLink) {
 
         String messageError = "<html>";
-        if (titolo.isEmpty()){
+        if (titolo.isEmpty()) {
             messageError += "Il titolo è vuoto<br>";
-        }
-        else if (frase.isEmpty()){
+        } else if (frase.isEmpty()) {
             messageError += "La frase è vuota<br>";
-        }else {
+        } else {
 
             String email = utenteLoggato.getEmail();
             try {
                 messageError += new PaginaPostgresDAO().createPage(email, titolo, frase, selected, TitoloPaginaLink);
-            }catch (Exception e){
+            } catch (Exception e) {
                 //e.printStackTrace();
                 messageError += "Problema sconosciuto<br>";
             }
 
         }
 
-        return messageError+="</html>";
+        return messageError += "</html>";
 
     }
 
