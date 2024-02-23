@@ -546,6 +546,15 @@ public class Controller {
         }
     }
 
+    /**
+     * Funzione che permette di ottiene la storia specifica di una pagina wiki identificata dall'ID della pagina e dalla data specificata.
+     * Restituisce una lista di frasi associate alla pagina per la data specificata.
+     * @param idPage L'ID della pagina wiki di cui si desidera ottenere la storia.
+     * @param Data La data per la quale si desidera ottenere la storia della pagina.
+     * @return Matrice di frasi associate alla pagina per la data specificata.
+     *         Se si verifica un'eccezione durante l'accesso al database, restituisce null.
+     */
+
     public ArrayList<ArrayList<String>> getStoricitaPage(int idPage, String Data){
 
         ArrayList<ArrayList<String>> frasi;
@@ -561,9 +570,8 @@ public class Controller {
     }
 
     /**
-     *
-     * @param idPagina
-     * @return
+     * @param idPagina ID della pagina su cui si vuole conoscere tutte le date su cui si sono effettuate delle operazioni
+     * @return Array che contiene tutte le date su cui si è accettata una Modifica o Inserimento, di una pagina specifica.
      */
 
     public ArrayList<String> getDateAvailable(int idPagina){
