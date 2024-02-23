@@ -175,9 +175,9 @@ public class PaginaPostgresDAO implements main.java.DAO.PaginaDAO {
         String query;
 
         if(data.isEmpty() || data.equals("null")) {
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d ORDER BY posizione".formatted(idPagina);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND (accettata != 0::bit(1) OR accettata is null) ORDER BY posizione".formatted(idPagina);
         }else{
-            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' ORDER BY posizione".formatted(idPagina, data);
+            query = "SELECT * FROM storicita_totale WHERE id_pagina = %d AND data_accettazione <= '%s' AND (accettata != 0::bit(1) OR accettata is null) ORDER BY posizione".formatted(idPagina, data);
         }
 
         ResultSet rs = stm.executeQuery(query);
