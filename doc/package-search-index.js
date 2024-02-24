@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"main.java.Controller"},{"l":"main.java.DAO"},{"l":"main.java.Database"},{"l":"main.java.GUI"},{"l":"main.java.ImplementazionePostgresDAO"},{"l":"main.java.Model"}];updateSearchResults();
