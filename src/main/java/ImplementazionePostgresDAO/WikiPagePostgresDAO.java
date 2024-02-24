@@ -97,13 +97,13 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
     @Override
     public String proponiModifica(boolean isAutore, int idPagina, String email, String text, int posizione, boolean selected, String riferimentoLink) throws SQLException {
 
-        System.out.println("isAutore: " + isAutore);
+        /*System.out.println("isAutore: " + isAutore);
         System.out.println("idPagina: " + idPagina);
         System.out.println("email: " + email);
         System.out.println("text: " + text);
         System.out.println("posizione: " + posizione); //reale
         System.out.println("selected: " + selected);
-        System.out.println("riferimentoLink: " + riferimentoLink);
+        System.out.println("riferimentoLink: " + riferimentoLink);*/
 
         Connection con = new ConnessionePostges().openConnection();
         String MessageReturn = new String();
@@ -112,7 +112,7 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
         if (selected){
             int linkValue;
             query = "SELECT id_pagina FROM pagina WHERE titolo = ?";
-            System.out.println("[D] è un link e il titolo: "+riferimentoLink+" e la query: "+query);
+            //System.out.println("[D] è un link e il titolo: "+riferimentoLink+" e la query: "+query);
             try (PreparedStatement checkPageStatement = con.prepareStatement(query)) {
                 checkPageStatement.setString(1, riferimentoLink);
                 try (ResultSet checkPage = checkPageStatement.executeQuery()) {
@@ -146,7 +146,7 @@ public class WikiPagePostgresDAO implements WikiPageDAO {
         Statement stm = con.createStatement();
         boolean result = stm.execute(query);
 
-        System.out.println(result);
+        //System.out.println(result);
         if (!result){ //la procedura non deve ritornare valori
             MessageReturn = "Richiesta avvenuta con successo<br>";
         }else{

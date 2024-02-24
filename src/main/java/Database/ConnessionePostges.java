@@ -23,7 +23,6 @@ public class ConnessionePostges {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Credenziali.add(line);
-                System.out.println(line);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
@@ -33,7 +32,6 @@ public class ConnessionePostges {
         try {
             Class.forName("org.postgresql.Driver");
             Connection con = DriverManager.getConnection("jdbc:postgresql://"+ Credenziali.get(0), Credenziali.get(1), Credenziali.get(2));
-            System.out.println("[ ] Connessione aperta");
             return con;
         } catch (ClassNotFoundException e) {
             System.out.println("[-] DB driver not found \n");
