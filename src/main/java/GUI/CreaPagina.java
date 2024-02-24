@@ -82,11 +82,18 @@ public class CreaPagina {
             public void actionPerformed(ActionEvent e) {
                 Message.setText(controller.creaPagina(titoloTextField.getText(), fraseTextField.getText(), linkCheckBox.isSelected(), PaginaLinkRef.getText()));
                 System.out.println(Message.getText());
-                if (Message.getText().equals("<html>Pagina creata con successo<br></html>"))
+                if (Message.getText().equals("<html>Pagina creata con successo<br></html>")) {
                     Message.setForeground(Color.green);
-                else Message.setForeground(Color.red);
-                Message.setVisible(true);
+                    frame.remove(MainPanel);
+                    frame.remove(OldPanel);
+                    controller.Login(controller.getUtenteLoggato().getEmail(), controller.getUtenteLoggato().getPassword());
+                    frame.SetNewPanel(new HomeAutore(frame, controller, OldPanel).getPanel(), MainPanel);
+                    frame.Resize(1400, 700);
 
+
+
+                }else{ Message.setForeground(Color.red);}
+                Message.setVisible(true);
             }
         });
 

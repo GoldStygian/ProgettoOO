@@ -29,7 +29,7 @@ public class Controller {
      */
 
     public boolean Login(String email, String password) {
-
+        this.logOut();
         try {
             ArrayList<String> Contenuto =  new LoginPostgresDAO().Login(email, password);
 
@@ -64,6 +64,14 @@ public class Controller {
             return null;
         }
 
+    }
+
+    /**
+     *
+     * @return oggetto del utente loggato
+     */
+    public Utente getUtenteLoggato() {
+        return utenteLoggato;
     }
 
     /**
