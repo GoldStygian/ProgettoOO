@@ -21,10 +21,13 @@ public class Menu extends JMenuBar {
 
         menu.setFont(frame.getFontToolBar());
         menu.setBackground(frame.getColorToolBar());
-
-        JMenuItem menuItem = new MenuItem(frame,"Impostazioni", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\gear.png"))));
+        JMenuItem menuItem = null;
+        /*
+        menuItem = new MenuItem(frame,"Impostazioni", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\gear.png"))));
         menu.add(menuItem);
 
+
+         */
 
         menuItem = new MenuItem(frame,"Crea Pagina", new ImageIcon(t.ResizeIcon(60, 60, new ImageIcon("src\\main\\resources\\writing.png"))));
         menuItem.addActionListener(new ActionListener() {
@@ -68,7 +71,7 @@ public class Menu extends JMenuBar {
         menu.add(menuItem);
 
         if(controller.isAutore()){
-            menuItem = new MenuItem(frame,"Storicita", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\request2.png"))));
+            menuItem = new MenuItem(frame,"Storicita", new ImageIcon(t.ResizeIcon(65, 65, new ImageIcon("src\\main\\resources\\script.png"))));
             menuItem.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

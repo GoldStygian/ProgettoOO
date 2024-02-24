@@ -115,6 +115,7 @@ public class RegisterPage {
                     MessageError.setText(Message);
                 } else {
                     frame.SetNewPanel(OldPanel, MainPanel);
+                    frame.Resize(1400, 700);
                 }
 
             }
