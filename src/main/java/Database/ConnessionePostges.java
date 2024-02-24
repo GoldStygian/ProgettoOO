@@ -15,7 +15,7 @@ public class ConnessionePostges {
     public Connection openConnection() {
 
         ArrayList<String> Credenziali = new ArrayList<>();
-        String filePath = "src\\main\\java\\ImplementazionePostgresDAO\\credenziali.txt";
+        String filePath = "src\\main\\java\\Database\\credenziali.txt";
         File file = new File(filePath);
 
         try {
@@ -23,7 +23,7 @@ public class ConnessionePostges {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 Credenziali.add(line);
-                //System.out.println(line);
+                System.out.println(line);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
