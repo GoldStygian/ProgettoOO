@@ -32,6 +32,9 @@ public class HomeAutore {
     private JButton NotificheButton;
     private JLabel IconNotifiche;
     private JPanel NotificheBox;
+    private JPanel Homescreen;
+    private JLabel Logo;
+    private JLabel Scritta;
     private JMenuBar MenuBox;
     private JMenu Menu;
     private MainJFrame frame;
@@ -85,7 +88,8 @@ public class HomeAutore {
         t.ToolBarButton(NotificheButton);
 
         NotificheBox.setBackground(frame.getColorToolBar());
-
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        t.LabelSetFontAndColorUpper(Scritta);
 
 
         Menu.addMouseListener(new MouseAdapter() {

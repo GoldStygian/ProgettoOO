@@ -29,7 +29,9 @@ public class Home {
     private JLabel NameApp;
     private JPanel BarIcon;
     private JPanel SerchBorder;
-    private JPanel RecentWikiPanel;
+    private JPanel Homescreen;
+    private JLabel Logo;
+    private JLabel Scritta;
 
     public Home(MainJFrame frame, Controller controller) throws SQLException {
 
@@ -67,6 +69,9 @@ public class Home {
         SerchBorder.setBorder(new LineBorder(Color.BLACK, 2));
 
         SerchBar.setFont(frame.getFontToolBar());
+
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        t.LabelSetFontAndColorUpper(Scritta);
 
         loginbutton.addActionListener(new ActionListener() {
             @Override

@@ -29,6 +29,9 @@ public class HomeUtente {
     private JMenuBar MenuBox;
     private JPanel MenuButton;
     private JLabel IconMenu;
+    private JPanel Homescreen;
+    private JLabel Logo;
+    private JLabel Scritta;
     private Boolean bool = true;
 
     public HomeUtente(MainJFrame frame, Controller controller, JPanel oldPanel) {
@@ -72,6 +75,8 @@ public class HomeUtente {
 
         MenuButton.add(MenuBox);
         MenuButton.setBackground(frame.getColorToolBar());
+        t.SetIcon(Logo, new ImageIcon(t.ResizeIcon(120, 120, frame.getIcon())));
+        t.LabelSetFontAndColorUpper(Scritta);
 
 
         Menu.addMouseListener(new MouseAdapter() {
