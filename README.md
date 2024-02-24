@@ -1,5 +1,13 @@
 # ProgettoOO
 
+## Authors
+
+Università Degli Studi Di Napoli Federico II
+
+Raffaele Raia N86004564
+
+Florindo Zecconi N86004544
+
 ## Getting Started
 
 Download links:
@@ -16,7 +24,7 @@ These instructions will get you a copy of the project up and running on your loc
 Put DataBase Credentials into file: 
 
 ```
-src/main/java/ImplementazionePostgresDAO/credenziali.txt
+src/main/java/Database/credenziali.txt
 ```
 in this order:
 
@@ -26,10 +34,8 @@ user
 password
 ```
 
-## Deployment
+## Contact us
 
-Add additional notes about how to deploy this on a production system.
+raffaele.raia@studenti.unina.it
 
-## Resources
-
-Add links to external resources for this project, such as CI server, bug tracker, etc.
+fl.zecconi@studenti.unina.it
