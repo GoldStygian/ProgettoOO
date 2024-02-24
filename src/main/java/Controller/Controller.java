@@ -255,7 +255,7 @@ public class Controller {
     }
 
     /**
-     *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione , email Autore)
+     *  Crea un Oggetto ConfrontaPostgersDAO() e richiamo una sua funzione di nome Confronti LoadConfronto(id_operazione, email Autore)
      *  LoadConfronto ritornerà un stringa formattata nel seguente modo: Titolo+testo-posizione-link-
      * id pagina riferita-titolo pagina riferita | proposta testo-proposta posizione-
      * proposta link-proposta id pagina riferita-proposta titolo pagina riferita
@@ -287,7 +287,7 @@ public class Controller {
 
     /**
      * Crea un oggetto di ModifichePostgresDAO.
-     * richiama la funzione LoadModifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
+     * Richiama la funzione LoadModifiche(Email Autore) che restituisce una Matrice con tutti i dati restituiti dal DataBase
      * Per ogni colonna della matrice creiamo un oggetto ModificaUtente se il parametro a riga 5 colonna i(quindi i-esima Operazione) è true
      * altrimenti un inserimento.
      *
@@ -329,8 +329,8 @@ public class Controller {
 
     /**
      * Carica una matrice con tutti i dati utili di una Modifica, come:
-     * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione,utente,
-     * DataA(data Accettazione) , utenteNotificato, titolo pagina link(titolo della pagina in cui mi riferisco) e titolo pagina
+     * Id_operazionme, DataR(data Richiesta), Testo, accettata, Visionata, Modifica, Link, Link_pagina, posizione, utente,
+     * DataA(data Accettazione), utenteNotificato, titolo pagina link(titolo della pagina in cui mi riferisco) e titolo pagina
      * dopo che ha caricato la matrice la restituisce
      *
      * @return Una Matrice con i dati di ogni Modifica nel model. Dove La riga Corrisponde a un tipo di dato del model
@@ -387,8 +387,7 @@ public class Controller {
     }
 
     /*
-    public boolean AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina, int i,ArrayList<ArrayList> Dati){
-        for(OperazioneUtente u: utenteLoggato.getOperazioni_Utente()){
+    public boolean AggiornamentoModifiche(int id_operazione, String Autore, String Titolo, Timestamp Data, String TitoloPagina, int i, ArrayList<ArrayList> Dati){for(OperazioneUtente u: utenteLoggato.getOperazioni_Utente()){
             if(u.getIdOperazione() == id_operazione){
                 ((OperazioneUtente) u).SetAutore(Autore);
                 ((OperazioneUtente) u).SetTitoloLink(TitoloPagina);
@@ -407,7 +406,7 @@ public class Controller {
      */
 
     /**
-     * Se l'utente è un atuore imposta visonata a true nell'operazione utente che ha id_operazione = a id_operazione input
+     * Se l'utente è un atuore imposta visonata a true nell'operazione utente che ha id_operazione = a id_operazione ingresso
      * @param id_operazione
      */
 
@@ -572,7 +571,7 @@ public class Controller {
 
     /**
      * Crea un oggetto ModificaPorpostaPostgresDAO()
-     * e richiama la funzione AggironamentoProposta(id_proposta,email utente loggato,Testo) e aggiorna il testo e dataR(data richiesta)
+     * e richiama la funzione AggironamentoProposta(id_proposta, email utente loggato, Testo) e aggiorna il testo e dataR(data richiesta)
      */
     public void ModificaPropsostaEffetuata(int id_proposta,String Testo){
         ModificaPorpostaPostgresDAO m = new ModificaPorpostaPostgresDAO();

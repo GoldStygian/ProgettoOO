@@ -16,7 +16,7 @@ public class Main {
 
 }
 //quando creo passo il panel all'autore
-//per correggere i link che rimangono arancioni prova a chiamare il metodo che ridisegna il pannello quando torna indietro
+//per correggere i link che rimangono arancioni
 //cache nella storicita
 //aggiustare il layout
 //aggiungere cose alla home
