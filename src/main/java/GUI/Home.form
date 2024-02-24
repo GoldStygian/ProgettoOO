@@ -192,7 +192,7 @@
             <properties>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
-              <text value="Benvenuto in FANDOMWIKI  utillizza la bara di ricerca per cercare una wiki"/>
+              <text value="Benvenuto in FANDOMWIKI  utillizza la barra di ricerca per cercare una wiki"/>
             </properties>
             <clientProperties>
               <html.disable class="java.lang.Boolean" value="false"/>
