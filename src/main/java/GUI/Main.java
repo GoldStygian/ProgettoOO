@@ -15,11 +15,3 @@ public class Main {
     }
 
 }
-//quando creo passo il panel all'autore
-//per correggere i link che rimangono arancioni
-//cache nella storicita
-//aggiustare il layout
-//aggiungere cose alla home
-//mettere nel model le proposte
-//mettere stderr nel log
-//mettere if al posto di while nei reultset con 1 return result
