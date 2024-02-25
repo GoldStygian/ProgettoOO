@@ -8,6 +8,8 @@ Raffaele Raia N86004564
 
 Florindo Zecconi N86004544
 
+![image](https://github.com/GoldStygian/ProgettoOO/assets/92647402/20d089f0-a080-470c-9cf4-d23702427061)
+
 ## Getting Started
 
 Download links:
