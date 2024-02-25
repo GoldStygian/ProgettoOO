@@ -8,8 +8,6 @@ Raffaele Raia N86004564
 
 Florindo Zecconi N86004544
 
-![image](https://github.com/GoldStygian/ProgettoOO/assets/92647402/20d089f0-a080-470c-9cf4-d23702427061)
-
 ## Getting Started
 
 Download links:
@@ -28,6 +26,7 @@ Put DataBase Credentials into file:
 ```
 src/main/java/Database/credenziali.txt
 ```
+
 in this order:
 
 ```
@@ -35,6 +34,19 @@ hostname
 user
 password
 ```
+
+Set routes
+
+![image](https://github.com/GoldStygian/ProgettoOO/assets/92647402/a61dd0e5-cdcf-4def-84e8-5392982783fb)
+
+set paths for "src", "out", "Resources" folders
+
+![image](https://github.com/GoldStygian/ProgettoOO/assets/92647402/52c6d53c-65f6-4ee7-a24f-f8f32fb71649)
+
+import postgrea library
+
+![image](https://github.com/GoldStygian/ProgettoOO/assets/92647402/59381e10-623f-43d0-8d9a-3cca28f9055c)
+
 
 ## Contact us
 
